@@ -23,10 +23,10 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://guilhermesimoes.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: glitchdout
 github_username:  guilhermesimoes
+date_format: "%b %-d, %Y"
 
 # Build settings
 markdown: kramdown
-theme: minima
 plugins:
   - jekyll-feed
 
