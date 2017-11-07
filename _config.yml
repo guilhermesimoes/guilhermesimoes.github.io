@@ -25,6 +25,7 @@ twitter_username: glitchdout
 github_username:  guilhermesimoes
 date_format: "%b %-d, %Y"
 include: ["_pages"]
+permalink: /blog/:title
 
 # Build settings
 markdown: kramdown
