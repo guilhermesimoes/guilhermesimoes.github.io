@@ -24,6 +24,7 @@ url: "https://guilhermesimoes.github.io" # the base hostname & protocol for your
 twitter_username: glitchdout
 github_username:  guilhermesimoes
 date_format: "%b %-d, %Y"
+include: ["_pages"]
 
 # Build settings
 markdown: kramdown
