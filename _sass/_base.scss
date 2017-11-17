@@ -17,12 +17,6 @@ body {
   font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
   color: $text-color;
   background-color: $background-color;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-feature-settings: "kern" 1;
-     -moz-font-feature-settings: "kern" 1;
-       -o-font-feature-settings: "kern" 1;
-          font-feature-settings: "kern" 1;
-  font-kerning: normal;
 }
 
 
@@ -45,19 +39,6 @@ ul, ol, dl, figure,
 img {
   max-width: 100%;
   vertical-align: middle;
-}
-
-
-
-/**
- * Figures
- */
-figure > img {
-  display: block;
-}
-
-figcaption {
-  font-size: $small-font-size;
 }
 
 
@@ -112,7 +93,7 @@ blockquote {
   color: $grey-color;
   border-left: 4px solid $grey-color-light;
   padding-left: $spacing-unit / 2;
-  @include relative-font-size(1.125);
+  font-size: 1.125em;
   letter-spacing: -1px;
   font-style: italic;
 
@@ -128,7 +109,7 @@ blockquote {
  */
 pre,
 code {
-  @include relative-font-size(0.9375);
+  font-size: 0.95em;
   border: 1px solid $grey-color-light;
   border-radius: 3px;
   background-color: #eef;
