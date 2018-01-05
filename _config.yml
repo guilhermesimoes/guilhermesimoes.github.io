@@ -29,11 +29,19 @@ author:
 # Build settings
 markdown: kramdown
 plugins:
+  - jekyll-assets
   - jekyll-feed
 
 # Plugin settings
 kramdown:
   auto_ids: true
+
+assets:
+  sources:
+    - javascripts
+    - node_modules
+  raw_precompile:
+    - anchor-js/anchor.min.js
 
 sass:
   style: compressed
