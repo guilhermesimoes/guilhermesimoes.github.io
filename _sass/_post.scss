@@ -36,3 +36,11 @@
     letter-spacing: .6em;
   }
 }
+
+.anchorjs-link {
+  color: $text-color;
+}
+
+.anchorjs-link:hover {
+  text-decoration: none;
+}
