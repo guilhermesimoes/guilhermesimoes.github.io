@@ -29,6 +29,10 @@ markdown: kramdown
 plugins:
   - jekyll-feed
 
+# Plugin settings
+kramdown:
+  auto_ids: true
+
 sass:
   style: compressed
 
