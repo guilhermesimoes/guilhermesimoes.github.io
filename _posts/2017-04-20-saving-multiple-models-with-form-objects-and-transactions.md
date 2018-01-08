@@ -2,6 +2,9 @@
 layout: post
 title:  "Saving multiple models with Form Objects and Transactions"
 date:   2017-04-20 14:51:53 +0100
+published:
+  publication: "Runtime Revolution blog"
+  url: https://revs.runtime-revolution.com/saving-multiple-models-with-form-objects-and-transactions-2c26f37f7b9a
 ---
 [We've talked before about form objects] and how they can simplify our Rails views.
 Now I'd like to present a more complex scenario and one way to tackle it.
