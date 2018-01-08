@@ -1,8 +1,20 @@
-.post hr {
+/**
+ * Posts
+ */
+.post-title {
+  font-size: 1.625em;
+  line-height: 1;
+}
+
+.post-content {
+  margin-bottom: $spacing-unit * 2;
+}
+
+.post-content hr {
   box-sizing: content-box;
   display: block;
-  margin-top: 52px;
-  margin-bottom: 42px;
+  margin-top: $spacing-unit + 0.5;
+  margin-bottom: $spacing-unit + 0.5;
   height: 0;
   border: 0;
   text-align: center;
@@ -10,7 +22,7 @@
 
   &:before {
     position: relative;
-    top: -30px;
+    top: -1em;
     display: inline-block;
     margin-left: .6em;
     content: '...';
@@ -20,7 +32,7 @@
     font-family: Georgia,Cambria,"Times New Roman",Times,serif;
     font-weight: 400;
     font-style: italic;
-    font-size: 30px;
+    font-size: 1.2em;
     letter-spacing: .6em;
   }
 }

@@ -26,6 +26,7 @@ body {
   font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
   color: $text-color;
   background-color: $background-color;
+  margin-bottom: $spacing-unit * 2;
 }
 
 
@@ -56,7 +57,7 @@ img {
  * Lists
  */
 ul, ol {
-  margin-left: $spacing-unit;
+  margin-left: $spacing-unit * 3/4;
 }
 
 li {
