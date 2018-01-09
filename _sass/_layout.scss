@@ -129,3 +129,14 @@
 .post-link {
   display: block;
 }
+
+.inline-icon {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  line-height: 0;
+
+  > svg path {
+    fill: $grey-color-dark;
+  }
+}
