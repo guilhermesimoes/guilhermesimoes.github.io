@@ -9,17 +9,16 @@ header_title: Blog
 
   <h1 class="page-heading">Blog</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: site.date_format }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+  <table class="post-list">
+    <tbody>
+      {% for post in site.posts %}
+        <tr>
+          <td class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</td>
+          <td><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
   <p>
     <span class="inline-icon">
