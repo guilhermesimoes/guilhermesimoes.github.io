@@ -23,6 +23,10 @@ url: "https://guilhermesimoes.github.io" # the base hostname & protocol for your
 date_format: "%B %-d, %Y"
 include: ["_pages"]
 permalink: /blog/:title
+author:
+  name: Guilherme Simões
+  email: guilherme.rdems@gmail.com
+  uri: https://guilhermesimoes.github.io
 
 # Build settings
 markdown: kramdown
