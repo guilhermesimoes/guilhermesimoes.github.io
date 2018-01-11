@@ -6,6 +6,12 @@ layout: default
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      {% assign reading_time = content | number_of_words | divided_by:180.0 | round %}
+      <time datetime="{{ reading_time }}" itemprop="duration">
+        {{ reading_time }} min. read
+      </time>
+    </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
