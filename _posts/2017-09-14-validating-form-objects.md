@@ -155,21 +155,22 @@ We now want to ensure that emails entered in the email registration workflow are
 Since the `email` presence validation lives in the `EmailRegistration` form object
 we'd be inclined to add the new validation there:
 
-```ruby
+```diff
 class EmailRegistration
   include ActiveModel::Model
 
-  validates :email, presence: true, uniqueness: true
+-  validates :email, presence: true
++  validates :email, presence: true, uniqueness: true
 end
 ```
 
 Yet, if the user is able to change his email later on, he can pick an email that is already taken.
-We don't want this to happen. This means that *if* a user has an email then it **must** be unique.
+We can't let this happen. *If* a user has an email then it **must** be unique.
 This is a data integrity validation and it should live in the model:
 
-```ruby
+```diff
 class User
-  validates :email, uniqueness: true, allow_blank: true
++  validates :email, uniqueness: true, allow_blank: true
 end
 ```
 
