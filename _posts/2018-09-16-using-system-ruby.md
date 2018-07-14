@@ -1,7 +1,7 @@
 ---
 layout:   post
 title:    "Using System Ruby"
-subtitle: "Use the Ruby you already have, not rvm or rbenv"
+subtitle: "Use the Ruby you already have, without installing rvm or rbenv"
 date:     2018-09-16 15:35:53 +0100
 ---
 I got a new computer for my new job in which, sadly, I won't have to use Ruby.
@@ -154,8 +154,9 @@ Points worthy of note:
   + export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
   ```
 
-* Bundler tries to solve some of RubyGems' shortcomings. This means that it has its own ideas of where gems should be installed. Depending on your system the `bundle install` command may work right away... or not at all. We'll explore how to fix this in a future post.
+* Bundler tries to solve some of RubyGems' shortcomings. This means that it has its own ideas of where gems should be installed. Depending on your system the `bundle install` command may work right away... or not at all. I explore how to fix this in [Using Bundler with System Ruby].
 
 [prefer installing gems in the user directory over the system-wide directory]: https://wiki.archlinux.org/index.php/ruby#Installing_gems_per-user_or_system-wide
 [`gem env`]: https://guides.rubygems.org/command-reference/#gem-environment
 [`Gem` module]: https://www.rubydoc.info/github/rubygems/rubygems/Gem
+[Using Bundler with System Ruby]: 2019-12-15-using-bundler-with-system-ruby.md
