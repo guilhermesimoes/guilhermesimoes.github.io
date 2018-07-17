@@ -4,18 +4,20 @@ title: Guilherme Simões' Personal Site
 permalink: /
 ---
 
-<div class="home">
-  <h1>Hey, I'm Guilherme.</h1>
+<article class="home" itemscope itemtype="http://schema.org/Person">
+  <link itemprop="url" href="{{ page.url | absolute_url }}" />
+  <h1>Hey, I'm <span itemprop="name">Guilherme</span>.</h1>
 
-  <p>I'm a Software Engineer, currently working at <a href="https://www.sky.com/">Sky</a>.</p>
+  <p>I'm a <span itemprop="jobTitle">Software Engineer</span>, currently working at <span itemprop="worksFor" itemscope itemtype="http://schema.org/Organization"><a href="https://www.sky.com/" itemprop="url"><span itemprop="name">Sky</span></a></span>.
+</span>
 
-  <p>I have a passion for technology, data visualization and open-source.</p>
+  <p>I have a passion for <span itemprop="knowsAbout">technology</span>, <span itemprop="knowsAbout">data visualization</span> and <span itemprop="knowsAbout">open-source</span>.</p>
 
   <p>You might enjoy reading my <a href="{% link _pages/blog.html %}">blog</a>.</p>
 
-  <p>You can also find me on <a href="https://github.com/guilhermesimoes">GitHub</a>, <a href="https://stackoverflow.com/users/1160916/ashitaka">StackOverflow</a> and <a href="https://twitter.com/glitchdout">Twitter</a>.</p>
+  <p>You can also find me on <a href="https://github.com/guilhermesimoes" itemprop="sameAs">GitHub</a>, <a href="https://stackoverflow.com/users/1160916/ashitaka" itemprop="sameAs">StackOverflow</a> and <a href="https://twitter.com/glitchdout" itemprop="sameAs">Twitter</a>.</p>
 
-  <p>Feel free to drop me a line at <a href="mailto:guilherme.rdems@gmail.com">guilherme.rdems@gmail.com</a>.</p>
+  <p>Feel free to drop me a line at <a href="mailto:guilherme.rdems@gmail.com" itemprop="email">guilherme.rdems@gmail.com</a>.</p>
 
   <p>And here's my <a href="/assets/guilhermesimoes.pub">PGP key</a>, just in case.</p>
-</div>
+</article>
