@@ -1,7 +1,8 @@
 ---
-layout: post
-title:  "Validating Form Objects"
-date:   2017-09-14 14:48:36 +0100
+layout:   post
+title:    "Validating Form Objects"
+subtitle: "Where should you place validations? In the model or in the form object?"
+date:     2017-09-14 14:48:36 +0100
 published:
   publication: "Runtime Revolution blog"
   url: https://revs.runtime-revolution.com/validating-form-objects-8058fefc7b89

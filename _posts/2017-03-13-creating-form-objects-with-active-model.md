@@ -1,7 +1,8 @@
 ---
-layout: post
-title:  "Creating Form Objects with ActiveModel"
-date:   2017-03-13 16:00:45 +0100
+layout:   post
+title:    "Creating Form Objects with ActiveModel"
+subtitle: "Simplify your Rails views with form objects"
+date:     2017-03-13 16:00:45 +0100
 published:
   publication: "Runtime Revolution blog"
   url: https://revs.runtime-revolution.com/creating-form-objects-with-activemodel-346e6c2abbf3

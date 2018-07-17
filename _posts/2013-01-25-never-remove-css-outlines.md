@@ -1,7 +1,8 @@
 ---
-layout: post
-title:  "Never remove CSS outlines"
-date:   2013-01-25 21:00:45 +0100
+layout:   post
+title:    "Never remove CSS outlines"
+subtitle: "If you want to remove the outline you need a proper fallback"
+date:     2013-01-25 21:00:45 +0100
 published:
   publication: "A11Y Project"
   url: https://a11yproject.com/posts/never-remove-css-outlines/

@@ -1,7 +1,8 @@
 ---
-layout: post
-title:  "Rails Quiz: XSS Edition"
-date:   2017-06-22 07:42:04 +0100
+layout:   post
+title:    "Rails Quiz: XSS Edition"
+subtitle: "Think you know all about protecting Rails apps from XSS attacks? Test yourself!"
+date:     2017-06-22 07:42:04 +0100
 published:
   publication: "Runtime Revolution blog"
   url: https://revs.runtime-revolution.com/rails-quiz-xss-edition-6ace80dc9515
