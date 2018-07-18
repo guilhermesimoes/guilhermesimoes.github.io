@@ -21,8 +21,9 @@ layout: default
     <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
       {{ page.date | date: site.date_format }}
     </time>
-    {% if page.author %}
-      • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
-    {% endif %}
+    •
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <span itemprop="name">{{ page.author.name | default: site.author.name }}</span>
+    </span>
   </div>
 </article>
