@@ -147,17 +147,12 @@
   color: $grey-color;
 }
 
-.post-link {
-  display: block;
-}
+.rss-feed-link {
+  span {
+    font-size: $small-font-size;
+  }
 
-.inline-icon {
-  display: inline-block;
-  width: 0.75em;
-  height: 0.75em;
-  line-height: 0;
-
-  > svg path {
-    fill: $grey-color-dark;
+  .inline-icon {
+    margin-right: $spacing-unit / 6;
   }
 }

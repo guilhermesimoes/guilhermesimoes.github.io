@@ -164,11 +164,8 @@ pre {
 /**
  * Icons
  */
-.icon > svg {
+.inline-icon {
   display: inline-block;
   vertical-align: middle;
-
-  path {
-    fill: $grey-color;
-  }
+  fill: currentColor;
 }
