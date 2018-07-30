@@ -23,7 +23,10 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+  line-height: $base-line-height;
   color: $text-color;
   background-color: $background-color;
   margin-bottom: $spacing-unit * 2;
