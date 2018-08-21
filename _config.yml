@@ -30,10 +30,14 @@ author:
 markdown: kramdown
 plugins:
   - jekyll-feed
+  - jekyll-relative-links
 
 # Plugin settings
 kramdown:
   auto_ids: true
+
+relative_links:
+  collections: true
 
 sass:
   style: compressed

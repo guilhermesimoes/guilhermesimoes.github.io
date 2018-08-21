@@ -7,7 +7,7 @@ published:
   publication: "Runtime Revolution blog"
   url: https://revs.runtime-revolution.com/saving-multiple-models-with-form-objects-and-transactions-2c26f37f7b9a
 ---
-[We've talked before about form objects] and how they can simplify our Rails views.
+[We've talked before about form objects][in creating form objects] and how they can simplify our Rails views.
 Now I'd like to present a more complex scenario and one way to tackle it.
 
 We have two associated models:
@@ -65,7 +65,7 @@ Here's what I already don't like about this approach:
 ---
 
 So here's an alternate proposal: use a form object!
-[As we saw last time], all we need to do is to include `ActiveModel::Model`.
+[As we saw last time][in creating form objects], all we need to do is to include `ActiveModel::Model`.
 In this case though, since we want to persist our data, we have to implement a `save` method:
 
 ```ruby
@@ -185,14 +185,13 @@ Add contextual validations.
 Simplify your code!
 
 
-[We've talked before about form objects]: {% link _posts/2017-03-13-creating-form-objects-with-active-model.md %}
+[in creating form objects]: 2017-03-13-creating-form-objects-with-active-model.md
 [`fields_for`]: http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-fields_for
 [`accepts_nested_attributes_for`]: http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for
 [`inverse_of`]: https://robots.thoughtbot.com/accepts-nested-attributes-for-with-has-many-through
 [strong parameters gets more complicated]: http://patshaughnessy.net/2014/6/16/a-rule-of-thumb-for-strong-parameters
 [Single Responsibility Principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
 [`reject_if`]: http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for
-[As we saw last time]: {% link _posts/2017-03-13-creating-form-objects-with-active-model.md %}
 [transaction]: http://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html
 [an email uniqueness constraint]: https://www.youtube.com/watch?v=yuh9COzp5vo&t=19m15s
 [uniqueness validations]: https://robots.thoughtbot.com/the-perils-of-uniqueness-validations
