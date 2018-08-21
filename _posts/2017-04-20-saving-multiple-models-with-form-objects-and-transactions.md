@@ -154,7 +154,7 @@ And that's it!
 
 Points worthy of note:
 
-* By adding validations to form objects we effectively decouple validations from models.
+* By [adding validations to form objects] we effectively decouple validations from models.
   If we want to require users to enter their email we can add an email validation to the Registration form object.
   At the same time we can create a different sign up process (using a social network or a phone number) where users do not have to enter their email.
   This would be complicated to do if we added an email validation to the `User` model.
@@ -193,6 +193,7 @@ Simplify your code!
 [Single Responsibility Principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
 [`reject_if`]: http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for
 [transaction]: http://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html
+[adding validations to form objects]: 2017-09-14-validating-form-objects.md
 [an email uniqueness constraint]: https://www.youtube.com/watch?v=yuh9COzp5vo&t=19m15s
 [uniqueness validations]: https://robots.thoughtbot.com/the-perils-of-uniqueness-validations
 [rescuing Postgres errors]: http://mentalized.net/journal/2013/10/10/humane-database-errors-in-activerecord/

@@ -8,7 +8,7 @@ published:
   url: https://revs.runtime-revolution.com/creating-form-objects-with-activemodel-346e6c2abbf3
 ---
 A form object is an object designed specifically to be passed to `form_for`.
-It is often used to aggregate data to create multiple objects or to receive ephemeral data that is used and then discarded.
+It is often used to aggregate data to [create multiple objects] or to receive ephemeral data that is used and then discarded.
 
 Rails 4 introduced a small handy module called `ActiveModel::Model`.
 A Ruby class can mix in this module and gain [a ton of functionality], including:
@@ -132,6 +132,7 @@ Now go on and create your own form objects.
 Add contextual validations.
 Simplify your code!
 
+[create multiple objects]: 2017-04-20-saving-multiple-models-with-form-objects-and-transactions.md
 [a ton of functionality]: http://api.rubyonrails.org/classes/ActiveModel.html
 [`form_with`]: http://weblog.rubyonrails.org/2017/2/23/Rails-5-1-beta1/#unify-form_tagform_for-with-form_with
 [quack]: https://robots.thoughtbot.com/back-to-basics-polymorphism-and-ruby#duck-typing
