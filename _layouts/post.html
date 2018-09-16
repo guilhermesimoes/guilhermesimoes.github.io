@@ -18,12 +18,14 @@ layout: default
         This essay <a href="{{ page.published.url }}">previously appeared</a> in the <em>{{ page.published.publication }}</em>.
       </p>
     {% endif %}
-    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-      {{ page.date | date: site.date_format }}
-    </time>
-    •
-    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <span itemprop="name">{{ page.author.name | default: site.author.name }}</span>
-    </span>
+    <div class="date-author-container">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: site.date_format }}
+      </time>
+      <svg class="date-author-separator" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="-8 -8 16 16"><polygon points="0,-4 4,0 0,4 -4,0"/></svg>
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">{{ page.author.name | default: site.author.name }}</span>
+      </span>
+    </div>
   </div>
 </article>
