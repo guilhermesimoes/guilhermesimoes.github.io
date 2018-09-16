@@ -1,33 +1,47 @@
 /**
  * Posts
  */
-.post-content {
-  margin-bottom: $spacing-unit * 2;
+ @function diamond($viewBox: '-8 -8 16 16') {
+  @return url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='#{$viewBox}'%3E%3Cpolygon points='0,-4 4,0 0,4 -4,0'/%3E%3C/svg%3E");
 }
 
-.post-content hr {
-  box-sizing: content-box;
-  display: block;
-  margin-top: $spacing-unit + 0.5;
-  margin-bottom: $spacing-unit + 0.5;
-  height: 0;
-  border: 0;
-  text-align: center;
-  overflow: visible;
+.post {
+  ul {
+    list-style-image: diamond($viewBox: '-10 -10 16 16');
+  }
 
-  &:before {
-    position: relative;
-    top: -1em;
-    display: inline-block;
-    margin-left: .6em;
-    content: '...';
-    color: rgba(0,0,0,.68);
-    --x-height-multiplier: 0.342;
-    --baseline-multiplier: 0.22;
-    font-family: Georgia,Cambria,"Times New Roman",Times,serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 1.2em;
-    letter-spacing: .6em;
+  hr {
+    box-sizing: border-box;
+    width: 12em;
+    margin: ($spacing-unit + 0.5) auto;
+    height: 0;
+    border-width: 1px 0 0 0;
+    overflow: visible;
+    text-align: center;
+    color: $text-color;
+
+    &::after {
+      position: relative;
+      top: -0.7em;
+      display: inline-block;
+      width: 3em;
+      content: diamond();
+      background-color: $background-color;
+    }
+  }
+
+  .post-meta {
+    margin-top: $spacing-unit * 2;
+  }
+
+  .date-author-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .date-author-separator {
+    margin: 0 0.5em;
+    font-size: $base-font-size;
+    fill: currentColor;
   }
 }
