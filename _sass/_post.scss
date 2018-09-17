@@ -34,14 +34,8 @@
     margin-top: $spacing-unit * 2;
   }
 
-  .date-author-container {
-    display: flex;
-    align-items: center;
-  }
-
   .date-author-separator {
     margin: 0 0.5em;
     font-size: $base-font-size;
-    fill: currentColor;
   }
 }
