@@ -3,7 +3,7 @@
  */
 .site-header {
   border-bottom: 1px solid $grey-color-light;
-  min-height: $spacing-unit * 1.865;
+  min-height: $base-font-size * 3.2;
 
   // Positioning context for the mobile navigation icon
   position: relative;
@@ -12,7 +12,7 @@
 .site-title {
   font-size: 1.625em;
   font-weight: 300;
-  line-height: $base-line-height * $base-font-size * 2.25;
+  line-height: $base-font-size * 3.2;
   letter-spacing: -1px;
   margin-bottom: 0;
   float: left;
@@ -25,8 +25,8 @@
 
 .site-nav {
   position: absolute;
-  top: 0.6em;
-  right: 0.6em;
+  top: 0.3rem;
+  right: 0.3rem;
   background-color: $background-color;
   border: 1px solid $grey-color-light;
   border-radius: 5px;
@@ -80,10 +80,10 @@
     top: 0;
     right: 0;
     float: right;
-    background-color: none;
     border: none;
+    background-color: initial;
     text-align: initial;
-    line-height: $base-line-height * $base-font-size * 2.25;
+    line-height: $base-font-size * 3.2;
 
     .menu-icon {
       display: none;
