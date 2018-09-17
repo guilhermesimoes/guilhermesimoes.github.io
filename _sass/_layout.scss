@@ -76,13 +76,13 @@
   }
 
   @include media-query($lap) {
-    position: initial;
+    position: static;
     top: 0;
     right: 0;
     float: right;
     border: none;
-    background-color: initial;
-    text-align: initial;
+    background-color: transparent;
+    text-align: left;
     line-height: $base-font-size * 3.2;
 
     .menu-icon {
