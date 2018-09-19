@@ -3,10 +3,18 @@
  */
 .site-header {
   border-bottom: 1px solid $grey-color-light;
-  min-height: $base-font-size * 3.2;
+  min-height: 46px;
 
-  // Positioning context for the mobile navigation icon
-  position: relative;
+  div {
+    display: flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 34em;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 !important;
+  }
 }
 
 .site-title {
@@ -24,9 +32,6 @@
 }
 
 .site-nav {
-  position: absolute;
-  top: 0.3rem;
-  right: 0.3rem;
   background-color: $background-color;
   border: 1px solid $grey-color-light;
   border-radius: 5px;
@@ -95,7 +100,7 @@
 
     input ~ .trigger {
       display: block;
-      padding-bottom: 0;
+      padding-bottom: 0 !important;
     }
 
     .page-link {
