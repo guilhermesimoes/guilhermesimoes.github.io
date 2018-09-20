@@ -13,17 +13,16 @@
     max-width: 34em;
     margin-right: auto;
     margin-left: auto;
-    padding: 0 !important;
+    padding: 0 0.4em 0 1em;
   }
 }
 
 .site-title {
+  padding: 0.3em;
+  margin-left: -0.3em;
   font-size: 1.625em;
   font-weight: 300;
-  line-height: $base-font-size * 3.2;
   letter-spacing: -1px;
-  margin-bottom: 0;
-  float: left;
 
   &,
   &:visited {
@@ -32,6 +31,7 @@
 }
 
 .site-nav {
+  position: absolute;
   background-color: $background-color;
   border: 1px solid $grey-color-light;
   border-radius: 5px;
@@ -84,11 +84,9 @@
     position: static;
     top: 0;
     right: 0;
-    float: right;
     border: none;
     background-color: transparent;
     text-align: left;
-    line-height: $base-font-size * 3.2;
 
     .menu-icon {
       display: none;
