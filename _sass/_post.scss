@@ -6,6 +6,10 @@
 }
 
 .post {
+  .post-hero-image {
+    text-align: center;
+  }
+
   ul {
     list-style-image: diamond($viewBox: '-10 -10 16 16');
   }
