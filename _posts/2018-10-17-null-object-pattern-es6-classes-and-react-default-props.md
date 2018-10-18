@@ -3,6 +3,9 @@ layout:   post
 title:    <span class='nowrap'>Null Object pattern</span>, <span class='nowrap'>ES6 default params</span> and <span class='nowrap'>React defaultProps</span>
 subtitle: "Stop checking for undefined or null"
 date:     2018-10-17 00:16:53 +0100
+image:
+  path: /assets/images/null-object.png
+  alt:  "Drawing of two dice: a traditional die with a different number of dots from 1 to 6 on each face; and a die with 'NULL' written on each face."
 ---
 The Null Object pattern is a great tool for removing code conditionals. Rather than checking for `undefined` or `null`, the code instead returns a "null" implementation that responds to the same interface. We'll see how this pattern can be useful in the following 3 examples.
 
