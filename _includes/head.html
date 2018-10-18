@@ -5,7 +5,7 @@
   <meta name="referrer" content="origin-when-crossorigin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ page.title | default: site.title }}</title>
+  <title>{{ page.title | strip_html | default: site.title }}</title>
   <meta name="author" content="{{ page.author.name | default: site.author.name }}" />
   <meta name="description" content="{{ page.subtitle | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
 

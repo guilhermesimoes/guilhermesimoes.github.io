@@ -149,7 +149,7 @@ article h1, aside h1, nav h1, section h1 {
 
 
 /**
- * Wrapper
+ * Helpers
  */
 .wrapper {
   max-width: $content-width;
@@ -160,24 +160,18 @@ article h1, aside h1, nav h1, section h1 {
   @extend %clearfix;
 }
 
-
-
-/**
- * Clearfix
- */
 %clearfix::after {
   content: "";
   display: table;
   clear: both;
 }
 
-
-
-/**
- * Icons
- */
 .inline-icon {
   display: inline-block;
   vertical-align: sub;
   fill: currentColor;
+}
+
+.nowrap {
+  white-space: nowrap;
 }

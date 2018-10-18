@@ -13,7 +13,7 @@ header_title: Blog
       {% for post in site.posts %}
         <tr>
           <td class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</td>
-          <td><a href="{{ post.url | relative_url }}">{{ post.title }}</a></td>
+          <td><a href="{{ post.url | relative_url }}">{{ post.title | strip_html }}</a></td>
         </tr>
       {% endfor %}
     </tbody>
