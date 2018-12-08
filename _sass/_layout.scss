@@ -120,8 +120,6 @@
 }
 
 .post-list {
-  margin-bottom: $spacing-unit * 2;
-
   td:first-child {
     padding-right: $spacing-unit / 4;
     white-space: nowrap;
@@ -139,16 +137,11 @@
 }
 
 .post-meta {
+  margin-top: $spacing-unit * 2;
   font-size: $small-font-size;
   color: $grey-color;
 }
 
-.rss-feed-link {
-  span {
-    font-size: $small-font-size;
-  }
-
-  .inline-icon {
-    margin-right: $spacing-unit / 6;
-  }
+.rss-feed-link .inline-icon {
+  margin-right: $spacing-unit / 6;
 }
