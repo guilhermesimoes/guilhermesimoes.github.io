@@ -84,7 +84,7 @@ Now the `totalPrice` and `itemCount` functions are much simpler. Since we can be
 ### React
 
 Finally, let's examine a React component:
-```javascript
+```react
 class Greeting extends React.Component {
   render() {
     let user = this.props.user;
@@ -99,7 +99,7 @@ class Greeting extends React.Component {
 Again, that condition is unnecessary and makes the code that bit more difficult to read.
 
 We could add a class constructor like in the previous example but instead we'll use React's `defaultProps`:
-```javascript
+```react
 class Greeting extends React.Component {
   render() {
     return (
