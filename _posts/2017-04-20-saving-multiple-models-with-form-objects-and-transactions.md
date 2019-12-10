@@ -186,16 +186,16 @@ Simplify your code!
 
 
 [in creating form objects]: 2017-03-13-creating-form-objects-with-active-model.md
-[`fields_for`]: http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-fields_for
-[`accepts_nested_attributes_for`]: http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for
-[`inverse_of`]: https://robots.thoughtbot.com/accepts-nested-attributes-for-with-has-many-through
+[`fields_for`]: https://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-fields_for
+[`accepts_nested_attributes_for`]: https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for
+[`inverse_of`]: https://thoughtbot.com/blog/accepts-nested-attributes-for-with-has-many-through
 [strong parameters gets more complicated]: http://patshaughnessy.net/2014/6/16/a-rule-of-thumb-for-strong-parameters
 [Single Responsibility Principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
-[`reject_if`]: http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for
-[transaction]: http://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html
+[`reject_if`]: https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for
+[transaction]: https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html
 [adding validations to form objects]: 2017-09-14-validating-form-objects.md
 [an email uniqueness constraint]: https://www.youtube.com/watch?v=yuh9COzp5vo&t=19m15s
-[uniqueness validations]: https://robots.thoughtbot.com/the-perils-of-uniqueness-validations
-[rescuing Postgres errors]: http://mentalized.net/journal/2013/10/10/humane-database-errors-in-activerecord/
+[uniqueness validations]: https://thoughtbot.com/blog/the-perils-of-uniqueness-validations
+[rescuing Postgres errors]: https://mentalized.net/journal/2013/10/10/humane-database-errors-in-activerecord/
 [parsing Postgres error messages]: https://gist.github.com/bf4/5594532#file-validations-rb
-[`:base`]: http://api.rubyonrails.org/classes/ActiveModel/Errors.html#method-i-add
+[`:base`]: https://api.rubyonrails.org/classes/ActiveModel/Errors.html#method-i-add

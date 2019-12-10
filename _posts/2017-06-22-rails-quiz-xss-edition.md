@@ -141,13 +141,13 @@ To detect these types of vulnerabilities and more I recommend using [brakeman], 
 
 
 
-[Rails 3 added XSS protection by default]: http://yehudakatz.com/2010/02/01/safebuffers-and-rails-3-0/
-[`sanitize`]: http://api.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitize
-[`raw`]: http://api.rubyonrails.org/classes/ActionView/Helpers/OutputSafetyHelper.html#method-i-raw
-[`html_safe`]: http://api.rubyonrails.org/classes/String.html#method-i-html_safe
-[`content_tag`]: http://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag
-[`tag`]: http://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-tag
-[`html_escape`]: http://api.rubyonrails.org/classes/ERB/Util.html#method-c-html_escape
-[`javascript:`]: http://blog.codeclimate.com/blog/2013/03/27/rails-insecure-defaults/#linkto-xss
+[Rails 3 added XSS protection by default]: https://yehudakatz.com/2010/02/01/safebuffers-and-rails-3-0/
+[`sanitize`]: https://api.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitize
+[`raw`]: https://api.rubyonrails.org/classes/ActionView/Helpers/OutputSafetyHelper.html#method-i-raw
+[`html_safe`]: https://api.rubyonrails.org/classes/String.html#method-i-html_safe
+[`content_tag`]: https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag
+[`tag`]: https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-tag
+[`html_escape`]: https://api.rubyonrails.org/classes/ERB/Util.html#method-c-html_escape
+[`javascript:`]: https://codeclimate.com/blog/rails-insecure-defaults/
 [`data:`]: https://cubalo.github.io/blog/2014/01/04/bypassing-xss-filters-using-data-uris/
 [brakeman]: https://github.com/presidentbeef/brakeman

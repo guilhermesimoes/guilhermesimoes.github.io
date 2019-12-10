@@ -8,7 +8,7 @@ I got a new computer for my new job in which, sadly, I won't have to use Ruby.
 Still, I'd like to dabble with some Ruby in my spare time. Maybe I want to improve my Jekyll site or tweak some Sass library.
 Even though [others][others] [want][want] [to][to] [disuade][disuade] me from using the Ruby that comes pre-installed with my operating system, I WANT TO USE THE ONE I ALREADY HAVE, DAMMIT!
 
-[others]: https://robots.thoughtbot.com/psa-do-not-use-system-ruby
+[others]: https://thoughtbot.com/blog/psa-do-not-use-system-ruby
 [want]: https://medium.com/@jules2689/homebrew-ruby-and-gems-78d6c26b89e
 [to]: https://cbednarski.com/articles/installing-ruby/
 [disuade]: https://chrisherring.co/posts/why-you-shouldn-t-use-the-system-ruby
@@ -107,7 +107,7 @@ And it works!
 
 [`--user-install` flag]: https://guides.rubygems.org/command-reference/#gem-install
 [`~`]: https://unix.stackexchange.com/questions/34196/why-was-chosen-to-represent-the-home-directory/34198#34198
-[`$PATH`]: https://alistapart.com/article/the-path-to-enlightenment
+[`$PATH`]: https://alistapart.com/article/the-path-to-enlightenment/
 [add a directory to the `$PATH`]: https://guides.rubygems.org/faqs/#user-install
 [reloading the `.profile`]: https://askubuntu.com/questions/59126/reload-bashs-profile-without-logging-out-and-back-in-again/59127#59127
 [`.gemrc` dotfile]: https://guides.rubygems.org/command-reference/#gem-environment

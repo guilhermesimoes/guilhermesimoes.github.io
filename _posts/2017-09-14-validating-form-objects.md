@@ -193,6 +193,6 @@ Simplify your code!
 
 
 [starting to use form objects]: 2017-04-20-saving-multiple-models-with-form-objects-and-transactions.md
-[`invalid?`]: http://api.rubyonrails.org/classes/ActiveModel/Validations.html#method-i-invalid-3F
+[`invalid?`]: https://api.rubyonrails.org/classes/ActiveModel/Validations.html#method-i-invalid-3F
 [skip a validation]: https://stackoverflow.com/questions/8881712/skip-certain-validation-method-in-model
-[`:on`]: http://guides.rubyonrails.org/active_record_validations.html#on
+[`:on`]: https://guides.rubyonrails.org/active_record_validations.html#on

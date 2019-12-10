@@ -133,8 +133,8 @@ Add contextual validations.
 Simplify your code!
 
 [create multiple objects]: 2017-04-20-saving-multiple-models-with-form-objects-and-transactions.md
-[a ton of functionality]: http://api.rubyonrails.org/classes/ActiveModel.html
-[`form_with`]: http://weblog.rubyonrails.org/2017/2/23/Rails-5-1-beta1/#unify-form_tagform_for-with-form_with
-[quack]: https://robots.thoughtbot.com/back-to-basics-polymorphism-and-ruby#duck-typing
-[`errors`]: http://guides.rubyonrails.org/active_record_validations.html#working-with-validation-errors
-[`valid?` has an alias called `validate`]: http://apidock.com/rails/ActiveRecord/Validations/valid%3F
+[a ton of functionality]: https://api.rubyonrails.org/classes/ActiveModel.html
+[`form_with`]: https://weblog.rubyonrails.org/2017/2/23/Rails-5-1-beta1/#unify-form_tagform_for-with-form_with
+[quack]: https://thoughtbot.com/blog/back-to-basics-polymorphism-and-ruby#duck-typing
+[`errors`]: https://guides.rubyonrails.org/active_record_validations.html#working-with-validation-errors
+[`valid?` has an alias called `validate`]: https://apidock.com/rails/ActiveRecord/Validations/valid%3f
