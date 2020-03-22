@@ -110,38 +110,6 @@
   }
 }
 
-
-
-/**
- * Page content
- */
 .page-content {
   padding: $spacing-unit 0;
-}
-
-.post-list {
-  td:first-child {
-    padding-right: $spacing-unit / 4;
-    white-space: nowrap;
-  }
-
-  td {
-    padding: 0;
-    padding-bottom: $spacing-unit / 4;
-    vertical-align: super;
-  }
-
-  tr:last-child td {
-    padding-bottom: 0
-  }
-}
-
-.post-meta {
-  margin-top: $spacing-unit * 2;
-  font-size: $small-font-size;
-  color: $grey-color;
-}
-
-.rss-feed-link .inline-icon {
-  margin-right: $spacing-unit / 5;
 }
