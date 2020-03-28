@@ -35,7 +35,7 @@
     }
   }
 
-  .date-author-separator {
-    margin: 0 $spacing-unit / 5;
+  .post-meta > * + * {
+    margin-left: $spacing-unit / 5;
   }
 }
