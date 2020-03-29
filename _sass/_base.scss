@@ -157,10 +157,9 @@ article h1, aside h1, nav h1, section h1 {
   margin-left: auto;
   padding-right: $spacing-unit / 2;
   padding-left: $spacing-unit / 2;
-  @extend %clearfix;
 }
 
-%clearfix::after {
+.clearfix::after {
   content: "";
   display: table;
   clear: both;
