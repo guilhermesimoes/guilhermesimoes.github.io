@@ -44,12 +44,12 @@
     user-select: none;
   }
 
-  input ~ .trigger {
+  input ~ .nav-links {
     clear: both;
     display: none;
   }
 
-  input:checked ~ .trigger {
+  input:checked ~ .nav-links {
     display: block;
     padding-bottom: 5px;
   }
@@ -89,9 +89,9 @@
       display: none;
     }
 
-    input ~ .trigger {
+    input ~ .nav-links {
       display: block;
-      padding-bottom: 0;
+      padding-bottom: 0 !important;
     }
 
     .page-link {

@@ -13,7 +13,7 @@
           </span>
         </label>
 
-        <div class="trigger">
+        <div class="nav-links">
           {% for path in page_paths %}
             {% assign my_page = site.pages | where: "path", path | first %}
             {% if my_page.header_title %}
