@@ -65,7 +65,7 @@
     }
   }
 
-  .menu-icon {
+  .hamburguer-icon {
     display: block;
     float: right;
     width: 36px;
@@ -111,29 +111,6 @@
         margin-left: 0;
       }
     }
-  }
-}
-
-$easeOutBack: cubic-bezier(0.25,-0.25, 0.75, 1.25);
-$duration: 0.5s;
-
-.hamburguer-icon {
-  path {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset $duration $easeOutBack, stroke-dasharray $duration $easeOutBack;
-  }
-
-  .line--1,
-  .line--3 {
-    stroke-dasharray: 24 60;
-  }
-  .line--2 {
-    stroke-dasharray: 24 24;
   }
 }
 
