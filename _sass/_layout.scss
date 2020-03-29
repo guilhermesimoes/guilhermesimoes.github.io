@@ -37,15 +37,13 @@
   }
 
   label[for="nav-trigger"] {
-    width: 36px;
-    height: 36px;
-    z-index: 2;
+    display: block;
+    width: 100%;
     cursor: pointer;
     user-select: none;
   }
 
   input ~ .nav-links {
-    clear: both;
     display: none;
   }
 
@@ -70,6 +68,7 @@
     float: right;
     width: 36px;
     height: 36px;
+    transform: translate3d(0,0,0);
   }
 
   .page-link {
@@ -88,10 +87,6 @@
     background-color: transparent;
     text-align: left;
     line-height: $base-font-size * 3.2;
-
-    .menu-icon {
-      display: none;
-    }
 
     label[for="nav-trigger"] {
       display: none;
