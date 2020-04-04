@@ -29,7 +29,7 @@ layout: default
     </time>
     {%- include icons/diamond.html -%}
     <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <span itemprop="name">{{ page.author.name | default: site.author.name }}</span>
+      {% include author.html %}
     </span>
   </div>
 </article>

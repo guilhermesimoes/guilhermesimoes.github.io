@@ -1,0 +1,2 @@
+{% assign author = page.author | default: site.author %}
+<span itemprop="name"><span itemprop="givenName">{{author.given_name}}</span><span itemprop="additionalName"> {{author.additional_name}}</span><span itemprop="familyName"> {{author.family_name}}</span></span>

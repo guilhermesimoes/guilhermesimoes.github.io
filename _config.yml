@@ -23,6 +23,9 @@ include: ["_pages"]
 permalink: /blog/:title
 author:
   name: Guilherme Simões
+  given_name: Guilherme
+  additional_name: Reis de Micaelo
+  family_name: Simões
   email: guilherme.rdems@gmail.com
   uri: https://guilhermesimoes.github.io
   twitter_handle: "@glitchdout"
