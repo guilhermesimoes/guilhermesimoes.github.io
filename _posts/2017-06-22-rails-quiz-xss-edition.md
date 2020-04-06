@@ -3,9 +3,9 @@ layout:   post
 title:    "Rails Quiz: XSS Edition"
 subtitle: "Think you know all about protecting Rails apps from XSS attacks? Test yourself!"
 date:     2017-06-22 07:42:04 +0100
-published:
+adapted:
   publication: "Runtime Revolution blog"
-  url: https://revs.runtime-revolution.com/rails-quiz-xss-edition-6ace80dc9515
+  url:    https://revs.runtime-revolution.com/rails-quiz-xss-edition-6ace80dc9515
 ---
 Cross-site scripting (XSS) is a type of computer security vulnerability that enables an attacker to inject code into a web page. When a user later visits that web page the code is executed in that user's browser. The attacker can then steal the user's session cookie and log into the site with that user's account.
 Think you know all about XSS? Test your knowledge with this mini-quiz!

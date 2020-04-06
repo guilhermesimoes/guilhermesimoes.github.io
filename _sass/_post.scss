@@ -35,16 +35,25 @@
     }
   }
 
-  .post-meta > * + * {
-    margin-left: $spacing-unit / 5;
-  }
-
   .diamond-icon {
     width: 16px;
     height: 16px;
+    margin: 0 $spacing-unit / 5;
   }
 
   [itemprop="additionalName"] {
     display: none;
+  }
+
+  .bl-ock {
+    @extend %vertical-rhythm;
+  }
+
+  .gist .blob-code, .gist .blob-num {
+    font-size: 0.8rem !important;
+  }
+
+  .gist .blob-num {
+    vertical-align: initial;
   }
 }

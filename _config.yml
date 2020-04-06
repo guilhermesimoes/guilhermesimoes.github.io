@@ -34,6 +34,7 @@ author:
 markdown: kramdown
 plugins:
   - jekyll-feed
+  - jekyll-gist
   - jekyll-relative-links
 
 # Plugin settings

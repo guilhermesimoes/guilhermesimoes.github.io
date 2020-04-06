@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <link itemprop="mainEntityOfPage" href="{{ page.url | absolute_url }}" />
+
+  <header class="post-header wrapper">
+    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+  </header>
+
+  <div class="bleed bl-ock">
+    {% include embedded-gist.html id=page.gist_id file="index.html" %}
+  </div>
+
+  <div class="post-content wrapper" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <div class="bleed separate">
+    {% gist page.gist_id index.html %}
+  </div>
+
+  <div class="wrapper">
+    {% include post-meta.html %}
+  </div>
+</article>

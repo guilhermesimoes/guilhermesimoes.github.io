@@ -149,22 +149,10 @@ article h1, aside h1, nav h1, section h1 {
 
 
 /**
- * Helpers
+ * Widgets
  */
-.wrapper {
-  max-width: $content-width;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: $spacing-unit / 2;
-  padding-left: $spacing-unit / 2;
-}
-
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.nowrap {
-  white-space: nowrap;
+iframe {
+  box-sizing: border-box;
+  border: solid 2px #eee;
+  border-bottom: solid 2px #ccc;
 }

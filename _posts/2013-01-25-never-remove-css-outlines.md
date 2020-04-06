@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Never remove CSS outlines"
-subtitle: "If you want to remove the outline you need a proper fallback"
+subtitle: "If you want to remove the outline you need a proper fallback."
 date:     2013-01-25 21:00:45 +0100
-published:
+adapted:
   publication: "A11Y Project"
-  url: https://a11yproject.com/posts/never-remove-css-outlines/
+  url:    https://a11yproject.com/posts/never-remove-css-outlines/
 ---
 Use of the rule `:focus { outline: none; }` to remove an outline results in the link or control being focusable but with no visible indication of focus.
 Even worse, methods to remove it such as `onfocus="blur()"` result in keyboard users being unable to interact with the link or control.

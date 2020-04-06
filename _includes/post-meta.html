@@ -1,0 +1,18 @@
+<div class="post-meta separate">
+  {%- if page.adapted -%}
+    <p>
+      {%- if page.adapted.publication == "Block" -%}
+        This text is an adaptation, <a href="{{ page.adapted.url }}">originally written</a> as a <em>Block</em>.
+      {%- else -%}
+        This essay <a href="{{ page.adapted.url }}">previously appeared</a> in the <em>{{ page.adapted.publication }}</em>.
+      {%- endif -%}
+    </p>
+  {%- endif -%}
+  <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+    {{ page.date | date: site.date_format }}
+  </time>
+  {%- include icons/diamond.html -%}
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+    {% include author.html %}
+  </span>
+</div>

@@ -18,18 +18,5 @@ layout: default
     {{ content }}
   </div>
 
-  <div class="post-meta">
-    {% if page.published %}
-      <p>
-        This essay <a href="{{ page.published.url }}">previously appeared</a> in the <em>{{ page.published.publication }}</em>.
-      </p>
-    {% endif %}
-    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-      {{ page.date | date: site.date_format }}
-    </time>
-    {%- include icons/diamond.html -%}
-    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-      {% include author.html %}
-    </span>
-  </div>
+  {% include post-meta.html %}
 </article>

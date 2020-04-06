@@ -4,8 +4,8 @@ title:    "Simplifying TypeScript code with Union Types"
 subtitle: "Reduce the size of your code and improve type inference with this technique."
 date:     2019-05-11 19:52:13 +0100
 image:
-  path: /assets/images/half-fish-half-bird.png
-  alt:  "Crude drawing of a half-fish, half-bird animal."
+  path:   /assets/images/half-fish-half-bird.png
+  alt:    "Crude drawing of a half-fish, half-bird animal."
 ---
 Let's imagine we have the following TypeScript interfaces:
 
