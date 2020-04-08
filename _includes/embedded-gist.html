@@ -4,12 +4,12 @@
   <iframe class="aspect-ratio-box-content" id="js-embedded-gist" src="about:blank" sandbox="allow-scripts allow-forms" marginwidth="0" marginheight="0" scrolling="no"></iframe>
 </div>
 <script>
-  fetch("{{ gist_url }}")
-    .then(function (response) {
-      return response.text()
-    })
-    .then(function (html) {
-      var iframe = document.querySelector('#js-embedded-gist');
-      iframe.src = 'data:text/html,' + encodeURIComponent(html);
-    });
+  var request = new XMLHttpRequest();
+  request.addEventListener("load", function () {
+    var html = this.responseText;
+    var iframe = document.querySelector("#js-embedded-gist");
+    iframe.src = "data:text/html," + encodeURIComponent(html);
+  });
+  request.open("GET", "{{ gist_url }}");
+  request.send();
 </script>
