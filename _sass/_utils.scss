@@ -43,3 +43,17 @@
   padding-right: $spacing-unit / 2;
   padding-left: $spacing-unit / 2;
 }
+
+.centered {
+  display: flex;
+
+  &--h {
+    width: 100%;
+    justify-content: center;
+  }
+
+  &--v {
+    height: 100%;
+    align-items: center;
+  }
+}
