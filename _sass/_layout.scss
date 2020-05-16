@@ -1,3 +1,23 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.site-header {
+  flex: 0 1 auto;
+}
+
+.page-content {
+  flex: 1 1 0;
+  padding-top: $spacing-unit;
+  padding-bottom: $spacing-unit * 3;
+}
+
 /**
  * Site header
  */
@@ -107,10 +127,6 @@
       }
     }
   }
-}
-
-.page-content {
-  padding: $spacing-unit 0;
 }
 
 .post-meta {
