@@ -1,0 +1,44 @@
+@function strikeThrough($color: '#000') {
+  @return url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 10 10' fill='#{$color}'%3E%3Cpolygon points='0,0 0,10 5,10 5,0'/%3E%3C/svg%3E");
+}
+
+.movies-list {
+  cursor: pointer;
+
+  .movie {
+    line-height: 2;
+  }
+
+  .movie span {
+    background-image: strikeThrough($color: 'red');
+    background-size: 200% 2px;
+    background-position-y: 50%;
+    background-position-x: right;
+    background-repeat: no-repeat;
+    transition: background-position-x 400ms ease;
+  }
+
+  .movie.checked span {
+    background-position-x: left;
+  }
+
+  .imdb-link {
+    display: inline-block;
+    padding: 0 $spacing-unit / 4;
+    margin-left: $spacing-unit / 8;
+  }
+
+  .link-icon {
+    width: 1rem;
+  }
+
+  @include media-query($lap) {
+    .imdb-link {
+      visibility: hidden;
+    }
+
+    .movie:hover .imdb-link {
+      visibility: visible;
+    }
+  }
+}
