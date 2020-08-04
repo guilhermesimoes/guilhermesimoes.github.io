@@ -5,8 +5,8 @@
   <meta name="referrer" content="origin-when-crossorigin" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  {% assign title = page.title | strip_html | default: site.title %}
-  {% assign author = page.author | default: site.author %}
+  {%- assign title = page.title | strip_html | default: site.title -%}
+  {%- assign author = page.author | default: site.author -%}
   <title>{{ title }}</title>
   <meta name="author" content="{{ author.given_name }} {{ author.additional_name }} {{ author.family_name }}" />
   <meta name="description" content="{{ page.subtitle | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}" />
@@ -19,9 +19,9 @@
   <link rel="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16" />
 
   <meta property="og:title" content="{{ title }}" />
-  {% if page.image %}
+  {% if page.image -%}
     <meta property="og:image" content="{{ page.image.path | absolute_url }}" />
-  {% endif %}
+  {% endif -%}
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:creator" content="{{ author.twitter_handle }}" />
 </head>

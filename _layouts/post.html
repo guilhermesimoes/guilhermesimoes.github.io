@@ -8,15 +8,15 @@ layout: default
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
   </header>
 
-  {% if page.image %}
+  {% if page.image -%}
     <figure class="post-hero-image">
       <img src="{{ page.image.path }}" alt="{{ page.image.alt }}" itemprop="image" />
     </figure>
-  {% endif %}
+  {% endif -%}
 
   <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>
 
-  {% include post-meta.html %}
+  {% include post-meta.html -%}
 </article>
