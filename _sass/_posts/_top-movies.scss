@@ -10,6 +10,19 @@
   }
 
   .movie span {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom; /* See https://stackoverflow.com/a/20566810 */
+  }
+
+  .movie span::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: " ";
+    width: 100%;
+    height: 100%;
     background-image: strikeThrough($color: 'red');
     background-size: 200% 2px;
     background-position-y: 50%;
@@ -18,7 +31,7 @@
     transition: background-position-x 400ms ease;
   }
 
-  .movie.checked span {
+  .movie.checked span::after {
     background-position-x: left;
   }
 
