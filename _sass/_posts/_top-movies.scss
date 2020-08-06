@@ -12,6 +12,7 @@
     color: inherit;
     line-height: 2;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 
     &:focus {
       outline: 0;
