@@ -32,6 +32,13 @@ squeeze     | 6              | natty       |  11.04
 
 
 https://raspberrypi.stackexchange.com/questions/44622/how-to-add-ppa-entries-manually-on-raspberry-pi
+
+https://blog.zackad.dev/en/2017/08/17/add-ppa-simple-way.html
+
+https://ostechnix.com/how-to-delete-a-repository-and-gpg-key-in-ubuntu/
+
+https://askubuntu.com/questions/107177/how-can-i-remove-gpg-key-that-i-added-using-apt-key-add
+
 https://launchpad.net/~git-core/+archive/ubuntu/ppa
 
 Click "Technical details about this PPA"
