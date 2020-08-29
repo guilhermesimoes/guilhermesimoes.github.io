@@ -7,5 +7,12 @@
       {{ content }}
     </main>
     {% include footer.html -%}
+
+    {%- assign custom_js = page.url | replace:'blog','assets/js' | append: '.js' -%}
+    {% for file in site.static_files %}
+      {%- if file.path == custom_js -%}
+        <script type="text/javascript" src="{{ custom_js }}"></script>
+      {%- endif -%}
+    {% endfor %}
   </body>
 </html>
