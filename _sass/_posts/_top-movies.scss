@@ -30,6 +30,7 @@
 
     .line {
       stroke-dasharray: 0 200;
+      stroke-dashoffset: 1;
       transition: stroke-dasharray 300ms ease;
     }
 
