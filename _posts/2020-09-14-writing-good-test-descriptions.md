@@ -19,10 +19,10 @@ But what does this really mean in practice? Let's find out.
 
 `describe` defines the subject under test:
 
-```js
-describe('Watch', () => {
-  // ...
-});
+```ruby
+describe 'Watch' do
+  # ...
+end
 ```
 
 Here we are testing the `Watch` class.
@@ -33,12 +33,12 @@ Here we are testing the `Watch` class.
 
 `it` lays out the test case — the behaviour and outcome we expect. But linguistically, `it` refers to the actual thing we are testing:
 
-```js
-describe('Watch', () => {
-  it('should tell the time', () => {
-    // ...
-  });
-});
+```ruby
+describe 'Watch' do
+  it 'should tell the time' do
+    # ...
+  end
+end
 ```
 
 We are meant to read the test description as if it were a sentence.
@@ -53,12 +53,12 @@ That is why `it` should be followed by the words "should" or "must".
 
 An alternative is to write test descriptions in the present tense:
 
-```js
-describe('Watch', () => {
-  it('tells the time', () => {
-    // ...
-  });
-});
+```ruby
+describe 'Watch' do
+  it 'tells the time' do
+    # ...
+  end
+end
 ```
 
 This still works as a sentence:
@@ -73,22 +73,22 @@ or
 
 `context` groups tests that are made under the same circumstances:
 
-```js
-describe('Watch', () => {
-  context('when under water', () => {
-    beforeEach(() => {
-      placeWatchUnderWater() // setup common to all tests inside this context
-    });
+```ruby
+describe 'Watch' do
+  context 'when under water' do
+    before do
+      placeWatchUnderWater() # setup common to all tests inside this context
+    end
 
-    it('should still tell the time', () => { // it's a diver's watch!
-      // ...
-    });
+    it 'should still tell the time' do # it's a diver's watch!
+      # ...
+    end
 
-    it('should measure depth', () => {
-      // ...
-    });
-  });
-});
+    it 'should measure depth' do
+      # ...
+    end
+  end
+end
 ```
 
 Once again we are meant to read the test description as if it were a sentence.
