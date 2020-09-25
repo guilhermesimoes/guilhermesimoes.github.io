@@ -5,7 +5,7 @@ subtitle: "Use Bundler with the Ruby you already have"
 date:     2019-12-15 14:22:13 +0100
 image:
   path:   /assets/images/bundled-ruby.png
-  alt:    "Drawing of an open cardboard box, with a ruby inside."
+  alt:    "Drawing of a cardboard box with a ruby label on one side."
 ---
 [I just fixed][in using System Ruby] my system configuration so that `gem install` works. I install Bundler with `gem install bundler`. I then go to my project directory and use Bundler to install my project's dependencies:
 
