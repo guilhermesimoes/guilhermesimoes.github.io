@@ -1,0 +1,28 @@
+.slider-container {
+  display: flex;
+  align-items: center;
+
+  .play-pause-button {
+    flex-basis: 50px;
+    flex-shrink: 0;
+    padding: 0;
+    height: 100%;
+    border: 0;
+    color: inherit;
+    background-color: transparent;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .display {
+    flex-basis: 50px;
+    flex-shrink: 0;
+    text-align: center;
+    user-select: none;
+  }
+
+  .slider {
+    flex: 1;
+    margin: 0;
+  }
+}
