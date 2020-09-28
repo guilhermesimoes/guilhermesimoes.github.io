@@ -6,19 +6,6 @@
 }
 
 .post {
-  .post-hero-image {
-    position: relative;
-    padding-bottom: 56.25%; /* 9/16 = aspect ratio of image */
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
   ul {
     list-style-image: diamond($viewBox: '-10 -10 16 16');
   }
@@ -55,6 +42,10 @@
 
   .bl-ock {
     @extend %vertical-rhythm;
+  }
+
+  .embedded-gist {
+    background-color: white;
   }
 
   .gist .blob-code, .gist .blob-num {

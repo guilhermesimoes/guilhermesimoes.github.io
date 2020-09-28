@@ -9,8 +9,8 @@ layout: default
   </header>
 
   {% if page.image -%}
-    <figure class="post-hero-image">
-      <img src="{{ page.image.path }}" alt="{{ page.image.alt }}" itemprop="image" />
+    <figure class="aspect-ratio-box">
+      <img src="{{ page.image.path }}" alt="{{ page.image.alt }}" class="aspect-ratio-box-content" itemprop="image" />
     </figure>
   {% endif -%}
 

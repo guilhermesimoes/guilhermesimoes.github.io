@@ -1,6 +1,6 @@
 {%- capture gist_url -%}{{ 'https://gist.githubusercontent.com/guilhermesimoes/' | append: include.id | append: '/raw/' | append: include.file }}{%- endcapture -%}
 <div class="aspect-ratio-box">
-  <iframe class="aspect-ratio-box-content" id="js-embedded-gist" src="about:blank" sandbox="allow-scripts allow-forms" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+  <iframe class="aspect-ratio-box-content embedded-gist" id="js-embedded-gist" src="about:blank" sandbox="allow-scripts allow-forms" marginwidth="0" marginheight="0" scrolling="no"></iframe>
 </div>
 <script>
   var request = new XMLHttpRequest();
