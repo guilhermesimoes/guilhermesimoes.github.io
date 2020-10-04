@@ -61,11 +61,15 @@ window.addEventListener('load', async function onLoad() {
     attribute vec2 position;
     varying vec2 uv;
 
-    vec2 normalizeCoords(vec2 position) {
-      float x = position[0];
-      float y = position[1];
+    vec2 normalizeCoords(vec2 zeroToOne) {
+      // Convert from 0->1 to 0->2
+      vec2 zeroToTwo = zeroToOne * 2.0;
 
-      return vec2(2.0 * x - 1.0, 1.0 - 2.0 * y);
+      // Convert from 0->2 to -1->+1 (clip space)
+      vec2 clipSpace = zeroToTwo - 1.0;
+
+      // invert y
+      return clipSpace * vec2(1, -1);
     }
 
     void main () {
@@ -81,12 +85,12 @@ window.addEventListener('load', async function onLoad() {
       ]
     },
 
+    count: 3,
+
     uniforms: {
       texture: regl.prop('texture'),
       cutoff: regl.prop('cutoff')
-    },
-
-    count: 3
+    }
   });
 
   var images = await imagePromises;
@@ -101,13 +105,6 @@ window.addEventListener('load', async function onLoad() {
   });
 });
 
-function onload2promise(obj){
-  return new Promise((resolve, reject) => {
-    obj.onload = () => resolve(obj);
-    obj.onerror = reject;
-  });
-}
-
 async function loadImages() {
   var imageUrls = ['/assets/images/shaders-case-study/3.png'];
   return await Promise.all(imageUrls
@@ -119,14 +116,12 @@ async function loadImages() {
     }));
 }
 
-// function render(time) {
-//   // gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-
-//   gl.clearColor(1, 0, 0.5, 1);
-
-//   requestAnimationFrame(render);
-// }
-// requestAnimationFrame(render);
+function onload2promise(obj){
+  return new Promise((resolve, reject) => {
+    obj.onload = () => resolve(obj);
+    obj.onerror = reject;
+  });
+}
 
 class PlayPauseButton {
     constructor(el) {
