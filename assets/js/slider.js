@@ -1,8 +1,25 @@
 class PlayPauseButton {
     constructor(el, onAction) {
       this.el = el;
+      this.animationDuration = 200;
       this.onAction = onAction;
+      this.replaceUseWithPath();
       this.el.addEventListener('click', this.onClick.bind(this));
+    }
+
+    replaceUseWithPath() {
+        var useEl = this.el.querySelector("use");
+        var iconId = useEl.getAttribute("xlink:href");
+        var iconEl = document.querySelector(iconId);
+        var nextState = iconEl.getAttribute("data-next-state");
+        var iconPath = iconEl.getAttribute("d");
+
+        this.pathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        this.pathEl.setAttribute("data-next-state", nextState);
+        this.pathEl.setAttribute("d", iconPath);
+
+        var svgEl = this.el.querySelector("svg");
+        svgEl.replaceChild(this.pathEl, useEl);
     }
 
     onClick() {
@@ -11,18 +28,18 @@ class PlayPauseButton {
     }
 
     goToNextState() {
-      var useEl = this.el.querySelector('use');
-      var iconId = useEl.getAttribute('xlink:href');
-      var currentIcon = document.querySelector(iconId);
-      var nextIcon = currentIcon.getAttribute('data-next-icon');
+      var nextState = this.pathEl.getAttribute("data-next-state");
+      var nextIconEl = document.querySelector(`[data-state="${nextState}"]`);
+      var iconPath = nextIconEl.getAttribute("d");
+      var nextNextState = nextIconEl.getAttribute("data-next-state");
 
-      useEl.setAttribute('xlink:href', '#' + nextIcon);
+      d3.select(this.pathEl)
+          .attr("data-next-state", nextNextState)
+          .transition()
+              .duration(this.animationDuration)
+              .attr("d", iconPath);
 
-      if (nextIcon === 'play-icon') {
-        return 'paused';
-      } else {
-        return 'playing';
-      }
+      return nextState;
     }
 };
 

@@ -3,13 +3,6 @@ layout:   post
 title:    "Shaders"
 ---
 <div class="shaders">
-  <svg class="svg-symbol-defs">
-    <defs>
-      <path id="pause-icon" data-next-icon="play-icon" d="M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26" />
-      <path id="play-icon" data-next-icon="pause-icon" d="M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28" />
-    </defs>
-  </svg>
-
   <div class="aspect-ratio-box ratio-game-boy">
     <canvas id="canvas" class="aspect-ratio-box-content" />
   </div>
@@ -24,7 +17,7 @@ title:    "Shaders"
 </div>
 
 <script type="text/javascript" src="/assets/js/regl-2.0.1.min.js"></script>
-<script type="text/javascript" src="/assets/js/slider.js"></script>
+{%- include slider.html -%}
 
 Inspired by https://www.youtube.com/watch?v=LnAoD7hgDxw
 

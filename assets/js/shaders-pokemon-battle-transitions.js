@@ -56,7 +56,7 @@ window.addEventListener('load', async function onLoad() {
     uniform float cutoff;
     varying vec2 uv;
     void main () {
-      ${fadeToBlack}
+      ${joinCenter}
     }`,
 
     vert: `
@@ -71,7 +71,7 @@ window.addEventListener('load', async function onLoad() {
       // Convert from 0->2 to -1->+1 (clip space)
       vec2 clipSpace = zeroToTwo - 1.0;
 
-      // invert y
+      // Flip y
       return clipSpace * vec2(1, -1);
     }
 
