@@ -47,24 +47,29 @@ class Slider {
   constructor(container, animationDuration) {
     this.prevTimestamp = 0;
     this.animationState = 'paused';
+    this.display = container.querySelector('.display');
     this.input = container.querySelector('input');
     var button = container.querySelector('button');
-    this.playPauseButton = new PlayPauseButton(button, state => {
-      this.animationState = state;
-      if (state === 'playing' && this.value === this.max) {
-        this.input.value = 0;
-      }
-    });
-
-    this.input.addEventListener('input', () => {
-      if (this.animationState === 'playing') {
-        this.animationState = this.playPauseButton.goToNextState();
-      }
-    });
+    this.playPauseButton = new PlayPauseButton(button, this.onPlayPause.bind(this));
+    this.input.addEventListener('input', this.onInputChange.bind(this));
 
     this.step = this.max / animationDuration;
     this.tick = this.tick.bind(this);
     requestAnimationFrame(this.tick);
+  }
+
+  onPlayPause(state) {
+    this.animationState = state;
+    if (state === 'playing' && this.value === this.max) {
+      this.input.value = 0;
+    }
+  }
+
+  onInputChange(event) {
+    this.display.textContent = event.target.value;
+    if (this.animationState === 'playing') {
+      this.animationState = this.playPauseButton.goToNextState();
+    }
   }
 
   tick(timestamp) {
@@ -82,6 +87,7 @@ class Slider {
   }
 
   set value(val) {
+    this.display.textContent = val.toFixed(0);
     this.input.value = val;
   }
 

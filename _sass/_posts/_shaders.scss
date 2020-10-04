@@ -1,10 +1,7 @@
 .shaders {
-  .svg-symbol-defs {
-    display: none;
-  }
-
   .slider-container {
     display: flex;
+    align-items: center;
   }
 
   .play-pause-button {
@@ -18,8 +15,18 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  .display {
+    flex-basis: 50px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
   .slider {
     flex: 1;
     margin: 0;
   }
+}
+
+.svg-symbol-defs {
+  display: none;
 }
