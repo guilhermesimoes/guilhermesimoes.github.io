@@ -77,7 +77,7 @@ class Slider {
       var value = this.value;
       if (value < this.max) {
         var timeInterval = timestamp - this.prevTimestamp;
-        this.value = value + timeInterval * this.step;
+        this.value = Math.min(value + timeInterval * this.step, this.max);
       } else {
         this.animationState = this.playPauseButton.goToNextState();
       }
