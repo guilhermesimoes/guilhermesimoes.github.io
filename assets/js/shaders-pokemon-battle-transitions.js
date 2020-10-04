@@ -1,5 +1,6 @@
 window.addEventListener('load', async function onLoad() {
-  var gl = document.getElementById('canvas').getContext('webgl');
+  var canvas = document.getElementById('canvas');
+  var gl = canvas.getContext('webgl');
   if (!gl) {
     // TODO
     console.log('No WebGL');
@@ -10,11 +11,13 @@ window.addEventListener('load', async function onLoad() {
   var slider = document.querySelector('.slider');
   var regl = createREGL({ gl: gl });
 
-  var numPoints = 160 * 144;
+  var width = canvas.width;
+  var height = canvas.height;
+  var numPoints = width * height;
   var points = [];
-  for (var i=0; i<160; i++) {
-    for (var j=0; j<144; j++) {
-      points.push([i / 160, j / 144]);
+  for (var i=0; i<width; i++) {
+    for (var j=0; j<height; j++) {
+      points.push([i / width, j / height]);
     }
   }
 
@@ -25,10 +28,11 @@ window.addEventListener('load', async function onLoad() {
     uniform float cutoff;
     varying vec2 uv;
     void main () {
-      if (uv.x < cutoff) {
+      if (uv[0] < cutoff) {
         gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+      } else {
+        gl_FragColor = texture2D(texture, uv);
       }
-      gl_FragColor = texture2D(texture, uv);
     }`,
 
     vert: `
@@ -62,7 +66,7 @@ window.addEventListener('load', async function onLoad() {
   regl.frame(function () {
     if (slider.value !== cutoff) {
       cutoff = slider.value;
-      drawScreen({ texture: textures[0], cutoff: parseFloat(cutoff) });
+      drawScreen({ texture: textures[0], cutoff: (parseFloat(cutoff) / 100) });
     }
   });
 });
