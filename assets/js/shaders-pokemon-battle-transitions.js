@@ -1,16 +1,21 @@
 window.addEventListener('load', async function onLoad() {
-  var gl = document.getElementById('canvas').getContext('webgl');
-  if (!gl) {
-    // TODO
-    console.log('No WebGL');
+  var canvas = document.getElementById('canvas');
+
+  if (!window.WebGLRenderingContext) {
+    var ctx = canvas.getContext('2d');
+    ctx.textAlign = 'center';
+    ctx.font = '18px serif';
+    ctx.fillText('Your browser does not support WebGL :(', canvas.width / 2, canvas.height / 2);
+    return;
   }
 
   var cutoff;
   var lastCutoff;
-  var animationDuration = 2000; // milliseconds
+  var animationDuration = 1500; // milliseconds
   var imagePromises = loadImages();
   var slider = new Slider(document.querySelector('.slider-container'), animationDuration);
   var maxSliderValue = parseFloat(slider.max);
+  var gl = canvas.getContext('webgl');
   var regl = createREGL({ gl: gl });
 
   var screenWipe = `
