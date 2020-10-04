@@ -5,8 +5,8 @@ title:    "Shaders"
 <div class="shaders">
   <svg class="svg-symbol-defs">
     <defs>
-      <path id="pause-icon" data-next-state="play-icon" d="M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26" />
-      <path id="play-icon" data-next-state="pause-icon" d="M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28" />
+      <path id="pause-icon" data-next-icon="play-icon" d="M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26" />
+      <path id="play-icon" data-next-icon="pause-icon" d="M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28" />
     </defs>
   </svg>
 
