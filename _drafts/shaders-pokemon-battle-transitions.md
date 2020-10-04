@@ -14,7 +14,7 @@ title:    "Shaders"
     <canvas id="canvas" class="aspect-ratio-box-content" />
   </div>
   <div class="slider-container">
-    <button class="play-pause-button js-play-pause-button">
+    <button class="play-pause-button">
       <svg viewBox="0 0 36 36">
         <use xlink:href="#play-icon" />
       </svg>
@@ -24,6 +24,7 @@ title:    "Shaders"
 </div>
 
 <script type="text/javascript" src="/assets/js/regl-2.0.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/slider.js"></script>
 
 Inspired by https://www.youtube.com/watch?v=LnAoD7hgDxw
 

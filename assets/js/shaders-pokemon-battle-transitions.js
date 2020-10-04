@@ -5,29 +5,13 @@ window.addEventListener('load', async function onLoad() {
     console.log('No WebGL');
   }
 
-  var imagePromises = loadImages();
-  var lastCutoff;
-  var lastTime;
   var cutoff;
-  var timeoutId;
-  var animationState;
-  var missingCutoff;
-  var animationDuration = 2; // seconds
-  var maxSliderValue = 100;
-  var slider = document.querySelector('.slider');
+  var lastCutoff;
+  var animationDuration = 2000; // milliseconds
+  var imagePromises = loadImages();
+  var slider = new Slider(document.querySelector('.slider-container'), animationDuration);
+  var maxSliderValue = parseFloat(slider.max);
   var regl = createREGL({ gl: gl });
-  var playPauseButton = new PlayPauseButton(document.querySelector('.js-play-pause-button'), state => {
-    animationState = state;
-    if (state === 'playing' && cutoff === 100) {
-      slider.value = 0;
-    }
-  });
-
-  slider.addEventListener('input', () => {
-    if (animationState === 'playing') {
-      animationState = playPauseButton.goToNextState();
-    }
-  })
 
   var screenWipe = `
     if (uv.x < cutoff) {
@@ -112,26 +96,12 @@ window.addEventListener('load', async function onLoad() {
     }
   });
 
-  function render ({ time }) {
-    cutoff = parseFloat(slider.value);
-
-    if (animationState === 'playing') {
-      if (cutoff < maxSliderValue) {
-        timeInterval = time - lastTime;
-        moreCutoff = timeInterval * maxSliderValue / animationDuration;
-
-        console.log(time, moreCutoff, cutoff);
-        slider.value = cutoff + moreCutoff;
-      } else {
-        animationState = playPauseButton.goToNextState();
-      }
-    }
-
+  function render () {
+    cutoff = slider.value;
     if (cutoff !== lastCutoff) {
       lastCutoff = cutoff;
       drawScreen({ texture: textures[0], cutoff: cutoff / maxSliderValue });
     }
-    lastTime = time;
   }
 
   var images = await imagePromises;
@@ -156,32 +126,3 @@ function onload2promise(obj){
     obj.onerror = reject;
   });
 }
-
-class PlayPauseButton {
-    constructor(el, onAction) {
-      this.el = el;
-      this.onAction = onAction;
-      this.animationDuration = 350;
-      this.el.addEventListener('click', this.onClick.bind(this));
-    }
-
-    onClick() {
-      var state = this.goToNextState();
-      if (this.onAction) { return this.onAction(state) };
-    }
-
-    goToNextState() {
-      var useEl = this.el.querySelector('use');
-      var iconId = useEl.getAttribute('xlink:href');
-      var currentIcon = document.querySelector(iconId);
-      var nextIcon = currentIcon.getAttribute('data-next-icon');
-
-      useEl.setAttribute('xlink:href', '#' + nextIcon);
-
-      if (nextIcon === 'play-icon') {
-        return 'paused';
-      } else {
-        return 'playing';
-      }
-    }
-};
