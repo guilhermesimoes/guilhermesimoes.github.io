@@ -10,6 +10,42 @@ window.addEventListener('load', async function onLoad() {
   var slider = document.querySelector('.slider');
   var regl = createREGL({ gl: gl });
 
+  var screenWipe = `
+    if (uv.x < cutoff) {
+      gl_FragColor = vec4(0, 0, 0, 1);
+    } else {
+      gl_FragColor = texture2D(texture, uv);
+    }
+  `;
+
+  var curtainsDown = `
+    if (uv.y < cutoff) {
+      gl_FragColor = vec4(0, 0, 0, 1);
+    } else {
+      gl_FragColor = texture2D(texture, uv);
+    }
+  `;
+
+  var joinCenter = `
+    if (0.5 - abs(uv.y - 0.5) < abs(cutoff) * 0.5) {
+      gl_FragColor = vec4(0, 0, 0, 1);
+    } else {
+      gl_FragColor = texture2D(texture, uv);
+    }
+  `;
+
+  var fadeToWhite =`
+    vec4 white = vec4(1, 1, 1, 1);
+    vec4 color = texture2D(texture, uv);
+    gl_FragColor = mix(color, white, cutoff);
+  `;
+
+  var fadeToBlack =`
+    vec4 color = texture2D(texture, uv);
+    color.rgb = color.rgb * (cutoff * -1.0 + 1.0);
+    gl_FragColor = color;
+  `;
+
   var drawScreen = regl({
     frag: `
     precision mediump float;
@@ -17,11 +53,7 @@ window.addEventListener('load', async function onLoad() {
     uniform float cutoff;
     varying vec2 uv;
     void main () {
-      if (uv.x < cutoff) {
-        gl_FragColor = vec4(0, 0, 0, 1);
-      } else {
-        gl_FragColor = texture2D(texture, uv);
-      }
+      ${fadeToBlack}
     }`,
 
     vert: `
@@ -59,7 +91,6 @@ window.addEventListener('load', async function onLoad() {
 
   var images = await imagePromises;
   textures = images.map(regl.texture);
-  console.log(textures);
 
   var cutoff;
   regl.frame(function () {
