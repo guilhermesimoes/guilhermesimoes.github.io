@@ -1,6 +1,5 @@
 window.addEventListener('load', async function onLoad() {
-  var canvas = document.getElementById('canvas');
-  var gl = canvas.getContext('webgl');
+  var gl = document.getElementById('canvas').getContext('webgl');
   if (!gl) {
     // TODO
     console.log('No WebGL');
@@ -11,16 +10,6 @@ window.addEventListener('load', async function onLoad() {
   var slider = document.querySelector('.slider');
   var regl = createREGL({ gl: gl });
 
-  var width = canvas.width;
-  var height = canvas.height;
-  var numPoints = width * height;
-  var points = [];
-  for (var i=0; i<width; i++) {
-    for (var j=0; j<height; j++) {
-      points.push([i / width, j / height]);
-    }
-  }
-
   var drawScreen = regl({
     frag: `
     precision mediump float;
@@ -28,8 +17,8 @@ window.addEventListener('load', async function onLoad() {
     uniform float cutoff;
     varying vec2 uv;
     void main () {
-      if (uv[0] < cutoff) {
-        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+      if (uv.x < cutoff) {
+        gl_FragColor = vec4(0, 0, 0, 1);
       } else {
         gl_FragColor = texture2D(texture, uv);
       }
@@ -39,23 +28,33 @@ window.addEventListener('load', async function onLoad() {
     precision mediump float;
     attribute vec2 position;
     varying vec2 uv;
+
+    vec2 normalizeCoords(vec2 position) {
+      float x = position[0];
+      float y = position[1];
+
+      return vec2(2.0 * x - 1.0, 1.0 - 2.0 * y);
+    }
+
     void main () {
       uv = position;
-      gl_Position = vec4(position * 2.0 - 1.0, 0, 1);
+      gl_Position = vec4(normalizeCoords(position), 0, 1);
     }`,
 
     attributes: {
-      position: points
+      position: [
+        -2, 0,
+        0, -2,
+        2, 2
+      ]
     },
-
-    primitive: 'points',
-
-    count: numPoints,
 
     uniforms: {
       texture: regl.prop('texture'),
       cutoff: regl.prop('cutoff')
     },
+
+    count: 3
   });
 
   var images = await imagePromises;
@@ -66,7 +65,7 @@ window.addEventListener('load', async function onLoad() {
   regl.frame(function () {
     if (slider.value !== cutoff) {
       cutoff = slider.value;
-      drawScreen({ texture: textures[0], cutoff: (parseFloat(cutoff) / 100) });
+      drawScreen({ texture: textures[0], cutoff: parseFloat(cutoff) / 100 });
     }
   });
 });
