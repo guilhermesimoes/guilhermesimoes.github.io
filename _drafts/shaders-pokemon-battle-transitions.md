@@ -23,7 +23,7 @@ title:    "Shaders"
   </div>
 </div>
 
-<script type="text/javascript" src="/assets/js/regl-2.0.1.min.js" />
+<script type="text/javascript" src="/assets/js/regl-2.0.1.min.js"></script>
 
 Inspired by https://www.youtube.com/watch?v=LnAoD7hgDxw
 

@@ -1,0 +1,25 @@
+.shaders {
+  .svg-symbol-defs {
+    display: none;
+  }
+
+  .slider-container {
+    display: flex;
+  }
+
+  .play-pause-button {
+    flex-basis: 50px;
+    flex-shrink: 0;
+    padding: 0;
+    height: 100%;
+    border: 0;
+    background-color: white;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .slider {
+    flex: 1;
+    margin: 0;
+  }
+}

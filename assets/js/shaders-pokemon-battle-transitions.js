@@ -106,7 +106,7 @@ window.addEventListener('load', async function onLoad() {
 });
 
 async function loadImages() {
-  var imageUrls = ['/assets/images/shaders-case-study/3.png'];
+  var imageUrls = ['/assets/images/shaders-case-study/bugcatch1.png'];
   return await Promise.all(imageUrls
     .map(imageUrl => {
       var image = new Image();
