@@ -149,8 +149,6 @@ Looney Tunes
 <script type="text/javascript" src="/assets/js/regl-2.0.1.min.js"></script>
 {%- include slider.html -%}
 
-[This post]: https://ivan.sanchezortega.es:444/devel/2019/02/14/a-rant-about-webgl-frameworks.html#a-rant-about-the-webgl-api
-
 Inspired by https://www.youtube.com/watch?v=LnAoD7hgDxw
 
 https://www.shadertoy.com/view/MdySWD

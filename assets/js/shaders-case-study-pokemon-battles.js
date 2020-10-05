@@ -18,20 +18,21 @@ async function setupScene(sceneEl) {
   var animationDuration = 1500; // milliseconds
   var imagePromise = loadImage(sceneEl.getAttribute('data-texture-src'));
   var slider = new Slider(sceneEl.querySelector('.slider-container'), { animationDuration });
-  var shader = sceneEl.querySelector('code').textContent;
+  var fragMain = sceneEl.querySelector('code').textContent;
+  var frag = createFragmentShader(fragMain);
   var maxSliderValue = parseFloat(slider.max);
   var gl = canvas.getContext('webgl');
   var regl = createREGL({ gl });
 
   var image = await imagePromise;
   var texture = regl.texture(image);
-  var drawScreen = createDrawCommand(regl, shader);
+  var drawScreen = createDrawCommand(regl, frag, texture);
 
   regl.frame(() => {
     cutoff = slider.value;
     if (cutoff !== lastCutoff) {
       lastCutoff = cutoff;
-      drawScreen({ texture, cutoff: cutoff / maxSliderValue });
+      drawScreen({ cutoff: cutoff / maxSliderValue });
     }
   });
 }
@@ -46,9 +47,9 @@ function createFragmentShader(main) {
   `;
 }
 
-function createDrawCommand(regl, shaderBody) {
+function createDrawCommand(regl, frag, texture) {
   return regl({
-    frag: createFragmentShader(shaderBody),
+    frag,
     vert: `
     precision mediump float;
     attribute vec2 position;
@@ -70,6 +71,7 @@ function createDrawCommand(regl, shaderBody) {
       gl_Position = vec4(normalizeCoords(position), 0, 1);
     }`,
 
+    count: 3,
     attributes: {
       position: [
         -2, 0,
@@ -78,10 +80,8 @@ function createDrawCommand(regl, shaderBody) {
       ]
     },
 
-    count: 3,
-
     uniforms: {
-      texture: regl.prop('texture'),
+      texture,
       cutoff: regl.prop('cutoff')
     }
   });
