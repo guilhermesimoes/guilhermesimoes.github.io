@@ -4,7 +4,7 @@ title:    <span class='nowrap'>Shaders Case Study:</span> <span class='nowrap'>P
 subtitle: "Gotta shade 'em all"
 date:     2020-10-04 00:16:53 +0100
 image:
-  path:   /assets/images/i-like-shorts.gif
+  path:   /assets/images/i-like-shorts2.gif
   alt:    "Gif of Pokémon Crystal where Suicune appears in a random encounter."
   ratio:  ratio-game-boy
 ---
@@ -22,9 +22,13 @@ REGL is too high-level for me.
 
 In this primer, we will use regl, a library that allows us to use WebGL in a more friendly way. It is a WebGL library for drawing in immediate mode, i.e., you must use drawing commands containing geometry and attributes, but can manage webgl's state a bit more easily without learning the native API.
 
+All these examples follow the same strategy. They transform a texture according to a value called `cutoff`. In the UI you'll see throughout this post the `cutoff` will go from 0 to 100 but inside the shaders this value will go from 0 to 1.
+
+{toc}
+
 <div class="shaders">
-  <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/1-red-trainer.png">
-    <div markdown="1">
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/1-red-trainer.png">
+<div markdown="1">
 
 # Left To Right Wipe
 
@@ -38,12 +42,17 @@ void main() {
 }
 ```
 
-</div>
-    {%- include canvas-playground.html -%}
-  </div>
+<div>{%- include canvas-playground.html -%}</div>
 
-  <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/2-yellow-pikachu.png">
-    <div markdown="1">
+Here we are just checking the pixel's x coordinate against the cutoff value.
+This kind of wipe was used prominently in the Star Wars films.
+
+As the cutoff value increases, so do the number of pixels that
+</div>
+</div>
+
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/2-yellow-pikachu.png">
+<div markdown="1">
 
 # Curtain Fall
 
@@ -57,18 +66,20 @@ void main() {
 }
 ```
 
+<div>{%- include canvas-playground.html -%}</div>
+
+Here we are doing something similar to the previous shader. We're just checking the pixel's y coordinate against the cutoff value.
 </div>
-    {%- include canvas-playground.html -%}
-  </div>
+</div>
 
-  <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/3-gold-grass.png">
-    <div markdown="1">
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/3-gold-grass.png">
+<div markdown="1">
 
-# End Of Chapter (Vertical Join Center)
+# Vertical Center Join
 
 ```cpp
 void main() {
-  if (0.5 - abs(uv.y - 0.5) < abs(cutoff) * 0.5) {
+  if (abs(uv.y - 0.5) > (1.0 - cutoff) * 0.5) {
     gl_FragColor = vec4(0, 0, 0, 1);
   } else {
     gl_FragColor = texture2D(texture, uv);
@@ -76,14 +87,16 @@ void main() {
 }
 ```
 
+<div>{%- include canvas-playground.html -%}</div>
+
+
 </div>
-    {%- include canvas-playground.html -%}
-  </div>
+</div>
 
-  <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/4-gold-gyarados.png">
-    <div markdown="1">
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/4-gold-gyarados.png">
+<div markdown="1">
 
-# Ascension (Fade To White)
+# Fade To White
 
 ```cpp
 void main() {
@@ -93,36 +106,39 @@ void main() {
 }
 ```
 
+<div>{%- include canvas-playground.html -%}</div>
+
 </div>
-    {%- include canvas-playground.html -%}
-  </div>
+</div>
 
-  <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/5-rival-cave.png">
-    <div markdown="1">
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/5-rival-cave.png">
+<div markdown="1">
 
-# Death (Fade To Black)
+# Fade To Black
 
 ```cpp
 void main() {
   vec4 color = texture2D(texture, uv);
-  color.rgb = color.rgb * (cutoff * -1.0 + 1.0);
+  color.rgb = color.rgb * (1.0 - cutoff);
   gl_FragColor = color;
 }
 ```
 
-</div>
-    {%- include canvas-playground.html -%}
-  </div>
+<div>{%- include canvas-playground.html -%}</div>
 
-  <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/6-ho-oh2.png">
-    <div markdown="1">
+
+</div>
+</div>
+
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/6-ho-oh2.png">
+<div markdown="1">
 
 # That's All Folks
 
 ```cpp
 float radius = sqrt(2.0);
 void main() {
-  float distanceMiddle = sqrt((uv.x - 0.5) * (uv.x - 0.5) + (uv.y - 0.5) * (uv.y - 0.5)) * 2.0;
+  float distanceMiddle = length(uv - 0.5) * 2.0;
   float radiusCutoff = (1.0 - cutoff) * radius;
   if (distanceMiddle < radiusCutoff) {
     gl_FragColor = texture2D(texture, uv);
@@ -132,9 +148,12 @@ void main() {
 }
 ```
 
+<div>{%- include canvas-playground.html -%}</div>
+
+measure the distance of each pixel to the center
+Looney Tunes
 </div>
-    {%- include canvas-playground.html -%}
-  </div>
+</div>
 
 </div>
 
