@@ -27,7 +27,7 @@ All these examples follow the same strategy. They transform a texture according 
 {toc}
 
 <div class="shaders">
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/1-red-trainer.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/1-red-trainer.png" markdown="1">
 
 # Left To Right Wipe
 
@@ -49,7 +49,7 @@ This kind of wipe was used prominently in the Star Wars films.
 As the cutoff value increases, so do the number of pixels that
 </div>
 
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/2-yellow-pikachu.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/2-yellow-pikachu.png" markdown="1">
 
 # Curtain Fall
 
@@ -68,7 +68,7 @@ void main() {
 Here we are doing something similar to the previous shader. We're just checking the pixel's y coordinate against the cutoff value.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/3-gold-grass.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/3-gold-grass.png" markdown="1">
 
 # Vertical Center Join
 
@@ -87,7 +87,7 @@ void main() {
 asd asd
 </div>
 
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/4-gold-gyarados.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/4-gold-gyarados.png" markdown="1">
 
 # Fade To White
 
@@ -104,7 +104,7 @@ void main() {
 Here we mix with white.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/5-rival-cave.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/5-rival-cave.png" markdown="1">
 
 # Fade To Black
 
@@ -121,7 +121,7 @@ void main() {
 We multiply by the cutoff.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/6-ho-oh2.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/6-ho-oh2.png" markdown="1">
 
 # That's All Folks
 
