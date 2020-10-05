@@ -79,7 +79,7 @@ Here we are doing something similar to the previous shader. We're just checking 
 
 ```cpp
 void main() {
-  if (abs(uv.y - 0.5) > (1.0 - cutoff) * 0.5) {
+  if (abs(uv.y - 0.5) * 2.0 > (1.0 - cutoff)) {
     gl_FragColor = vec4(0, 0, 0, 1);
   } else {
     gl_FragColor = texture2D(texture, uv);
