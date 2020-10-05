@@ -16,9 +16,9 @@ async function setupScene(sceneEl) {
   var cutoff;
   var lastCutoff;
   var animationDuration = 1500; // milliseconds
-  var shader = sceneEl.querySelector('code').textContent;
   var imagePromise = loadImage(sceneEl.getAttribute('data-texture-src'));
   var slider = new Slider(sceneEl.querySelector('.slider-container'), { animationDuration });
+  var shader = sceneEl.querySelector('code').textContent;
   var maxSliderValue = parseFloat(slider.max);
   var gl = canvas.getContext('webgl');
   var regl = createREGL({ gl });

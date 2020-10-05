@@ -27,8 +27,7 @@ All these examples follow the same strategy. They transform a texture according 
 {toc}
 
 <div class="shaders">
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/1-red-trainer.png">
-<div markdown="1">
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/1-red-trainer.png" markdown="1">
 
 # Left To Right Wipe
 
@@ -49,10 +48,8 @@ This kind of wipe was used prominently in the Star Wars films.
 
 As the cutoff value increases, so do the number of pixels that
 </div>
-</div>
 
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/2-yellow-pikachu.png">
-<div markdown="1">
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/2-yellow-pikachu.png" markdown="1">
 
 # Curtain Fall
 
@@ -70,10 +67,8 @@ void main() {
 
 Here we are doing something similar to the previous shader. We're just checking the pixel's y coordinate against the cutoff value.
 </div>
-</div>
 
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/3-gold-grass.png">
-<div markdown="1">
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/3-gold-grass.png" markdown="1">
 
 # Vertical Center Join
 
@@ -89,12 +84,10 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-
+asd asd
 </div>
-</div>
 
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/4-gold-gyarados.png">
-<div markdown="1">
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/4-gold-gyarados.png" markdown="1">
 
 # Fade To White
 
@@ -108,11 +101,10 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-</div>
+Here we mix with white.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/5-rival-cave.png">
-<div markdown="1">
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/5-rival-cave.png" markdown="1">
 
 # Fade To Black
 
@@ -126,12 +118,10 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-
+We multiply by the cutoff.
 </div>
-</div>
 
-<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/6-ho-oh2.png">
-<div markdown="1">
+<div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/6-ho-oh2.png" markdown="1">
 
 # That's All Folks
 
@@ -152,7 +142,6 @@ void main() {
 
 measure the distance of each pixel to the center
 Looney Tunes
-</div>
 </div>
 
 </div>
