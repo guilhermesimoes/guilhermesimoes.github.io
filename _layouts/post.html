@@ -15,7 +15,7 @@ layout: default
   {% endif -%}
 
   <div class="post-content" itemprop="articleBody">
-    {{ content }}
+    {% include toc.html html=content id="toc" %}
   </div>
 
   {% include post-meta.html -%}
