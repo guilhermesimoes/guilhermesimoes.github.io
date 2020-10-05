@@ -44,8 +44,9 @@ class PlayPauseButton {
 };
 
 class Slider {
-  constructor(container, animationDuration) {
+  constructor(container, { animationDuration, fillMode = 'backwards' }) {
     this.prevTimestamp = 0;
+    this.fillMode = fillMode;
     this.animationState = 'paused';
     this.display = container.querySelector('.display');
     this.input = container.querySelector('input');
@@ -79,6 +80,9 @@ class Slider {
         var timeInterval = timestamp - this.prevTimestamp;
         this.value = Math.min(value + timeInterval * this.step, this.max);
       } else {
+        if (this.fillMode === 'backwards') {
+          this.value = 0;
+        }
         this.animationState = this.playPauseButton.goToNextState();
       }
     }

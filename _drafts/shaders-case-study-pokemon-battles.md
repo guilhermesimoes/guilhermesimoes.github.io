@@ -3,11 +3,18 @@ layout:   post
 title:    <span class='nowrap'>Shaders Case Study:</span> <span class='nowrap'>Pokémon Battle Transitions</span>
 subtitle: "Gotta shade 'em all"
 date:     2020-10-04 00:16:53 +0100
+image:
+  path:   /assets/images/i-like-shorts.gif
+  alt:    "Gif of Pokémon Crystal where Suicune appears in a random encounter."
+  ratio:  ratio-game-boy
 ---
 
-REGL is… too magical. It also implements a fully functional paradigm. Which means it works wonderfully when the use case is providing certain inputs (data & shaders) and expecting one output (a rendered image).
+Remember the Pokémon games? I sure do! I can even hear the sound
 
-Problem is, I’m not a fan of functional programming, specially when it’s touted as automagical. In my experience, JS functional programming works fine until it doesn’t, and then debugging becomes a huge mess that cannot be easily traced.
+
+I'm pretty new to vector graphics. I tried playing a bit with WebGL but... WebGL is _hard_. [This post] explains it better than I can.
+
+REGL is… too magical. It also implements a fully functional paradigm. Which means it works wonderfully when the use case is providing certain inputs (data & shaders) and expecting one output (a rendered image).
 
 REGL abstractions work well, but I want to be able to add/remove attributes from a vertex buffer, not re-create the whole buffer from an input Array. I want something with lower-level access to data structures. I want to update uniforms, not to provide uniform-returning callback functions.
 
@@ -19,7 +26,7 @@ In this primer, we will use regl, a library that allows us to use WebGL in a mor
   <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/1-red-trainer.png">
     <div markdown="1">
 
-# Screen Wipe
+# Left To Right Wipe
 
 ```cpp
 void main() {
@@ -38,7 +45,7 @@ void main() {
   <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/2-yellow-pikachu.png">
     <div markdown="1">
 
-# Curtains Down
+# Curtain Fall
 
 ```cpp
 void main() {
@@ -57,7 +64,7 @@ void main() {
   <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/3-gold-grass.png">
     <div markdown="1">
 
-# Vertically Join Center
+# End Of Chapter (Vertical Join Center)
 
 ```cpp
 void main() {
@@ -76,7 +83,7 @@ void main() {
   <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/4-gold-gyarados.png">
     <div markdown="1">
 
-# Fade To White
+# Ascension (Fade To White)
 
 ```cpp
 void main() {
@@ -93,7 +100,7 @@ void main() {
   <div class="scene" data-texture-src="/assets/images/shaders-case-study-pokemon-battles/textures/5-rival-cave.png">
     <div markdown="1">
 
-# Fade To Black
+# Death (Fade To Black)
 
 ```cpp
 void main() {
@@ -133,6 +140,8 @@ void main() {
 
 <script type="text/javascript" src="/assets/js/regl-2.0.1.min.js"></script>
 {%- include slider.html -%}
+
+[This post]: https://ivan.sanchezortega.es:444/devel/2019/02/14/a-rant-about-webgl-frameworks.html#a-rant-about-the-webgl-api
 
 Inspired by https://www.youtube.com/watch?v=LnAoD7hgDxw
 
