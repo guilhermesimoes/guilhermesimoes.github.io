@@ -9,24 +9,20 @@ image:
   ratio:  ratio-game-boy
 ---
 
-Remember the Pokémon games? I sure do! I can even hear the sound
+Remember the Pokémon games? I sure do! By looking at the gif above I can even hear the sound a trainer makes when he spots you, and hear the battle chiptune beginning.
+
+A while ago I watched a video that explained [how to use shaders to recreate the battle transitions seen in Pokémon] and other RPGs and I was **hooked**! I know next to nothing about game development but I knew I wanted to play with shaders just to see what I could do.
+
+Last time I figured
 
 
-I'm pretty new to vector graphics. I tried playing a bit with WebGL but... WebGL is _hard_. [This post] explains it better than I can.
 
-REGL is… too magical. It also implements a fully functional paradigm. Which means it works wonderfully when the use case is providing certain inputs (data & shaders) and expecting one output (a rendered image).
 
-REGL abstractions work well, but I want to be able to add/remove attributes from a vertex buffer, not re-create the whole buffer from an input Array. I want something with lower-level access to data structures. I want to update uniforms, not to provide uniform-returning callback functions.
 
-REGL is too high-level for me.
-
-In this primer, we will use regl, a library that allows us to use WebGL in a more friendly way. It is a WebGL library for drawing in immediate mode, i.e., you must use drawing commands containing geometry and attributes, but can manage webgl's state a bit more easily without learning the native API.
-
-All these examples follow the same strategy. They transform a texture according to a value called `cutoff`. In the UI you'll see throughout this post the `cutoff` will go from 0 to 100 but inside the shaders this value will go from 0 to 1.
+All these examples follow the same strategy. They transform a texture according to a value called `cutoff`. In the UI slider you'll see throughout this post the `cutoff` goes from 0 to 100 but this value is scaled down so that inside each shader it goes from 0 to 1.
 
 {toc}
 
-<div class="shaders">
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/1-red-trainer.png" markdown="1">
 
 # Left To Right Wipe
@@ -144,15 +140,15 @@ measure the distance of each pixel to the center
 Looney Tunes
 </div>
 
-</div>
+notice I did not implement the animation see in the gif
+that will be done in the next post
 
 <script type="text/javascript" src="/assets/js/regl-2.0.1.min.js"></script>
 {%- include slider.html -%}
 
-Inspired by https://www.youtube.com/watch?v=LnAoD7hgDxw
+
+[how to use shaders to recreate the battle transitions seen in Pokémon]: https://www.youtube.com/watch?v=LnAoD7hgDxw
 
 https://www.shadertoy.com/view/MdySWD
-
-https://stackoverflow.com/questions/34443968/how-can-i-apply-a-pixel-shader-to-a-canvas-element
 
 https://barcinolechiguino.github.io/Camera-Transitions-Research/

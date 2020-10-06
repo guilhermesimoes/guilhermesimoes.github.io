@@ -1,8 +1,6 @@
-.shaders {
-  .slider-container {
-    display: flex;
-    align-items: center;
-  }
+.slider-container {
+  display: flex;
+  align-items: center;
 
   .play-pause-button {
     flex-basis: 50px;
@@ -25,8 +23,4 @@
     flex: 1;
     margin: 0;
   }
-}
-
-.svg-symbol-defs {
-  display: none;
 }
