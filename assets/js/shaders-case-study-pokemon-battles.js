@@ -55,15 +55,17 @@ function createDrawCommand(regl, frag, texture) {
     attribute vec2 position;
     varying vec2 uv;
 
-    vec2 normalizeCoords(vec2 zeroToOne) {
+    vec2 normalizeCoords(vec2 position) {
+      // Increase texture in size so it can cover the entire screen
       // Convert from 0->1 to 0->2
-      vec2 zeroToTwo = zeroToOne * 2.0;
+      vec2 full = position * 2.0;
 
+      // Center in clip space
       // Convert from 0->2 to -1->+1 (clip space)
-      vec2 clipSpace = zeroToTwo - 1.0;
+      vec2 centered = full - 1.0;
 
       // Flip y
-      return clipSpace * vec2(1, -1);
+      return centered * vec2(1, -1);
     }
 
     void main () {
