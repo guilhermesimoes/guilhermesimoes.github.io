@@ -8,7 +8,7 @@ header_title: Blog
 <section class="blog-index wrapper">
   <h1>Blog</h1>
 
-  <table class="post-list">
+  <table>
     <tbody>
       {% for post in site.posts %}
         <tr>
@@ -19,7 +19,7 @@ header_title: Blog
     </tbody>
   </table>
 
-  <p class="post-meta">
+  <p class="post-meta mt-3">
     <a href="/feed.xml">
       {%- include icons/rss.svg -%}<span>subscribe to RSS feed</span>
     </a>

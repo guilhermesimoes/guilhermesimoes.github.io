@@ -8,15 +8,15 @@ layout: default
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
   </header>
 
-  <div class="bleed vertical-rhythm">
+  <div class="bleed mb-1">
     {% include embedded-gist.html id=page.gist_id file="index.html" -%}
   </div>
 
-  <div class="post-content wrapper" itemprop="articleBody">
+  <div class="post-content wrapper mb-1" itemprop="articleBody">
     {{ content }}
   </div>
 
-  <div class="bleed separate">
+  <div class="bleed mb-1">
     {% gist page.gist_id index.html %}
   </div>
 

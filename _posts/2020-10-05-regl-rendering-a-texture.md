@@ -53,7 +53,7 @@ void main () {
 
 But this is the result:
 
-<div class="aspect-ratio-box ratio-game-boy vertical-rhythm">
+<div class="aspect-ratio-box ratio-game-boy mb-1">
   <canvas class="aspect-ratio-box-content" />
 </div>
 
@@ -102,7 +102,7 @@ void main () {
 
 And there it is! Finally, in all its glory.
 
-<div class="aspect-ratio-box ratio-game-boy vertical-rhythm">
+<div class="aspect-ratio-box ratio-game-boy mb-1">
   <canvas class="aspect-ratio-box-content" />
 </div>
 

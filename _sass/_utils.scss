@@ -16,10 +16,6 @@
   white-space: nowrap;
 }
 
-.separate {
-  margin-top: $spacing-unit * 1.5;
-}
-
 .aspect-ratio-box {
   height: 0;
   overflow: hidden;
@@ -62,4 +58,16 @@
     height: 100%;
     align-items: center;
   }
+}
+
+.mb-1 {
+  margin-bottom: $spacing-unit / 2;
+}
+
+.mb-2 {
+  margin-bottom: $spacing-unit;
+}
+
+.mt-3 {
+  margin-top: $spacing-unit * 1.5;
 }
