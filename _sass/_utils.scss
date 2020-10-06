@@ -23,8 +23,15 @@
 .aspect-ratio-box {
   height: 0;
   overflow: hidden;
-  padding-top: 9px / 16px * 100%;
   position: relative;
+}
+
+.ratio-16-9 {
+  padding-top: 9px / 16px * 100%;
+}
+
+.ratio-game-boy {
+  padding-top: 144px / 160px * 100%;
 }
 
 .aspect-ratio-box-content {

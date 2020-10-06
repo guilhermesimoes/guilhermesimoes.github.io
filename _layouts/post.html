@@ -9,7 +9,7 @@ layout: default
   </header>
 
   {% if page.hero_image -%}
-    <figure class="aspect-ratio-box">
+    <figure class="aspect-ratio-box {{ page.hero_image.ratio | default: 'ratio-16-9' }}">
       <img src="{{ page.hero_image.path }}" alt="{{ page.hero_image.alt }}" class="aspect-ratio-box-content" itemprop="image" />
     </figure>
   {% endif -%}
