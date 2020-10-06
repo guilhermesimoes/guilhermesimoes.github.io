@@ -5,7 +5,7 @@ subtitle: "Gotta shade 'em all"
 date:     2020-10-06 00:16:53 +0100
 image:
   path:   /assets/images/i-like-shorts2.gif
-  alt:    "Gif of Pokémon Crystal where Suicune appears in a random encounter."
+  alt:    "Gif from Pokémon Red, where a trainer challenges the main player and says 'I like shorts'."
   ratio:  ratio-game-boy
 ---
 
@@ -143,7 +143,7 @@ Looney Tunes
 notice I did not implement the animation see in the gif
 that will be done in the next post
 
-<script type="text/javascript" src="/assets/js/regl-2.0.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/vendor/regl-2.0.1.min.js"></script>
 {%- include slider.html -%}
 
 
