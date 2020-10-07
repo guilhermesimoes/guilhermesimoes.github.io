@@ -13,11 +13,7 @@ Remember the Pokémon games? I sure do! By looking at the gif above I can even h
 
 A while ago I watched a video that explained [how to use shaders to recreate the battle transitions seen in Pokémon] and other RPGs and I was **hooked**! I know next to nothing about game development but I knew I wanted to play with shaders just to see what I could do.
 
-Last time I figured
-
-
-
-
+Last time I wrote about OpenGL I explained how to correctly render a texture using [regl], so I won't go over that again. I'll use the same vertex shader I used previously to render textures and then apply different fragment shaders to achieve different transitions.
 
 All these examples follow the same strategy. They transform a texture according to a value called `cutoff`. In the UI slider you'll see throughout this post the `cutoff` goes from 0 to 100 but this value is scaled down so that inside each shader it goes from 0 to 1.
 
@@ -117,6 +113,49 @@ void main() {
 We multiply by the cutoff.
 </div>
 
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/elite5.png" markdown="1">
+
+# Cross Shape
+
+```cpp
+#define PI 3.1415926538
+
+float getAngle(vec2 p){
+  return acos(dot(normalize(p), vec2(1, 0)));
+}
+
+vec2 rotate(vec2 p, float phi) {
+  return vec2(
+    dot(vec2(+cos(phi), -sin(phi)), p),
+    dot(vec2(+sin(phi), +cos(phi)), p)
+  );
+}
+
+void main() {
+  float quarterCircumference = 0.5 * PI * cutoff;
+  vec2 p = vec2(cos(quarterCircumference), sin(quarterCircumference));
+
+  vec2 centeredUv = uv - 0.5;
+  if (
+      (centeredUv.x < 0.0 && centeredUv.y < 0.0) ||
+      (centeredUv.x > 0.0 && centeredUv.y > 0.0)
+    ) {
+    centeredUv = rotate(centeredUv, radians(90.0));
+  }
+  if (getAngle(abs(centeredUv)) < getAngle(p)) {
+    gl_FragColor = vec4(0, 0, 0, 1);
+  } else {
+    gl_FragColor = texture2D(texture, uv);
+  }
+}
+```
+
+<div>{%- include canvas-playground.html -%}</div>
+
+This one got complex
+There are probably way more efficient ways to do this.
+</div>
+
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/6-ho-oh2.png" markdown="1">
 
 # That's All Folks
@@ -148,6 +187,7 @@ that will be done in the next post
 
 
 [how to use shaders to recreate the battle transitions seen in Pokémon]: https://www.youtube.com/watch?v=LnAoD7hgDxw
+[regl]: https://regl.party/
 
 https://www.shadertoy.com/view/MdySWD
 
