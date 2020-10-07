@@ -136,13 +136,15 @@ void main() {
   vec2 p = vec2(cos(quarterCircumference), sin(quarterCircumference));
 
   vec2 centeredUv = uv - 0.5;
-  if (
-      (centeredUv.x < 0.0 && centeredUv.y < 0.0) ||
-      (centeredUv.x > 0.0 && centeredUv.y > 0.0)
-    ) {
+  if (centeredUv.x < 0.0 && centeredUv.y < 0.0) {
     centeredUv = rotate(centeredUv, radians(90.0));
+  } else if (centeredUv.x > 0.0 && centeredUv.y > 0.0) {
+    centeredUv = rotate(centeredUv, radians(270.0));
+  } else if (centeredUv.x < 0.0 && centeredUv.y > 0.0) {
+    centeredUv = rotate(centeredUv, radians(180.0));
   }
-  if (getAngle(abs(centeredUv)) < getAngle(p)) {
+
+  if (getAngle(centeredUv) < getAngle(p)) {
     gl_FragColor = vec4(0, 0, 0, 1);
   } else {
     gl_FragColor = texture2D(texture, uv);
