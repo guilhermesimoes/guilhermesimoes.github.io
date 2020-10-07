@@ -13,11 +13,20 @@ Remember the Pokémon games? I sure do! By looking at the gif above I can even h
 
 A while ago I watched a video that explained [how to use shaders to recreate the battle transitions seen in Pokémon] and other RPGs and I was **hooked**! I know next to nothing about game development but I knew I wanted to play with shaders just to see what I could do.
 
-Last time I wrote about OpenGL I explained how to correctly render a texture using [regl], so I won't go over that again. I'll use the same vertex shader I used previously to render textures and then apply different fragment shaders to achieve different transitions.
-
-All these examples follow the same strategy. They transform a texture according to a value called `cutoff`. In the UI slider you'll see throughout this post the `cutoff` goes from 0 to 100 but this value is scaled down so that inside each shader it goes from 0 to 1.
+Last time I wrote about OpenGL I explained how to correctly render a texture using [regl], so I won't go over that again. I'll use the same vertex shader I used previously to render textures and then apply different fragment shaders to achieve these transitions:
 
 {toc}
+
+All of them follow the same strategy. They paint a texture according to a value called `cutoff`, like this:
+```
+result = calculateSomethingByLookingAtCoordinates(pixel)
+if result < cutoff
+  renderBlack
+else
+  renderTexture
+```
+
+In the UI slider you'll see throughout this post the `cutoff` goes from 0 to 100 but this value is scaled down so that inside each shader it goes from 0 to 1.
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/1-red-trainer.png" markdown="1">
 
@@ -121,30 +130,18 @@ We multiply by the cutoff.
 #define PI 3.1415926538
 
 float getAngle(vec2 p){
-  return acos(dot(normalize(p), vec2(1, 0)));
-}
-
-vec2 rotate(vec2 p, float phi) {
-  return vec2(
-    dot(vec2(+cos(phi), -sin(phi)), p),
-    dot(vec2(+sin(phi), +cos(phi)), p)
-  );
+  if (p.x > 0.0 || p.y != 0.0) {
+    return 2.0 * atan(p.y / (length(p) + p.x));
+  }
+  return PI;
 }
 
 void main() {
   float quarterCircumference = 0.5 * PI * cutoff;
   vec2 p = vec2(cos(quarterCircumference), sin(quarterCircumference));
-
-  vec2 centeredUv = uv - 0.5;
-  if (centeredUv.x < 0.0 && centeredUv.y < 0.0) {
-    centeredUv = rotate(centeredUv, radians(90.0));
-  } else if (centeredUv.x > 0.0 && centeredUv.y > 0.0) {
-    centeredUv = rotate(centeredUv, radians(270.0));
-  } else if (centeredUv.x < 0.0 && centeredUv.y > 0.0) {
-    centeredUv = rotate(centeredUv, radians(180.0));
-  }
-
-  if (getAngle(centeredUv) < getAngle(p)) {
+  float cutoffAngle = getAngle(p);
+  float pAngle = mod(getAngle(uv - 0.5), radians(90.0));
+  if (pAngle < cutoffAngle) {
     gl_FragColor = vec4(0, 0, 0, 1);
   } else {
     gl_FragColor = texture2D(texture, uv);
@@ -154,8 +151,11 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-This one got complex
-There are probably way more efficient ways to do this.
+The concept for this one was simple. Make the cutoff value travel along a quarter circle. If the angle between a point and one of its quadrants' axis is smaller than this cutoff, paint it black.
+
+It got complex _fast_. How do I calculate the perimeter of a circle? Right, 2πr. Oh, but there's no π constant in WebGL, I need to define it. How do I compute the angle between a point (x, y) and the positive x axis? [`atan`]. Oh, but I need it to be an angle between 0 and 2π. [`atan2`]. Oh, but there's no `atan2` in WebGL, I need to write it. And on and on.
+
+Finally, for **_some_** reason the animation is going in a clockwise direction when it should be going in the opposite direction! I tried the same shader in a [shadertoy] and there it goes in an anticlockwise direction. I give up.
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/6-ho-oh2.png" markdown="1">
@@ -190,6 +190,9 @@ that will be done in the next post
 
 [how to use shaders to recreate the battle transitions seen in Pokémon]: https://www.youtube.com/watch?v=LnAoD7hgDxw
 [regl]: https://regl.party/
+[`atan`]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+[`atan2`]: https://en.wikipedia.org/wiki/Atan2
+[shadertoy]: https://www.shadertoy.com/
 
 https://www.shadertoy.com/view/MdySWD
 

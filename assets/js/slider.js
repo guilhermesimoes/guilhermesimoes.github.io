@@ -81,7 +81,9 @@ class Slider {
         this.value = Math.min(value + timeInterval * this.step, this.max);
       } else {
         if (this.fillMode === 'backwards') {
-          this.value = 0;
+          setTimeout(() => {
+            this.input.value = 0;
+          }, 100);
         }
         this.animationState = this.playPauseButton.goToNextState();
       }
