@@ -3,7 +3,7 @@ layout:   block
 title:    "Animated NBC Peacock Logo"
 subtitle: "This bird likes to show-off"
 date:     2020-04-12 17:03:49 +0100
-image:
+hero_image:
   path:   /assets/images/peacock.png
 adapted:
   publication: Block

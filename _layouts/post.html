@@ -8,9 +8,9 @@ layout: default
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
   </header>
 
-  {% if page.image -%}
+  {% if page.hero_image -%}
     <figure class="aspect-ratio-box">
-      <img src="{{ page.image.path }}" alt="{{ page.image.alt }}" class="aspect-ratio-box-content" itemprop="image" />
+      <img src="{{ page.hero_image.path }}" alt="{{ page.hero_image.alt }}" class="aspect-ratio-box-content" itemprop="image" />
     </figure>
   {% endif -%}
 

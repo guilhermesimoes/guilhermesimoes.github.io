@@ -3,7 +3,7 @@ layout:   block
 title:    "D3: Encoding values as circles"
 subtitle: "Avoid the mistake of using a linear scale with a circle radius"
 date:     2016-10-23 13:53:17 +0100
-image:
+hero_image:
   path:   /assets/images/values-as-circles.png
 adapted:
   publication: Block

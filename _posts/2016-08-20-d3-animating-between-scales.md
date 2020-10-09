@@ -3,7 +3,7 @@ layout:   block
 title:    "D3: Animating between scales"
 subtitle: "See how the same data looks using different D3 scales"
 date:     2016-08-20 21:53:17 +0100
-image:
+hero_image:
   path:   /assets/images/dots.png
 adapted:
   publication: Block

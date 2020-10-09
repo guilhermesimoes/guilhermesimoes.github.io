@@ -3,7 +3,7 @@ layout:   block
 title:    "D3: Animating bars “going down”"
 subtitle: "Confused by SVG's coordinate system origin being at the top-left corner?"
 date:     2015-04-15 23:54:20 +0100
-image:
+hero_image:
   path:   /assets/images/bar.png
 adapted:
   publication: Block

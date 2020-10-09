@@ -3,7 +3,7 @@ layout:   block
 title:    "YouTube's new morphing play/pause SVG icon"
 subtitle: "Use D3 transitions to morph one SVG path into another."
 date:     2016-01-21 23:43:57 +0100
-image:
+hero_image:
   path:   /assets/images/play-button.png
 adapted:
   publication: Block
