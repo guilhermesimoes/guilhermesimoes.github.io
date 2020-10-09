@@ -13,7 +13,7 @@ Remember the Pokémon games? I sure do! Just by looking at the gif above I can h
 
 A while ago I watched a video that explained [how to use shaders to recreate the battle transitions seen in Pokémon] and other RPGs and I was **hooked**! I know next to nothing about game development but I knew I wanted to play with shaders and see what I could do.
 
-Last time I wrote about OpenGL I explained how to render a texture using [regl], so I won't go over that again. I'll use the same vertex shader I used before to render textures and then apply different fragment shaders to achieve these transitions:
+[Last time I wrote about WebGL] I explained how to render a texture using [regl], so I won't go over that again. I'll use [the same vertex shader I used before] to render textures and then apply different fragment shaders to achieve these transitions:
 
 {toc}
 
@@ -48,7 +48,7 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-Pretty simple. Each pixel's `x` coordinate (which goes from 0 to 1) is compared to the `cutoff`.
+Pretty simple. Each pixel's `x` coordinate (which goes from 0 to 1) is compared to the `cutoff`. The more the `cutoff` increases the more black pixels appear.
 This kind of wipe was used prominently in the Star Wars films.
 </div>
 
@@ -89,7 +89,7 @@ void main() {
 
 A little more complicated now. First, the image is centered in clip space with the `- 0.5`. Then the image is multiplied by `2` so that it covers the entire screen. Then `abs` is used to get the absolute value of all coordinates. Whenever you see an `abs` call, think of folding a piece of paper in 4:
 
-<img src="/assets/images/folding-paper-in-42.png" />
+<img src="/assets/images/folding-paper-in-4.png" />
 
 All quadrants of the image now go from 0 to 1 whereas in uv space they went from 0 to 0.5 and 0.5 to 1, vertically and horizontally.
 
@@ -207,7 +207,9 @@ that will be done in the next post
 
 
 [how to use shaders to recreate the battle transitions seen in Pokémon]: https://www.youtube.com/watch?v=LnAoD7hgDxw
+[Last time I wrote about WebGL]: 2020-10-06-regl-rendering-a-texture.md
 [regl]: https://regl.party/
+[the same vertex shader I used before]: 2020-10-06-regl-rendering-a-texture.md#vertex-shader
 [`atan`]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
 [`atan2`]: https://en.wikipedia.org/wiki/Atan2
 [shadertoy]: https://www.shadertoy.com/
