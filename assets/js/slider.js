@@ -62,7 +62,7 @@ class Slider {
   onPlayPause(state) {
     this.animationState = state;
     if (state === 'playing' && this.value === this.max) {
-      this.input.value = 0;
+      this.value = 0;
     }
   }
 
@@ -82,7 +82,7 @@ class Slider {
       } else {
         if (this.fillMode === 'backwards') {
           setTimeout(() => {
-            this.input.value = 0;
+            this.value = 0;
           }, 100);
         }
         this.animationState = this.playPauseButton.goToNextState();

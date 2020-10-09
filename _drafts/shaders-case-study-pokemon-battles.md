@@ -148,12 +148,8 @@ float getAngle(vec2 p){
 float quarterCircumference = 2.0 * PI * 1.0 / 4.0;
 float rightAngle = radians(90.0);
 void main() {
-  vec2 p = vec2(
-    cos(quarterCircumference * cutoff),
-    sin(quarterCircumference * cutoff)
-  );
-  float cutoffAngle = getAngle(p);
   float pAngle = mod(getAngle(uv - 0.5), rightAngle);
+  float cutoffAngle = cutoff * quarterCircumference;
   if (pAngle < cutoffAngle) {
     gl_FragColor = vec4(0, 0, 0, 1);
   } else {
@@ -168,7 +164,7 @@ The concept for this transition was simple. Make the `cutoff` travel along a qua
 
 It got complex _fast_. How do I calculate the perimeter of a circle? Right, 2πr. Oh, but there's no π constant in WebGL, I need to define it. How do I compute the angle between a point (x, y) and the positive x axis? [`atan`]. Oh, but I need it to be an angle between 0 and 2π. [`atan2`]. Oh, but there's no `atan2` in WebGL, I need to write it. And on and on.
 
-Finally, for **_some_** reason the animation is going in a clockwise direction when it should be going in the opposite direction! I tried the same shader in a [shadertoy] and there it goes in an anticlockwise direction. I give up.
+In the end, for **_some_** reason the animation is going in a clockwise direction when it should be going in the opposite direction! I tried the same shader in a [shadertoy] and there it goes in an anticlockwise direction. I give up.
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/6-ho-oh2.png" markdown="1">
@@ -192,15 +188,14 @@ void main() {
 
 The idea for this transition was to measure the distance of each pixel to the center, and make the `cutoff` go from the maximum distance to the center to `0`.
 
-Here I use the tricks I learned before. `- 0.5` to center the image in clip space. `length` to calculate the length of the vector. I also precomputed the maximum radius so that it was not repeated for every pixel.
+Here I use the tricks I learned before. `- 0.5` to center the image in clip space. `length` to calculate the length of the vector. I also precompute the maximum radius so that it is not repeated for every pixel.
 
 Such a cool effect, with only 10 lines of code!
 </div>
 
 <hr />
 
-You may have noticed I did not implement the animation seen in the inicial gif.
-that will be done in the next post
+You may have noticed I did not implement the animation seen in the initial gif. That
 
 <script type="text/javascript" src="/assets/js/vendor/regl-2.0.1.min.js"></script>
 {%- include slider.html -%}
