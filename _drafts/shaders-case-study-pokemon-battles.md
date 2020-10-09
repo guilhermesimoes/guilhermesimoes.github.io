@@ -9,22 +9,26 @@ image:
   ratio:  ratio-game-boy
 ---
 
-Remember the Pokémon games? I sure do! By looking at the gif above I can even hear the sound a trainer makes when he spots you, and hear the battle chiptune beginning.
+Remember the Pokémon games? I sure do! Just by looking at the gif above I can hear the sound a trainer makes when he spots you, and hear the battle chiptune beginning.
 
-A while ago I watched a video that explained [how to use shaders to recreate the battle transitions seen in Pokémon] and other RPGs and I was **hooked**! I know next to nothing about game development but I knew I wanted to play with shaders just to see what I could do.
+A while ago I watched a video that explained [how to use shaders to recreate the battle transitions seen in Pokémon] and other RPGs and I was **hooked**! I know next to nothing about game development but I knew I wanted to play with shaders and see what I could do.
 
-Last time I wrote about OpenGL I explained how to correctly render a texture using [regl], so I won't go over that again. I'll use the same vertex shader I used previously to render textures and then apply different fragment shaders to achieve these transitions:
+Last time I wrote about OpenGL I explained how to render a texture using [regl], so I won't go over that again. I'll use the same vertex shader I used before to render textures and then apply different fragment shaders to achieve these transitions:
 
 {toc}
 
-All of them follow the same strategy. They paint a texture according to a value called `cutoff`, like this:
+All of them follow this strategy:
+
 ```
-result = calculateSomethingByLookingAtCoordinates(pixel)
+result = doMathWithCoordinates(pixel)
 if result < cutoff
-  renderBlack
+  paintBlack
 else
-  renderTexture
+  paintColorFromTexture
 ```
+
+A value called `cutoff` determines how far along the animation is.
+As the `cutoff` increases, so does the number of pixels that enter the first condition branch, and so the more pixels are painted black.
 
 In the UI slider you'll see throughout this post the `cutoff` goes from 0 to 100 but this value is scaled down so that inside each shader it goes from 0 to 1.
 
@@ -44,10 +48,8 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-Here we are just checking the pixel's x coordinate against the cutoff value.
+Pretty simple. Each pixel's `x` coordinate (which goes from 0 to 1) is compared to the `cutoff`.
 This kind of wipe was used prominently in the Star Wars films.
-
-As the cutoff value increases, so do the number of pixels that
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/2-yellow-pikachu.png" markdown="1">
@@ -66,7 +68,7 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-Here we are doing something similar to the previous shader. We're just checking the pixel's y coordinate against the cutoff value.
+Same thing as the previous shader but now each pixel's `y` coordinate is compared against the `cutoff`.
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/3-gold-grass.png" markdown="1">
@@ -85,7 +87,14 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-asd asd
+A little more complicated now. First, the image is centered in clip space with the `- 0.5`. Then the image is multiplied by `2` so that it covers the entire screen. Then `abs` is used to get the absolute value of all coordinates. Whenever you see an `abs` call, think of folding a piece of paper in 4:
+
+<img src="/assets/images/folding-paper-in-42.png" />
+
+All quadrants of the image now go from 0 to 1 whereas in uv space they went from 0 to 0.5 and 0.5 to 1, vertically and horizontally.
+
+Finally, each manipulated pixel's `y` coordinate is compared with the `cutoff`. If the condition was `y < cutoff` the black area would expand from the middle of the screen. By changing the condition to `y > 1 - cutoff`, the black area expands from the top and the bottom.
+
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/4-gold-gyarados.png" markdown="1">
@@ -136,11 +145,15 @@ float getAngle(vec2 p){
   return PI;
 }
 
+float quarterCircumference = 2.0 * PI * 1.0 / 4.0;
+float rightAngle = radians(90.0);
 void main() {
-  float quarterCircumference = 0.5 * PI * cutoff;
-  vec2 p = vec2(cos(quarterCircumference), sin(quarterCircumference));
+  vec2 p = vec2(
+    cos(quarterCircumference * cutoff),
+    sin(quarterCircumference * cutoff)
+  );
   float cutoffAngle = getAngle(p);
-  float pAngle = mod(getAngle(uv - 0.5), radians(90.0));
+  float pAngle = mod(getAngle(uv - 0.5), rightAngle);
   if (pAngle < cutoffAngle) {
     gl_FragColor = vec4(0, 0, 0, 1);
   } else {
@@ -151,7 +164,7 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-The concept for this one was simple. Make the cutoff value travel along a quarter circle. If the angle between a point and one of its quadrants' axis is smaller than this cutoff, paint it black.
+The concept for this transition was simple. Make the `cutoff` travel along a quarter circle. If the angle between a point and one of its quadrants' axis is smaller than this cutoff, paint it black.
 
 It got complex _fast_. How do I calculate the perimeter of a circle? Right, 2πr. Oh, but there's no π constant in WebGL, I need to define it. How do I compute the angle between a point (x, y) and the positive x axis? [`atan`]. Oh, but I need it to be an angle between 0 and 2π. [`atan2`]. Oh, but there's no `atan2` in WebGL, I need to write it. And on and on.
 
@@ -163,10 +176,10 @@ Finally, for **_some_** reason the animation is going in a clockwise direction w
 # That's All Folks
 
 ```cpp
-float radius = sqrt(2.0);
+float maxRadius = sqrt(0.5 * 0.5 + 0.5 * 0.5);
 void main() {
-  float distanceMiddle = length(uv - 0.5) * 2.0;
-  float radiusCutoff = (1.0 - cutoff) * radius;
+  float distanceMiddle = length(uv - 0.5);
+  float radiusCutoff = (1.0 - cutoff) * maxRadius;
   if (distanceMiddle < radiusCutoff) {
     gl_FragColor = texture2D(texture, uv);
   } else {
@@ -177,11 +190,16 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-measure the distance of each pixel to the center
-Looney Tunes
+The idea for this transition was to measure the distance of each pixel to the center, and make the `cutoff` go from the maximum distance to the center to `0`.
+
+Here I use the tricks I learned before. `- 0.5` to center the image in clip space. `length` to calculate the length of the vector. I also precomputed the maximum radius so that it was not repeated for every pixel.
+
+Such a cool effect, with only 10 lines of code!
 </div>
 
-notice I did not implement the animation see in the gif
+<hr />
+
+You may have noticed I did not implement the animation seen in the inicial gif.
 that will be done in the next post
 
 <script type="text/javascript" src="/assets/js/vendor/regl-2.0.1.min.js"></script>
