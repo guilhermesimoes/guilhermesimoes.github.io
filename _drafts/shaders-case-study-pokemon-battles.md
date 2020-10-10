@@ -113,7 +113,9 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-Here we mix with white.
+This transition uses OpenGL's [`mix`] function. This function linearly interpolates between two values using the following equation:
+
+In this case, `mix` interpolates between the texture color and the white color. It "mixes" the two colors,
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/rival-cave.png" markdown="1">
@@ -204,9 +206,10 @@ You may have noticed I did not implement the animation seen in the initial gif. 
 
 
 [how to use shaders to recreate the battle transitions seen in Pokémon]: https://www.youtube.com/watch?v=LnAoD7hgDxw
-[Last time I wrote about WebGL]: 2020-10-06-regl-rendering-a-texture.md
+[Last time I wrote about WebGL]: 2020-10-05-regl-rendering-a-texture.md
 [regl]: https://regl.party/
-[the same vertex shader I used before]: 2020-10-06-regl-rendering-a-texture.md#vertex-shader
+[the same vertex shader I used before]: 2020-10-05-regl-rendering-a-texture.md#vertex-shader
+[`mix`]: https://thebookofshaders.com/glossary/?search=mix
 [`atan`]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
 [`atan2`]: https://en.wikipedia.org/wiki/Atan2
 [shadertoy]: https://www.shadertoy.com/
