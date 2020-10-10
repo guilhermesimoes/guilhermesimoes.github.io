@@ -7,6 +7,8 @@ image:
   path:   /assets/images/i-like-shorts2.gif
   alt:    "Gif from Pokémon Red, where a trainer challenges the main player and says 'I like shorts'."
   ratio:  ratio-game-boy
+meta_image:
+  path:   /assets/images/pokemon-textures/gold-first-grass.png
 ---
 
 Remember the Pokémon games? I sure do! Just by looking at the gif above I can hear the sound a trainer makes when he spots you, and hear the battle chiptune beginning.
@@ -32,7 +34,7 @@ As the `cutoff` increases, so does the number of pixels that enter the first con
 
 In the UI slider you'll see throughout this post the `cutoff` goes from 0 to 100 but this value is scaled down so that inside each shader it goes from 0 to 1.
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/1-red-trainer.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/red-trainer.png" markdown="1">
 
 # Left To Right Wipe
 
@@ -52,7 +54,7 @@ Pretty simple. Each pixel's `x` coordinate (which goes from 0 to 1) is compared 
 This kind of wipe was used prominently in the Star Wars films.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/2-yellow-pikachu.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/yellow-pikachu.png" markdown="1">
 
 # Curtain Fall
 
@@ -71,7 +73,7 @@ void main() {
 Same thing as the previous shader but now each pixel's `y` coordinate is compared against the `cutoff`.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/3-gold-grass.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-bug-catching-grass.png" markdown="1">
 
 # Vertical Center Join
 
@@ -97,7 +99,7 @@ Finally, each manipulated pixel's `y` coordinate is compared with the `cutoff`. 
 
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/4-gold-gyarados.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-gyarados.png" markdown="1">
 
 # Fade To White
 
@@ -114,7 +116,7 @@ void main() {
 Here we mix with white.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/5-rival-cave.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/rival-cave.png" markdown="1">
 
 # Fade To Black
 
@@ -131,7 +133,7 @@ void main() {
 We multiply by the cutoff.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/elite5.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-elite5.png" markdown="1">
 
 # Cross Shape
 
@@ -167,7 +169,7 @@ It got complex _fast_. How do I calculate the perimeter of a circle? Right, 2πr
 In the end, for **_some_** reason the animation is going in a clockwise direction when it should be going in the opposite direction! I tried the same shader in a [shadertoy] and there it goes in an anticlockwise direction. I give up.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/6-ho-oh2.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-ho-oh.png" markdown="1">
 
 # That's All Folks
 
