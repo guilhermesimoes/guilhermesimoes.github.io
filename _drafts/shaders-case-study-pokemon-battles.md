@@ -113,12 +113,16 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-This transition uses OpenGL's [`mix`] function. This function linearly interpolates between two values using the following equation:
+This transition uses OpenGL's [`mix`] function. This function linearly interpolates between two values, which may sound complicated, but in fact is just this:
 
-In this case, `mix` interpolates between the texture color and the white color. It "mixes" the two colors,
+```
+mix(v1, v2, a) = v1 * (1 - a) + v2 * a
+```
+
+Basically a convenience function for something that anyone could write. In this case, `mix` interpolates between the texture color and the white color. It "mixes" the two colors, thus fading all the colors to white.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/rival-cave.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-rival-cave.png" markdown="1">
 
 # Fade To Black
 
@@ -132,7 +136,16 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-We multiply by the cutoff.
+To fade everything to black, `mix` could have been used as well:
+
+```
+vec4 white = vec4(0, 0, 0, 1);
+vec4 color = texture2D(texture, uv);
+gl_FragColor = mix(color, white, cutoff);
+```
+
+Notice, however, that in the `mix` equation `v2` would be equal to the color black, whose RBG values are all `0`. Since multiplying by `0` results in `0`, that part of the calculation is ignored. This means the code can be simplified
+
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-elite5.png" markdown="1">
