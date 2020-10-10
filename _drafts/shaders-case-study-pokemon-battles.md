@@ -96,7 +96,6 @@ A little more complicated now. First, the image is centered in clip space with t
 All quadrants of the image now go from 0 to 1 whereas in uv space they went from 0 to 0.5 and 0.5 to 1, vertically and horizontally.
 
 Finally, each manipulated pixel's `y` coordinate is compared with the `cutoff`. If the condition was `y < cutoff` the black area would expand from the middle of the screen. By changing the condition to `y > 1 - cutoff`, the black area expands from the top and the bottom.
-
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-gyarados.png" markdown="1">
@@ -104,8 +103,8 @@ Finally, each manipulated pixel's `y` coordinate is compared with the `cutoff`. 
 # Fade To White
 
 ```cpp
+vec4 white = vec4(1, 1, 1, 1);
 void main() {
-  vec4 white = vec4(1, 1, 1, 1);
   vec4 color = texture2D(texture, uv);
   gl_FragColor = mix(color, white, cutoff);
 }
@@ -113,13 +112,13 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-This transition uses OpenGL's [`mix`] function. This function linearly interpolates between two values, which may sound complicated, but in fact is just this:
+This transition uses OpenGL's [`mix`] function, which linearly interpolates between two values. This may sound complicated, but in fact is just this:
 
 ```
 mix(v1, v2, a) = v1 * (1 - a) + v2 * a
 ```
 
-Basically a convenience function for something that anyone could write. In this case, `mix` interpolates between the texture color and the white color. It "mixes" the two colors, thus fading all the colors to white.
+Basically a convenience function for something that anyone could write. In this case, `mix` interpolates between the texture color and the white color. It progressively "mixes" the two colors as the `cutoff` increases, thus fading everything to white.
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-rival-cave.png" markdown="1">
@@ -136,16 +135,15 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-To fade everything to black, `mix` could have been used as well:
+To fade everything to black, `mix` would also work:
 
 ```
-vec4 white = vec4(0, 0, 0, 1);
+vec4 black = vec4(0, 0, 0, 1);
 vec4 color = texture2D(texture, uv);
-gl_FragColor = mix(color, white, cutoff);
+gl_FragColor = mix(color, black, cutoff);
 ```
 
-Notice, however, that in the `mix` equation `v2` would be equal to the color black, whose RBG values are all `0`. Since multiplying by `0` results in `0`, that part of the calculation is ignored. This means the code can be simplified
-
+Notice, however, that in the `mix` equation `v2` would be equal to the color black, whose RBG values are all 0. Since multiplying by 0 is equal to 0 that part of the equation can be ignored. The code can be simplified to just multiplying the texture color by `1 - cutoff`.
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-elite5.png" markdown="1">
