@@ -203,16 +203,16 @@ void main() {
 
 Here each pixel's distance to the center (or "radius") is measured and compared against the `cutoff`. The `cutoff` travels from the maximum distance possible (one of the corners) to `0`.
 
-First, this maximum distance to the center is precomputed so that this is not repeated for every pixel. Then `- 0.5` centers the image in clip space. `length` calculates the distance of each pixel to the center. Finally, that distance is compared with the `cutoff`.
+First, this maximum distance to the center is precomputed so that it is not repeated for every pixel. `- 0.5` centers the image in clip space. `length` calculates the distance of each pixel to the center. Finally, that distance is compared with the `cutoff`.
 
 If the condition was `dist < cutoff` the black circle would expand from the middle of the screen. By changing the condition to `dist > 1 - cutoff`, the black circle collapses into the middle.
 </div>
 
 <hr />
 
-OpenGL (and WebGL, and regl) are powerful technologies that make it possible to achieve very cool effects, with only 10 or so lines of code!
+OpenGL (and WebGL, and regl) are powerful technologies that make it possible to achieve very cool effects, with only a few lines of code!
 
-You may have noticed though that I did not implement the animation seen in the initial gif. That one is a little too hard to implement with only code. It is much easier to implement using a gradient texture, which is what I'll explore in a future post.
+Some things are still a bit too hard to do using only code though. For example, the transition seen in the initial gif is much easier to implement using a gradient texture. I'll explore this in a future post.
 
 <script type="text/javascript" src="/assets/js/vendor/regl-2.0.1.min.js"></script>
 {%- include slider.html -%}
