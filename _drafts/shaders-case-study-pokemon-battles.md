@@ -50,7 +50,7 @@ void main() {
 
 <div>{%- include canvas-playground.html -%}</div>
 
-Pretty simple. Each pixel's `x` coordinate (which goes from 0 to 1) is compared to the `cutoff`. The more the `cutoff` increases the more black pixels appear.
+Pretty simple. Each pixel's `x` coordinate (which goes from 0 to 1) is compared with the `cutoff`. The more the `cutoff` increases the more black pixels appear.
 This kind of wipe was used prominently in the Star Wars films.
 </div>
 
@@ -143,12 +143,12 @@ vec4 color = texture2D(texture, uv);
 gl_FragColor = mix(color, black, cutoff);
 ```
 
-Notice, however, that in the `mix` equation `v2` would be equal to the color black, whose RBG values are all 0. Since multiplying by 0 is equal to 0 that part of the equation can be ignored. The code can be simplified to just multiplying the texture color by `1 - cutoff`.
+Notice, however, that in the `mix` equation the second parameter — `v2` — would be equal to the color black, whose RBG values are all 0. Since multiplying by 0 is equal to 0 that part of the equation can be ignored. The code can be simplified to just multiplying the texture color by `1 - cutoff`.
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-elite5.png" markdown="1">
 
-# Cross Shape
+# Spinning Pizza Slices
 
 ```cpp
 #define PI 3.1415926538
@@ -191,26 +191,28 @@ float maxRadius = sqrt(0.5 * 0.5 + 0.5 * 0.5);
 void main() {
   float distanceMiddle = length(uv - 0.5);
   float radiusCutoff = (1.0 - cutoff) * maxRadius;
-  if (distanceMiddle < radiusCutoff) {
-    gl_FragColor = texture2D(texture, uv);
-  } else {
+  if (distanceMiddle > radiusCutoff) {
     gl_FragColor = vec4(0, 0, 0, 1);
+  } else {
+    gl_FragColor = texture2D(texture, uv);
   }
 }
 ```
 
 <div>{%- include canvas-playground.html -%}</div>
 
-The idea for this transition was to measure the distance of each pixel to the center, and make the `cutoff` go from the maximum distance to the center to `0`.
+Here each pixel's distance to the center (or "radius") is measured and compared against the `cutoff`. The `cutoff` travels from the maximum distance possible (one of the corners) to `0`.
 
-Here I use the tricks I learned before. `- 0.5` to center the image in clip space. `length` to calculate the length of the vector. I also precompute the maximum radius so that it is not repeated for every pixel.
+First, this maximum distance to the center is precomputed so that this is not repeated for every pixel. Then `- 0.5` centers the image in clip space. `length` calculates the distance of each pixel to the center. Finally, that distance is compared with the `cutoff`.
 
-Such a cool effect, with only 10 lines of code!
+If the condition was `dist < cutoff` the black circle would expand from the middle of the screen. By changing the condition to `dist > 1 - cutoff`, the black circle collapses into the middle.
 </div>
 
 <hr />
 
-You may have noticed I did not implement the animation seen in the initial gif. That
+OpenGL (and WebGL, and regl) are powerful technologies that make it possible to achieve very cool effects, with only 10 or so lines of code!
+
+You may have noticed though that I did not implement the animation seen in the initial gif. That one is a little too hard to implement with only code. It is much easier to implement using a gradient texture, which is what I'll explore in a future post.
 
 <script type="text/javascript" src="/assets/js/vendor/regl-2.0.1.min.js"></script>
 {%- include slider.html -%}
@@ -224,7 +226,3 @@ You may have noticed I did not implement the animation seen in the initial gif. 
 [`atan`]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
 [`atan2`]: https://en.wikipedia.org/wiki/Atan2
 [shadertoy]: https://www.shadertoy.com/
-
-https://www.shadertoy.com/view/MdySWD
-
-https://barcinolechiguino.github.io/Camera-Transitions-Research/
