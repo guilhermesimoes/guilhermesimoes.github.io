@@ -4,7 +4,7 @@ title:    <span class='nowrap'>Shaders Case Study:</span> <span class='nowrap'>P
 subtitle: "Gotta shade 'em all"
 date:     2020-10-06 00:16:53 +0100
 image:
-  path:   /assets/images/i-like-shorts2.gif
+  path:   /assets/images/i-like-shorts.gif
   alt:    "Gif from Pokémon Red, where a trainer challenges the main player and says 'I like shorts'."
   ratio:  ratio-game-boy
 meta_image:
