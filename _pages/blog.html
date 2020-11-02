@@ -11,10 +11,12 @@ header_title: Blog
   <table>
     <tbody>
       {% for post in site.posts %}
-        <tr>
-          <td class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</td>
-          <td><a href="{{ post.url | relative_url }}">{{ post.title | strip_html }}</a></td>
-        </tr>
+        {%- if post.hidden != true -%}
+          <tr>
+            <td class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</td>
+            <td><a href="{{ post.url | relative_url }}">{{ post.title | strip_html }}</a></td>
+          </tr>
+        {%- endif %}
       {% endfor %}
     </tbody>
   </table>
