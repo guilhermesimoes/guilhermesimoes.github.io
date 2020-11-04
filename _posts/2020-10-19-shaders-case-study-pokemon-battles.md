@@ -212,7 +212,7 @@ If the condition was `dist < cutoff` the black circle would expand from the midd
 
 OpenGL (and WebGL, and regl) are powerful technologies that make it possible to create very cool effects, with only a few lines of code!
 
-Some things are still a bit too hard to achieve using only code though. The transition seen in the initial gif is one such example. That effect is much easier to implement using a gradient texture, which I'll explore in a future post.
+Some things are still a bit too hard to achieve using only code though. The transition seen in the initial gif is one such example. That effect is much easier to implement using a gradient texture, which I explore in [part 2].
 
 <script type="text/javascript" src="/assets/js/vendor/regl-2.0.1.min.js"></script>
 {%- include slider.html -%}
@@ -227,3 +227,4 @@ Some things are still a bit too hard to achieve using only code though. The tran
 [`atan`]: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
 [`atan2`]: https://en.wikipedia.org/wiki/Atan2
 [shadertoy]: https://www.shadertoy.com/
+[part 2]: 2020-11-03-shaders-case-study-pokemon-battles-part-2.md
