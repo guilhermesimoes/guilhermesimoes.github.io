@@ -99,7 +99,7 @@ Here's where things start to get interesting.
 
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/red-blue.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-sudowoodo.png" markdown="1">
 
 # Chess, then Circles
 
@@ -109,7 +109,7 @@ Here's where things start to get interesting.
 
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-rival-6.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-sudowoodo.png" markdown="1">
 
 # Circles, Chess then Circles again
 
@@ -119,21 +119,11 @@ Here's where things start to get interesting.
 
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-ho-oh.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-elite-four-1.png" markdown="1">
 
 # Enclosing Triangles
 
 <img class="gradient" src="/assets/images/gradients/enclosing-triangles.png">
-
-<div>{%- include canvas-playground.html -%}</div>
-
-</div>
-
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-elite-four-1.png" markdown="1">
-
-# Horizontal Stripes
-
-<img class="gradient" src="/assets/images/gradients/horizontal-stripes.png">
 
 <div>{%- include canvas-playground.html -%}</div>
 
