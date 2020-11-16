@@ -9,6 +9,10 @@ hero_image:
   ratio:  ratio-game-boy
 image:
   path:   /assets/images/pokemon-textures/gold-bug-catching-grass.png
+scripts:
+  - vendor/regl-2.0.1.min.js
+  - vendor/d3-color+ease+timer+interpolate+dispatch+selection+transition.min.js
+  - slider.js
 ---
 
 In [part 1] I created various transitions using different fragment shaders. These shaders used geometry formulas to calculate when each pixel should be hidden. While this made it possible to create some very cool animations, the math got complicated quickly.
@@ -172,7 +176,6 @@ The shader uses the same [uv coordinates] to get both the gradient value and the
 
 The bottom line is: it's much easier to create animations using textures than with code. Creating some of these textures isn't easy though. We're kind of moving the complexity around. But once you get the hang of it, the advantages are plenty.
 
-<script type="text/javascript" src="/assets/js/vendor/regl-2.0.1.min.js"></script>
 {% include slider.html %}
 
 [part 1]: 2020-10-19-shaders-case-study-pokemon-battles.md

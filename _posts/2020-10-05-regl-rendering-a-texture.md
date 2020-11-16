@@ -5,6 +5,8 @@ subtitle: "If you're new to WebGL, give regl a try."
 date:     2020-10-05 23:51:29 +0100
 image:
   path:   /assets/images/pokemon-textures/crystal-pokemon-snorlax.png
+scripts:
+  - vendor/regl-2.0.1.min.js
 ---
 
 I'm pretty new to vector graphics. I tried playing with WebGL for a bit but... WebGL is _hard, man_. [This post] explains it better than I can. Luckily, searching for [npm packages tagged with "WebGL"] yielded a very interesting library: [regl]. regl abstracts WebGL with a simple, intuitive API, somewhat [inspired by React]. Right up my alley.
@@ -107,8 +109,6 @@ And there it is! Finally, in all its glory.
 </div>
 
 </div>
-
-<script type="text/javascript" src="/assets/js/vendor/regl-2.0.1.min.js"></script>
 
 [This post]: https://ivan.sanchezortega.es:444/devel/2019/02/14/a-rant-about-webgl-frameworks.html#a-rant-about-the-webgl-api
 [npm packages tagged with "WebGL"]: https://www.npmjs.com/search?q=keywords:webgl

@@ -9,6 +9,10 @@ hero_image:
   ratio:  ratio-game-boy
 image:
   path:   /assets/images/pokemon-textures/gold-first-grass.png
+scripts:
+  - vendor/regl-2.0.1.min.js
+  - vendor/d3-color+ease+timer+interpolate+dispatch+selection+transition.min.js
+  - slider.js
 ---
 
 Remember the Pokémon games? I sure do! Just by looking at the gif above I can hear the sound a trainer makes when he spots you, and hear the battle chiptune beginning.
@@ -214,7 +218,6 @@ OpenGL (and WebGL, and regl) are powerful technologies that make it possible to 
 
 Some things are still a bit too hard to achieve using only code though. The transition seen in the initial gif is one such example. That effect is much easier to implement using a gradient texture, which I explore in [part 2].
 
-<script type="text/javascript" src="/assets/js/vendor/regl-2.0.1.min.js"></script>
 {% include slider.html %}
 
 [how to use shaders to recreate the battle transitions seen in Pokémon]: https://www.youtube.com/watch?v=LnAoD7hgDxw
