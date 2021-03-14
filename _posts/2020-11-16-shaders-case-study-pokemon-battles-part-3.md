@@ -23,47 +23,44 @@ In [part 2] I created various transitions using different gradient textures, whi
 Let's go then.
 
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-battle-tower.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/red-barrel.png" markdown="1">
 
 # Horizontal Stripes
 <img class="gradient" src="/assets/images/gradients/stripes-horizontal.png" alt="">
 {% include canvas-playground.html -%}
 
-This transition looks bla bla
-
 </div>
 
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-battle-tower.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/red-cinnabar.png" markdown="1">
 
 # Vertical Stripes
 <img class="gradient" src="/assets/images/gradients/stripes-vertical.png" alt="">
 {% include canvas-playground.html -%}
-
-This transition looks bla bla
-
 </div>
 
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-battle-tower.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/red-gym-4-celadon.png" markdown="1">
 
 # Pixelated Radial Wipe
 <img class="gradient" src="/assets/images/gradients/wipe-radial-pixelated.png" alt="">
 {% include canvas-playground.html -%}
-
-This transition looks bla bla
-
 </div>
 
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-battle-tower.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/yellow-misty.png" markdown="1">
+
+# Pixelated Double Radial Wipe
+<img class="gradient" src="/assets/images/gradients/wipe-radial-double-pixelated.png" alt="">
+{% include canvas-playground.html -%}
+</div>
+
+
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/yellow-viridian-forest.png" markdown="1">
 
 # Outward Spiral
 <img class="gradient" src="/assets/images/gradients/wipe-radial-double-pixelated.png" alt="">
 {% include canvas-playground.html -%}
-
-This transition looks bla bla
-
 </div>
 
 <div class="fragment hidden" markdown="1">
@@ -84,7 +81,7 @@ void main() {
 
 <hr />
 
-Pretty cool, huh? If you check [the last two transitions of this video], you can see that there are some other effects
+Pretty cool, huh? If you check [the last two transitions of this video], you can see that there are some other amazing effects
 
 {% include slider.html %}
 

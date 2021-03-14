@@ -77,7 +77,7 @@ Once again the shader is the same; only the gradient changes. Look how easy it i
 </div>
 
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/yellow-misty.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-pokemon-gyarados.png" markdown="1">
 
 # Crashing Wave
 <img class="gradient" src="/assets/images/gradients/crashing-wave.png" alt="">

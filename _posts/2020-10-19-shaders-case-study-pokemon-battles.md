@@ -102,7 +102,7 @@ All quadrants of the image now go from 0 to 1 whereas in [uv space] they went fr
 Finally, each manipulated pixel's `y` coordinate is compared with the `cutoff`. If the condition was `y < cutoff` the black area would expand from the middle of the screen. By changing the condition to `y > 1 - cutoff`, the black area expands from the top and the bottom.
 </div>
 
-<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-pokemon-gyarados.png" markdown="1">
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-clefairy-dance.png" markdown="1">
 
 # Fade To White
 
