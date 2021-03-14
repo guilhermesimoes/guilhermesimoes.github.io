@@ -52,6 +52,7 @@
   &--h {
     width: 100%;
     justify-content: center;
+    align-items: start; // Fix for stretched image on mobile safari https://stackoverflow.com/q/57516373
   }
 
   &--v {
