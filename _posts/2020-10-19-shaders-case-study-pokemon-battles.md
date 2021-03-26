@@ -1,7 +1,7 @@
 ---
 layout:   post
 title:    <span class='nowrap'>Shaders Case Study:</span> <span class='nowrap'>Pokémon Battle Transitions</span>
-subtitle: "Gotta shade 'em all"
+subtitle: "Gotta shade 'em all!"
 date:     2020-10-19 22:00:37 +1000
 hero_image:
   path:   /assets/images/i-like-shorts.gif

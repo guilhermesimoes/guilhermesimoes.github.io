@@ -1,7 +1,7 @@
 ---
 layout:   post
 title:    "Using System Ruby"
-subtitle: "Use the Ruby you already have, without installing rvm or rbenv"
+subtitle: "Use the Ruby you already have, without installing rvm or rbenv."
 date:     2018-09-16 15:35:53 +0100
 ---
 I got a new computer for my new job in which, sadly, I won't have to use Ruby.
