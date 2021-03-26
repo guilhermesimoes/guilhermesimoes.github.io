@@ -154,3 +154,12 @@ iframe {
   border: solid 2px #eee;
   border-bottom: solid 2px #ccc;
 }
+
+
+
+/**
+ * Prevent Superscripts and Subscripts from affecting line-height
+ */
+sub, sup {
+  line-height: 0;
+}

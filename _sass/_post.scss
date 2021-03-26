@@ -51,4 +51,19 @@
   .gist .blob-num {
     vertical-align: initial;
   }
+
+  .footnotes {
+    padding-top: $spacing-unit / 2;
+    margin-top: $spacing-unit * 2;
+    border-top: 1px solid black;
+  }
+
+  .footnote {
+    padding-left: 0.5em;
+    counter-increment: footnote-count;
+
+    &::marker {
+      content: "[" counter(footnote-count) "]";
+    }
+  }
 }
