@@ -56,6 +56,11 @@
     padding-top: $spacing-unit / 2;
     margin-top: $spacing-unit * 2;
     border-top: 1px solid black;
+
+    :target {
+      /* @keyframes duration | easing-function | iteration-count | direction | name */
+      animation: 1s ease-in-out 2 alternate highlight;
+    }
   }
 
   .footnote {
@@ -65,5 +70,11 @@
     &::marker {
       content: "[" counter(footnote-count) "]";
     }
+  }
+}
+
+@keyframes highlight {
+  to {
+    background-color: #ffa;
   }
 }
