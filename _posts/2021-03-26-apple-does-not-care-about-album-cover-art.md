@@ -50,7 +50,7 @@ But why is "iPhone" written above the name of the song? What is the airplay icon
 What's more galling is that this is coming from the company that invented (or at least made popular) [Cover Flow].
 
 <figure class="centered centered--h">
-  <img src="/assets/images/coverflow-steve-jobs.png" alt="Photograph of Steve Jobs on a stage showcasing cover flow on an iPhone." />
+  <img class="coverflow-steve-jobs" src="/assets/images/coverflow-steve-jobs.png" alt="Photograph of Steve Jobs on a stage showcasing cover flow on an iPhone." />
 </figure>
 
 I'd be lying if I didn't admit that this wow factor was a key point in my decision to buy an iPod touch when it came out. Now, Cover Flow no longer exists and cover art has never been smaller.
