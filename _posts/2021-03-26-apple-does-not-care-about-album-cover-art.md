@@ -31,6 +31,22 @@ Oh, and if you pause the player the image gets even smaller:
 
 Why? So much creativity, imagination and artistry thrown in the bin for no good reason.
 
+One more example. This is my iPod Touch's lock screen:
+
+<figure class="centered centered--h">
+  <img class="iphone-screenshot" src="/assets/images/ipod-music-app-lock-screen.png" alt="Screenshot of the lock screen of an iPod Touch while music is playing. It's displaying the cover of the album 'Whatever People Say I Am, That's Who I'm Not', by The Artic Monkeys. The cover is filling the entire screen." />
+</figure>
+
+And this is my iPhone's:
+
+<figure class="centered centered--h">
+  <img class="iphone-screenshot" src="/assets/images/iphone-music-app-lock-screen.png" alt="Screenshot of the lock screen of an iPhone SE while music is playing. It's displaying a tiny, tiny cover of the album 'Whatever People Say I Am, That's Who I'm Not', by The Artic Monkeys. In the UI it's impossible to read the full name of the band or of the album." />
+</figure>
+
+I know that an iPhone is more than an iPod. Showing a customizable background in the lock screen is a plus for personalization and individuality. Showing the day of the month and of the week is useful. I get it.
+
+But why is "iPhone" written above the name of the song? What is the airplay icon doing there? Why can't I read the name of the band? Why can't I read the name of the song?! And why is the cover so, so small?
+
 What's more galling is that this is coming from the company that invented (or at least made popular) [Cover Flow].
 
 <figure class="centered centered--h">
