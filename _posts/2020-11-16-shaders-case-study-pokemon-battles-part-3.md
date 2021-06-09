@@ -37,6 +37,7 @@ Let's go then.
 # Vertical Stripes
 <img class="gradient" src="/assets/images/gradients/stripes-vertical.png" alt="">
 {% include canvas-playground.html -%}
+
 </div>
 
 
@@ -45,6 +46,7 @@ Let's go then.
 # Pixelated Radial Wipe
 <img class="gradient" src="/assets/images/gradients/wipe-radial-pixelated.png" alt="">
 {% include canvas-playground.html -%}
+
 </div>
 
 
@@ -53,8 +55,16 @@ Let's go then.
 # Pixelated Double Radial Wipe
 <img class="gradient" src="/assets/images/gradients/wipe-radial-double-pixelated.png" alt="">
 {% include canvas-playground.html -%}
+
 </div>
 
+
+<div class="scene" data-texture-src="/assets/images/pokemon-textures/yellow-viridian-forest.png" markdown="1">
+
+# Inward Spiral
+<img class="gradient" src="/assets/images/gradients/wipe-radial-double-pixelated.png" alt="">
+{% include canvas-playground.html -%}
+</div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/yellow-viridian-forest.png" markdown="1">
 
