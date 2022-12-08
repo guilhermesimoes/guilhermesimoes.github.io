@@ -15,10 +15,9 @@ async function setupScene(sceneEl) {
 
   var cutoff;
   var lastCutoff;
-  var animationDuration = 1500; // milliseconds
   var imagePromise = loadImage(sceneEl.getAttribute('data-texture-src'));
   var gradientEl = sceneEl.querySelector('.gradient');
-  var slider = new Slider(sceneEl.querySelector('.slider-container'), { animationDuration });
+  var slider = new Slider(sceneEl.querySelector('.slider-container'));
   var fragMain = document.querySelector('.fragment').textContent;
   var frag = createFragmentShader(fragMain);
   var maxSliderValue = parseFloat(slider.max);

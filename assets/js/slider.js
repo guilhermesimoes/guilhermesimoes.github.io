@@ -1,7 +1,7 @@
 class PlayPauseButton {
     constructor(el, onAction) {
       this.el = el;
-      this.animationDuration = 200;
+      this.animationDurationMs = 200;
       this.onAction = onAction;
       this.replaceUseWithPath();
       this.el.addEventListener('click', this.onClick.bind(this));
@@ -36,7 +36,7 @@ class PlayPauseButton {
       d3.select(this.pathEl)
           .attr("data-next-state", nextNextState)
           .transition()
-              .duration(this.animationDuration)
+              .duration(this.animationDurationMs)
               .attr("d", iconPath);
 
       return nextState;
@@ -44,9 +44,10 @@ class PlayPauseButton {
 };
 
 class Slider {
-  constructor(container, { animationDuration, fillMode = 'backwards' }) {
+  constructor(container, options) {
+    var options = Object.assign({ animationDurationMs: 1500, fillMode: 'backwards' }, options);
     this.prevTimestamp = 0;
-    this.fillMode = fillMode;
+    this.fillMode = options.fillMode;
     this.animationState = 'paused';
     this.display = container.querySelector('.display');
     this.input = container.querySelector('input');
@@ -54,20 +55,24 @@ class Slider {
     this.playPauseButton = new PlayPauseButton(button, this.onPlayPause.bind(this));
     this.input.addEventListener('input', this.onInputChange.bind(this));
 
-    this.step = this.max / animationDuration;
+    this.step = this.max / options.animationDurationMs;
     this.tick = this.tick.bind(this);
-    requestAnimationFrame(this.tick);
   }
 
   onPlayPause(state) {
     this.animationState = state;
-    if (state === 'playing' && this.value === this.max) {
-      this.value = 0;
+    if (state === 'playing') {
+      if (this.value === this.max) {
+        this.value = 0;
+      }
+
+      this.prevTimestamp = performance.now();
+      requestAnimationFrame(this.tick);
     }
   }
 
   onInputChange(event) {
-    this.display.textContent = event.target.value;
+    this.display.textContent = ~~event.target.value;
     if (this.animationState === 'playing') {
       this.animationState = this.playPauseButton.goToNextState();
     }
@@ -87,9 +92,9 @@ class Slider {
         }
         this.animationState = this.playPauseButton.goToNextState();
       }
+      this.prevTimestamp = timestamp;
+      requestAnimationFrame(this.tick);
     }
-    this.prevTimestamp = timestamp;
-    requestAnimationFrame(this.tick);
   }
 
   set value(val) {
