@@ -1,10 +1,43 @@
+class Transition {
+    constructor(duration, cb) {
+        this.fullDuration = duration;
+        this.cb = cb;
+        this.tick = this.tick.bind(this);
+    }
+
+    start() {
+        this.startTimestamp = performance.now();
+        if (this.progress === undefined) {
+            this.progress = 0;
+            this.duration = this.fullDuration;
+            requestAnimationFrame(this.tick);
+        } else {
+            this.duration = this.progress * this.fullDuration;
+            this.progress = 1 - this.progress;
+        }
+    }
+
+    tick(timestamp) {
+        // TODO instead of a linear transition, implement D3's default ease-cubic https://github.com/d3/d3-transition#transition_ease
+        var progressDuration = timestamp - this.startTimestamp;
+        this.progress = Math.max(Math.min(progressDuration / this.duration, 1), 0);
+
+        this.cb(this.progress);
+        if (this.progress < 1) {
+            requestAnimationFrame(this.tick);
+        } else {
+            this.progress = undefined;
+        }
+    }
+}
+
 class PlayPauseButton {
     constructor(el, onAction) {
       this.el = el;
-      this.animationDurationMs = 200;
       this.onAction = onAction;
       this.replaceUseWithPath();
       this.el.addEventListener('click', this.onClick.bind(this));
+      this.transition = new Transition(200, this.tick.bind(this));
     }
 
     replaceUseWithPath() {
@@ -28,18 +61,22 @@ class PlayPauseButton {
     }
 
     goToNextState() {
+      var iconPath = this.pathEl.getAttribute("d");
+
       var nextState = this.pathEl.getAttribute("data-next-state");
       var nextIconEl = document.querySelector(`[data-state="${nextState}"]`);
-      var iconPath = nextIconEl.getAttribute("d");
+      var nextIconPath = nextIconEl.getAttribute("d");
       var nextNextState = nextIconEl.getAttribute("data-next-state");
 
-      d3.select(this.pathEl)
-          .attr("data-next-state", nextNextState)
-          .transition()
-              .duration(this.animationDurationMs)
-              .attr("d", iconPath);
+      this.pathEl.setAttribute("data-next-state", nextNextState);
+      this.pathInterpolator = d3.interpolatePath(iconPath, nextIconPath);
+      this.transition.start();
 
       return nextState;
+    }
+
+    tick(progress) {
+      this.pathEl.setAttribute("d", this.pathInterpolator(progress));
     }
 };
 

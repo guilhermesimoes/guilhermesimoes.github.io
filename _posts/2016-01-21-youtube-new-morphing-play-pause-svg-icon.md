@@ -20,11 +20,11 @@ From my analysis it looks like YouTube is using [SMIL animations][1]. I could no
 
 3. Replace the `use` with the actual `path` when the page is loaded.
 
-4. Use [D3 transitions to morph][4] one `path` into the other when the button is clicked. Other SVG libraries like Snap.svg or Raphaël can also be used for this effect.
+4. Use [`d3-interpolate-path` to morph][4] one `path` into the other when the button is clicked. Other SVG libraries like D3, Snap.svg or Raphaël can also be used for this effect.
 
 Finally, it's important to point out that the number and order of the points of each `path` affect the way in which they morph into one another. If a `path` is drawn clockwise and another is drawn anticlockwise or if they are not drawn using the exact same number of points, animations between them will not look smooth. This is the reason the play button — a triangle — is drawn using 8 points instead of just 3. There's definitely more to be said on this subject.
 
 [1]: https://css-tricks.com/guide-svg-animations-smil/
 [2]: https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/5o0yiO440LM%5B1-25%5D
-[3]: https://codepen.io/chriscoyier/pen/Dqpib
-[4]: https://bl.ocks.org/mbostock/3081153
+[3]: https://codepen.io/chriscoyier/pen/BaxRaM
+[4]: https://github.com/pbeshai/d3-interpolate-path

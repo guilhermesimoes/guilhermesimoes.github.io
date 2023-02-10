@@ -11,7 +11,7 @@ image:
   path:   /assets/images/pokemon-textures/gold-first-grass.png
 scripts:
   - vendor/regl-2.0.1.min.js
-  - vendor/d3-color+ease+timer+interpolate+dispatch+selection+transition.min.js
+  - vendor/d3-interpolate-path.min.js
   - slider.js
 ---
 
