@@ -5,10 +5,10 @@ subtitle: "This bird likes to show-off!"
 date:     2020-04-12 17:03:49 +0100
 image:
   path:   /assets/images/peacock.png
+block:
+  path:   animated-nbc-peacock-logo.html
 adapted:
   publication: Block
-  url:    https://bl.ocks.org/guilhermesimoes/8496377c9df4e7162a03be8cc8ee1c06
-gist_id:  8496377c9df4e7162a03be8cc8ee1c06
 ---
 My attempt at animating NBC's peacock showing-off.
 

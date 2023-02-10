@@ -25,3 +25,12 @@ $duration: 0.3s;
     stroke-dasharray: 24 24;
   }
 }
+
+.new-tab-icon {
+  path {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}

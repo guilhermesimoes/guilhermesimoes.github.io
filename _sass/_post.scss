@@ -40,18 +40,6 @@
     display: none;
   }
 
-  .embedded-gist {
-    background-color: white;
-  }
-
-  .gist .blob-code, .gist .blob-num {
-    font-size: 0.8rem !important;
-  }
-
-  .gist .blob-num {
-    vertical-align: initial;
-  }
-
   .footnotes {
     padding-top: math.div($spacing-unit, 2);
     margin-top: $spacing-unit * 2;

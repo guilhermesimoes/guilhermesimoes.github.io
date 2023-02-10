@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.chart-container {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 15px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.chart-container .controls {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.chart path,
+.chart line,
+.chart rect {
+  shape-rendering: crispEdges;
+}
+
+.chart .axis path,
+.chart .axis line {
+  fill: none;
+  stroke: #000;
+}
+
+.chart .linear .point {
+  fill: steelblue;
+}
+
+.chart .pow .point {
+  fill: #CD4638;
+}
+</style>
+<body>
+
+<div class="chart-container js-chart-container">
+    <form class="controls">
+        Scale:
+        <label><input type="radio" name="x-scale" value="power2" checked>Power2</label>
+        <label><input type="radio" name="x-scale" value="linear">Linear</label>
+        <label><input type="radio" name="x-scale" value="sqrt">SquareRoot</label>
+        <label><input type="radio" name="x-scale" value="log2">Log2</label>
+        <label><input type="radio" name="x-scale" value="log10">Log10</label>
+    </form>
+    <svg class="chart js-chart"></svg>
+</div>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script type="text/javascript">
+"use strict";
+
+/* global d3, document */
+var chart = {
+  margin: { top: 0, right: 25, bottom: 0, left: 25 },
+
+  animationDuration: 400,
+
+  scales: {
+    power2: d3.scalePow().exponent(2),
+    linear: d3.scaleLinear(),
+    sqrt:   d3.scalePow().exponent(0.5),
+    log2:   d3.scaleLog().base(2),
+    log10:  d3.scaleLog().base(10)
+  },
+
+  init: function (options, data) {
+    this.el = d3.select(".js-chart")
+      .attr("viewBox", "0 0 " + options.width + " " + options.height);
+
+    this.width  = options.width - this.margin.left - this.margin.right;
+    this.height = options.height - this.margin.top - this.margin.bottom;
+
+    this.adaptScales();
+    this.setXScale();
+    this.draw(data);
+
+    d3.selectAll(".js-chart-container input").on("click", this.changeXScale.bind(this));
+  },
+
+  draw: function (data) {
+    var mainGroup, series;
+
+    mainGroup = this.el.append("g")
+      .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+
+    series = mainGroup.selectAll(".series").data(data)
+      .enter().append("g")
+        .attr("class", function (d) { return "series " + d.name; });
+
+    this.points = series.selectAll(".point").data(function (d) { return d.points; })
+      .enter().append("circle")
+        .attr("class", "point")
+        .attr("cx", this.xScale)
+        .attr("cy", this.height / 3)
+        .attr("r", 6);
+
+    this.points.append("title")
+      .text(String);
+
+    this.xAxis = d3.axisBottom()
+      .scale(this.xScale);
+
+    this.domXAxis = mainGroup.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + this.height / 2 + ")")
+      .call(this.xAxis);
+  },
+
+  redraw: function () {
+    this.domXAxis.transition()
+      .duration(this.animationDuration)
+      .call(this.xAxis.scale(this.xScale));
+    this.points.transition()
+      .duration(this.animationDuration)
+      .attr("cx", this.xScale);
+  },
+
+  adaptScales: function () {
+    Object.keys(this.scales).forEach(function (scaleType) {
+      this.scales[scaleType]
+        .domain([1, 1000])
+        .range([0, this.width]);
+    }, this);
+  },
+
+  changeXScale: function () {
+    this.setXScale();
+    this.redraw();
+  },
+
+  setXScale: function () {
+    var scaleType;
+
+    scaleType = d3.select(".js-chart-container input:checked").node().value;
+    this.xScale = this.scales[scaleType];
+  }
+};
+
+var options = {
+  width: 800,
+  height: 400
+};
+
+var data = [
+  {
+    name: "linear",
+    points: [300, 400, 500, 600]
+  },
+  {
+    name: "pow",
+    points: [1, 10, 100, 1000]
+  }
+];
+
+chart.init(options, data);
+
+</script>
+</body>

@@ -5,10 +5,10 @@ subtitle: "Avoid the mistake of using a linear scale with a circle radius."
 date:     2016-10-23 13:53:17 +0100
 image:
   path:   /assets/images/values-as-circles.png
+block:
+  path:   encoding-values-as-circles.html
 adapted:
   publication: Block
-  url:    https://bl.ocks.org/guilhermesimoes/e6356aa90a16163a6f917f53600a2b4a
-gist_id:  e6356aa90a16163a6f917f53600a2b4a
 ---
 This gist demonstrates why it's a mistake to linearly map a data value to a circle radius.
 

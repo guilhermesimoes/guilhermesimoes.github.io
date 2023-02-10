@@ -1,0 +1,15 @@
+.block-embed, .block-source {
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid $grey-color-light;
+}
+
+.block-embed + .open-new-tab-link .new-tab-icon {
+  width: 1.2rem;
+}
+
+.open-new-tab-link {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+}

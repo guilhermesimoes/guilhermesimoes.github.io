@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  flex: 1;
+  padding: 0;
+  height: 100%;
+  border: 0;
+  background-color: white;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+</style>
+<body>
+<div class="container">
+  <button class="button js-button">
+    <svg viewBox="0 0 36 36">
+      <defs>
+        <path id="pause-icon" data-state="playing" data-next-state="paused" d="M11,10 L17,10 L17,26 L11,26 M20,10 L26,10 L26,26 L20,26" />
+        <path id="play-icon" data-state="paused" data-next-state="playing" d="M11,10 L18,13.74 L18,22.28 L11,26 M18,13.74 L26,18 L26,18 L18,22.28" />
+      </defs>
+      <use xlink:href="#play-icon" />
+    </svg>
+  </button>
+</div>
+
+<script src="https://unpkg.com/d3-interpolate-path@2.3.0/build/d3-interpolate-path.js" integrity="sha512-/KgDI+uHyEILdOip4a2TTY6ErNAg/jJtTZ67hG450/jvgrZFKm9YkF/Q+mAIs6y7VTG+ODbACY4V4Dj4wM6SUg==" crossorigin="anonymous"></script>
+<script type="text/javascript">
+"use strict";
+
+/* global document */
+
+class Transition {
+  constructor(duration, cb) {
+    this.fullDuration = duration;
+    this.cb = cb;
+    this.tick = this.tick.bind(this);
+  }
+
+  start() {
+    this.startTimestamp = performance.now();
+    if (this.progress === undefined) {
+      this.progress = 0;
+      this.duration = this.fullDuration;
+      requestAnimationFrame(this.tick);
+    } else {
+      this.duration = this.progress * this.fullDuration;
+      this.progress = 1 - this.progress;
+    }
+  }
+
+  tick(timestamp) {
+    // TODO instead of a linear transition, implement D3's default ease-cubic https://github.com/d3/d3-transition#transition_ease
+    var progressDuration = timestamp - this.startTimestamp;
+    this.progress = Math.max(Math.min(progressDuration / this.duration, 1), 0);
+
+    this.cb(this.progress);
+    if (this.progress < 1) {
+      requestAnimationFrame(this.tick);
+    } else {
+      this.progress = undefined;
+    }
+  }
+}
+
+class PlayPauseButton {
+  constructor(el) {
+    this.el = el;
+    this.replaceUseWithPath();
+    this.el.addEventListener("click", this.goToNextState.bind(this));
+    this.transition = new Transition(300, this.tick.bind(this));
+  }
+
+  replaceUseWithPath() {
+    var useEl = this.el.querySelector("use");
+    var iconId = useEl.getAttribute("xlink:href");
+    var iconEl = this.el.querySelector(iconId);
+    var nextState = iconEl.getAttribute("data-next-state");
+    var iconPath = iconEl.getAttribute("d");
+
+    this.pathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    this.pathEl.setAttribute("data-next-state", nextState);
+    this.pathEl.setAttribute("d", iconPath);
+
+    var svgEl = this.el.querySelector("svg");
+    svgEl.replaceChild(this.pathEl, useEl);
+  }
+
+  goToNextState() {
+    var iconPath = this.pathEl.getAttribute("d");
+
+    var nextIconEl = this.getNextIcon();
+    var nextIconPath = nextIconEl.getAttribute("d");
+    var nextState = nextIconEl.getAttribute("data-next-state");
+
+    this.pathEl.setAttribute("data-next-state", nextState);
+    this.pathInterpolator = d3.interpolatePath(iconPath, nextIconPath);
+    this.transition.start();
+  }
+
+  getNextIcon() {
+    var nextState = this.pathEl.getAttribute("data-next-state");
+    return this.el.querySelector(`[data-state="${nextState}"]`);
+  }
+
+  tick(progress) {
+    this.pathEl.setAttribute("d", this.pathInterpolator(progress));
+  }
+};
+
+var playPauseButton = new PlayPauseButton(document.querySelector(".js-button"));
+</script>
+</body>

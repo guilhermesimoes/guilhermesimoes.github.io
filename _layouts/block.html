@@ -1,6 +1,8 @@
 ---
 layout: default
 ---
+
+{%- assign block_path = page.block.path | prepend: '/assets/blocks/' -%}
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <link itemprop="mainEntityOfPage" href="{{ page.url | absolute_url }}" />
 
@@ -9,7 +11,10 @@ layout: default
   </header>
 
   <div class="bleed mb-1">
-    {% include embedded-gist.html id=page.gist_id file="index.html" -%}
+    <div class="aspect-ratio-box ratio-16-9">
+      <iframe class="aspect-ratio-box-content block-embed" src="{{ block_path }}" sandbox="allow-scripts allow-forms" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+      <a href="{{ block_path }}" target="_blank" class="open-new-tab-link">{%- include icons/new-tab.svg -%}</a>
+    </div>
   </div>
 
   <div class="post-content wrapper mb-1" itemprop="articleBody">
@@ -17,7 +22,11 @@ layout: default
   </div>
 
   <div class="bleed mb-1">
-    {% gist page.gist_id index.html %}
+    <div class="block-source">
+      {% highlight html linenos %}
+        {%- root_include {{ block_path }} -%}
+      {% endhighlight %}
+    </div>
   </div>
 
   <div class="wrapper">

@@ -5,10 +5,10 @@ subtitle: "Use D3 transitions to morph one SVG path into another."
 date:     2016-01-21 23:43:57 +0100
 image:
   path:   /assets/images/play-button.png
+block:
+  path:   youtube-new-morphing-play-pause-svg-icon.html
 adapted:
   publication: Block
-  url:    https://bl.ocks.org/guilhermesimoes/fbe967d45ceeb350b765
-gist_id:  fbe967d45ceeb350b765
 ---
 As soon as I saw the new YouTube Player and its new morphing play/pause button, I wanted to understand how it was made and replicate it myself.
 

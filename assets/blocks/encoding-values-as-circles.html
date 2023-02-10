@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.chart-container {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 15px;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.chart .axis path,
+.chart .axis line {
+  fill: none;
+  stroke: none;
+}
+
+.chart .axis text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+.chart .linear-scale-value-radius {
+  fill: rgb(200, 70, 50);
+}
+
+.chart .linear-scale-value-area,
+.chart .linear-scale-sqrt-value-radius {
+  fill: rgb(160, 200, 80);
+}
+
+.chart .sqrt-scale-value-radius {
+  fill: rgb(70, 180, 130);
+}
+</style>
+<body>
+
+<div class="chart-container">
+  <svg class="chart js-chart"></svg>
+</div>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script type="text/javascript">
+"use strict";
+
+/* global d3, document */
+var Chart = function (selector, options) {
+  this.el = d3.select(selector)
+    .attr("viewBox", "0 0 " + options.width + " " + options.height);
+
+  this.width  = options.width - this.margin.left - this.margin.right;
+  this.height = options.height - this.margin.top - this.margin.bottom;
+
+  this.setScales();
+  this.setAxes();
+  this.setLayers();
+};
+
+Chart.prototype = {
+  margin: { top: 20, right: 40, bottom: 0, left: 100 },
+
+  scales: {},
+
+  axes: {},
+
+  layers: {},
+
+  setScales: function () {
+    this.scales.x = d3.scalePoint()
+      .range([0, this.width])
+      .padding(0.5)
+      .align(1);
+
+    this.scales.y = d3.scaleBand()
+      .range([0, this.height])
+      .paddingInner(0.3);
+  },
+
+  setAxes: function () {
+    this.axes.x = d3.axisTop()
+      .scale(this.scales.x);
+
+    this.axes.y = d3.axisRight()
+      .scale(this.scales.y);
+  },
+
+  setLayers: function () {
+    this.layers.main = this.el.append("g")
+      .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+  },
+
+  draw: function (data) {
+    var strategies;
+
+    strategies = [
+      {
+        desc: "linear scale value ↦ radius",
+        className: "linear-scale-value-radius",
+        scaleBuilder: this.buildLinearScaleValueToRadius.bind(this)
+      },
+      {
+        desc: "linear scale value ↦ area",
+        className: "linear-scale-value-area",
+        scaleBuilder: this.buildLinearScaleValueToArea.bind(this)
+      },
+      {
+        desc: "linear scale √value ↦ radius",
+        className: "linear-scale-sqrt-value-radius",
+        scaleBuilder: this.buildLinearScaleSqrtValueToRadius.bind(this)
+      },
+      {
+        desc: "sqrt scale value ↦ radius",
+        className: "sqrt-scale-value-radius",
+        scaleBuilder: this.buildSqrtScaleValueToRadius.bind(this)
+      }
+    ];
+
+    this.scales.x.domain(data);
+    this.scales.y.domain(strategies.map(function (strategy) {
+      return strategy.desc;
+    }));
+
+    strategies.forEach(function (strategy) {
+      this.drawCircles(strategy, data);
+    }, this);
+
+    this.drawAxes();
+  },
+
+  drawCircles: function (strategy, data) {
+    var scale, strategyLayer, circles;
+
+    scale = strategy.scaleBuilder(data);
+    strategyLayer = this.layers.main.append("g")
+        .attr("class", strategy.className)
+        .attr("transform", "translate(0," + this.scales.y(strategy.desc) + ")");
+
+    circles = strategyLayer.selectAll(".circle").data(data)
+      .enter().append("circle")
+        .attr("class", "circle")
+        .attr("cx", this.scales.x)
+        .attr("cy", this.scales.y.bandwidth() / 2)
+        .attr("r", scale);
+
+    circles.append("title")
+      .text(function (d) {
+        var radius, area;
+
+        radius = scale(d);
+        area = Math.PI * Math.pow(radius, 2);
+
+        return "Area: " + d3.format("r")(area);
+      });
+  },
+
+  buildLinearScaleValueToRadius: function (data) {
+    var maxValue, maxCircleRadius;
+
+    maxValue = d3.max(data);
+    maxCircleRadius = d3.min([this.scales.y.bandwidth(), this.scales.x.step()]) / 2;
+
+    return d3.scaleLinear()
+      .domain([0, maxValue])
+      .range([0, maxCircleRadius]);
+  },
+
+  buildLinearScaleValueToArea: function (data) {
+    var maxValue, maxCircleRadius, maxCircleArea, circleAreaScale;
+
+    maxValue = d3.max(data);
+    maxCircleRadius = d3.min([this.scales.y.bandwidth(), this.scales.x.step()]) / 2;
+    maxCircleArea = Math.PI * Math.pow(maxCircleRadius, 2);
+    circleAreaScale = d3.scaleLinear()
+      .domain([0, maxValue])
+      .range([0, maxCircleArea]);
+
+    return function circleRadius (d) {
+      var area;
+
+      area = circleAreaScale(d);
+      return Math.sqrt(area / Math.PI);
+    };
+  },
+
+  buildLinearScaleSqrtValueToRadius: function (data) {
+    var maxValue, maxCircleRadius, circleRadiusScale;
+
+    maxValue = Math.sqrt(d3.max(data));
+    maxCircleRadius = d3.min([this.scales.y.bandwidth(), this.scales.x.step()]) / 2;
+    circleRadiusScale = d3.scaleLinear()
+      .domain([0, maxValue])
+      .range([0, maxCircleRadius]);
+
+    return function circleRadius (d) {
+      return circleRadiusScale(Math.sqrt(d));
+    };
+  },
+
+  buildSqrtScaleValueToRadius: function (data) {
+    var maxValue, maxCircleRadius;
+
+    maxValue = d3.max(data);
+    maxCircleRadius = d3.min([this.scales.y.bandwidth(), this.scales.x.step()]) / 2;
+
+    return d3.scalePow().exponent(0.5)
+      .domain([0, maxValue])
+      .range([0, maxCircleRadius]);
+  },
+
+  drawAxes: function () {
+    this.layers.main.append("g")
+      .attr("class", "axis axis--x")
+      .call(this.axes.x);
+
+    this.layers.main.append("g")
+      .attr("class", "axis axis--y")
+      .attr("transform", "translate(-" + this.margin.left + ",0)")
+      .call(this.axes.y);
+  }
+};
+
+var options = {
+  width: 600,
+  height: 300
+};
+
+var chart = new Chart(".js-chart", options);
+chart.draw([10, 50, 100]);
+</script>
+</body>

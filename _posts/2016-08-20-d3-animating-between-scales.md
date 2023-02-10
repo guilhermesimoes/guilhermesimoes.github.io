@@ -5,10 +5,10 @@ subtitle: "See how the same data looks using different D3 scales."
 date:     2016-08-20 21:53:17 +0100
 image:
   path:   /assets/images/dots.png
+block:
+  path:   animating-between-scales.html
 adapted:
   publication: Block
-  url:    https://bl.ocks.org/guilhermesimoes/15ed216d14175d8165e6
-gist_id:  15ed216d14175d8165e6
 ---
 The purpose of this gist is two-fold:
 

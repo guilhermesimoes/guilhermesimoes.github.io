@@ -5,10 +5,10 @@ subtitle: "Confused by SVG's coordinate system origin being at the top-left corn
 date:     2015-04-15 23:54:20 +0100
 image:
   path:   /assets/images/bar.png
+block:
+  path:   animating-bars-going-down.html
 adapted:
   publication: Block
-  url:    https://bl.ocks.org/guilhermesimoes/be6b8be8a3e8dc2b70e2
-gist_id:  be6b8be8a3e8dc2b70e2
 ---
 One confusing aspect of animating bars (and working with SVG in general) is that the coordinate system origin is at the top-left corner, which means that `y` increases downwards.
 
