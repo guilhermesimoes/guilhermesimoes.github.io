@@ -3,7 +3,7 @@
 class RootInclude < Liquid::Tag
   def initialize(_tag_name, markup, _parse_context)
     super
-    @markup = markup
+    @markup = markup.strip
   end
 
   # @param context [Liquid::Context]
