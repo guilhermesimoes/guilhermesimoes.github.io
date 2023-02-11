@@ -45,8 +45,8 @@
 
   .imdb-link {
     display: inline-block;
-    padding: 0 $spacing-unit / 4;
-    margin-left: $spacing-unit / 8;
+    padding: 0 math.div($spacing-unit, 4);
+    margin-left: math.div($spacing-unit, 8);
   }
 
   .link-icon {

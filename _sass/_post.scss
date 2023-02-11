@@ -33,7 +33,7 @@
 
   .diamond-icon {
     width: 1rem;
-    margin: 0 $spacing-unit / 5;
+    margin: 0 math.div($spacing-unit, 5);
   }
 
   [itemprop="additionalName"] {
@@ -53,7 +53,7 @@
   }
 
   .footnotes {
-    padding-top: $spacing-unit / 2;
+    padding-top: math.div($spacing-unit, 2);
     margin-top: $spacing-unit * 2;
     border-top: 1px solid black;
 
