@@ -48,35 +48,49 @@ html, body {
 
 /* global document */
 
+// taken from https://github.com/chenglou/tween-functions/blob/master/index.js
+// t: current time, b: beginning value, _c: final value, d: total duration
+function easeInOutCubic(t, b, _c, d) {
+  var c = _c - b;
+  if ((t /= d / 2) < 1) {
+    return c / 2 * t * t * t + b;
+  } else {
+    return c / 2 * ((t -= 2) * t * t + 2) + b;
+  }
+}
+
+function clamp(val) {
+  return Math.max(Math.min(val, 1), 0);
+}
+
 class Transition {
-  constructor(duration, cb) {
-    this.fullDuration = duration;
+  constructor(duration, cb, easeFn) {
+    this.duration = duration;
     this.cb = cb;
+    this.easeFn = easeFn || easeInOutCubic;
     this.tick = this.tick.bind(this);
+    this.isRunning = false;
   }
 
   start() {
     this.startTimestamp = performance.now();
-    if (this.progress === undefined) {
-      this.progress = 0;
-      this.duration = this.fullDuration;
+    if (this.isRunning === false) {
+      this.isRunning = true;
       requestAnimationFrame(this.tick);
-    } else {
-      this.duration = this.progress * this.fullDuration;
-      this.progress = 1 - this.progress;
     }
   }
 
   tick(timestamp) {
-    // TODO instead of a linear transition, implement D3's default ease-cubic https://github.com/d3/d3-transition#transition_ease
-    var progressDuration = timestamp - this.startTimestamp;
-    this.progress = Math.max(Math.min(progressDuration / this.duration, 1), 0);
+    var timeElapsed = timestamp - this.startTimestamp;
+    var from = 0;
+    var to = 1;
 
+    this.progress = clamp(this.easeFn(timeElapsed, from, to, this.duration));
     this.cb(this.progress);
-    if (this.progress < 1) {
+    if (timeElapsed < this.duration) {
       requestAnimationFrame(this.tick);
     } else {
-      this.progress = undefined;
+      this.isRunning = false;
     }
   }
 }
@@ -86,7 +100,7 @@ class PlayPauseButton {
     this.el = el;
     this.replaceUseWithPath();
     this.el.addEventListener("click", this.goToNextState.bind(this));
-    this.transition = new Transition(300, this.tick.bind(this));
+    this.transition = new Transition(400, this.tick.bind(this));
   }
 
   replaceUseWithPath() {
