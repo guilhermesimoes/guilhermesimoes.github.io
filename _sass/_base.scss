@@ -11,6 +11,15 @@ dl, dd, ol, ul, figure {
 
 
 /**
+ * Sensible box model
+ */
+* {
+  box-sizing: border-box;
+}
+
+
+
+/**
  * Fluid typography
  */
 :root {
@@ -144,17 +153,6 @@ header, hgroup, main, menu, nav, section {
 
 article h1, aside h1, nav h1, section h1 {
   font-size: 1.5em;
-}
-
-
-
-/**
- * Widgets
- */
-iframe {
-  box-sizing: border-box;
-  border: solid 2px #eee;
-  border-bottom: solid 2px #ccc;
 }
 
 
