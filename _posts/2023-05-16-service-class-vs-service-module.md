@@ -9,7 +9,7 @@ image:
   alt:    "Drawing of two objects side by side: a dumbbell and a feather. One is heavy, the other is light."
 ---
 
-This is just a quick post to get this out of my system. I will further explore this subject in a follow-up post.
+This is just a quick post to get this out of my system. I explore this subject a little more in the follow-up post ["Classes Considered Harmful"].
 
 This is a very simple service class:
 
@@ -171,6 +171,7 @@ I plan to make a more compelling argument in a follow-up post. But I hope this i
 
 [^2]: There _are_ ways to minify private properties and methods (see Timokhov's [ts-transformer-minify-privates] and [ts-transformer-properties-rename], for example). But they are [fraught with peril].
 
+["Classes Considered Harmful"]: 2024-10-16-classes-considered-harmful.md
 [terser]: https://terser.org/
 [REPL]: https://try.terser.org/
 [ts-transformer-minify-privates]: https://github.com/timocov/ts-transformer-minify-privates
