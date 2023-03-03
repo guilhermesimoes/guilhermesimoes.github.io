@@ -99,20 +99,26 @@ a {
   }
 }
 
+$blockquote-border-width: 0.3em;
 
 /**
  * Blockquotes
  */
 blockquote {
   color: $quote-color;
-  border-left: 4px solid $quote-border-color;
-  padding-left: $spacing-unit;
+  border-left: $blockquote-border-width solid $quote-border-color;
+  padding-left: $spacing-unit - $blockquote-border-width;
   margin-left: -1 * $spacing-unit;
 
   p, ol {
     font-size: 1.125em;
     letter-spacing: -1px;
     font-style: italic;
+  }
+
+  > blockquote {
+    padding-left: math.div($spacing-unit, 2) - $blockquote-border-width;
+    margin-left: -1 * math.div($spacing-unit, 2);
   }
 
   > :last-child {

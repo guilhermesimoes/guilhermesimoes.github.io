@@ -9,7 +9,7 @@ image:
   alt:    "Drawing of two objects side by side: a dumbbell and a feather. One is heavy, the other is light."
 ---
 
-This is just a quick post to get this out of my system. I will further explore this subject in a follow-up post.
+This is just a quick post to get this out of my system. I further explore this subject in the follow-up post ["Classes Considered Harmful"].
 
 This is a very simple service class:
 
@@ -165,12 +165,13 @@ Let's encapsulate what we learned in a table format:
 
 \*Assuming only one method / function of the service is used
 
-I plan to make a more compelling argument in a follow-up post. But I hope this is enough to at least make you think about your own services.
+I believe I make a more compelling argument in the post ["Classes Considered Harmful"]. But I hope this is enough to at least make you think about your own services.
 
 [^1]: I used the [terser] minifier because its [REPL] is very easy to use and shows the total size of the code.
 
 [^2]: There _are_ ways to minify private properties and methods (see Timokhov's [ts-transformer-minify-privates] and [ts-transformer-properties-rename], for example). But they are [fraught with peril].
 
+["Classes Considered Harmful"]: 2025-11-23-classes-considered-harmful-when-authoring-a-js-lib.md
 [terser]: https://terser.org/
 [REPL]: https://try.terser.org/
 [ts-transformer-minify-privates]: https://github.com/timocov/ts-transformer-minify-privates
