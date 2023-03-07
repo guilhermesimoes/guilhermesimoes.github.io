@@ -1,18 +1,19 @@
-<div class="post-meta mt-3">
+<div class="post-meta">
   {%- if page.adapted -%}
-    <p>
-      {%- if page.adapted.publication == "Block" -%}
-        This text is an adaptation, originally written at <em>bl.ocks.org</em>.
-      {%- else -%}
-        This essay <a href="{{ page.adapted.url }}">previously appeared</a> in the <em>{{ page.adapted.publication }}</em>.
-      {%- endif -%}
-    </p>
+    {%- if page.adapted.publication == "Block" -%}
+      <div>This text is an adaptation, originally written at <em>bl.ocks.org</em>.</div>
+    {%- else -%}
+      <div>This essay <a href="{{ page.adapted.url }}">previously appeared</a> in the <em>{{ page.adapted.publication }}</em>.</div>
+    {%- endif -%}
   {%- endif -%}
-  <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-    {{ page.date | date: site.date_format }}
-  </time>
-  {%- include icons/diamond.svg -%}
-  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-    {%- include author.html -%}
-  </span>
+  {%- include edit-on-github.html -%}
+  <div class="author">
+    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+      {{ page.date | date: site.date_format }}
+    </time>
+    {%- include icons/diamond.svg -%}
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+      {%- include author.html -%}
+    </span>
+  </div>
 </div>
