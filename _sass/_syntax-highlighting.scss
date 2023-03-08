@@ -1,17 +1,45 @@
-/**
- * Syntax highlighting styles
- */
-.highlighter-rouge pre.highlight,
-code.highlighter-rouge {
+// Applies to both inline code and code blocks
+.highlighter-rouge {
+  font-size: 0.85em;
   border: 1px solid $grey-color-light;
   border-radius: 3px;
   background-color: rgba(27,31,35,0.05);
 }
 
-.highlight {
-  background: #fff;
+// Applies to code blocks
+div.highlighter-rouge {
+  overflow-x: auto;
   @extend %vertical-rhythm;
 
+  pre.highlight {
+    padding: 8px 12px;
+  }
+}
+
+// Applies to inline code
+code.highlighter-rouge {
+  padding: 0.15em 0.25em;
+}
+
+// Applies to huge code block with line numbers
+figure.highlight {
+  font-size: 0.85em;
+  overflow-x: auto;
+
+  .gutter, .code {
+    padding-left: math.div($spacing-unit, 2);
+  }
+
+  .lineno {
+    text-align: right;
+    user-select: none;
+  }
+}
+
+.highlight {
+  /**
+   * Syntax highlighting styles
+   */
   .hll { background-color: #ffffcc }
   .c { color: #8f5902; font-style: italic } /* Comment */
   .err { color: #a40000; border: 1px solid #ef2929 } /* Error */

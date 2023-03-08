@@ -49,7 +49,7 @@ body {
  * Set `margin-bottom` to maintain vertical rhythm
  */
 h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
+p, blockquote,
 ol, ul, dl, figure,
 %vertical-rhythm {
   margin-bottom: math.div($spacing-unit, 2);
@@ -125,20 +125,9 @@ blockquote {
 /**
  * Code formatting
  */
-code {
-  padding: 0.15em 0.25em;
-  font-size: 0.85em;
-}
-
-pre {
-  padding: 8px 12px;
-  overflow-x: auto;
-
-  > code {
-    border: 0;
-    padding-right: 0;
-    padding-left: 0;
-  }
+pre > code {
+  border: 0;
+  padding: 0;
 }
 
 
