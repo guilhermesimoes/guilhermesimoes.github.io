@@ -1,12 +1,12 @@
 .blog-index {
   td:first-child {
-    padding-right: math.div($spacing-unit, 4);
+    padding-right: math.div($spacing-unit, 2);
     white-space: nowrap;
   }
 
   td {
     padding: 0;
-    padding-bottom: math.div($spacing-unit, 4);
+    padding-bottom: math.div($spacing-unit, 2);
     vertical-align: super;
   }
 
@@ -16,7 +16,7 @@
 
   .rss-icon {
     display: inline-block;
-    margin-right: math.div($spacing-unit, 5);
+    margin-right: 0.4em;
     height: 1rem;
   }
 }

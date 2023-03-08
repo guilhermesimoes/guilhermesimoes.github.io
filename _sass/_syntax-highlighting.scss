@@ -27,7 +27,7 @@ figure.highlight {
   overflow-x: auto;
 
   .gutter, .code {
-    padding-left: math.div($spacing-unit, 2);
+    padding-left: $spacing-unit;
   }
 
   .lineno {

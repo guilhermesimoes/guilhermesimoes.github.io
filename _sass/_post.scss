@@ -13,7 +13,7 @@
   hr {
     box-sizing: border-box;
     width: 12em;
-    margin: ($spacing-unit + 0.5) auto;
+    margin: (2.5 * $spacing-unit) auto;
     height: 0;
     border-width: 1px 0 0 0;
     overflow: visible;
@@ -33,7 +33,7 @@
 
   .diamond-icon {
     width: 1rem;
-    margin: 0 math.div($spacing-unit, 5);
+    margin: 0 0.4em;
   }
 
   [itemprop="additionalName"] {

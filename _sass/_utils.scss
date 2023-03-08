@@ -2,8 +2,8 @@
   max-width: $content-width;
   margin-right: auto;
   margin-left: auto;
-  padding-right: math.div($spacing-unit, 2);
-  padding-left: math.div($spacing-unit, 2);
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
 }
 
 .clearfix::after {
@@ -39,11 +39,11 @@
 }
 
 .bleed {
-  max-width: $content-width + 6 * $spacing-unit;
+  max-width: $content-width + 12 * $spacing-unit;
   margin-right: auto;
   margin-left: auto;
-  padding-right: math.div($spacing-unit, 2);
-  padding-left: math.div($spacing-unit, 2);
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
 }
 
 .centered {
@@ -66,9 +66,5 @@
 }
 
 .mb-1 {
-  margin-bottom: math.div($spacing-unit, 2);
-}
-
-.mb-2 {
   margin-bottom: $spacing-unit;
 }
