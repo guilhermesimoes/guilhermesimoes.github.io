@@ -37,4 +37,6 @@ permalink: /offline/
   if (!navigator.onLine) {
     document.querySelectorAll('.haiku').forEach((haiku) => haiku.classList.toggle('hidden'));
   };
+
+  addEventListener('online', () => location.reload());
 </script>
