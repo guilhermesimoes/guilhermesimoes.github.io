@@ -4,10 +4,22 @@ permalink: /offline/
 ---
 
 <section class="page404 centered centered--h centered--v">
-  <div class="haiku">
+  <div class="haiku site-haiku">
     <p>Site offline, no more</p>
     <p>Connection lost in cyberspace</p>
     <p>Silent emptiness</p>
     {%- include icons/diamond.svg -%}
   </div>
+  <div class="haiku user-haiku hidden">
+    <p>User offline waits</p>
+    <p>Longing for the connection</p>
+    <p>Silent solitude</p>
+    {%- include icons/diamond.svg -%}
+  </div>
 </section>
+
+<script>
+  if (!navigator.onLine) {
+    document.querySelectorAll('.haiku').forEach((haiku) => haiku.classList.toggle('hidden'));
+  };
+</script>
