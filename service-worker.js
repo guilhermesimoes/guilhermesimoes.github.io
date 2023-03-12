@@ -2,7 +2,10 @@ var CACHE_NAME = 'v1';
 
 async function cacheResources(resources) {
   var cache = await caches.open(CACHE_NAME);
-  return cache.addAll(resources);
+  var promises = resources.map((resource) =>
+    fetch(resource).then(response => cache.put(resource, new Response(response.body)))
+  );
+  return Promise.all(promises);
 }
 
 function clearOldCaches() {
