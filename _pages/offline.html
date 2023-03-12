@@ -7,19 +7,28 @@ permalink: /offline/
 .hidden {
   display: none;
 }
+
+@keyframes fadein { to { opacity: 1; } }
+.p1, .p2, .p3, .diamond-icon {
+  opacity: 0;
+  animation: fadein 1.5s ease forwards;
+}
+.p2 { animation-delay: 1.5s; }
+.p3 { animation-delay: 3s; }
+.diamond-icon { animation-delay: 4.5s; }
 </style>
 
 <section class="page404 centered centered--h centered--v">
   <div class="haiku site-haiku">
-    <p>Site offline, no more</p>
-    <p>Connection lost in cyberspace</p>
-    <p>Silent emptiness</p>
+    <p class="p1">Site offline, alone</p>
+    <p class="p2">Connection lost to the void</p>
+    <p class="p3">Digital silence</p>
     {%- include icons/diamond.svg -%}
   </div>
   <div class="haiku user-haiku hidden">
-    <p>User offline waits</p>
-    <p>Longing for the connection</p>
-    <p>Silent solitude</p>
+    <p class="p1">User offline waits</p>
+    <p class="p2">Longing for a connection</p>
+    <p class="p3">Time to contemplate</p>
     {%- include icons/diamond.svg -%}
   </div>
 </section>

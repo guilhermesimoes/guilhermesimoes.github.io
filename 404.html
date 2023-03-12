@@ -2,11 +2,22 @@
 layout: default
 ---
 
+<style>
+@keyframes fadein { to { opacity: 1; } }
+.p1, .p2, .p3, .diamond-icon {
+  opacity: 0;
+  animation: fadein 1.5s ease forwards;
+}
+.p2 { animation-delay: 1.5s; }
+.p3 { animation-delay: 3s; }
+.diamond-icon { animation-delay: 4.5s; }
+</style>
+
 <section class="page404 centered centered--h centered--v">
   <div class="haiku">
-    <p>Error 404</p>
-    <p>The item you are seeking</p>
-    <p>Cannot be found here</p>
+    <p class="p1">Error 404</p>
+    <p class="p2">The item you are seeking</p>
+    <p class="p3">Cannot be found here</p>
     {%- include icons/diamond.svg -%}
   </div>
 </section>
