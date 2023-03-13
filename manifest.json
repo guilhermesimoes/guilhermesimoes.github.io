@@ -1,7 +1,7 @@
 {
     "name": "Guilherme Simoes",
     "short_name": "GS",
-    "start_url": "/",
+    "start_url": "/?homescreen",
     "icons": [
         {
             "src": "/assets/images/android-chrome-192x192.png",
