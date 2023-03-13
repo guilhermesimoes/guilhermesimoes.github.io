@@ -1,6 +1,7 @@
 {
     "name": "Guilherme Simoes",
     "short_name": "GS",
+    "start_url": "/",
     "icons": [
         {
             "src": "/assets/images/android-chrome-192x192.png",
@@ -15,5 +16,5 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "minimal-ui"
 }
