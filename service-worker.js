@@ -27,8 +27,8 @@ async function fetchOrGoToOfflinePage(fetchEvent) {
 
   // going somewhere?
   if (eventRequest.mode === 'navigate') {
-    var cache = await caches.open(CACHE_NAME);
-    return fetch(eventRequest).catch(() => cache.match('/offline'));
+    return fetch(eventRequest)
+      .catch(() => caches.match('/offline', { cacheName: CACHE_NAME }));
   }
   return fetch(eventRequest);
 }
