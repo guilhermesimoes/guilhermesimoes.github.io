@@ -11,14 +11,6 @@ $base-line-height: 1.5 !default;
 
 $spacing-unit:     1em !default;
 
-$text-color:       #111 !default;
-$background-color: #fdfdfd !default;
-$brand-color:      #1d6bd7 !default;
-
-$grey-color:       #6e6e6e !default;
-$grey-color-light: lighten($grey-color, 40%) !default;
-$grey-color-dark:  darken($grey-color, 25%) !default;
-
 // Width of the content area
 $content-width:    36em !default;
 
@@ -34,6 +26,7 @@ $desk:             56em !default;
 
 // Import partials.
 @import
+  "colors",
   "base",
   "layout",
   "utils",

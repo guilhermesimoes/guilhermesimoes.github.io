@@ -1,6 +1,6 @@
 .block-embed, .block-source {
-  background-color: white;
-  border: 1px solid $grey-color-light;
+  background-color: $embed-background-color;
+  border: 1px solid $embed-border-color;
 }
 
 .block-embed + .open-new-tab-link .new-tab-icon {

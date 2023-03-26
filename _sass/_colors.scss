@@ -1,0 +1,25 @@
+$grey-color:       #6e6e6e !default;
+$grey-color-light: lighten($grey-color, 40%) !default;
+
+$text-color:       #111 !default;
+$muted-text-color: $grey-color;
+$background-color: #fdfdfd !default;
+$brand-color:      #1d6bd7 !default;
+
+$quote-color: $grey-color;
+$quote-border-color: $grey-color-light;
+
+$large-quote-background-color: #f7f7f7;
+$large-quote-border-color: $grey-color-light;
+
+$code-block-background-color: #f2f2f2;
+$code-block-border-color: $grey-color-light;
+
+$embed-background-color: white;
+$embed-border-color: $grey-color-light;
+
+$header-background-color: #f7f7f7;
+$header-border-color: $grey-color-light;
+
+$footnotes-highlight-background-color: #ffa;
+$strike-through-color: #d73a49;
