@@ -18,9 +18,9 @@
     pointer-events: none;
 
     .line {
-      stroke-dasharray: 11;
-      stroke-dashoffset: 11;
       transition: stroke-dashoffset 250ms ease;
+      stroke-dasharray: 11.1;
+      stroke-dashoffset: 11.1;
     }
 
     .line--second {
@@ -50,5 +50,41 @@
     li:hover .imdb-link, .imdb-link:focus {
       opacity: 1;
     }
+  }
+}
+
+.bundle-size-reduction {
+  ul {
+    list-style: none !important;
+    margin-left: 0;
+
+    ul {
+      margin-left: 1em;
+    }
+  }
+
+  .list-item {
+    display: flex;
+    gap: 0 1em;
+    margin-bottom: 1em;
+
+    > div {
+      min-width: 0;
+    }
+
+    p {
+      align-self: center;
+    }
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  input[type="checkbox"] {
+    margin: 0;
+    width: 4em;
+    height: 4em;
+    cursor: pointer;
   }
 }

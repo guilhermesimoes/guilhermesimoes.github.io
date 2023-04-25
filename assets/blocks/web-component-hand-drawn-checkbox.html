@@ -49,12 +49,18 @@ template.innerHTML = `
       pointer-events: none;
       stroke-linecap: round;
       stroke-linejoin: round;
-      stroke-width: 0.5px;
+      stroke-width: 0.5;
+      overflow: visible;
     }
 
     :host .border {
       stroke: black;
       fill: white;
+    }
+
+    :host .line {
+      stroke-width: 0.7;
+      stroke: currentColor;
     }
 
     ::slotted(input) {
@@ -63,8 +69,8 @@ template.innerHTML = `
   </style>
   <svg viewbox='0 0 10 10'>
     <path class='border'></path>
-    <path class='line' stroke='currentColor'></path>
-    <path class='line' stroke='currentColor'></path>
+    <path class='line'></path>
+    <path class='line'></path>
   </svg>
   <slot></slot>
 `;
