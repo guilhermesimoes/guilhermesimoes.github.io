@@ -7,7 +7,7 @@ image:
   hero:   true
   path:   /assets/images/ship-by-king-carlos-I.png
   alt:    "A ship, hand-drawn by King Carlos I of Portugal."
-tags:     [Web, JavaScript, CSS]
+tags: [Web, JavaScript, CSS]
 ---
 
 I try to avoid making this blog be about adding features to the blog, but I recently implemented a [dark mode] and hit a few snags that I felt might be worth talking about.
