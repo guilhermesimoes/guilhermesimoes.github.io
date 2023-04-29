@@ -3,7 +3,8 @@ layout:   post
 title:    "Typing a function wrapper with TypeScript"
 subtitle: "Things that are simple in JavaScript are a little trickier in TypeScript"
 date:     2022-01-21 19:17:43 +0000
-hero_image:
+image:
+  hero:   true
   path:   /assets/images/stopwatch.png
   alt:    "Drawing of a stopwatch."
 ---

@@ -3,7 +3,8 @@ layout:   post
 title:    "Inconsistent JavaScript imports can lead to duplicate code"
 subtitle: "Years later, we're still shooting ourselves in the foot with CommonJS."
 date:     2023-04-24 20:21:46 +0100
-hero_image:
+image:
+  hero:   true
   path:   /assets/images/cheetahs.png
   alt:    "Drawing of two cheetahs, side by side, almost as if one was a clone of the other."
 ---

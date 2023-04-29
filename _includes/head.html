@@ -20,9 +20,9 @@
   <link rel="manifest" href="/manifest.json">
 
   <meta property="og:title" content="{{ title }}" />
-  {%- assign image = page.image | default: page.hero_image -%}
+  {%- assign image = page.image.meta_path | default: page.image.path -%}
   {% if image -%}
-    <meta property="og:image" content="{{ image.path | absolute_url }}" />
+    <meta property="og:image" content="{{ image | absolute_url }}" />
   {% endif -%}
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:creator" content="{{ author.twitter_handle }}" />

@@ -3,7 +3,8 @@ layout:   post
 title:    "Using Bundler with System Ruby"
 subtitle: "Use Bundler with the Ruby you already have."
 date:     2019-12-15 14:22:13 +0100
-hero_image:
+image:
+  hero:   true
   path:   /assets/images/bundled-ruby.png
   alt:    "Drawing of a cardboard box with a ruby label on one side."
 ---

@@ -3,7 +3,8 @@ layout:   post
 title:    "Exporting the Version of an NPM package"
 subtitle: "Avoid importing directly from package.json!"
 date:     2022-12-18 14:25:14 +0000
-hero_image:
+image:
+  hero:   true
   path:   /assets/images/npm-package.png
   alt:    "Drawing of a mail package, with a 'this side up' arrow and a label with the text 'v1.0.0' on one side."
 ---

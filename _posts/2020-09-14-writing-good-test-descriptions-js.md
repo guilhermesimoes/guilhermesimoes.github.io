@@ -3,7 +3,8 @@ layout:   post
 title:    "Writing Good Test Descriptions"
 subtitle: "TL;DR test descriptions should form full sentences!"
 date:     2020-09-14 13:59:09 +0100
-hero_image:
+image:
+  hero:   true
   path:   /assets/images/watch-underwater.png
   alt:    "Drawing of a watch underwater, surrounded by fish."
 hidden:   true

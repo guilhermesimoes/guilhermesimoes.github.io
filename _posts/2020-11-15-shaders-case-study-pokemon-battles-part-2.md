@@ -3,12 +3,12 @@ layout:   post
 title:    <span class='nowrap'>Shaders Case Study:</span> <span class='nowrap'>Pokémon Battle Transitions</span> <span class='nowrap'>- Part II</span>
 subtitle: "Create animations using gradient textures instead of code."
 date:     2020-11-15 12:39:42 +1000
-hero_image:
+image:
+  hero:   true
   path:   /assets/images/cute-pokemon.gif
   alt:    "Gif from Pokémon Red, where a trainer challenges the main player and says 'My friend has a cute Pokémon. I'm so jealous!'."
   ratio:  ratio-game-boy
-image:
-  path:   /assets/images/pokemon-textures/gold-bug-catching-grass.png
+  meta_path: /assets/images/pokemon-textures/gold-bug-catching-grass.png
 scripts:
   - vendor/regl-2.0.1.min.js
   - vendor/d3-interpolate-path.min.js

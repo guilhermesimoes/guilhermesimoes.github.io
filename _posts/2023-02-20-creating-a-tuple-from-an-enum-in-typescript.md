@@ -3,7 +3,8 @@ layout:   post
 title:    "Creating a tuple from the values of an enum in TypeScript"
 subtitle: "Transforming a dictionary/object into an array in TypeScript"
 date:     2023-02-20 19:39:34 +0000
-hero_image:
+image:
+  hero:   true
   path:   /assets/images/dithered-record-player.png
   alt:    "A close-up of a vinyl turntable, playing a record."
 ---

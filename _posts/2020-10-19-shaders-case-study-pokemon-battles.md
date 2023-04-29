@@ -3,12 +3,12 @@ layout:   post
 title:    <span class='nowrap'>Shaders Case Study:</span> <span class='nowrap'>Pokémon Battle Transitions</span>
 subtitle: "Gotta shade 'em all!"
 date:     2020-10-19 22:00:37 +1000
-hero_image:
+image:
+  hero:   true
   path:   /assets/images/i-like-shorts.gif
   alt:    "Gif from Pokémon Red, where a trainer challenges the main player and says 'I like shorts'."
   ratio:  ratio-game-boy
-image:
-  path:   /assets/images/pokemon-textures/gold-first-grass.png
+  meta_path: /assets/images/pokemon-textures/gold-first-grass.png
 scripts:
   - vendor/regl-2.0.1.min.js
   - vendor/d3-interpolate-path.min.js

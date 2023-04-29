@@ -3,7 +3,8 @@ layout:   post
 title:    "This blog is now a Progressive Web App!"
 subtitle: "It's not really an App, but it's certainly Progressive Web!"
 date:     2023-03-13 19:43:56 +0000
-hero_image:
+image:
+  hero:   true
   path:   /assets/images/offline-dinosaur.png
   alt:    "The lonely T-Rex, the dinosaur from the Google Chrome game. This game starts when a user is offline and attempts to navigate to a web page on Google Chrome."
 ---
