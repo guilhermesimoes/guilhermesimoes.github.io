@@ -22,7 +22,7 @@ The occurrence of this mistake stems from 2 factors:
    When we look at a [waffle chart] we compare the number of squares of — or the area taken by — each category.
    Likewise, when we look at a [bubble chart] we compare the area of each bubble.
 
-   Perceptually, we understand the overall amount of “ink” or pixels to reflect the data value. <sup id="reverse-footnote-1"><a href="#footnote-1" rel="footnote">[1]</a></sup>
+   Perceptually, we understand the overall amount of “ink” or pixels to reflect the data value.<sup id="reverse-footnote-1"><a href="#footnote-1" rel="footnote">[1]</a></sup>
 
 2. Drawing an [SVG circle] requires a radius attribute.
 

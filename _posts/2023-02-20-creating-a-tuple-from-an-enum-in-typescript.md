@@ -32,7 +32,7 @@ The first one is that it doesn't actually work. Since we're using a `const enum`
 
 > 'const' enums can only be used in property or index access expressions or the right hand side of an import declaration or export assignment or type query.
 
-But let's say we don't care about the inlining of `const enum`s in our package <sup id="reverse-footnote-2"><a href="#footnote-2" rel="footnote">[2]</a></sup>. Let's say we use a regular `enum`. In that case `Object.values` does work but:
+But let's say we don't care about the inlining of `const enum`s in our package.<sup id="reverse-footnote-2"><a href="#footnote-2" rel="footnote">[2]</a></sup> Let's say we use a regular `enum`. In that case `Object.values` does work but:
 
 1. We're not actually exporting an array. Consumers of our package are bundling code that _at runtime_ creates an array from the `AudioFormat` object and then exports _that_.
 
@@ -46,7 +46,7 @@ All these disadvantages make this a no-go. The ideal solution would be to export
 export const ALL_AUDIO_FORMATS = [0, 1, 2, 3];
 ```
 
-To achieve this we could evaluate the TypeScript enum at build time and emit into the final JavaScript bundle this array <sup id="reverse-footnote-3"><a href="#footnote-3" rel="footnote">[3]</a></sup>. But this seems somewhat complex and we would likely need to add another dependency to our build toolchain.
+To achieve this we could evaluate the TypeScript enum at build time and emit into the final JavaScript bundle this array.<sup id="reverse-footnote-3"><a href="#footnote-3" rel="footnote">[3]</a></sup> But this seems somewhat complex and we would likely need to add another dependency to our build toolchain.
 
 There should be a way to use TypeScript types to guarantee that an array contains all the values of an enum. A naive approach would be the following:
 

@@ -7,7 +7,7 @@ image:
   path:   /assets/images/iphone-music-app-paused.png
 ---
 
-It doesn't. It's the only possible explanation. <sup id="reverse-footnote-1"><a href="#footnote-1" rel="footnote">[1]</a></sup>
+It doesn't. It's the only possible explanation.<sup id="reverse-footnote-1"><a href="#footnote-1" rel="footnote">[1]</a></sup>
 
 This is my iPod Touch from 2012:
 
@@ -21,7 +21,7 @@ This is my iPhone SE from 2016 (which I'm still rocking to this day):
   <img class="iphone-screenshot" src="/assets/images/iphone-music-app-playing.png" alt="Screenshot of the music app of an iPhone. It's displaying the same album cover. But the cover is not touching the edges of the screen." />
 </figure>
 
-Look at the size of this album cover. Why isn't it touching the edges of the screen? Why can't I read the album name from the cover? <sup id="reverse-footnote-2"><a href="#footnote-2" rel="footnote">[2]</a></sup> And why can't I see that [The Who took a piss on the monolith]?
+Look at the size of this album cover. Why isn't it touching the edges of the screen? Why can't I read the album name from the cover?<sup id="reverse-footnote-2"><a href="#footnote-2" rel="footnote">[2]</a></sup> And why can't I see that [The Who took a piss on the monolith]?
 
 Oh, and if you pause the player the image gets even smaller:
 
