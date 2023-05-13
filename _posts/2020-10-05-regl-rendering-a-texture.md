@@ -15,8 +15,6 @@ This post is not an attempt to explain how OpenGL or shaders work. There are [fa
 
 # Fragment Shader
 
-<div markdown="1" class="fragment-shader">
-
 ```cpp
 precision mediump float;
 uniform sampler2D texture;
@@ -26,8 +24,7 @@ void main() {
   gl_FragColor = texture2D(texture, uv);
 }
 ```
-
-</div>
+{: .fragment-shader}
 
 This shader is straightforward. It reads from a texture and sets each pixel color to the same value as the texture color.
 `precision` determines how much precision the GPU uses when calculating floats. Other possible values are `lowp` and `highp`.
@@ -37,8 +34,6 @@ This shader is straightforward. It reads from a texture and sets each pixel colo
 Rendering a texture was easy. Figuring out how to render it _where_ I wanted was the hard part. I expected this to work:
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-pokemon-snorlax.png" markdown="1">
-
-<div class="vertex-shader" markdown="1">
 
 ```cpp
 precision mediump float;
@@ -50,8 +45,7 @@ void main () {
   gl_Position = vec4(uv, 0, 1);
 }
 ```
-
-</div>
+{: .vertex-shader}
 
 But this is the result:
 
