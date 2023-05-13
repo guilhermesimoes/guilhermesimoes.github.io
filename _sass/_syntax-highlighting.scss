@@ -41,6 +41,12 @@ figure.highlight {
   }
 }
 
+.wrap-code pre {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
 .highlight {
   /**
    * Syntax highlighting styles
