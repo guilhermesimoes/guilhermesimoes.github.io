@@ -1,13 +1,13 @@
 /**
  * Posts
  */
-@function diamond($viewBox: '-8 -8 16 16') {
-  @return url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='#{$viewBox}'%3E%3Cpolygon points='0,-4 4,0 0,4 -4,0'/%3E%3C/svg%3E");
+@function diamond($viewBox: '-2 -2 4 4', $polygon: '0,-1 1,0 0,1 -1,0') {
+  @return url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='#{$viewBox}'%3E%3Cpolygon points='#{$polygon}'/%3E%3C/svg%3E");
 }
 
 .post {
   ul {
-    list-style-image: diamond($viewBox: '-10 -10 16 16');
+    list-style-image: diamond($viewBox: '-4 -5 8 8', $polygon: '0,-2 2,0 0,2 -2,0');
   }
 
   hr {
