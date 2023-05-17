@@ -22,7 +22,7 @@ The occurrence of this mistake stems from 2 factors:
    When we look at a [waffle chart] we compare the number of squares of — or the area taken by — each category.
    Likewise, when we look at a [bubble chart] we compare the area of each bubble.
 
-   Perceptually, we understand the overall amount of “ink” or pixels to reflect the data value.<sup id="reverse-footnote-1"><a href="#footnote-1" rel="footnote">[1]</a></sup>
+   Perceptually, we understand the overall amount of “ink” or pixels to reflect the data value.[^1]
 
 2. Drawing an [SVG circle] requires a radius attribute.
 
@@ -49,13 +49,7 @@ If we square-root our values `36` and `9` we get `6` and `3` — right back wher
 There are many ways to solve this issue in the D3 world, as evidenced in this gist, but the simplest one is to use a [square-root scale] to compute the appropriate circle radius.
 This way the area of each circle is proportional to the data value it's representing.
 
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="footnote-1">
-      <p markdown="1">This is why [the US presidential election map is not only unhelpful but actually misleading]. A more perceptive and informative alternative is a [tilegram or hexagon tile grid map]. <a href="#reverse-footnote-1" class="reversefootnote">↩</a></p>
-    </li>
-  </ol>
-</div>
+[^1]: This is why [the US presidential election map is not only unhelpful but actually misleading]. A more perceptive and informative alternative is a [tilegram or hexagon tile grid map].
 
 [bar chart]: https://observablehq.com/@d3/bar-chart
 [waffle chart]: https://bl.ocks.org/XavierGimenez/8070956

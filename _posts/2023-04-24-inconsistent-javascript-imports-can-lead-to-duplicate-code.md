@@ -43,7 +43,7 @@ internal-lib
     └── ...
 ```
 
-The `lib` folder contained code transpiled to CommonJS and the `es` folder contained the same code transpiled to a more modern JavaScript format.<sup id="reverse-footnote-1"><a href="#footnote-1" rel="footnote">[1]</a></sup>
+The `lib` folder contained code transpiled to CommonJS and the `es` folder contained the same code transpiled to a more modern JavaScript format.[^1]
 
 Then, internal-lib's `package.json` contained this:
 
@@ -52,9 +52,9 @@ Then, internal-lib's `package.json` contained this:
 "module": "./es/index.js",
 ```
 
-The [`main` field] is the primary entry point of the package, as per Node's original spec. This means that code like `require('@company/internal-lib')` actually imports the file `./lib/index.js`.<sup id="reverse-footnote-2"><a href="#footnote-2" rel="footnote">[2]</a></sup>
+The [`main` field] is the primary entry point of the package, as per Node's original spec. This means that code like `require('@company/internal-lib')` actually imports the file `./lib/index.js`.[^2]
 
-The `module` field is **_another_** entry point, this time used by most bundlers (such as [ESBuild][ESBuild module], [Rollup][Rollup module] and Webpack). For a long time, there were [multiple competing standards for JavaScript modules], such as CommonJS (CJS), AMD, and UMD. Ultimately, ECMAScript Modules (or ESM), in conjunction with the `module` field, was [the proposal that bundlers agreed on] because it lead to better code [tree-shaking].<sup id="reverse-footnote-3"><a href="#footnote-3" rel="footnote">[3]</a></sup>
+The `module` field is **_another_** entry point, this time used by most bundlers (such as [ESBuild][ESBuild module], [Rollup][Rollup module] and Webpack). For a long time, there were [multiple competing standards for JavaScript modules], such as CommonJS (CJS), AMD, and UMD. Ultimately, ECMAScript Modules (or ESM), in conjunction with the `module` field, was [the proposal that bundlers agreed on] because it lead to better code [tree-shaking].[^3]
 
 Finally, our project was using Webpack which prefers ESM and looks for that `module` field. So when we did a regular `import { x } from '@company/internal-lib'` Webpack went to the `es` folder. But when we did an `import { y } from '@company/internal-lib/lib/y'` we forced Webpack to go to the `lib` folder and load [CommonJS code which isn't easily tree-shakable].
 
@@ -64,19 +64,11 @@ That innocent-looking import was the cause of all the duplicate code. We fixed i
 
 Watch out for this in your codebase. Don't make the same mistake!
 
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="footnote-1">
-      <p markdown="1">To be honest this folder structure didn't make a lot of sense. A more sensible folder naming scheme would be something like `./dist/cjs/*` for code using the old CommonJS format and `./dist/esm/*` for the more modern format. <a href="#reverse-footnote-1" class="reversefootnote">↩</a></p>
-    </li>
-    <li class="footnote" id="footnote-2">
-      <p markdown="1">If a `main` field isn't specified inside the `package.json`, Node will try to import an `index.js` file located in the root folder of the required package. <a href="#reverse-footnote-2" class="reversefootnote">↩</a></p>
-    </li>
-    <li class="footnote" id="footnote-3">
-      <p markdown="1">Major bundlers adopted the `module` field proposal because it lead to better [tree-shaking]. Node did not accept this proposal and opted for `"type": "module"` instead. Also, there is now a third standard: the `exports` field, used by at least [Node][Node exports] and [Webpack][Webpack exports] ([XKCD 927] flashbacks). <a href="#reverse-footnote-3" class="reversefootnote">↩</a></p>
-    </li>
-  </ol>
-</div>
+[^1]: To be honest this folder structure didn't make a lot of sense. A more sensible folder naming scheme would be something like `./dist/cjs/*` for code using the old CommonJS format and `./dist/esm/*` for the more modern format.
+
+[^2]: If a `main` field isn't specified inside the `package.json`, Node will try to import an `index.js` file located in the root folder of the required package.
+
+[^3]: Major bundlers adopted the `module` field proposal because it lead to better [tree-shaking]. Node did not accept this proposal and opted for `"type": "module"` instead. Also, there is now a third standard: the `exports` field, used by at least [Node][Node exports] and [Webpack][Webpack exports] ([XKCD 927] flashbacks).
 
 [`main` field]: https://docs.npmjs.com/cli/v6/configuring-npm/package-json#main
 [multiple competing standards for JavaScript modules]: https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm

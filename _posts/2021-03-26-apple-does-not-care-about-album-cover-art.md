@@ -7,7 +7,7 @@ image:
   path:   /assets/images/iphone-music-app-paused.png
 ---
 
-It doesn't. It's the only possible explanation.<sup id="reverse-footnote-1"><a href="#footnote-1" rel="footnote">[1]</a></sup>
+It doesn't. It's the only possible explanation.[^1]
 
 This is my iPod Touch from 2012:
 
@@ -21,7 +21,7 @@ This is my iPhone SE from 2016 (which I'm still rocking to this day):
   <img class="iphone-screenshot" src="/assets/images/iphone-music-app-playing.png" alt="Screenshot of the music app of an iPhone. It's displaying the same album cover. But the cover is not touching the edges of the screen." />
 </figure>
 
-Look at the size of this album cover. Why isn't it touching the edges of the screen? Why can't I read the album name from the cover?<sup id="reverse-footnote-2"><a href="#footnote-2" rel="footnote">[2]</a></sup> And why can't I see that [The Who took a piss on the monolith]?
+Look at the size of this album cover. Why isn't it touching the edges of the screen? Why can't I read the album name from the cover?[^2] And why can't I see that [The Who took a piss on the monolith]?
 
 Oh, and if you pause the player the image gets even smaller:
 
@@ -57,16 +57,9 @@ I'd be lying if I didn't admit that this wow factor was a key point in my decisi
 
 The fact of the matter is that [nobody cares about cover art]. Including the company that invented the iPod.
 
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="footnote-1">
-      <p markdown="1">Well, another possible explanation is that [Apple doesn't care about small iPhones anymore]. It's probably both. <a href="#reverse-footnote-1" class="reversefootnote">↩</a></p>
-    </li>
-    <li class="footnote" id="footnote-2">
-      <p markdown="1">And why can't I see the album name anywhere on the UI? <a href="#reverse-footnote-2" class="reversefootnote">↩</a></p>
-    </li>
-  </ol>
-</div>
+[^1]: Well, another possible explanation is that [Apple doesn't care about small iPhones anymore]. It's probably both.
+
+[^2]: And why can't I see the album name anywhere on the UI?
 
 [The Who took a piss on the monolith]:https://en.wikipedia.org/wiki/Who%27s_Next#Cover_art
 [Cover Flow]: https://en.wikipedia.org/wiki/Cover_Flow

@@ -57,7 +57,7 @@ e.exports=JSON.parse('{"name":"my-package","version":"1.0.0",
 
 Notice how we're exposing our _entire_ `package.json`, scripts and dependencies included, to the outside world. This not only increases the bundle size of our application but it also makes us more vulnerable to [supply chain attacks through typosquatting] and other means.
 
-There are ways to make this work safely <sup id="reverse-footnote-1"><a href="#footnote-1" rel="footnote">[1]</a></sup>, but relying on a bundler's tree-shaking to hide sensitive data is just asking to get burned. We should always double-check (or test) the final transpilated code to make sure we're not making this blunder.
+There are ways to make this work safely [^1], but relying on a bundler's tree-shaking to hide sensitive data is just asking to get burned. We should always double-check (or test) the final transpilated code to make sure we're not making this blunder.
 
 An alternate and simple approach is to use an [npm hook] to run a command before our `build` script:
 
@@ -96,13 +96,7 @@ And finally change the npm hook:
 
 Not as cool as the one-liner but still easy to understand and gets the job done! And no need for external dependencies!
 
-<div class="footnotes">
-  <ol>
-    <li class="footnote" id="footnote-1">
-      <p markdown="1">TypeScript's compiler `tsc` + [resolveJsonModule] is one such way <a href="#reverse-footnote-1" class="reversefootnote">↩</a></p>
-    </li>
-  </ol>
-</div>
+[^1]: TypeScript's compiler `tsc` + [resolveJsonModule] is one such way.
 
 [supply chain attacks through typosquatting]: https://thehackernews.com/2022/03/over-200-malicious-npm-packages-caught.html
 [npm hook]: https://docs.npmjs.com/cli/v9/using-npm/scripts#pre--post-scripts

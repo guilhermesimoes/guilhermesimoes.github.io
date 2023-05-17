@@ -43,6 +43,16 @@
     display: none;
   }
 
+  .footnote {
+    &::before {
+      content: "["
+    }
+
+    &::after {
+      content: "]"
+    }
+  }
+
   .footnotes {
     padding-top: math.div($spacing-unit, 2);
     margin-top: $spacing-unit * 2;
@@ -54,7 +64,7 @@
     }
   }
 
-  .footnote {
+  [role="doc-endnote"] {
     padding-left: 0.5em;
     counter-increment: footnote-count;
 
