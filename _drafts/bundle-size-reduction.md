@@ -4,23 +4,64 @@ title:    "Comprehensive vs exhaustive list of stuff to do reduce JavaScript bun
 date:     2023-03-26 16:00:45 +0000
 ---
 
-This is a list of all the things I know, and all the things we've used to reduce the bundle size of the Peacock app.
+This is a list of all the things I know, and all the things we've used to reduce the bundle size of the Peacock app. If you pay attention, you'll see it all boils down to shipping less code.
 
-- load code depending on the device / target
-- code-splitting
-- eliminate dependencies (remove duplicate dependencies)
+- load code depending on the target (device / browser)
+- code-splitting (load page-specific code only when the user visits that page)
+- eliminate dependencies
+- remove duplicate dependencies
 - rewrite dependencies
-- make sure you're using inconsistent imports since they lead to duplicate code (link to previous post)
-- use plain ES modules that export functions instead of classes, since they are more tree-shakable (link to previous post)
-- tree-shaking https://webpack.js.org/guides/tree-shaking/
+- implement tree-shaking https://webpack.js.org/guides/tree-shaking/
   - avoid `import * as Something`
   - do all your dependencies have "sideEffects": false?
     https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free
     https://esbuild.github.io/api/#injecting-files-without-imports
     - do all the dependencies of your dependencies have "sideEffects": false?
+  - use plain ES modules that export functions instead of classes, since they are more tree-shakable (link to previous post)
+- make sure your imports are consistent since [inconsistent imports can lead to duplicate code]
 - Dead code elimination with environment variables https://www.debugbear.com/blog/reducing-javascript-bundle-size#dead-code-elimination-with-environment-variables
-- remove comments
-- use a minifier / compressor / uglifier
+- use language features that lead to smaller code. Example:
+
+  ```ts
+  const qs = {};
+  const params = { qs };
+  ```
+
+  vs
+
+  ```ts
+  const queryString = {};
+  const params = { qs: queryString };
+  ```
+
+  - You must be aware of what is your most important target (device / browser). For example:
+
+    ```ts
+  function someFn(params) {
+    return params.a + params.b;
+  }
+  ```
+
+  can be rewritten in a smaller format, like so:
+
+  ```ts
+  function someFn({ a, b }) {
+    return a + b;
+  }
+  ```
+
+  But when targetting an older device, that does not support [destructuring function parameters], the transpiled output is larger:
+
+  ```ts
+  function someFn(_a) {
+    var a = _a.a, b = _a.b;
+    return a + b;
+  }
+  ```
+
+  So maybe the original code is better. The final result changes though once we go into the next step.
+
+- use a minifier / compressor / uglifier to remove comments and reduce the size of the code.
   - go over _all_ the options of the minifier you're using. terser swc. Go beyond the tool's defaults. Read the documentation. Example, terser only does one pass. If you use `passes: 2` compressing takes longer but results can be better.
   - specify appropriate target
     - a === undefined || a === null ? 1 : a could be minified to a ?? 1
@@ -51,3 +92,8 @@ https://github.com/google/closure-compiler#readme
 
 https://madelinemiller.dev/blog/reduce-webapp-bundle-size/
 https://www.useanvil.com/blog/engineering/minimizing-webpack-bundle-size/
+
+
+
+[inconsistent imports can lead to duplicate code]: 2023-04-24-inconsistent-javascript-imports-can-lead-to-duplicate-code.md
+[destructuring function parameters]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#unpacking_properties_from_objects_passed_as_a_function_parameter
