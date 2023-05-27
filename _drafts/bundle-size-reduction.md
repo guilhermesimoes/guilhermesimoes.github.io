@@ -1,7 +1,7 @@
 ---
 layout:   post
 title:    "Comprehensive vs exhaustive list of stuff to do reduce JavaScript bundle size"
-date:     2023-03-26 16:00:45 +0000
+date:     2023-05-27 16:00:45 +0000
 ---
 
 This is a list of all the things I know, and all the things we've used to reduce the bundle size of the Peacock app. If you pay attention, you'll see it all boils down to shipping less code.
@@ -11,6 +11,10 @@ This is a list of all the things I know, and all the things we've used to reduce
 - eliminate dependencies
 - remove duplicate dependencies
 - rewrite dependencies
+- read your dependencies' documentation.
+
+  one possible solution for that would be to wrap any logging in something like __OCELLUS_DEBUG__ and that way, using a bundler, we can set these kinds of variables to false in production builds and reduce the total bundle size. It’s what Sentry does: https://docs.sentry.io/platforms/javascript/guides/react/configuration/tree-shaking/#list-of-flags
+
 - implement tree-shaking https://webpack.js.org/guides/tree-shaking/
   - avoid `import * as Something`
   - do all your dependencies have "sideEffects": false?
