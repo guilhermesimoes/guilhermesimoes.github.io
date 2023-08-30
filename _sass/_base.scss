@@ -109,7 +109,7 @@ blockquote {
   padding-left: $spacing-unit;
   margin-left: -1 * $spacing-unit;
 
-  p {
+  p, ol {
     font-size: 1.125em;
     letter-spacing: -1px;
     font-style: italic;
