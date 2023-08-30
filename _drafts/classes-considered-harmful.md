@@ -2,6 +2,10 @@
 layout:   post
 title:    "Classes considered harmful when authoring a JavaScript library"
 date:     2023-05-26 16:00:45 +0000
+image:
+  hero:   true
+  path:   /assets/images/class-system.png
+  alt:    "Drawing representing the class system of a feudal society. There's a king, a queen, a bishop, and some nobles."
 ---
 
 Let me start by saying I'm the biggest [OOP] fan. I love Ruby. I have a copy of [POODR] on my bookcase. I look back fondly to the times of `React.createClass({ mixins: [MyMixin], ... })`. I loathe HOCs and hooks and whatever patterns [FP] zealots have been trying to push for the past couple of years. However, classes and OOP may not always be the best approach.
@@ -21,6 +25,7 @@ The problem of using a class to build a service is that it causes the size of th
 That's right. If you import a class with 20 instance methods and you only use 1 method **everything gets bundled**.
 
 
+This is a recurring problem in the JavaScript ecosystem.
 
 https://marvinh.dev/blog/speeding-up-javascript-ecosystem-part-4/
 
@@ -34,79 +39,28 @@ A recurring problem in various js tools is that they are composed of a couple of
 
 What then happens is the following: new propositions are created, requirements change and new requirements are added. Then a new proposition needs a slightly different API, so they add a new instance method to that service class. Repeat ad eternum and we end up with 500 line classes filled with instance methods that cannot be tree-shaken that are bundled on all propositions, when each proposition only needs 1 method or 2 from that class. On Peacock, for example, we're bundling [this entire class](https://github.com/sky-uk/client-lib-js-ott/blob/master/packages/client-lib-js-ott-ovp/src/services/payments-manager/payments-manager-service.js) (as well as its dependencies) because we want to call this [one method](https://github.com/sky-uk/client-lib-js-ott/blob/master/packages/client-lib-js-ott-ovp/src/services/payments-manager/payments-manager-service.js#L388-L393).
 
-### Class properties and methods are not minifiable\*
 
-Minifiers / compressors such as [Terser] and [SWC] are unable to minify class properties and methods. In the following example:
+A user of your service API could do `Object.keys` of a class instance to get the names of its properties. A user could use `hasOwnProperty` to check if a class instance has a certain property. So minifiers can't tree-shake these willy-nilly.
 
-```js
-class Chirpy {
-  constructor(options) {
-    this._options = options;
-  }
 
-  chirp(message) {
-    return fetch(`${this._options.endpoint}/chirp`, {
-      method: 'POST',
-      body: JSON.stringify(message),
-    })
-    .then(this._parseJson);
-  }
+### Class properties and methods are not (easily) minifiable
 
-  _parseJson(response) {
-    return response.json();
-  }
-}
-```
+Just like a minifier cannot remove properties or methods,
 
-Neither `_options` nor `_parseJson` are minified. If a service class has lots of properties and private methods that could make quite the difference.
 
-Using TypeScript we could mark these as `private` and then, using a TS transformer[^1], we could prefix them with `_private_`. `_options` would be renamed to `_private_options` and `_parseJson` to `_private_parseJson`. Then we could configure our minifier (let's use `terser` here) to minify any properties with that prefix:
 
-```js
-mangle: {
-  properties: {
-    regex: /^_private_/,
-  }
-}
-```
+Rule of thumb: If your bundler emits more than 1 file, No.
 
-But there's a certain degree of risk in doing this. If the class extends another class, for example, there's no garantee that a minified property won't clobber a property from the parent. For instance:
+This means any bundling set up that involves code-splitting.
 
-```ts
-class Bar {
-  private prop1: string;
+It is not safe because, terser is run after the code is split into separate files. Thus, the property or method names across files will not be mangled consistently.
 
-  constructor(options) {
-    this.prop1 = options.prop1;
-  }
-}
 
-class Foo extends Bar {
-  private prop2: string;
 
-  constructor(options) {
-    super(options)
-    this.prop2 = options.prop2;
-  }
-}
-```
 
-It's possible that both `prop1` and `prop2` get minified to the same identifier:
+Minifiers / compressors such as [Terser] and [SWC] do not minify class properties and methods because it is dangerous to do so.
 
-```js
-class Bar {
-  constructor(options) {
-    this.x = options.x;
-  }
-}
-
-class Foo extends Bar {
-  constructor(options) {
-    super(options)
-    this.x = options.x;
-  }
-}
-```
+There are
 
 This outcome is grim.
 
