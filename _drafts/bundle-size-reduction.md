@@ -18,6 +18,7 @@ This is a list of all the things I know, and all the things we've used to reduce
   - ensure that your dependencies have `"sideEffects": false`
     https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free
     https://esbuild.github.io/api/#injecting-files-without-imports
+    https://bun.sh/blog/bun-bundler#tree-shaking
     - ensure that the dependencies of your dependencies have `"sideEffects": false`
   - use ECMAScript Modules (ESM) and not CommonJS
     - ensure that dependencies use ECMAScript Modules (ESM) and not CommonJS
