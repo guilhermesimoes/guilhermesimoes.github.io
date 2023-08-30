@@ -5,7 +5,7 @@ date:     2023-05-17 23:22:19 +0100
 image:
   hero:   true
   path:   /assets/images/giraffes.png
-  alt:    "Drawing of two giraffes, a large one - an adult - and a tinier version - a child."
+  alt:    "Drawing of two giraffes, a large one – an adult – and a tinier version – a child."
 ---
 
 [As we saw last time], minifiers / compressors such as [Terser] do not minify class properties and methods. If a class has lots of properties and methods, their names can make quite the difference in the total size of an app bundle. In the following example:
@@ -79,7 +79,7 @@ This kind of minification is dangerous, which is why it isn't enabled by default
 
 But there's a couple of things we can do to be extra-safe:
 
-1. We can use `{ nameCache: {} }` to cache mangled variable and property names across multiple invocations of Terser's `minify` [^1].
+1. We can use `{ nameCache: {} }` to cache mangled variable and property names across multiple invocations of Terser's `minify`.[^1]
 
 
 
