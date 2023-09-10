@@ -57,34 +57,35 @@ var animatedLineMask = document.querySelector("#animated-line-mask use");
 var lineLength = line.getTotalLength();
 var numDashes = 14;
 
-function animate(event) {
-  var button = event.target;
+function animate(el, transitionFn) {
+  el.style.strokeDashoffset = lineLength;
+  el.style.strokeDasharray = lineLength;
 
+  setTimeout(() => {
+    el.style["transition-duration"] = "3s";
+    el.style["transition-property"] = "stroke-dashoffset";
+    el.style["transition-timing-function"] = transitionFn;
+    el.style.strokeDashoffset = 0;
+  }, 10);
+}
+
+function handleClick(event) {
   reset();
 
+  var button = event.target;
   if (button.value === "continuous-line") {
-    animatedLine.style.strokeDashoffset = lineLength;
-    animatedLine.style.strokeDasharray = lineLength;
-    setTimeout(() => {
-      animatedLine.style["transition-duration"] = "3s";
-      animatedLine.style["transition-property"] = "stroke-dashoffset";
-      animatedLine.style.strokeDashoffset = 0;
-    }, 10);
-  } else { // "continuous-dashes" and "dash-by-dash"
+    animate(animatedLine, "ease");
+  } else {
+    // Make line dashed
     animatedLine.style.strokeDasharray = lineLength / (numDashes * 2 - 1);
 
-    animatedLineMask.style.strokeDashoffset = lineLength;
-    animatedLineMask.style.strokeDasharray = lineLength;
-    setTimeout(() => {
-      animatedLineMask.style["transition-duration"] = "3s";
-      animatedLineMask.style["transition-property"] = "stroke-dashoffset";
-
-      if (button.value === "dash-by-dash") {
-        animatedLineMask.style["transition-timing-function"] = `steps(${numDashes}, jump-start)`;
-      }
-
-      animatedLineMask.style.strokeDashoffset = 0;
-    }, 10);
+    var transitionFn;
+    if (button.value === "dash-by-dash") {
+      transitionFn = `steps(${numDashes}, jump-start)`;
+    } else {
+      transitionFn = "linear";
+    }
+    animate(animatedLineMask, transitionFn);
   }
 }
 
@@ -95,6 +96,6 @@ function reset() {
   animatedLineMask.style["transition-property"] = "none";
 }
 
-document.querySelector(".controls").addEventListener("click", animate);
+document.querySelector(".controls").addEventListener("click", handleClick);
 </script>
 </body>
