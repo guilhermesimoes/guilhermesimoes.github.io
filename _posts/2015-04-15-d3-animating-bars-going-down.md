@@ -16,6 +16,6 @@ One would expect that to animate a bar diminishing in size (“going down”) ch
 
 Another solution would be to surround the bar with a `clipPath` element and then transition the bar down. This way, everything on the inside of the clipping area is allowed to show through but everything on the outside is masked out.
 
-This other approach would only work for a simple bar chart though. For a [more complex, animated stacked chart][1], animating both `y` and `height` attributes is the only solution.
+This other approach would only work for a simple bar chart though. For a [more complex, animated stacked chart], animating both `y` and `height` attributes is the only solution.
 
-[1]: https://bl.ocks.org/guilhermesimoes/8913c15adf7dd2cab53a
+[more complex, animated stacked chart]: https://bl.ocks.org/guilhermesimoes/8913c15adf7dd2cab53a
