@@ -35,7 +35,10 @@ figure.highlight {
     padding-left: $spacing-unit;
   }
 
-  .lineno {
+  .gutter {
+    padding-right: $spacing-unit * 0.5;
+    border-right: 1px solid $muted-text-color;
+    color: $muted-text-color;
     text-align: right;
     user-select: none;
   }
