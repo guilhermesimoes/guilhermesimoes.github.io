@@ -34,9 +34,9 @@ else
 ```
 
 A value called `cutoff` determines how far along the animation is.
-As the `cutoff` increases, so does the number of pixels that enter the first condition branch and so the more pixels are painted black.
+As the `cutoff` increases, so does the number of pixels that enter the first condition branch and so the more pixels are painted black. In the UI sliders you'll see throughout this post the `cutoff` goes from 0 to 100 but this value is scaled down so that inside each shader it goes from 0 to 1.
 
-In the UI sliders you'll see throughout this post the `cutoff` goes from 0 to 100 but this value is scaled down so that inside each shader it goes from 0 to 1.
+All code blocks are editable. You can modify each example to see what happens. Give it a try!
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/red-girl-trainer.png" markdown="1">
 
@@ -51,6 +51,7 @@ void main() {
   }
 }
 ```
+{: spellcheck="false" contenteditable="true"}
 
 {% include canvas-playground.html %}
 
@@ -71,10 +72,13 @@ void main() {
   }
 }
 ```
+{: spellcheck="false" contenteditable="true"}
 
 {% include canvas-playground.html %}
 
 Same thing as the previous shader but now each pixel's `y` coordinate (which also goes from 0 to 1) is compared against the `cutoff`.
+
+You can get a new transition by combining the conditions of the first 2 examples (`uv.x < cutoff || uv.y < cutoff`). And replacing `||` with `&&` leads to another transition.
 </div>
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-bug-catching-grass.png" markdown="1">
@@ -90,6 +94,7 @@ void main() {
   }
 }
 ```
+{: spellcheck="false" contenteditable="true"}
 
 {% include canvas-playground.html %}
 
@@ -113,6 +118,7 @@ void main() {
   gl_FragColor = mix(color, white, cutoff);
 }
 ```
+{: spellcheck="false" contenteditable="true"}
 
 {% include canvas-playground.html %}
 
@@ -136,6 +142,7 @@ void main() {
   gl_FragColor = color;
 }
 ```
+{: spellcheck="false" contenteditable="true"}
 
 {% include canvas-playground.html %}
 
@@ -176,6 +183,7 @@ void main() {
   }
 }
 ```
+{: spellcheck="false" contenteditable="true"}
 
 {% include canvas-playground.html %}
 
@@ -195,13 +203,14 @@ float maxRadius = sqrt(0.5 * 0.5 + 0.5 * 0.5);
 void main() {
   float distanceMiddle = length(uv - 0.5);
   float radiusCutoff = (1.0 - cutoff) * maxRadius;
-  if (distanceMiddle >= radiusCutoff) {
-    gl_FragColor = vec4(0, 0, 0, 1);
-  } else {
+  if (distanceMiddle < radiusCutoff) {
     gl_FragColor = texture2D(texture, uv);
+  } else {
+    gl_FragColor = vec4(0, 0, 0, 1);
   }
 }
 ```
+{: spellcheck="false" contenteditable="true"}
 
 {% include canvas-playground.html %}
 
@@ -209,7 +218,7 @@ Here each pixel's distance to the center (or "radius") is measured and compared 
 
 First, this maximum distance to the center is precomputed so that it is not repeated for every pixel. `- 0.5` centers the image in clip space. `length` calculates the distance of each pixel to the center. Finally, that distance is compared with the `cutoff`.
 
-If the condition was `dist < cutoff` the black circle would expand from the middle of the screen. By changing the condition to `dist >= 1 - cutoff`, the black circle collapses into the middle.
+By doing `dist < (1.0 - cutoff) * maxRadius` the black circle collapses into the middle. If the condition was `dist > cutoff * maxRadius` the black circle would expand from the middle of the screen.
 </div>
 
 <hr />
