@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.controls {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+
+#line {
+  fill: none;
+  stroke-width: 4;
+}
+
+#animated-line {
+  stroke: currentColor;
+}
+
+#animated-line-mask {
+  stroke: white;
+}
+</style>
+<body>
+
+<form class="controls">
+  <label><button type="button" value="continuous-line">Continuous line</button></label>
+  <label><button type="button" value="continuous-dashes">Continuous dashes</button></label>
+  <label><button type="button" value="dash-by-dash">Dash by dash</button></label>
+</form>
+<svg viewBox="0 0 560 98">
+  <defs>
+    <path id="line" d="M108 10S-8 30 21 67c41 44 66-71 161-2 95 70 181-58 122-57-58 0-34 76 60 76 95 0 54-72 113-71s69 70 69 70" />
+    <mask id="animated-line-mask">
+      <use xlink:href="#line" />
+    </mask>
+  </defs>
+  <use xlink:href="#line" id="animated-line" mask="url(#animated-line-mask)" />
+</svg>
+
+<script type="text/javascript">
+"use strict";
+
+var line = document.querySelector("#line");
+var animatedLine = document.querySelector("#animated-line");
+var animatedLineMask = document.querySelector("#animated-line-mask use");
+var lineLength = line.getTotalLength();
+var numDashes = 14;
+
+function animate(event) {
+  var button = event.target;
+
+  reset();
+
+  if (button.value === "continuous-line") {
+    animatedLine.style.strokeDashoffset = lineLength;
+    animatedLine.style.strokeDasharray = lineLength;
+    setTimeout(() => {
+      animatedLine.style["transition-duration"] = "3s";
+      animatedLine.style["transition-property"] = "stroke-dashoffset";
+      animatedLine.style.strokeDashoffset = 0;
+    }, 10);
+  } else { // "continuous-dashes" and "dash-by-dash"
+    animatedLine.style.strokeDasharray = lineLength / (numDashes * 2 - 1);
+
+    animatedLineMask.style.strokeDashoffset = lineLength;
+    animatedLineMask.style.strokeDasharray = lineLength;
+    setTimeout(() => {
+      animatedLineMask.style["transition-duration"] = "3s";
+      animatedLineMask.style["transition-property"] = "stroke-dashoffset";
+
+      if (button.value === "dash-by-dash") {
+        animatedLineMask.style["transition-timing-function"] = `steps(${numDashes}, jump-start)`;
+      }
+
+      animatedLineMask.style.strokeDashoffset = 0;
+    }, 10);
+  }
+}
+
+function reset() {
+  animatedLine.removeAttribute("style");
+  animatedLineMask.removeAttribute("style");
+  animatedLine.style["transition-property"] = "none";
+  animatedLineMask.style["transition-property"] = "none";
+}
+
+document.querySelector(".controls").addEventListener("click", animate);
+</script>
+</body>

@@ -16,9 +16,9 @@ From my analysis it looks like YouTube is using [SMIL animations]. I could not g
 
 1. Define the icon `path` elements inside a `defs` element so that they are not drawn.
 
-2. Draw one icon by definining a `use` element whose `xlink:href` attribute points to one of the `path`s defined in the previous step. Simply [changing this attribute to point to the other icon is enough to swap them out], but this switch is not animated. To do that,
+2. Draw one icon by defining a `use` element whose `xlink:href` attribute points to one of the `path`s defined in the previous step. Simply [changing this attribute to point to the other icon is enough to swap them out], but this switch is not animated. To do that,
 
-3. Replace the `use` with the actual `path` when the page is loaded.
+3. Replace the [`use`] with the actual `path` when the page is loaded.
 
 4. Use [`d3-interpolate-path` to morph] one `path` into the other when the button is clicked. Other SVG libraries like D3, Snap.svg or Raphaël can also be used for this effect.
 
@@ -27,4 +27,5 @@ Finally, it's important to point out that the number and order of the points of 
 [SMIL animations]: https://css-tricks.com/guide-svg-animations-smil/
 [that they are deprecated and will be removed]: https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/5o0yiO440LM%5B1-25%5D
 [changing this attribute to point to the other icon is enough to swap them out]: https://codepen.io/chriscoyier/pen/BaxRaM
+[`use`]: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use
 [`d3-interpolate-path` to morph]: https://github.com/pbeshai/d3-interpolate-path
