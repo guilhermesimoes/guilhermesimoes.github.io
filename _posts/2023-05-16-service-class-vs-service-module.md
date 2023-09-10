@@ -161,6 +161,7 @@ Let's encapsulate what we learned in a table format:
 | initial        |  737 B |   692 B |
 | minified       |  482 B |   456 B |
 | tree-shaked\*  |  482 B |   261 B |
+{: .post-table .simple-centered-h }
 
 \*Assuming only one method / function of the service is used
 
