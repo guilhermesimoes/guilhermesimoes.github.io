@@ -92,7 +92,7 @@ function createDrawCommand(regl, frag, texture, gradient) {
   });
 }
 
-async function loadImage(imageUrl) {
+function loadImage(imageUrl) {
   var image = new Image();
   var imgLoadPromise = onload2promise(image);
   image.src = imageUrl;

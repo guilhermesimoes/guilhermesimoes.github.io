@@ -2,7 +2,9 @@ window.addEventListener('load', function onLoad() {
   Array.from(document.querySelectorAll('.scene')).forEach(setupScene);
 });
 
-async function setupScene(sceneEl) {
+var drawFns = [];
+
+async function setupScene(sceneEl, index) {
   var canvas = sceneEl.querySelector('canvas');
 
   if (!window.WebGLRenderingContext) {
@@ -17,20 +19,23 @@ async function setupScene(sceneEl) {
   var lastCutoff;
   var imagePromise = loadImage(sceneEl.getAttribute('data-texture-src'));
   var slider = new Slider(sceneEl.querySelector('.slider-container'));
-  var fragMain = sceneEl.querySelector('code').textContent;
-  var frag = createFragmentShader(fragMain);
   var maxSliderValue = parseFloat(slider.max);
   var gl = canvas.getContext('webgl');
   var regl = createREGL({ gl });
-
   var image = await imagePromise;
   var texture = regl.texture(image);
-  var drawScreen = createDrawCommand(regl, frag, texture);
+
+  var fragMainCodeEl = sceneEl.querySelector('[contenteditable="true"]');
+  fragMainCodeEl.addEventListener('blur', function onLoad() {
+    drawFns[index] = createDrawCommand(regl, texture, fragMainCodeEl.textContent);
+  });
+  drawFns[index] = createDrawCommand(regl, texture, fragMainCodeEl.textContent);
 
   regl.frame(() => {
     cutoff = slider.value;
     if (cutoff !== lastCutoff) {
       lastCutoff = cutoff;
+      var drawScreen = drawFns[index];
       drawScreen({ cutoff: cutoff / maxSliderValue });
     }
   });
@@ -46,7 +51,8 @@ function createFragmentShader(main) {
   `;
 }
 
-function createDrawCommand(regl, frag, texture) {
+function createDrawCommand(regl, texture, fragMain) {
+  var frag = createFragmentShader(fragMain);
   return regl({
     frag,
     vert: `
@@ -88,7 +94,7 @@ function createDrawCommand(regl, frag, texture) {
   });
 }
 
-async function loadImage(imageUrl) {
+function loadImage(imageUrl) {
   var image = new Image();
   var imgLoadPromise = onload2promise(image);
   image.src = imageUrl;
