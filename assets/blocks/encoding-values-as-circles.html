@@ -6,16 +6,10 @@ html, body {
   margin: 0;
 }
 
-.chart-container {
-  box-sizing: border-box;
-  height: 100%;
-  padding: 15px;
-}
-
 .chart {
   width: 100%;
   height: 100%;
-  overflow: visible;
+  display: block;
 }
 
 .chart .axis path,
@@ -44,9 +38,7 @@ html, body {
 </style>
 <body>
 
-<div class="chart-container">
-  <svg class="chart js-chart"></svg>
-</div>
+<svg class="chart js-chart"></svg>
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script type="text/javascript">
