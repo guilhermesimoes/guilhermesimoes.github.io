@@ -6,24 +6,17 @@ html, body {
   margin: 0;
 }
 
-.chart-container {
-  position: relative;
-  box-sizing: border-box;
-  height: 100%;
-  padding: 15px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.chart-container .controls {
+.controls {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 1em;
+  left: 1em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .chart {
   width: 100%;
   height: 100%;
-  overflow: visible;
+  display: block;
 }
 
 .chart path,
@@ -48,17 +41,15 @@ html, body {
 </style>
 <body>
 
-<div class="chart-container js-chart-container">
-    <form class="controls">
-        Scale:
-        <label><input type="radio" name="x-scale" value="power2" checked>Power2</label>
-        <label><input type="radio" name="x-scale" value="linear">Linear</label>
-        <label><input type="radio" name="x-scale" value="sqrt">SquareRoot</label>
-        <label><input type="radio" name="x-scale" value="log2">Log2</label>
-        <label><input type="radio" name="x-scale" value="log10">Log10</label>
-    </form>
-    <svg class="chart js-chart"></svg>
-</div>
+<form class="controls">
+  Scale:
+  <label><input type="radio" name="x-scale" value="power2" checked>Power2</label>
+  <label><input type="radio" name="x-scale" value="linear">Linear</label>
+  <label><input type="radio" name="x-scale" value="sqrt">SquareRoot</label>
+  <label><input type="radio" name="x-scale" value="log2">Log2</label>
+  <label><input type="radio" name="x-scale" value="log10">Log10</label>
+</form>
+<svg class="chart js-chart"></svg>
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script type="text/javascript">
@@ -89,7 +80,7 @@ var chart = {
     this.setXScale();
     this.draw(data);
 
-    d3.selectAll(".js-chart-container input").on("click", this.changeXScale.bind(this));
+    d3.selectAll(".controls input").on("click", this.changeXScale.bind(this));
   },
 
   draw: function (data) {
@@ -146,7 +137,7 @@ var chart = {
   setXScale: function () {
     var scaleType;
 
-    scaleType = d3.select(".js-chart-container input:checked").node().value;
+    scaleType = d3.select(".controls input:checked").node().value;
     this.xScale = this.scales[scaleType];
   }
 };

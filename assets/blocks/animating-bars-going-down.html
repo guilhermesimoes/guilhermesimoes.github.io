@@ -7,33 +7,31 @@ html, body {
 }
 
 .chart-container {
-  position: relative;
   box-sizing: border-box;
   height: 100%;
-  padding: 15px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 1em;
 }
 
 .controls {
   display: flex;
   flex-direction: column;
   position: absolute;
-  bottom: 15px;
-  left: 15px;
+  bottom: 1em;
+  left: 1em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 @media screen and (min-width: 310px) {
   .controls {
     display: block;
     bottom: initial;
-    top: 15px;
+    top: 1em;
   }
 }
 
 .chart {
   width: 100%;
   height: 100%;
-  overflow: visible;
 }
 
 .chart path,
@@ -53,13 +51,13 @@ html, body {
 </style>
 <body>
 
-<div class="chart-container js-chart-container">
-  <form class="controls js-controls">
-    <label><button type="button" value="height">Animate height</button></label>
-    <label><button type="button" value="y">Animate y</button></label>
-    <label><button type="button" value="both">Animate y and height</button></label>
-  </form>
-  <svg class="chart js-chart"></svg>
+<form class="controls">
+  <label><button type="button" value="height">Animate height</button></label>
+  <label><button type="button" value="y">Animate y</button></label>
+  <label><button type="button" value="both">Animate y and height</button></label>
+</form>
+<div class="chart-container">
+  <svg class="chart"></svg>
 </div>
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -75,7 +73,7 @@ var container = { width: 1000, height: 500 },
   barX = (width - barWidth) / 2,
   toggling = true;
 
-var svg = d3.select(".js-chart")
+var svg = d3.select(".chart")
   .attr("viewBox", "0 0 " + container.width + " " + container.height);
 
 var mainContainer = svg.append("g")
@@ -95,7 +93,7 @@ mainContainer.append("line")
   .attr("y1", height)
   .attr("y2", height);
 
-var buttons = d3.selectAll(".js-controls button");
+var buttons = d3.selectAll(".controls button");
 buttons.on("click", toggleBar);
 
 function toggleBar() {
