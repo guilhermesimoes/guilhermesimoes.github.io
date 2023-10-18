@@ -57,6 +57,26 @@ var animatedLineMask = document.querySelector("#animated-line-mask use");
 var lineLength = line.getTotalLength();
 var numDashes = 14;
 
+function handleClick(event) {
+  reset();
+
+  switch(event.target.value) {
+    case "continuous-line":
+      animate(animatedLine, "ease");
+      break;
+
+    case "continuous-dashes":
+      makeLineDashed();
+      animate(animatedLineMask, "linear");
+      break;
+
+    case "dash-by-dash":
+      makeLineDashed();
+      animate(animatedLineMask, `steps(${numDashes}, jump-start)`);
+      break;
+  }
+}
+
 function animate(el, transitionFn) {
   el.style.strokeDashoffset = lineLength;
   el.style.strokeDasharray = lineLength;
@@ -69,24 +89,8 @@ function animate(el, transitionFn) {
   }, 10);
 }
 
-function handleClick(event) {
-  reset();
-
-  var button = event.target;
-  if (button.value === "continuous-line") {
-    animate(animatedLine, "ease");
-  } else {
-    // Make line dashed
-    animatedLine.style.strokeDasharray = lineLength / (numDashes * 2 - 1);
-
-    var transitionFn;
-    if (button.value === "dash-by-dash") {
-      transitionFn = `steps(${numDashes}, jump-start)`;
-    } else {
-      transitionFn = "linear";
-    }
-    animate(animatedLineMask, transitionFn);
-  }
+function makeLineDashed() {
+  animatedLine.style.strokeDasharray = lineLength / (numDashes * 2 - 1);
 }
 
 function reset() {
