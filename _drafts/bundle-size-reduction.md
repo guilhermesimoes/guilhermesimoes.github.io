@@ -9,7 +9,9 @@ date:     2023-05-27 16:00:45 +0000
 This is a list of all the things I know, and all the things we've used to reduce the bundle size of the Peacock app. If you pay attention, you'll see it all boils down to shipping less code.
 
 - create target-specific builds (specially relevant when the same codebase is used for PlayStation, Xbox, Samsung TV, LG TV, Nvidia Shield, Fire TV, etc). In a browser context this would mean only loading IE-specific code on IE instead of loading it on every browser.
-- code-splitting (load page-specific code only when the user visits that page)
+- code-splitting
+  - load page-specific code only when the user visits that page
+  - load feature-specific code only when the user uses that feature (emoji picker https://marvinh.dev/blog/speeding-up-javascript-ecosystem-part-5/)
 - eliminate dependencies
 - remove duplicate dependencies
 - rewrite dependencies
