@@ -128,6 +128,9 @@ But there's a couple of things we can do to be extra-safe:
 3.
 
 
+https://cube.dev/blog/how-to-build-tree-shakeable-javascript-libraries
+https://blog.theodo.com/2021/04/library-tree-shaking/
+https://lihautan.com/reduce-minified-code-size-by-property-mangling/
 
 
 
