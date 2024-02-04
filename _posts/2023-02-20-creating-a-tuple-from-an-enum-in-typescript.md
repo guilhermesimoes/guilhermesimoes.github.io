@@ -93,7 +93,12 @@ This solution does require some manual work to keep the array up-to-date with th
 
 [^3]: There are already some solutions for evaluating JavaScript at build time such as [Preval] and [Prepack] but I have not used any of them so I can't vouch for them.
 
-[^4]: Do note that older versions of TypeScript do not support recursive type aliases and throw the following error:<blockquote>Type alias 'UnionToTuple' circularly references itself.</blockquote>For the magic to work we must be using at least TypeScript v4.1.5.
+[^4]:
+    Do note that older versions of TypeScript do not support recursive type aliases and throw the error:
+
+    > Type alias 'UnionToTuple' circularly references itself.
+
+    For the magic to work we must use at least TypeScript v4.1.5.
 
 [infer]: https://blog.logrocket.com/understanding-infer-typescript/
 [Playground]: https://www.typescriptlang.org/play?ts=4.1.5#code/KYDwDg9gTgLgBAYwgOwM72MgrgWzgQSwBMBLCAMWhwEN4BvAKDmbgGUAVAUQCVOB5OABomLVgFVu3PmIByAEQD6AVgUBGYSzYSpsxQHY1GlvnYBZPq2EBfBgxgBPMMDhjkZZOwgBJZDGBRUYAQYdwAeMQA+OABeOAAKMThQP2QiVDhkYAA3fzgAfgzs3IAueOooAHNSsQBKGKjMnKg65Mw0ssrSkmQAM1yvOuiorIgSIny4LzhSxv8AbjtHZ1d3T3YsMAAbYFD2KNiVlE8fPwCgkJRdpJAU9tmoCfvp+JhS9kGovevb9LiFGaKzXqcG6fQeAHURMwCgBtAB0CMOHgg6y2O04IAQm2IO3Ygjg4IiEXx4IAulDnjDSQsGKBILBECh0AQADIshT4MRyLx8BTkPjcUwmVjVNxHFEbbahQikChUWj7OAwikysiUKA0GBwjg8fhGZiquUa2ja7TSeTKQwq4hq+Va8SSc36K2aQ3qzVwkzmSwMakMIA
