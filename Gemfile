@@ -14,6 +14,9 @@ gem 'jekyll', '~> 4.3'
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
 # gem 'github-pages', group: :jekyll_plugins
 
+# These are the gem versions used on GitHub:
+# https://pages.github.com/versions/
+
 gem "kramdown-parser-gfm", "~> 1.1"
 
 # If you have any plugins, put them here!
