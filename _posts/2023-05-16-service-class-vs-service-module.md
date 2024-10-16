@@ -9,7 +9,7 @@ image:
   alt:    "Drawing of two objects side by side: a dumbbell and a feather. One is heavy, the other is light."
 ---
 
-This is just a quick post to get this out of my system. I explore this subject a little more in the follow-up post ["Classes Considered Harmful"].
+This is just a quick post to get this out of my system. I further explore this subject in the follow-up post ["Classes Considered Harmful"].
 
 This is a very simple service class:
 
