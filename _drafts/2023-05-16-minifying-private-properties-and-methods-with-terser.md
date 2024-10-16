@@ -67,7 +67,7 @@ mangle: {
 This is the final result (whitespace added in order to improve readibility):
 
 ```js
-export class Chirpy{
+export class Chirpy {
   constructor(r) {
     this.t=r
   }
@@ -97,10 +97,9 @@ Or is it? Turns out, this kind of minification carries a high degree of risk. As
 > 2. Avoid using a module bundler, as they usually will call Terser on each file individually, making it impossible to pass mangled objects between modules.
 > 3. Avoid calling functions like defineProperty or hasOwnProperty, because they refer to object properties using strings and will break your code if you don't know what you are doing.
 
-There are many things that can go wrong. For example:
+There are many things that can go wrong. For example, we could be extending a class:
 
-```
-
+```ts
 class A {
   constructor() {
     this.prop1 = 1;
@@ -114,7 +113,6 @@ class B extends A {
   }
 }
 ```
-
 
 
 This kind of minification is dangerous, which is why it isn't enabled by default.
@@ -135,6 +133,13 @@ https://lihautan.com/reduce-minified-code-size-by-property-mangling/
 
 
 Here's some of the stuff you can do to fix these issues.
+
+
+Rule of thumb: If your bundler emits more than 1 file, No.
+
+This means any bundling set up that involves code-splitting.
+
+It is not safe because, terser is run after the code is split into separate files. Thus, the property or method names across files will not be mangled consistently.
 
 
 
