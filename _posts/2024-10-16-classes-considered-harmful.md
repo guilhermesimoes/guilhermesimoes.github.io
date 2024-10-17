@@ -26,7 +26,7 @@ That's right. If you import a class with 20 instance methods and you only use 1 
 
 Minifiers / compressors such as [Terser], [SWC] and [esbuild] (which I will simply call "bundlers") do not tree-shake unused class methods because it is dangerous to do so. For example, our code could be checking if a class has a certain static method with `ServiceClass.hasOwnProperty(methodName)`. Or our code could be dynamically calling `classInstance[dynamicMethodName]()`. There's no way bundlers can (easily) determine whether a certain method is used or not and so they do not tree-shake methods.
 
-### 2. Class properties and methods are not (easily) minifiable
+### 2. Class properties and methods are not minifiable
 
 For the same reasons that bundlers cannot remove properties or methods, they also cannot rename them.
 Our code could be calling `Object.keys(classInstance)` to get the names of its properties. Or our code could be using `classInstance.hasOwnProperty(prop)` to check if a class instance has a certain property. So bundlers can't rename these properties and methods willy-nilly.
@@ -46,13 +46,34 @@ And this problem isn't exclusive to npm. Many companies' codebases have the same
 
 So what can we do about this? Is there an alternative, better way to author a JavaScript library?
 
-Well, bundlers are already very good at tree-shaking unused exports. If we import and use 1 function from a module that exports 20 functions, only that one function gets bundled.
+Well, bundlers are already very good at [tree-shaking unused exports]. If we import and use 1 function from a module that exports 20 functions, only that one function gets bundled.
 
 So when writing a JavaScript library we should avoid exposing its API through public instance methods and instead expose it through named exports!
 
 Instead of this:
 
 ```js
+// lib
+export class Chirpy {
+  constructor(options) {
+    this.options = options;
+  }
+
+  chirp(message) {
+    return fetch(`${this.options.endpoint}/chirp`, {
+      method: 'POST',
+      body: JSON.stringify(message),
+    })
+    .then(this.parseJson);
+  }
+
+  parseJson(response) {
+    return response.json();
+  }
+}
+
+
+// usage
 import { Chirpy } from 'chirpy';
 
 const service = new Chirpy(config);
@@ -62,6 +83,27 @@ service.chirp('hello');
 We can do this:
 
 ```js
+// lib
+let options;
+
+export function initialise(opts) {
+  options = opts;
+}
+
+export function chirp(message) {
+  return fetch(`${options.endpoint}/chirp`, {
+    method: 'POST',
+    body: JSON.stringify(message),
+  })
+  .then(parseJson);
+}
+
+function parseJson(response) {
+  return response.json();
+}
+
+
+// usage
 import { initialise, chirp } from 'chirpy';
 
 initialise(config);
@@ -79,9 +121,7 @@ Chirpy.chirp('hello');
 
 But we should avoid using `import * as Something` since it's not tree-shakeable.
 
-I call this pattern a **Service Module**, which I compare to the widely used **Service Class** in the post ["Service Class vs Service Module"].
-
-A drawback of this Service Module pattern is that consumers are no longer able to create two different instances of the same class:
+A drawback of this approach pattern is that consumers are no longer able to create two different instances of the same class:
 
 ```js
 import { Chirpy } from 'chirpy';
@@ -95,6 +135,9 @@ service2.chirp('hey');
 
 But if creating multiple instances of the same class doesn't make sense for your JavaScript library, then this isn't an issue.
 
+---
+
+I call this pattern a **Service Module**, which I compare to the widely used **Service Class** in the post ["Service Class vs Service Module"].
 Go on and give this pattern a try.
 
 
@@ -107,10 +150,10 @@ Go on and give this pattern a try.
 [SWC]: https://play.swc.rs/
 [esbuild]: https://esbuild.github.io/try/
 [And while there are ways to minify those]: 2023-05-16-minifying-private-properties-and-methods-with-terser.md
+[tree-shaking unused exports]: https://cube.dev/blog/how-to-build-tree-shakeable-javascript-libraries
 ["Service Class vs Service Module"]: 2023-05-16-service-class-vs-service-module.md
 
-https://cube.dev/blog/how-to-build-tree-shakeable-javascript-libraries
-https://blog.theodo.com/2021/04/library-tree-shaking/
-https://blog.kbdev.io/dev/2021/06/08/singleton-the-js-way.html
+
 https://www.telerik.com/blogs/how-module-pattern-works-javascript
+
 https://www.oreilly.com/library/view/learning-javascript-design/9781449334840/ch09s02.html
