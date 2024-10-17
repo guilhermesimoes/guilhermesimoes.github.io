@@ -15,12 +15,10 @@
   @include media-query($lap) {
     display: grid;
     grid-column-gap: $spacing-unit;
+    text-align: initial;
 
-    h1 {
-      grid-column-start: span 2;
-    }
-
-    .description {
+    h1, .description {
+      grid-column-start: 2;
       min-width: 0;
     }
   }
