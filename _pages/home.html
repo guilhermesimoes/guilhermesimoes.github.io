@@ -4,21 +4,25 @@ title:    "Guilherme Simões"
 permalink: /
 ---
 
-<article class="home wrapper" itemscope itemtype="http://schema.org/Person">
+<article class="home" itemscope itemtype="http://schema.org/Person">
   <link itemprop="url" href="{{ page.url | absolute_url }}" />
   <h1>Hey, I'm {%- include author.html -%}.</h1>
 
-  <p>I'm a <span itemprop="jobTitle">Software Engineer</span>, currently working at <span itemprop="worksFor" itemscope itemtype="http://schema.org/Organization"><a href="https://www.sky.com/" itemprop="url"><span itemprop="name">Sky</span></a></span>.</p>
+  <figure><img src="/assets/images/self-qr.png" width="246" height="246" itemprop="image" /></figure>
 
-  <p>I have a passion for <span itemprop="knowsAbout">technology</span>, <span itemprop="knowsAbout">data visualization</span> and <span itemprop="knowsAbout">open-source</span>.</p>
+  <div class="description">
+    <p>I'm a <span itemprop="jobTitle">Software Engineer</span>, currently working at <span itemprop="worksFor" itemscope itemtype="http://schema.org/Organization"><a href="https://www.sky.com/" itemprop="url"><span itemprop="name">Sky</span></a></span>.</p>
 
-  <p>You may enjoy reading my <a href="{% link _pages/blog.html %}">blog</a>.</p>
+    <p>I have a passion for <span itemprop="knowsAbout">technology</span>, <span itemprop="knowsAbout">data visualization</span> and <span itemprop="knowsAbout">open-source</span>.</p>
 
-  <p>You can also find me on <a href="https://github.com/guilhermesimoes" itemprop="sameAs">GitHub</a>, <a href="https://stackoverflow.com/users/1160916/ashitaka" itemprop="sameAs">StackOverflow</a> and <a href="https://x.com/glitchdout" itemprop="sameAs">X</a>.</p>
+    <p>You may enjoy reading my <a href="{% link _pages/blog.html %}">blog</a>.</p>
 
-  <p>Feel free to drop me a line at <a href="mailto:guilherme.rdems@gmail.com" itemprop="email">guilherme.rdems@gmail.com</a>.</p>
+    <p>You can also find me on <a href="https://github.com/guilhermesimoes" itemprop="sameAs">GitHub</a>, <a href="https://stackoverflow.com/users/1160916/ashitaka" itemprop="sameAs">StackOverflow</a> and <a href="https://x.com/glitchdout" itemprop="sameAs">X</a>.</p>
 
-  <p>Here's my <a href="/assets/guilhermesimoes.pub">PGP key</a> in case you want to tell me a secret.</p>
+    <p>Feel free to drop me a line at <a href="mailto:guilherme.rdems@gmail.com" itemprop="email">guilherme.rdems@gmail.com</a>.</p>
 
-  <p>And here's my <a href="/cv">CV</a> in case you want to hire me.</p>
+    <p>Here's my <a href="/assets/guilhermesimoes.pub">PGP key</a>.</p>
+
+    <p>And here's my <a href="/cv">CV</a>.</p>
+  </div>
 </article>

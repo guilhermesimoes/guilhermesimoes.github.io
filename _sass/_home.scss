@@ -1,4 +1,30 @@
 .home {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0 $spacing-unit;
+  text-align: center;
+
+  .description {
+    text-align: initial;
+  }
+
+  img {
+    height: auto;
+  }
+
+  @include media-query($lap) {
+    display: grid;
+    grid-column-gap: $spacing-unit;
+
+    h1 {
+      grid-column-start: span 2;
+    }
+
+    .description {
+      min-width: 0;
+    }
+  }
+
   [itemprop="additionalName"], [itemprop="familyName"] {
     display: none;
   }
