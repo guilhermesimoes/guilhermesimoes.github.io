@@ -1,11 +1,9 @@
 var CACHE_NAME = 'v1';
 
-async function cacheResources(resources) {
-  var cache = await caches.open(CACHE_NAME);
-  var promises = resources.map((resource) =>
-    fetch(resource).then(response => cache.put(resource, new Response(response.body)))
+function cacheResources(urls) {
+  return caches.open(CACHE_NAME).then(cache =>
+    Promise.all(urls.map((url) => cache.add(url)))
   );
-  return Promise.all(promises);
 }
 
 function clearOldCaches() {
@@ -22,14 +20,22 @@ function clearOldCaches() {
     .then(() => clients.claim())
 }
 
-async function fetchOrGoToOfflinePage(fetchEvent) {
+function fetchOrGoToOfflinePage(fetchEvent) {
   var eventRequest = fetchEvent.request;
 
   // going somewhere?
   if (eventRequest.mode === 'navigate') {
     return fetch(eventRequest)
-      .catch(() => caches.match('/offline', { cacheName: CACHE_NAME }));
+      .catch(() =>
+        caches.match(eventRequest.url).then(cachedPage =>
+          cachedPage || caches.match('/offline').then(cachedOfflinePage =>
+            // workaround for https://issues.chromium.org/issues/41288530
+            cachedOfflinePage && new Response(cachedOfflinePage.body)
+          )
+        )
+      );
   }
+
   return fetch(eventRequest);
 }
 
@@ -38,6 +44,7 @@ function onInstall(installEvent) {
   installEvent.waitUntil(
     cacheResources([
       '/',
+      '/blog/',
       '/offline',
     ])
   );
