@@ -35,13 +35,13 @@ If suddenly the device connects to the network it automatically reloads the page
 
 ---
 
-I did hit this snag when using [`cache.addAll`] to cache my offline page. It does cache everything correctly. But when the user is offline and tries to navigate somewhere and the worker returns the offline page this error occurs:
+I did hit this snag when using [`cache.addAll`] to cache my offline page. It does cache everything correctly. But when the user is offline and tries to navigate somewhere and the worker returns the cached offline page this error occurs:
 
 > The FetchEvent for "http://page-the-user-was-trying-to-access"
 > resulted in a network error response: a redirected response was
 > used for a request whose redirect mode is not "follow".
 
-Apparently this is due to a [new security restriction] but I don't get it. It all seems so cryptic to me. [StackOverflow came to my rescue] though. So now I'm just calling `fetch` for each of the pages that I want to cache. All tutorials that I saw did use [`cache.addAll`] so either I'm doing something wrong or they're already out of date. If you bump into the same problem now you know!
+Apparently this is due to a [new security restriction] but I don't get it. It all seems so cryptic to me. [StackOverflow came to my rescue] though. So now I'm wrapping a `response` with `new Response(response.body)`. All tutorials that I saw simply used [`cache.addAll`] so either I'm doing something wrong or they're already out of date. If you bump into the same problem now you know!
 
 ---
 

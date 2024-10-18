@@ -1,8 +1,12 @@
 var CACHE_NAME = 'v1';
 
-function cacheResources(urls) {
+function cacheInitialResources() {
   return caches.open(CACHE_NAME).then(cache =>
-    Promise.all(urls.map((url) => cache.add(url)))
+    cache.addAll([
+      '/',
+      '/blog/',
+      '/offline',
+    ])
   );
 }
 
@@ -52,13 +56,7 @@ function fetchOrGoToOfflinePage(fetchEvent) {
 
 function onInstall(installEvent) {
   skipWaiting();
-  installEvent.waitUntil(
-    cacheResources([
-      '/',
-      '/blog/',
-      '/offline',
-    ])
-  );
+  installEvent.waitUntil(cacheInitialResources());
 }
 
 function onActivate(activateEvent) {
