@@ -36,6 +36,17 @@ function fetchOrGoToOfflinePage(fetchEvent) {
       );
   }
 
+  // "hack" until GitHub pages supports a longer Cache-Control https://github.com/orgs/community/discussions/11884
+  if (eventRequest.url.endsWith('.css')) {
+    return Promise.all([
+        fetch(eventRequest),
+        caches.open(CACHE_NAME)
+      ]).then(
+        ([response, cache]) => cache.add(eventRequest.url, response).then(() => response),
+        (error) => caches.match(eventRequest.url)
+      );
+  }
+
   return fetch(eventRequest);
 }
 
