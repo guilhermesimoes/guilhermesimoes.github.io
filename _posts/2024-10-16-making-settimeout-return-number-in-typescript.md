@@ -78,7 +78,7 @@ declare let process: {
 }
 ```
 
-This actually took a little more effort than the simple workarounds we were using before, but honestly we were happy with the end result. We'd rather our project only include the exact types that we want instead of grabbing everything from `node_modules/@types`.
+This actually took a little more work than the simple workarounds we were using before but it was worth it. A notable outcome of these changes was that our `build` and `test` command times improved by about 1 second. It's possible that VSCode's auto-completion and auto-import features also improved. And honestly, we'd rather our project only include the exact types that we want instead of grabbing everything from `node_modules/@types`.
 
 
 [^1]: Another option was to surrender to `NodeJS.Timeout` and use `ReturnType<typeof setTimeout>` instead of `number` everywhere.
