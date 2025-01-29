@@ -1,6 +1,10 @@
 $header-height: 3.2rem;
 $menu-opening-duration: 0.3s;
 
+@view-transition {
+  navigation: auto;
+}
+
 html {
   height: 100%;
   scroll-behavior: smooth;
