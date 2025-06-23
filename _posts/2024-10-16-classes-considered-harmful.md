@@ -29,7 +29,7 @@ Minifiers / compressors such as [Terser], [SWC] and [esbuild] (which I will simp
 ### 2. Class properties and methods are not minifiable
 
 For the same reasons that bundlers cannot remove properties or methods, they also cannot rename them.
-Our code could be calling `Object.keys(classInstance)` to get the names of its properties. Or our code could be using `classInstance.hasOwnProperty(prop)` to check if a class instance has a certain property. So bundlers can't rename these properties and methods willy-nilly.
+Our code could be calling `Object.keys(classInstance)` to get the names of its properties. Or our code could be using `classInstance.hasOwnProperty(prop)` to check if a class instance has a certain property. So bundlers simply can't rename these properties and methods as they wish.
 
 The same is true even for _private_ properties and methods. [And while there are ways to minify those], a lot can definitely go wrong.
 
