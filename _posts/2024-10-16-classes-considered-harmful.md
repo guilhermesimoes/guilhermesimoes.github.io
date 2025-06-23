@@ -157,3 +157,6 @@ Go on and give this pattern a try.
 https://www.telerik.com/blogs/how-module-pattern-works-javascript
 
 https://www.oreilly.com/library/view/learning-javascript-design/9781449334840/ch09s02.html
+
+https://blog.theodo.com/2021/04/library-tree-shaking
+https://lihautan.com/reduce-minified-code-size-by-property-mangling
