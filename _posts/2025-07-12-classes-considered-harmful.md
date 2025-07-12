@@ -1,7 +1,7 @@
 ---
 layout:   post
 title:    "Classes considered harmful when authoring a JavaScript library"
-date:     2023-10-16 14:00:45 +0000
+date:     2025-07-12 11:00:45 +0100
 image:
   hero:   true
   path:   /assets/images/class-system.png
