@@ -169,9 +169,10 @@ I plan to make a more compelling argument in a follow-up post. But I hope this i
 
 [^1]: I used the [terser] minifier because its [REPL] is very easy to use and shows the total size of the code.
 
-[^2]: There _are_ ways to minify private properties and methods (see Timokhov's [ts-transformer-minify-privates] and [ts-transformer-properties-rename], for example). But they are fraught with peril.
+[^2]: There _are_ ways to minify private properties and methods (see Timokhov's [ts-transformer-minify-privates] and [ts-transformer-properties-rename], for example). But they are [fraught with peril].
 
 [terser]: https://terser.org/
 [REPL]: https://try.terser.org/
 [ts-transformer-minify-privates]: https://github.com/timocov/ts-transformer-minify-privates
 [ts-transformer-properties-rename]: https://github.com/timocov/ts-transformer-properties-rename
+[fraught with peril]: 2025-06-23-minifying-private-properties-and-methods-with-terser.md
