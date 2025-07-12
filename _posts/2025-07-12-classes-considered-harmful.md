@@ -24,7 +24,7 @@ The problem of using a class to build a JavaScript library is that it leads to t
 
 That's right. If you import a class with 20 instance methods and you only use 1 method **everything gets bundled**.
 
-Minifiers / compressors such as [Terser], [SWC] and [esbuild] (which I will simply call "bundlers") do not tree-shake unused class methods because it is dangerous to do so. For example, our code could be checking if a class has a certain static method with `ServiceClass.hasOwnProperty(methodName)`. Or our code could be dynamically calling `classInstance[dynamicMethodName]()`. There's no way bundlers can (easily) determine whether a certain method is used or not and so they do not tree-shake methods.
+Minifiers / compressors such as [Terser], [SWC] and [esbuild] (which I will simply call "bundlers") do not tree-shake unused class methods because it is dangerous to do so. For example, our code could be dynamically calling `classInstance[dynamicMethodName]()`. There's no way bundlers can (easily) determine whether a certain method is used or not and so they do not tree-shake methods.
 
 ### 2. Class properties and methods are not minifiable
 
