@@ -9,7 +9,7 @@ image:
   alt:    "A close-up of a vinyl turntable, playing a record."
 ---
 
-We have a TypeScript package that uses and exports [^1] this enum:
+We have a TypeScript package that uses and exports[^1] this enum:
 
 ```ts
 export const enum AudioFormat {
@@ -71,7 +71,7 @@ type UnionToTuple<T> = UnionToIntersection<T extends never ? never : (t: T) => T
     : [];
 ```
 
-Some recursion [^4], plus the spread operator and [infer] and presto!
+Some recursion[^4], plus the spread operator and [infer] and presto!
 This now works as expected:
 
 ```ts

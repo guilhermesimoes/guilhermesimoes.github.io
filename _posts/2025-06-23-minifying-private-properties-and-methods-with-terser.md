@@ -124,9 +124,9 @@ Our class `A` could also already have a single letter property like `a` and the 
 
 So, how can we minify things responsibly? Well, in addition to Terser's recommendations, I would suggest:
 
-1. Use Terser's [`nameCache`] to cache mangled variable names and property names across multiple invocations of Terser's `minify`. [^1][^2]
+1. Use Terser's [`nameCache`] to cache mangled variable names and property names across multiple invocations of Terser's `minify`.[^1][^2]
 
-2. Add a linter rule to prevent your source code from including very small variable names and property names. This way Terser's minified names won't clash with the source code's names. [^3]
+2. Add a linter rule to prevent your source code from including very small variable names and property names. This way Terser's minified names won't clash with the source code's names.[^3]
 
 3. Avoid minification of classes that are extended or extend other classes.
 
