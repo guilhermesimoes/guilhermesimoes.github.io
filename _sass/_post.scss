@@ -74,6 +74,10 @@
     }
   }
 
+  [role="doc-noteref"] {
+    scroll-margin-top: $spacing-unit * 6;
+  }
+
   [role="doc-endnote"] {
     padding-left: 0.5em;
     counter-increment: footnote-count;
