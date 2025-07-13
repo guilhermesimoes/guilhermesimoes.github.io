@@ -76,6 +76,11 @@
 
   [role="doc-noteref"] {
     scroll-margin-top: $spacing-unit * 6;
+
+    &:target {
+      /* @keyframes duration | easing-function | iteration-count | direction | name */
+      animation: 1s ease-in-out 2 alternate highlight;
+    }
   }
 
   [role="doc-endnote"] {
