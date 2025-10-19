@@ -101,6 +101,10 @@ if ('wings' in animal) {
 
 [Pretty neat][Playground].
 
+**Update:** In case you want to avoid the `in` operator, check [how to narrow TypeScript Unions without the `in` operator].
+
 [Union Type]: https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types
 
 [Playground]: https://www.typescriptlang.org/play#code/JYOwLgpgTgZghgYwgAgEJwM4QIImAWzgBtkBvAWACgBIAdwmAHMALMALmRAFd8AjaANxUAvlSqhIsRClTAoAE2QQAHpBDyMaTDjyESFSsiPJaoRhg7c+gqseQwiATw4AxLiARhgAexAixlBLQ8EjILsAYzEqqEOqa6Fi4BMRktsYwoBacPPxQQobGGKb4ru6ePiD5opRUYI4ADihJesgAvGhyigA+YRHM+VREEGDIcBzNxPlDI7wcCTrJRAOBMMgAFADkpiDmG8igowCUqQVGcAB0Do5rxwD0t8gAKg0QAMoIUMD1I8RQEHDyRzIADWIG8tE0cF0KQiow6CgAhP4ait1lszBg9gdeMcDHZeJcnDdkPcni93p9viZgEQSGBmFBwaMQEooIyoMh3EMMJDoSRYQhMCMwN54fJziIgA
+
+[how to narrow TypeScript Unions without the `in` operator]: 2025-10-18-narrowing-typescript-unions-without-the-in-operator.md
