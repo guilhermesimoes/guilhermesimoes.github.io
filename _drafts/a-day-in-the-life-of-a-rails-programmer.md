@@ -2,7 +2,7 @@
 layout:   post
 title:    "A Day In The Life Of A Rails Programmer"
 ---
-A client has a Rails CMS and a Rails front-end application.
+A client has two Rails apps: a CMS (back-end) and a store (front-end).
 
 When stuff is added to the CMS it can then be displayed in the front-end application.
 
@@ -10,7 +10,7 @@ In this CMS, products can have downloads. Downloads can already be added to a pr
 
 But the front-end application still isn't displaying those downloads.
 
-Right now I'm changing the front-end application to display those downloads.
+Right now my task is precisely that: update the front-end application to display those downloads.
 
 From looking at the template that I have to change I know that I have access to the variable `product`.
 
@@ -35,11 +35,10 @@ product.global_downloads #=> NoMethodError: undefined method `global_downloads' 
 Oh, so `product` isn't really a product. `product` is a product presenter. Where is this class defined?
 
 ```ruby
-product.name #=> "Product Name"
 product.method(:name).source_location #=> "../ruby-2.1.10/lib/ruby/gems/2.1.0/bundler/gems/company-cms-abc9c0392d11/common/app/models/presenters/v4r/product.rb"
 ```
 
-Hm, ok, so this code is inside the CMS gem, not the front-end application. Maybe the applications share some common code. Since I'm working on the front-end application, let's see if I can do this without having to make any changes to the CMS.
+Hm, ok, so this Product presenter code is inside a CMS gem, not the front-end application. Most likely the two applications share some common code through this gem. Since my task is strictly front-end related, let's see if I can do this without having to make any changes to the CMS or its gem.
 
 Let's search the source code for any download related stuff:
 
@@ -57,7 +56,7 @@ product.downloads #=> []
 
 It's empty? But I know that the product has downloads...
 
-Let's search the source code for a way to bypass the presenter and use the product directly.
+Let's just search the source code for a way to bypass the presenter and use the product directly.
 
 ```ruby
 module Presenters
@@ -82,7 +81,7 @@ Ok, easy enough:
 product.model.global_downloads #=> []
 ```
 
-Empty again? Well, this makes some sense given that the previous method did not work and it `map`ped over the model's downloads.
+Empty again? Well, this makes some sense given that the previous method did not work and it `map`ped over the model's `downloads`.
 
 But what is this model after all?
 
@@ -93,11 +92,10 @@ product.model.class #=> Products::Product::Translation
 Ah, so this still isn't really a product. `product.model` is a product translation. Where is this class defined?
 
 ```ruby
-product.model.name #=> "Product Name"
 product.model.method(:name).source_location  #=> "../ruby-2.1.10/lib/ruby/gems/2.1.0/bundler/gems/company-cms-abc9c0392d11/common/lib/translatable/model.rb"
 ```
 
-Oh, so this class is created through meta programming... And we're still inside the CMS gem.
+Oh, so this class is created through meta programming... And I'm still inside the CMS gem.
 
 Let's search the source code for a way to bypass the translation and use the actual product instance:
 
@@ -115,7 +113,7 @@ module Translatable
 end
 ```
 
-Oh, it's `model` again. This time around let's confirm that we have an actual reference to a product. Fool me once, shame on me. Fool me twice:
+Oh, it's `model` again. This time around let's confirm that this is an actual reference to a product. Fool me once, shame on me. Fool me twice:
 
 ```ruby
 product.model.model.class #=> Products::Product
@@ -131,13 +129,21 @@ Aha! Here they are!
 
 Is this pretty? No.
 
-Is there a better way? Probably.
+Is there a better way? Almost certainly.
 
-But the original team has long moved on and there's no documentation...
+But I'm a single dev, the original team has long moved on and there's no documentation...
+
+---
 
 Afterword | Closing thoughts
 
-I wrote the above in a fit of rage
+I wrote the above in a fit of rage and frustration.
+
+in a previous employer.
+
+After more than 10 years of not being a Rails dev I do miss it. But reading this thing that I myself wrote makes me rethink my life choices and my desires.
+
+The woes of working at a consulting firm.
 
 For more stories from the trenches
 
