@@ -5,7 +5,7 @@ subtitle: "Use Bundler with the Ruby you already have."
 date:     2019-12-15 14:22:13 +0100
 image:
   hero:   true
-  path:   /assets/images/bundled-ruby.png
+  path:   /assets/images/ruby-box.png
   alt:    "Drawing of a cardboard box with a ruby label on one side."
 ---
 [I just fixed][in using System Ruby] my system configuration so that `gem install` works. I install Bundler with `gem install bundler`. I then go to my project directory and use Bundler to install my project's dependencies:
@@ -40,7 +40,7 @@ Apparently Bundler has its own ideas about where to install gems.
 
 It's interesting (read: completely dangerous and irresponsible) that Bundler tells me to install gems using `sudo`. It's even in [its documentation][concerning using Bundler with sudo]! And yet, Bundler places me at the password prompt! Fortunately I already know I shouldn't do this.
 
-Bundler also suggests using the `path` option to install gems in the local folder, like `node_modules`. But let's skip this for now. Let's fix Bundler so that gems are installed in a common folder and shared between projects.
+Bundler also suggests the `path` option to [install gems in the local folder], like `node_modules`. But let's skip this for now. Let's fix Bundler so that gems are installed in a common folder and shared between projects.
 
 In my previous post on [using System Ruby][in using System Ruby], I used `gem env` to understand my Ruby environment. Now, I can use a similar command to understand my Bundler environment:
 
@@ -131,6 +131,7 @@ export PATH="$GEM_HOME/bin:$PATH"
 
 
 [concerning using Bundler with sudo]: https://bundler.io/v2.0/man/bundle-install.1.html#SUDO-USAGE
+[install gems in the local folder]: 2020-03-29-installing-gems-per-project-directory.md
 [in using System Ruby]: 2018-09-16-using-system-ruby.md
 [`~`]: https://unix.stackexchange.com/questions/34196/why-was-chosen-to-represent-the-home-directory/34198#34198
 [`$BUNDLE_PATH` and `$GEM_HOME`]: https://bundler.io/v2.0/bundle_install.html

@@ -3,6 +3,10 @@ layout:   post
 title:    "Using System Ruby"
 subtitle: "Use the Ruby you already have, without installing rvm or rbenv."
 date:     2018-09-16 15:35:53 +0100
+image:
+  hero:   true
+  path:   /assets/images/ruby-crt-monitor.png
+  alt:    "Drawing of a CRT monitor displaying a shinning ruby."
 ---
 I got a new computer for my new job in which, sadly, I won't have to use Ruby.
 Still, I'd like to dabble with some Ruby in my spare time. Maybe I want to improve my Jekyll site or tweak some Sass library.

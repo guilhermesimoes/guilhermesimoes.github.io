@@ -3,6 +3,10 @@ layout:   post
 title:    "Installing Gems per Project Directory"
 subtitle: "Bundler can install gems in a project directory, just like NPM installs modules locally."
 date:     2020-03-29 03:39:57 +0100
+image:
+  hero:   true
+  path:   /assets/images/ruby-dresser.png
+  alt:    "Drawing of a dresser with its drawers open, with rubies inside, compartmentalized."
 ---
 When Bundler complains about “not being allowed to install to the system RubyGems” we have two solutions:
 
