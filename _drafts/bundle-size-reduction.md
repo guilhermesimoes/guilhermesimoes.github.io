@@ -48,7 +48,7 @@ This is a list of all the things I know, and all the things we've used to reduce
   }, {});
   ```
 
-  - **However**, be aware of what is your most important target (browser). For example:
+  - **However**, be aware of what your most important target (browser) is. For example:
 
     ```ts
     possiblyUndefinedObject && possiblyUndefinedObject.prop
@@ -103,6 +103,21 @@ This is a list of all the things I know, and all the things we've used to reduce
     - rename public methods
     - rename public properties
 - If using TypeScript, prefer `const enum`s to `enum`s. `const enum`s are inlined directly in the code, and avoid objects and imports.
+- Optimize code at build-time. For example:
+  ```ts
+  export const ONE_SECOND_MS = 1000;
+  export const ONE_MINUTE_MS = 60 * ONE_SECOND_MS;
+  export const ONE_HOUR_MS = 60 * ONE_MINUTE_MS;
+  export const ONE_DAY_MS = 24 * ONE_HOUR_MS;
+  ```
+  can be optimized to:
+  ```ts
+  export const ONE_SECOND_MS = 1000;
+  export const ONE_MINUTE_MS = 60000;
+  export const ONE_HOUR_MS = 3600000;
+  export const ONE_DAY_MS = 86400000;
+  ```
+  Libraries that can help with this: [Prepack], [preval.macro] or [babel-plugin-preval].
 - gzip brotli HTTP/2
 https://rovity.io/brotli-vs-gzip/
 https://www.siteground.com/blog/brotli-vs-gzip-compression
@@ -162,3 +177,6 @@ https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyf
 [logical OR assignment operator]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment
 [optional chaining operator]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
 [using optional chaining on a browser that does not support it leads to a larger bundle due to code transpilation]: https://www.typescriptlang.org/play/?target=2#code/CYUwxgNghgTiAEEQBd4AcD2BnLBLARhAJ4CqAdqAGa5kjADy+AVuMgFzwDe6MGaHAVzIBrMhgDuZeAF94AH3hCqNOgG4AsACgtmHAWLlltBs1bwAZOfTY8hUhRDVjjFmGQA6NLzQbtmgPT+8ABuWFrhmrq2Bg5OdC6sAPye3qpAA
+[Prepack]: https://prepack.io/
+[preval.macro]: https://github.com/kentcdodds/preval.macro
+[babel-plugin-preval]: https://github.com/kentcdodds/babel-plugin-preval
