@@ -8,6 +8,7 @@ image:
   path:   /assets/images/half-fish-half-bird.png
   alt:    "Crude drawing of a half-fish, half-bird animal."
 ---
+
 Let's imagine we have the following TypeScript interfaces:
 
 ```ts
@@ -85,7 +86,7 @@ Whereas before we had to do this:
 let animal: BaseAnimal;
 
 if ('wings' in animal) {
-  (animal as Bird).fly(); // TypeScript will throw an error unless animal is cast to Bird.
+  (animal as Bird).fly(); // TypeScript throws an error unless animal is cast to Bird.
 }
 ```
 
