@@ -9,8 +9,8 @@ Watch them and cross them off the list!
 
 <template id="template">
   <svg class="rough-strike-through" viewBox="0 0 200 10" stroke="currentColor" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path class="line line--first" d="M.723 6.627c40.519-2.953 79.968-2.576 193.635-4.282" />
-    <path class="line line--second" d="M197.806 6.534C131.312 5.41 66.028 7.556.306 5.112" />
+    <path class="line line--first" d="M1 6.6C20 4 81 4 195 2.3" />
+    <path class="line line--second" d="M198 6.5C131 5 66 8 .3 5" />
   </svg>
 </template>
 
