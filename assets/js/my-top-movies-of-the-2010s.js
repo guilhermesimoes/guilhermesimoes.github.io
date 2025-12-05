@@ -1,5 +1,6 @@
 var moviesList;
 var seenMovies;
+var strikeThroughTemplate;
 
 window.addEventListener('load', function onLoad() {
   try {
@@ -8,6 +9,7 @@ window.addEventListener('load', function onLoad() {
     seenMovies = {};
   }
   moviesList = document.querySelector('#movies-list');
+  strikeThroughTemplate = document.getElementById('template').content;
   checkPreviouslySeenMovies();
   moviesList.addEventListener('click', toggleMovie);
 });
@@ -39,7 +41,11 @@ async function checkPreviouslySeenMovies() {
 }
 
 function toggleStrikeThrough(target, checked) {
-  target.setAttribute('aria-checked', checked);
+  if (!target.querySelector('.rough-strike-through')) {
+    var strikeThrough = document.importNode(strikeThroughTemplate, true);
+    target.appendChild(strikeThrough);
+  }
+  delay(10).then(() => target.setAttribute('aria-checked', checked));
 }
 
 function delay(timeMs) {
