@@ -13,12 +13,12 @@ window.addEventListener('load', function onLoad() {
 });
 
 function toggleMovie(event) {
-  var target = find(event.target, 'movie');
-  if (target) {
-    var movieId = target.getAttribute('data-movie');
-    var checked = target.getAttribute('aria-checked') === 'true';
+  var movieButton = find(event.target, 'movie');
+  if (movieButton) {
+    var movieId = movieButton.getAttribute('data-movie');
+    var checked = movieButton.getAttribute('aria-checked') === 'true';
     checked = !checked;
-    target.setAttribute('aria-checked', checked);
+    toggleStrikeThrough(movieButton, checked);
     if (checked) {
       seenMovies[movieId] = checked;
     } else {
@@ -32,14 +32,18 @@ async function checkPreviouslySeenMovies() {
   for (movieButton of moviesList.querySelectorAll('.movie')) {
     var movieId = movieButton.getAttribute('data-movie');
     if (seenMovies[movieId]) {
-      await delay();
-      movieButton.setAttribute('aria-checked', true);
+      await delay(100);
+      toggleStrikeThrough(movieButton, true);
     }
   }
 }
 
-function delay(timeMs = 100) {
-  return new Promise(function (resolve, _reject) {
+function toggleStrikeThrough(target, checked) {
+  target.setAttribute('aria-checked', checked);
+}
+
+function delay(timeMs) {
+  return new Promise(function (resolve) {
     setTimeout(resolve, timeMs);
   });
 }
