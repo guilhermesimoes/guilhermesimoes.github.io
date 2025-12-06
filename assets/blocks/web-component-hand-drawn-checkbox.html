@@ -9,7 +9,7 @@ html, body {
 .container {
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -21,9 +21,9 @@ input[type="checkbox"] {
 </style>
 <body>
 <div class="container">
-  <handdrawn-checkbox>
-    <input type="checkbox" />
-  </handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+
+  <handdrawn-checkbox></handdrawn-checkbox>
 </div>
 
 <script type="text/javascript">
@@ -59,6 +59,16 @@ function toggleVisibility(target, checkbox) {
 }
 
 class HandDrawnCheckbox extends HTMLElement {
+  constructor() {
+    super();
+    var checkbox = this.querySelector('input[type="checkbox"]');
+    if (!checkbox) {
+      var defaultCheckbox = document.createElement('input');
+      defaultCheckbox.setAttribute('type', 'checkbox');
+      this.appendChild(defaultCheckbox);
+    }
+  }
+
   connectedCallback() {
     var checkbox = this.querySelector('input[type="checkbox"]');
     var templateClone = template.content.cloneNode(true);
