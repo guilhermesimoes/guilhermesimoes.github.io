@@ -79,7 +79,7 @@ class HandDrawnCheckbox extends HTMLElement {
     var templateClone = template.content.cloneNode(true);
     var pathEls = templateClone.querySelectorAll('.line');
     var borderEl = templateClone.querySelector('.border');
-    borderEl.setAttribute('d', `M${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner1Range)}M${getPoint(borderCorner2Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner2Range)}M${getPoint(borderCorner2Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner2Range)}M${getPoint(borderCorner1Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}M${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}`);
+    borderEl.setAttribute('d', getBorderPath());
     toggleVisibility(pathEls, checkbox);
 
     var shadowRoot = this.attachShadow({ mode: 'open' });
@@ -91,17 +91,12 @@ class HandDrawnCheckbox extends HTMLElement {
   }
 }
 
-var crossLine1Range = [0.5, 1.5];
-var crossLine2Range = [8.5, 9.5];
-var borderCorner1Range = [0.2, 0.8];
-var borderCorner2Range = [9.2, 9.8];
-
 function toggleVisibility(lines, checkbox) {
   var [line1, line2] = lines;
 
   if (checkbox.checked) {
-    line1.setAttribute('d', `M${getPoint(crossLine1Range)} ${getPoint(crossLine1Range)}L${getPoint(crossLine2Range)} ${getPoint(crossLine2Range)}`);
-    line2.setAttribute('d', `M${getPoint(crossLine2Range)} ${getPoint(crossLine1Range)}L${getPoint(crossLine1Range)} ${getPoint(crossLine2Range)}`);
+    line1.setAttribute('d', getLine1Path());
+    line2.setAttribute('d', getLine2Path());
     line1.style.strokeDasharray = line1.style.strokeDashoffset = getPathLength(line1);
     line2.style.strokeDasharray = line2.style.strokeDashoffset = getPathLength(line2);
 
@@ -118,6 +113,23 @@ function toggleVisibility(lines, checkbox) {
 
 function getPathLength(path) {
   return Math.ceil(path.getTotalLength()) + 1; // Handle rounding issues
+}
+
+var crossCorner1Range = [0.5, 1.5];
+var crossCorner2Range = [8.5, 9.5];
+var borderCorner1Range = [0.2, 0.8];
+var borderCorner2Range = [9.2, 9.8];
+
+function getBorderPath() {
+  return `M${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner1Range)}M${getPoint(borderCorner2Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner2Range)}M${getPoint(borderCorner2Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner2Range)}M${getPoint(borderCorner1Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}M${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}`;
+}
+
+function getLine1Path() {
+  return `M${getPoint(crossCorner1Range)} ${getPoint(crossCorner1Range)}L${getPoint(crossCorner2Range)} ${getPoint(crossCorner2Range)}`;
+}
+
+function getLine2Path() {
+  return `M${getPoint(crossCorner2Range)} ${getPoint(crossCorner1Range)}L${getPoint(crossCorner1Range)} ${getPoint(crossCorner2Range)}`;
 }
 
 function getPoint(range) {
