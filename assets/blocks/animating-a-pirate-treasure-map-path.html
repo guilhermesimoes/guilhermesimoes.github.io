@@ -78,8 +78,7 @@ function handleClick(event) {
 }
 
 function animate(el, transitionFn) {
-  el.style.strokeDashoffset = lineLength;
-  el.style.strokeDasharray = lineLength;
+  el.style.strokeDashoffset = el.style.strokeDasharray = lineLength;
 
   setTimeout(() => {
     el.style["transition-duration"] = "3s";
