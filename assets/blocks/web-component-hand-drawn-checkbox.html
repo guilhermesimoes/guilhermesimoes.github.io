@@ -11,6 +11,7 @@ html, body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  color: rgba(237, 75, 26, 0.82);
 }
 
 input[type="checkbox"] {
@@ -42,6 +43,8 @@ template.innerHTML = `
       position: absolute;
       pointer-events: none;
       border: 1px solid black;
+      stroke-linecap: round;
+      stroke-width: 0.5px;
     }
 
     ::slotted(input) {
@@ -61,10 +64,10 @@ function toggleVisibility(lines, checkbox) {
   var line2 = lines[1];
 
   if (visible) {
-    line1.setAttribute('d', 'M1 1L9 9');
-    line2.setAttribute('d', 'M9 1L1 9');
-    line1.style.strokeDasharray = line1.style.strokeDashoffset = line1.getTotalLength();
-    line2.style.strokeDasharray = line2.style.strokeDashoffset = line2.getTotalLength();
+    line1.setAttribute('d', `M${getPointFromRange(0.5, 1.5)} ${getPointFromRange(0.5, 1.5)}L${getPointFromRange(8.5, 9.5)} ${getPointFromRange(8.5, 9.5)}`);
+    line2.setAttribute('d', `M${getPointFromRange(8.5, 9.5)} ${getPointFromRange(0.5, 1.5)}L${getPointFromRange(0.5, 1.5)} ${getPointFromRange(8.5, 9.5)}`);
+    line1.style.strokeDasharray = line1.style.strokeDashoffset = Math.ceil(line1.getTotalLength()) + 1;
+    line2.style.strokeDasharray = line2.style.strokeDashoffset = Math.ceil(line2.getTotalLength()) + 1;
 
     setTimeout(() => {
       line1.style.transition = line2.style.transition = 'stroke-dashoffset 200ms ease';
@@ -72,9 +75,14 @@ function toggleVisibility(lines, checkbox) {
       line1.style.strokeDashoffset = line2.style.strokeDashoffset = 0;
     }, 10);
   } else {
-    line1.style.strokeDashoffset = line1.getTotalLength();
-    line2.style.strokeDashoffset = line2.getTotalLength();
+    line1.style.strokeDashoffset = Math.ceil(line1.getTotalLength()) + 1;
+    line2.style.strokeDashoffset = Math.ceil(line2.getTotalLength()) + 1;
   }
+}
+
+function getPointFromRange(start, end) {
+  var diff = end - start;
+  return +(start + Math.random() * diff).toFixed(2);
 }
 
 class HandDrawnCheckbox extends HTMLElement {
