@@ -9,6 +9,8 @@ block:
   path:   web-component-hand-drawn-checkbox.html
 ---
 
+This is a Web Component to _progressively enhance_ a checkbox (an `input` with `type='checkbox'`). This means that if a user blocks JavaScript from loading, a regular HTML checkbox is still rendered.
+
 https://meyerweb.com/eric/thoughts/2023/11/01/blinded-by-the-light-dom/
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:host
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::slotted
