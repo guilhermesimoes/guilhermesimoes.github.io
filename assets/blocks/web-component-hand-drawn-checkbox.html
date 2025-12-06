@@ -21,7 +21,7 @@ input[type="checkbox"] {
 </style>
 <body>
 <div class="container">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" checked /></handdrawn-checkbox>
 
   <handdrawn-checkbox></handdrawn-checkbox>
 </div>
@@ -47,33 +47,13 @@ template.innerHTML = `
     ::slotted(input) {
       opacity: 0;
     }
-
-    .line {
-      stroke-dasharray: 12;
-      stroke-dashoffset: 12;
-      transition: stroke-dashoffset 200ms ease;
-    }
-
-    .line--second {
-      transition-delay: 200ms;
-    }
-
-    .checked {
-      stroke-dashoffset: 0;
-    }
   </style>
   <svg viewbox="0 0 10 10" stroke="currentColor">
-    <path d="M1 1L9 9" class="line line--first"></path>
-    <path d="M9 1L1 9" class="line line--second"></path>
+    <path></path>
+    <path></path>
   </svg>
   <slot></slot>
 `;
-
-function toggleVisibility(targets, checkbox) {
-  targets.forEach(target => {
-    target.classList.toggle('checked', checkbox.checked);
-  });
-}
 
 class HandDrawnCheckbox extends HTMLElement {
   constructor() {
@@ -98,6 +78,26 @@ class HandDrawnCheckbox extends HTMLElement {
     checkbox.addEventListener('change', function() {
       toggleVisibility(pathEls, this)
     });
+  }
+}
+
+function toggleVisibility(lines, checkbox) {
+  var [line1, line2] = lines;
+
+  if (checkbox.checked) {
+    line1.setAttribute('d', 'M1 1L9 9');
+    line2.setAttribute('d', 'M9 1L1 9');
+    line1.style.strokeDasharray = line1.style.strokeDashoffset = line1.getTotalLength();
+    line2.style.strokeDasharray = line2.style.strokeDashoffset = line2.getTotalLength();
+
+    setTimeout(() => {
+      line1.style.transition = line2.style.transition = 'stroke-dashoffset 200ms ease';
+      line2.style['transition-delay'] = '200ms';
+      line1.style.strokeDashoffset = line2.style.strokeDashoffset = 0;
+    }, 10);
+  } else {
+    line1.style.strokeDashoffset = line1.getTotalLength();
+    line2.style.strokeDashoffset = line2.getTotalLength();
   }
 }
 
