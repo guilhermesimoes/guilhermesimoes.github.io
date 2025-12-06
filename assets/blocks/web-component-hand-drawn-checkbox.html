@@ -47,15 +47,32 @@ template.innerHTML = `
     ::slotted(input) {
       opacity: 0;
     }
+
+    .line {
+      stroke-dasharray: 12;
+      stroke-dashoffset: 12;
+      transition: stroke-dashoffset 200ms ease;
+    }
+
+    .line--second {
+      transition-delay: 200ms;
+    }
+
+    .checked {
+      stroke-dashoffset: 0;
+    }
   </style>
-  <svg viewbox="0 0 10 10">
-    <circle cx="5" cy="5" r="4"></circle>
+  <svg viewbox="0 0 10 10" stroke="currentColor">
+    <path d="M1 1L9 9" class="line line--first"></path>
+    <path d="M9 1L1 9" class="line line--second"></path>
   </svg>
   <slot></slot>
 `;
 
-function toggleVisibility(target, checkbox) {
-  target.style.visibility = checkbox.checked ? 'visible' : 'hidden';
+function toggleVisibility(targets, checkbox) {
+  targets.forEach(target => {
+    target.classList.toggle('checked', checkbox.checked);
+  });
 }
 
 class HandDrawnCheckbox extends HTMLElement {
@@ -73,8 +90,8 @@ class HandDrawnCheckbox extends HTMLElement {
     var checkbox = this.querySelector('input[type="checkbox"]');
     var templateClone = template.content.cloneNode(true);
     var svgEl = templateClone.querySelector('svg');
-    var circleEl = svgEl.querySelector('circle');
-    toggleVisibility(circleEl, checkbox);
+    var pathEls = svgEl.querySelectorAll('path');
+    toggleVisibility(pathEls, checkbox);
 
     var shadowRoot = this.attachShadow({ mode: 'open' });
     shadowRoot.appendChild(templateClone);
@@ -82,7 +99,7 @@ class HandDrawnCheckbox extends HTMLElement {
     svgEl.style.width = checkbox.clientWidth;
 
     checkbox.addEventListener('change', function() {
-      toggleVisibility(circleEl, this)
+      toggleVisibility(pathEls, this)
     });
   }
 }
