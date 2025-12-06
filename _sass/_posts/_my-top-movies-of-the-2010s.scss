@@ -29,9 +29,9 @@
     pointer-events: none;
 
     .line {
-      stroke-dasharray: 0 200;
-      stroke-dashoffset: 1;
-      transition: stroke-dasharray 300ms ease;
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      transition: stroke-dashoffset 250ms ease;
     }
 
     .line--second {
@@ -40,7 +40,7 @@
   }
 
   .movie[aria-checked="true"] .rough-strike-through .line {
-    stroke-dasharray: 200 0;
+    stroke-dashoffset: 0;
   }
 
   .imdb-link {
