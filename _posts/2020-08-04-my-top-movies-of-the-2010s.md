@@ -8,9 +8,9 @@ These are my favourite movies of the past decade.
 Watch them and cross them off the list!
 
 <template id="template">
-  <svg class="rough-strike-through" viewBox="0 0 200 10" stroke="currentColor" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path class="line line--first" d="M1 6.6C20 4 81 4 195 2.3" />
-    <path class="line line--second" d="M198 6.5C131 5 66 8 .3 5" />
+  <svg class="rough-strike-through" viewBox="0 0 10 10" stroke="currentColor" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="line line--first" d="M0 7C2 4 8 3 10 3" />
+    <path class="line line--second" d="M10 7C9 7 7 7 0 4" />
   </svg>
 </template>
 

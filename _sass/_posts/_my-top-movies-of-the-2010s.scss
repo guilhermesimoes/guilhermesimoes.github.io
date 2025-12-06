@@ -29,8 +29,8 @@
     pointer-events: none;
 
     .line {
-      stroke-dasharray: 200;
-      stroke-dashoffset: 200;
+      stroke-dasharray: 11;
+      stroke-dashoffset: 11;
       transition: stroke-dashoffset 250ms ease;
     }
 
