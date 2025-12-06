@@ -42,21 +42,31 @@ template.innerHTML = `
     :host svg {
       position: absolute;
       pointer-events: none;
-      border: 1px solid black;
       stroke-linecap: round;
       stroke-width: 0.5px;
+    }
+
+    :host .border {
+      stroke: black;
+      fill: none;
     }
 
     ::slotted(input) {
       opacity: 0;
     }
   </style>
-  <svg viewbox="0 0 10 10" stroke="currentColor">
-    <path></path>
-    <path></path>
+  <svg viewbox='0 0 10 10'>
+    <path class='border'></path>
+    <path class='line' stroke='currentColor'></path>
+    <path class='line' stroke='currentColor'></path>
   </svg>
   <slot></slot>
 `;
+
+var crossLine1Range = [0.5, 1.5];
+var crossLine2Range = [8.5, 9.5];
+var borderCorner1Range = [0.2, 0.8];
+var borderCorner2Range = [9.2, 9.8];
 
 function toggleVisibility(lines, checkbox) {
   var visible = checkbox.checked;
@@ -64,10 +74,10 @@ function toggleVisibility(lines, checkbox) {
   var line2 = lines[1];
 
   if (visible) {
-    line1.setAttribute('d', `M${getPointFromRange(0.5, 1.5)} ${getPointFromRange(0.5, 1.5)}L${getPointFromRange(8.5, 9.5)} ${getPointFromRange(8.5, 9.5)}`);
-    line2.setAttribute('d', `M${getPointFromRange(8.5, 9.5)} ${getPointFromRange(0.5, 1.5)}L${getPointFromRange(0.5, 1.5)} ${getPointFromRange(8.5, 9.5)}`);
-    line1.style.strokeDasharray = line1.style.strokeDashoffset = Math.ceil(line1.getTotalLength()) + 1;
-    line2.style.strokeDasharray = line2.style.strokeDashoffset = Math.ceil(line2.getTotalLength()) + 1;
+    line1.setAttribute('d', `M${getPoint(crossLine1Range)} ${getPoint(crossLine1Range)}L${getPoint(crossLine2Range)} ${getPoint(crossLine2Range)}`);
+    line2.setAttribute('d', `M${getPoint(crossLine2Range)} ${getPoint(crossLine1Range)}L${getPoint(crossLine1Range)} ${getPoint(crossLine2Range)}`);
+    line1.style.strokeDasharray = line1.style.strokeDashoffset = getPathLength(line1);
+    line2.style.strokeDasharray = line2.style.strokeDashoffset = getPathLength(line2);
 
     setTimeout(() => {
       line1.style.transition = line2.style.transition = 'stroke-dashoffset 200ms ease';
@@ -75,12 +85,17 @@ function toggleVisibility(lines, checkbox) {
       line1.style.strokeDashoffset = line2.style.strokeDashoffset = 0;
     }, 10);
   } else {
-    line1.style.strokeDashoffset = Math.ceil(line1.getTotalLength()) + 1;
-    line2.style.strokeDashoffset = Math.ceil(line2.getTotalLength()) + 1;
+    line1.style.strokeDashoffset = getPathLength(line1);
+    line2.style.strokeDashoffset = getPathLength(line2);
   }
 }
 
-function getPointFromRange(start, end) {
+function getPathLength(path) {
+  return Math.ceil(path.getTotalLength()) + 1; // Handle rounding issues
+}
+
+function getPoint(range) {
+  var [start, end] = range;
   var diff = end - start;
   return +(start + Math.random() * diff).toFixed(2);
 }
@@ -100,7 +115,9 @@ class HandDrawnCheckbox extends HTMLElement {
     var checkbox = this.querySelector('input[type="checkbox"]');
     var templateClone = template.content.cloneNode(true);
     var svgEl = templateClone.querySelector('svg');
-    var pathEls = svgEl.querySelectorAll('path');
+    var pathEls = svgEl.querySelectorAll('.line');
+    var borderEl = svgEl.querySelector('.border');
+    borderEl.setAttribute('d', `M${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner1Range)}M${getPoint(borderCorner2Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner2Range)}M${getPoint(borderCorner2Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner2Range)}M${getPoint(borderCorner1Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}M${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}`);
     toggleVisibility(pathEls, checkbox);
 
     var shadowRoot = this.attachShadow({ mode: 'open' });
