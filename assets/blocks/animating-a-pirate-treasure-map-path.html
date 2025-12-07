@@ -78,13 +78,10 @@ function handleClick(event) {
 }
 
 function animate(el, transitionFn) {
-  el.style.strokeDashoffset = lineLength;
-  el.style.strokeDasharray = lineLength;
+  el.style.strokeDashoffset = el.style.strokeDasharray = lineLength;
 
   setTimeout(() => {
-    el.style["transition-duration"] = "3s";
-    el.style["transition-property"] = "stroke-dashoffset";
-    el.style["transition-timing-function"] = transitionFn;
+    el.style.transition = `stroke-dashoffset 3s ${transitionFn}`;
     el.style.strokeDashoffset = 0;
   }, 10);
 }
