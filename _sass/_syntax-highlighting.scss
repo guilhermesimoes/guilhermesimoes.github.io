@@ -40,6 +40,7 @@ figure.highlight {
     border-right: 1px solid $muted-text-color;
     color: $muted-text-color;
     text-align: right;
+    -webkit-user-select: none;
     user-select: none;
   }
 }
