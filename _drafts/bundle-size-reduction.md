@@ -6,16 +6,16 @@ date:     2025-11-24 15:00:45 +0000
 
 This is a list of all the things I know, and all the things we've used to reduce the bundle size of the Peacock app.
 
-- Create target-specific builds (specially relevant when the same codebase is used for PlayStation, Xbox, Samsung TV, LG TV, Nvidia Shield, Fire TV, etc). In a browser context this would mean only loading IE-specific code on IE instead of loading it on every browser.
-- Code-splitting
-  - Load page-specific code only when the user visits that page.
-  - Load feature-specific code only when the user uses that feature. For example, in a chat app with an emoji-picker, only load the emoji-picker when the user clicks a button.
-- Remove duplicate dependencies.
-- Eliminate dependencies.
-- Rewrite dependencies.
-- Use a minifier / compressor such as [Terser], [SWC] or [esbuild].
-  - Go over _all_ the options of the minifier you're using. Go beyond the tool's defaults. Read its documentation. For example, Terser only does one pass. If you use `passes: 2` compressing takes longer but results are better.
-  - Specify the appropriate target. You should know what browsers implement what [ECMAScript versions]. You should also know what [language features] are implemented in what ECMAScript versions. There's a big difference between transpiling to `ES5` and `ES2021`. For example:
+- <input type="checkbox" /> Create target-specific builds (specially relevant when the same codebase is used for PlayStation, Xbox, Samsung TV, LG TV, Nvidia Shield, Fire TV, etc). In a browser context this would mean only loading IE-specific code on IE instead of loading it on every browser.
+- <input type="checkbox" /> Code-splitting
+  - <input type="checkbox" /> Load page-specific code only when the user visits that page.
+  - <input type="checkbox" /> Load feature-specific code only when the user uses that feature. For example, in a chat app with an emoji-picker, only load the emoji-picker when the user clicks a button.
+- <input type="checkbox" /> Remove duplicate dependencies.
+- <input type="checkbox" /> Eliminate dependencies.
+- <input type="checkbox" /> Rewrite dependencies.
+- <input type="checkbox" /> Use a minifier / compressor such as [Terser], [SWC] or [esbuild].
+  - <input type="checkbox" /> Go over _all_ the options of the minifier you're using. Go beyond the tool's defaults. Read its documentation. For example, Terser only does one pass. If you use `passes: 2` compressing takes longer but results are better.
+  - <input type="checkbox" /> Specify the appropriate target. You should know what browsers implement what [ECMAScript versions]. You should also know what [language features] are implemented in what ECMAScript versions. There's a big difference between transpiling to `ES5` and `ES2021`. For example:
 
     ```ts
     // ES5
@@ -27,7 +27,7 @@ This is a list of all the things I know, and all the things we've used to reduce
     const q = 'my search';
     const searchParams = { q };
     ```
-- Use [language features] that lead to smaller code. For example:
+- <input type="checkbox" /> Use [language features] that lead to smaller code. For example:
 
   ```ts
   usersEvents.reduce(userEvent => {
@@ -48,7 +48,7 @@ This is a list of all the things I know, and all the things we've used to reduce
   }, {});
   ```
 
-  - **However**, be aware of what your most important target (browser) is. For example:
+  - <input type="checkbox" /> **However**, be aware of what your most important target (browser) is. For example:
 
     ```ts
     possiblyUndefinedObject && possiblyUndefinedObject.prop
@@ -70,8 +70,8 @@ This is a list of all the things I know, and all the things we've used to reduce
 
     Refer back to step 1: target-specific builds.
 
-- Eliminate dead-code. Your bundler should already be doing this by default.
-  - Wrap optional code in [environment variables]. Examples:
+- <input type="checkbox" /> Eliminate dead-code. Your bundler should already be doing this by default.
+  - <input type="checkbox" /> Wrap optional code in [environment variables]. Examples:
 
   ```ts
   if (process.env.TEST_RUN) {
@@ -86,24 +86,24 @@ This is a list of all the things I know, and all the things we've used to reduce
     }
   }
   ```
-  - Search the documentation of all your dependencies for these special environment variables. For example, [if you're using Sentry you can set the env var `__SENTRY_DEBUG__`] to `false` in production builds so that optional code is removed during minification.
-  - Enable [tree-shaking].
-    - Ensure that your dependencies have `"sideEffects": false`. Bundlers like [Webpack][webpack side effects], [esbuild][esbuild side effects] and [bun][bun side effects] agree.
-      - Ensure that the dependencies of your dependencies have `"sideEffects": false`.
-    - Use ECMAScript Modules (ESM) and not CommonJS.
-      - Ensure that dependencies use ECMAScript Modules (ESM) and not CommonJS.
-      - Ensure that imports are consistent since [inconsistent imports can lead to duplicate code].
-    - Write services as plain ES modules that export functions since [services implemented as classes with public methods are not tree-shakable].
-    - Forbid `import * as Something` since it's not tree-shakable.
+  - <input type="checkbox" /> Search the documentation of all your dependencies for these special environment variables. For example, [if you're using Sentry you can set the env var `__SENTRY_DEBUG__`] to `false` in production builds so that optional code is removed during minification.
+  - <input type="checkbox" /> Enable [tree-shaking].
+    - <input type="checkbox" /> Ensure that your dependencies have `"sideEffects": false`. Bundlers like [Webpack][webpack side effects], [esbuild][esbuild side effects] and [bun][bun side effects] agree.
+      - <input type="checkbox" /> Ensure that the dependencies of your dependencies have `"sideEffects": false`.
+    - <input type="checkbox" /> Use ECMAScript Modules (ESM) and not CommonJS.
+      - <input type="checkbox" /> Ensure that dependencies use ECMAScript Modules (ESM) and not CommonJS.
+      - <input type="checkbox" /> Ensure that imports are consistent since [inconsistent imports can lead to duplicate code].
+    - <input type="checkbox" /> Write services as plain ES modules that export functions since [services implemented as classes with public methods are not tree-shakable].
+    - <input type="checkbox" /> Forbid `import * as Something` since it's not tree-shakable.
 
-  - mangling (renames)
-    - https://lihautan.com/reduce-minified-code-size-by-property-mangling/
-    - rename private methods https://github.com/timocov/ts-transformer-minify-privates
-    - rename private properties https://github.com/timocov/ts-transformer-properties-rename
-    - rename public methods
-    - rename public properties
-- If using TypeScript, prefer `const enum`s to `enum`s. `const enum`s are inlined directly in the code, and avoid objects and imports.
-- Optimize code at build-time. For example:
+  - <input type="checkbox" /> mangling (renames)
+    - <input type="checkbox" /> https://lihautan.com/reduce-minified-code-size-by-property-mangling/
+    - <input type="checkbox" /> rename private methods https://github.com/timocov/ts-transformer-minify-privates
+    - <input type="checkbox" /> rename private properties https://github.com/timocov/ts-transformer-properties-rename
+    - <input type="checkbox" /> rename public methods
+    - <input type="checkbox" /> rename public properties
+- <input type="checkbox" /> If using TypeScript, prefer `const enum`s to `enum`s. `const enum`s are inlined directly in the code, and avoid objects and imports.
+- <input type="checkbox" /> Optimize code at build-time. For example:
   ```ts
   export const ONE_SECOND_MS = 1000;
   export const ONE_MINUTE_MS = 60 * ONE_SECOND_MS;
@@ -118,12 +118,12 @@ This is a list of all the things I know, and all the things we've used to reduce
   export const ONE_DAY_MS = 86400000;
   ```
   Libraries that can help with this: [Prepack], [preval.macro] or [babel-plugin-preval].
-- gzip brotli HTTP/2
+- <input type="checkbox" /> gzip brotli HTTP/2
 https://rovity.io/brotli-vs-gzip/
 https://www.siteground.com/blog/brotli-vs-gzip-compression
 https://wp-rocket.me/blog/brotli-vs-gzip-compression/
 
-- Finally, keep monitoring the size of your JavaScript bundle.
+- <input type="checkbox" /> Finally, keep monitoring the size of your JavaScript bundle.
 
 
 
