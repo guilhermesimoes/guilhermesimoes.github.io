@@ -13,14 +13,14 @@ This is my first try at a Web Component. This one _progressively enhances_ an `<
 
 ```html
 <handdrawn-checkbox>
-  <input type="checkbox" checked />
+  <input type="checkbox" name="box1" checked />
 </handdrawn-checkbox>
 ```
 
 It's a bit verbose, but it's the only way to ensure that the progressive enhancement works. The element can also be declared this way:
 
 ```html
-<handdrawn-checkbox></handdrawn-checkbox>
+<handdrawn-checkbox name="box2"></handdrawn-checkbox>
 ```
 
 This still works because this custom element adds a default checkbox in its constructor. The drawback is that this renders nothing if the user blocks JavaScript.

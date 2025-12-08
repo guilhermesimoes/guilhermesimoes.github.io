@@ -23,13 +23,21 @@ input[type="checkbox"] {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
+
+.result {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 </style>
 <body>
-<div class="container">
-  <handdrawn-checkbox><input type="checkbox" checked /></handdrawn-checkbox>
+<form id="boxes" class="container">
+  <handdrawn-checkbox><input type="checkbox" name="box1" checked /></handdrawn-checkbox>
 
-  <handdrawn-checkbox></handdrawn-checkbox>
-</div>
+  <handdrawn-checkbox name="box2"></handdrawn-checkbox>
+</form>
+<div class="result">Boxes: <output form="boxes"></output></div>
 
 <script type="text/javascript">
 "use strict";
@@ -74,6 +82,7 @@ class HandDrawnCheckbox extends HTMLElement {
     if (!checkbox) {
       var defaultCheckbox = document.createElement('input');
       defaultCheckbox.setAttribute('type', 'checkbox');
+      defaultCheckbox.setAttribute('name', this.getAttribute('name'));
       this.appendChild(defaultCheckbox);
     }
   }
@@ -143,5 +152,17 @@ function getPoint(range) {
 }
 
 customElements.define('handdrawn-checkbox', HandDrawnCheckbox);
+
+var form = document.querySelector('#boxes');
+var output = document.querySelector('output');
+
+function updateOutput() {
+  var formData = new FormData(form);
+  var numBoxesChecked = Array.from(formData.entries()).length;
+  output.textContent = numBoxesChecked;
+}
+
+form.addEventListener('change', updateOutput);
+updateOutput();
 </script>
 </body>
