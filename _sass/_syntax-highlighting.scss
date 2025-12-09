@@ -9,6 +9,7 @@
 div.highlight, figure.highlight {
   font-size: 0.85em;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
 }
 
 // Applies to inline code
