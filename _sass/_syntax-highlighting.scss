@@ -1,14 +1,24 @@
 // Applies to both inline code and code blocks
 .highlighter-rouge {
-  font-size: 0.85em;
   background-color: $code-block-background-color;
   border: 1px solid $code-block-border-color;
   border-radius: 3px;
 }
 
+// Applies to code blocks and huge code blocks
+div.highlight, figure.highlight {
+  font-size: 0.85em;
+  overflow-x: auto;
+}
+
+// Applies to inline code
+code.highlighter-rouge {
+  font-size: 0.85em;
+  padding: 0.15em 0.25em;
+}
+
 // Applies to code blocks
 div.highlighter-rouge {
-  overflow-x: auto;
   @extend %vertical-rhythm;
 
   pre.highlight {
@@ -16,16 +26,8 @@ div.highlighter-rouge {
   }
 }
 
-// Applies to inline code
-code.highlighter-rouge {
-  padding: 0.15em 0.25em;
-}
-
 // Applies to huge code block with line numbers
 figure.highlight {
-  font-size: 0.85em;
-  overflow-x: auto;
-
   > pre {
     padding: math.div($spacing-unit, 2) $spacing-unit;
   }
