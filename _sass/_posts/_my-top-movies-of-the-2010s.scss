@@ -63,3 +63,33 @@
     }
   }
 }
+
+.bundle-size-reduction {
+  ul {
+    list-style: none;
+    margin-left: 0;
+
+    ul {
+      margin-left: 4em;
+    }
+  }
+
+  .list-item {
+    display: flex;
+    align-items: center;
+    gap: 0 1em;
+
+    > div {
+      overflow-x: auto;
+    }
+  }
+
+  input[type="checkbox"] {
+    margin: 0;
+    width: 4em;
+    height: 4em;
+    cursor: pointer;
+    color: rgba(237, 75, 26, 0.82);
+    -webkit-tap-highlight-color: transparent;
+  }
+}
