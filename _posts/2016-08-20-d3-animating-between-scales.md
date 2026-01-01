@@ -9,7 +9,13 @@ block:
   path:   animating-between-scales.html
 adapted:
   publication: Block
+tags:
+  - Animation
+  - DataViz
+  - D3
+  - Interactive
 ---
+
 The purpose of this gist is two-fold:
 
 1. Demonstrate how to animate between scales;

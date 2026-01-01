@@ -7,7 +7,10 @@ image:
   hero:   true
   path:   /assets/images/ruby-dresser.png
   alt:    "Drawing of a dresser with its drawers open, with rubies inside, compartmentalized."
+tags:
+  - Ruby
 ---
+
 When Bundler complains about “not being allowed to install to the system RubyGems” we have two solutions:
 
 1. [Configure Bundler to install gems in the user directory], where we have write permissions; or

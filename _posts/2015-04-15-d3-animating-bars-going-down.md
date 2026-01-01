@@ -9,7 +9,13 @@ block:
   path:   animating-bars-going-down.html
 adapted:
   publication: Block
+tags:
+  - Animation
+  - D3
+  - SVG
+  - Interactive
 ---
+
 One confusing aspect of animating bars (and working with SVG in general) is that the coordinate system origin is at the top-left corner, which means that `y` increases downwards.
 
 One would expect that to animate a bar diminishing in size (“going down”) changing the `height` attribute would be all that's needed. However that's not true. This is a visual explanation of why it's necessary to animate both `y` and `height` attributes.

@@ -9,7 +9,13 @@ block:
   path:   youtube-new-morphing-play-pause-svg-icon.html
 adapted:
   publication: Block
+tags:
+  - D3
+  - SVG
+  - Animation
+  - Interactive
 ---
+
 As soon as I saw the new YouTube Player and its new morphing play/pause button, I wanted to understand how it was made and replicate it myself.
 
 From my analysis it looks like YouTube is using [SMIL animations]. I could not get those animations to work on browsers other than Chrome and it appears [that they are deprecated and will be removed]. I settled for the following technique:

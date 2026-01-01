@@ -7,6 +7,10 @@ image:
   path:   /assets/images/hand-drawn-checkboxes.png
 block:
   path:   web-component-hand-drawn-checkbox.html
+tags:
+  - Web
+  - JavaScript
+  - Interactive
 ---
 
 This is my first try at a Web Component. This one _progressively enhances_ an `<input type="checkbox" />`. So even if the user blocks JavaScript, a regular HTML checkbox is still rendered. The custom element can be used like this:

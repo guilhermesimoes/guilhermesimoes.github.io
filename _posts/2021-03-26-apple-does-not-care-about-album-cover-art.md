@@ -5,6 +5,8 @@ subtitle: "Album covers have never been smaller."
 date:     2021-03-26 12:14:00 +0000
 image:
   path:   /assets/images/iphone-music-app-paused.png
+tags:
+  - Opinion
 ---
 
 It doesn't. It's the only possible explanation.[^1]

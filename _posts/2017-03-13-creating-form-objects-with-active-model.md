@@ -6,7 +6,12 @@ date:     2017-03-13 16:00:45 +0100
 adapted:
   publication: "Runtime Revolution blog"
   url:    https://revs.runtime-revolution.com/creating-form-objects-with-activemodel-346e6c2abbf3
+tags:
+  - Code Quality
+  - Ruby
+  - Rails
 ---
+
 A form object is an object designed specifically to be passed to `form_for`.
 It is often used to aggregate data to [create multiple objects] or to receive ephemeral data that is used and then discarded.
 

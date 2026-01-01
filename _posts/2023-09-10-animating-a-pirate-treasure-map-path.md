@@ -7,7 +7,12 @@ image:
   path:   /assets/images/treasure-map.png
 block:
   path:   animating-a-pirate-treasure-map-path.html
+tags:
+  - Animation
+  - SVG
+  - Interactive
 ---
+
 Animating an SVG line is nothing to write home about. It has already been described in great detail [many], [multiple], [different][different] [times][times]. We make the line use dashes, configure it so that there is a single dash that spans the entire line, and then we animate the offset of that dash. Done.
 
 But what if we want to animate a line that itself is dashed? Like a dashed line in a treasure map?

@@ -7,6 +7,9 @@ image:
   hero:   true
   path:   /assets/images/cheetahs.png
   alt:    "Drawing of two cheetahs, side by side, almost as if one was a clone of the other."
+tags:
+  - Perf
+  - JavaScript
 ---
 
 So this happened recently in a project at @work. I was analyzing the size of this project's bundle and noticed that a lot of `@company/internal-lib`'s code was being included twice. I tracked down all the imports of this library and found that on a file we were doing this:

@@ -7,7 +7,12 @@ image:
   hero:   true
   path:   /assets/images/watch-underwater.png
   alt:    "Drawing of a watch underwater, surrounded by fish."
+tags:
+  - Testing
+  - Code Quality
+  - Ruby
 ---
+
 Anyone can write a decent test description. But by paying attention to this little detail you can write _great_ test descriptions:
 
 _Block descriptions should start with a word that forms a **readable sentence** in conjunction with the block function name._

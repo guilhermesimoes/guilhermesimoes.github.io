@@ -7,6 +7,9 @@ image:
   hero:   true
   path:   /assets/images/npm-package.png
   alt:    "Drawing of a mail package, with a 'this side up' arrow and a label with the text 'v1.0.0' on one side."
+tags:
+  - Code Quality
+  - JavaScript
 ---
 
 We have a JavaScript package with this folder structure:

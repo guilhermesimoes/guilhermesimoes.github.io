@@ -3,7 +3,11 @@ layout:   post
 title:    "My Top Movies of the 2010s"
 subtitle: "Watch them and cross them off the list!"
 date:     2020-08-04 14:19:49 +0100
+tags:
+  - Opinion
+  - Cinema
 ---
+
 These are my favourite movies of the past decade.
 Watch them and cross them off the list!
 

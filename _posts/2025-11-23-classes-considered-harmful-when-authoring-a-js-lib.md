@@ -6,6 +6,9 @@ image:
   hero:   true
   path:   /assets/images/class-system.png
   alt:    "Drawing representing the class system of a feudal society. There's a king, a queen, a bishop, and some nobles."
+tags:
+  - Perf
+  - JavaScript
 ---
 
 Let me start by saying I'm the biggest [OOP] fan. I love Ruby. I have a copy of [POODR] on my bookcase. I look back fondly to the times of `React.createClass({ mixins: [MyMixin], ... })`. I loathe HOCs and hooks and whatever patterns [FP] zealots have been trying to push for the past couple of years. However, classes and OOP may not always be the best approach.

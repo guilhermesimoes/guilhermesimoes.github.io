@@ -7,6 +7,8 @@ image:
   hero:   true
   path:   /assets/images/half-bird-half-fish.png
   alt:    "Crude drawing of a half-bird, half-fish animal."
+tags:
+  - TypeScript
 ---
 
 When using a [Union Type] such as this:

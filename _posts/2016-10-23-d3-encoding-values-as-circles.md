@@ -9,7 +9,12 @@ block:
   path:   encoding-values-as-circles.html
 adapted:
   publication: Block
+tags:
+  - DataViz
+  - D3
+  - Interactive
 ---
+
 This gist demonstrates why it's a mistake to linearly map a data value to a circle radius.
 
 Notice that in the first example, while `50` is only 2 times smaller than `100`, the circle that encodes the value `50` is _4 times_ smaller than the circle that encodes the value `100`. Even worse, while `10` is only 10 times smaller than `100`, the circle that encodes the value `10` is _100 times_ smaller than the circle that encodes the value `100`!

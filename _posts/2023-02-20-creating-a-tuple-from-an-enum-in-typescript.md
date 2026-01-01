@@ -7,6 +7,8 @@ image:
   hero:   true
   path:   /assets/images/dithered-record-player.png
   alt:    "A close-up of a vinyl turntable, playing a record."
+tags:
+  - TypeScript
 ---
 
 We have a TypeScript package that uses and exports[^1] this enum:

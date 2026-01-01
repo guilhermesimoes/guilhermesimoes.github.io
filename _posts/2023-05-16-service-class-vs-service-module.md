@@ -7,6 +7,9 @@ image:
   hero:   true
   path:   /assets/images/heavy-vs-light.png
   alt:    "Drawing of two objects side by side: a dumbbell and a feather. One is heavy, the other is light."
+tags:
+  - Perf
+  - JavaScript
 ---
 
 This is just a quick post to get this out of my system. I further explore this subject in the follow-up post ["Classes Considered Harmful"].

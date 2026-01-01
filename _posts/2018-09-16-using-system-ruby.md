@@ -7,7 +7,10 @@ image:
   hero:   true
   path:   /assets/images/ruby-crt-monitor.png
   alt:    "Drawing of a CRT monitor displaying a shinning ruby."
+tags:
+  - Ruby
 ---
+
 I got a new computer for my new job in which, sadly, I won't have to use Ruby.
 Still, I'd like to dabble with some Ruby in my spare time. Maybe I want to improve my Jekyll site or tweak some Sass library.
 Even though [others][others] [want][want] [to][to] [disuade][disuade] me from using the Ruby that comes pre-installed with my operating system, I WANT TO USE THE ONE I ALREADY HAVE, DAMMIT!

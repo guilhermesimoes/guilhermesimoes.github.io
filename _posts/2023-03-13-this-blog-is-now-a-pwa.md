@@ -7,6 +7,9 @@ image:
   hero:   true
   path:   /assets/images/offline-dinosaur.png
   alt:    "The lonely T-Rex, the dinosaur from the Google Chrome game. This game starts when a user is offline and attempts to navigate to a web page on Google Chrome."
+tags:
+  - Web
+  - JavaScript
 ---
 
 Now, [PWA is a marketing term]. But generally, a PWA consists of:

@@ -7,6 +7,8 @@ image:
   hero:   true
   path:   /assets/images/bookcase.png
   alt:    "Drawing of a large bookcase."
+tags:
+  - Ebooks
 ---
 
 Comic books and mangas are usually stored as comic book archives, a type of file for the purpose of sequential viewing of images. This archive file is not a distinct file format but merely a filename extension naming convention. The filename extension indicates the archive type used:

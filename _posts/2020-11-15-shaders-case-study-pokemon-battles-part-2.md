@@ -13,6 +13,10 @@ scripts:
   - vendor/regl-2.0.1.min.js
   - vendor/d3-interpolate-path.min.js
   - slider.js
+tags:
+  - WebGL
+  - JavaScript
+  - Interactive
 ---
 
 In [part 1] I created various transitions using different fragment shaders. These shaders used geometry formulas to calculate when each pixel should be hidden. While this made it possible to create some very cool animations, the math got complicated quickly.

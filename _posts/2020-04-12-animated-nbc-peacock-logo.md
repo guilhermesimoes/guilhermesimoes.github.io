@@ -9,7 +9,12 @@ block:
   path:   animated-nbc-peacock-logo.html
 adapted:
   publication: Block
+tags:
+  - Animation
+  - SVG
+  - Interactive
 ---
+
 My attempt at animating NBC's peacock showing-off.
 
 If you're interested in NBC's past, check out the history of NBC's [logo] and [chime].

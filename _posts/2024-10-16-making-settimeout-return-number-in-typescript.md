@@ -7,6 +7,8 @@ image:
   hero:   true
   path:   /assets/images/gemsbok.png
   alt:    "Drawing of a gemsbok, a large antelope."
+tags:
+  - TypeScript
 ---
 
 For the longest time we had to deal with the fact that NodeJS types were being included in a web project at work. The most visible aspect of this issue was that the return type of `setTimeout` was a `NodeJS.Timeout` when it should be a `number`. In order to fix this we used to place the following at the top of each file that used `setTimeout`:[^1]

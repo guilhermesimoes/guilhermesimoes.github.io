@@ -6,6 +6,9 @@ image:
   hero:   true
   path:   /assets/images/giraffes.png
   alt:    "Drawing of two giraffes, a large one – an adult – and a tinier version – a child."
+tags:
+  - Perf
+  - TypeScript
 ---
 
 [As we saw last time], minifiers / compressors such as [Terser] do not minify class properties and methods by default. If a class has lots of properties and methods, their names can make quite the difference in the total size of an application. In the following example:

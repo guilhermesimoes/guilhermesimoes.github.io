@@ -7,7 +7,10 @@ image:
   hero:   true
   path:   /assets/images/ruby-box.png
   alt:    "Drawing of a cardboard box with a ruby label on one side."
+tags:
+  - Ruby
 ---
+
 [I just fixed][in using System Ruby] my system configuration so that `gem install` works. I install Bundler with `gem install bundler`. I then go to my project directory and use Bundler to install my project's dependencies:
 
 ```terminal
