@@ -175,7 +175,7 @@ It's not a diver's watch after all!
 [Mocha's spec reporter]: https://mochajs.org/#spec
 
 <script type="text/javascript">
-  var qs = window.location.search.toLowerCase();
+  var qs = location.search.toLowerCase();
   if (qs.includes('js') || qs.includes('javascript')) {
     fetch('writing-good-test-descriptions-js').then(res => {
       res.text().then(htmlString => {

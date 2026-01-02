@@ -1,4 +1,4 @@
-window.addEventListener('load', function onLoad() {
+self.addEventListener('load', function onLoad() {
   Array.from(document.querySelectorAll('.scene')).forEach(setupScene);
 });
 
@@ -7,7 +7,7 @@ var drawFns = [];
 async function setupScene(sceneEl, index) {
   var canvas = sceneEl.querySelector('canvas');
 
-  if (!window.WebGLRenderingContext) {
+  if (!self.WebGLRenderingContext) {
     var ctx = canvas.getContext('2d');
     ctx.textAlign = 'center';
     ctx.font = '18px serif';

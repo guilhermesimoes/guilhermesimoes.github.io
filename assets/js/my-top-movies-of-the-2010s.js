@@ -2,7 +2,7 @@ var moviesList;
 var seenMovies;
 var strikeThroughTemplate;
 
-window.addEventListener('load', function onLoad() {
+self.addEventListener('load', function onLoad() {
   try {
     seenMovies = JSON.parse(localStorage.getItem('seenMovies')) || {};
   } catch (_error) {

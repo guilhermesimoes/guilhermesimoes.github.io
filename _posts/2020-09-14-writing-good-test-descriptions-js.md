@@ -167,7 +167,7 @@ It's not a diver's watch after all!
 [Mocha's spec reporter]: https://mochajs.org/#spec
 
 <script type="text/javascript">
-  if (window.location.pathname.includes('writing-good-test-descriptions-js')) {
-    window.location = "writing-good-test-descriptions?js"
+  if (location.pathname.includes('writing-good-test-descriptions-js')) {
+    self.location = "writing-good-test-descriptions?js"
   }
 </script>
