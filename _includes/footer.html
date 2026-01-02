@@ -2,4 +2,11 @@
   if (navigator.serviceWorker) {
     navigator.serviceWorker.register('/service-worker.js');
   }
+
+  self.addEventListener('pageswap', () => {
+    var menuTrigger = document.querySelector('#nav-trigger');
+    if (menuTrigger.checked) {
+      menuTrigger.checked = false;
+    }
+  });
 </script>
