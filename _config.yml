@@ -29,6 +29,7 @@ author:
   email: guilherme.rdems@gmail.com
   uri: https://guilhermesimoes.github.io
   twitter_handle: "@glitchdout"
+lang: en
 
 # Build settings
 markdown: kramdown
