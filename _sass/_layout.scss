@@ -1,10 +1,8 @@
 $header-height: 3.2rem;
 $menu-opening-duration: 0.3s;
 
-@media (pointer: fine) {
-  @view-transition {
-    navigation: auto;
-  }
+@view-transition {
+  navigation: auto;
 }
 
 html {
