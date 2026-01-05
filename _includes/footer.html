@@ -15,7 +15,13 @@
   if (deviceIsLargeish && pageIsScrollable) {
     var hidingButton = true;
     var goTopButton = document.querySelector('#gotop-link');
+    goTopButton.addEventListener('click', scrollToTop); // Not necessary, but prevents # from being added to the URL
     self.addEventListener('scroll', handleScroll);
+  }
+
+  function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({ top: 0 });
   }
 
   function handleScroll() {
