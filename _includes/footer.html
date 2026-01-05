@@ -9,4 +9,27 @@
       menuTrigger.checked = false;
     }
   });
+
+  var deviceIsLargeish = matchMedia('(hover: hover)').matches;
+  var pageIsScrollable = document.body.scrollHeight > self.innerHeight;
+  if (deviceIsLargeish && pageIsScrollable) {
+    var hidingButton = true;
+    var goTopButton = document.querySelector('#gotop-link');
+    self.addEventListener('scroll', handleScroll);
+  }
+
+  function handleScroll() {
+    var scrollPercentage = (self.scrollY + self.innerHeight) / document.body.scrollHeight;
+    if (scrollPercentage > 0.5) {
+      if (hidingButton) {
+        hidingButton = false;
+        goTopButton.classList.remove('hidden');
+      }
+    } else {
+      if (!hidingButton) {
+        hidingButton = true;
+        goTopButton.classList.add('hidden');
+      }
+    }
+  }
 </script>

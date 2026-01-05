@@ -150,3 +150,18 @@ body {
   font-size: $small-font-size;
   color: $muted-text-color;
 }
+
+.gotop-link {
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+  width: 1em;
+  color: currentColor !important;
+  transition-property: display, opacity;
+  transition-duration: 1s;
+  transition-behavior: allow-discrete;
+
+  @starting-style {
+    opacity: 0;
+  }
+}

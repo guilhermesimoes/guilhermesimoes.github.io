@@ -34,3 +34,12 @@ $duration: 0.3s;
     stroke-linejoin: round;
   }
 }
+
+.up-arrow-icon {
+  stroke: currentColor;
+  stroke-linejoin: round;
+
+  .down {
+    fill: none;
+  }
+}
