@@ -96,6 +96,10 @@ a {
 
   &:hover {
     color: $text-color;
+    text-decoration: dotted underline;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
   }
 }
 

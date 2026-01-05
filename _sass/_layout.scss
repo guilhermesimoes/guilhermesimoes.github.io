@@ -40,17 +40,14 @@ body {
   padding-bottom: $spacing-unit * 6;
 }
 
-.site-title {
+.site-header .site-title {
   font-size: 1.625em;
   font-weight: 300;
   line-height: $base-font-size * 3.2;
   letter-spacing: -1px;
   margin-bottom: 0;
-
-  &,
-  &:visited {
-    color: $text-color;
-  }
+  color: $text-color;
+  text-decoration: none;
 }
 
 .site-nav {
@@ -118,6 +115,7 @@ body {
     padding: 5px 10px;
     margin-left: 20px;
     color: $text-color;
+    text-decoration: none;
   }
 
   @include media-query($lap) {
