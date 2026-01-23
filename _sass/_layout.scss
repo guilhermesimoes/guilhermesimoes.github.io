@@ -158,13 +158,17 @@ body {
 
 .gotop-link {
   position: fixed;
-  right: 2em;
-  bottom: 2em;
-  width: 1em;
+  right: 1em;
+  bottom: 1em;
+  padding: 1em;
   color: currentColor !important;
   transition-property: display, opacity;
   transition-duration: 1s;
   transition-behavior: allow-discrete;
+
+  .icon {
+    width: 1em;
+  }
 
   @starting-style {
     opacity: 0;

@@ -26,20 +26,9 @@ $duration: 0.3s;
   }
 }
 
-.new-tab-icon {
-  path {
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-}
-
-.up-arrow-icon {
+.new-tab-icon, .up-arrow-icon {
+  fill: none;
   stroke: currentColor;
+  stroke-linecap: round;
   stroke-linejoin: round;
-
-  .down {
-    fill: none;
-  }
 }
