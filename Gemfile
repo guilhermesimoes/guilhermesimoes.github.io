@@ -25,6 +25,8 @@ group :jekyll_plugins do
   gem 'jekyll-relative-links', '~> 0.6'
 end
 
+gem 'bigdecimal', "~> 4.0"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
 install_if -> { RUBY_PLATFORM =~ %r!mingw|mswin|java! } do
