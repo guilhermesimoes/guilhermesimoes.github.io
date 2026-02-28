@@ -12,7 +12,7 @@ layout: default
       {% for post in posts %}
         {%- if post.hidden != true -%}
           <tr>
-            <td class="post-meta">{%- include date.html date=post.date -%}</td>
+            <td class="deemph">{%- include date.html date=post.date -%}</td>
             <td><a href="{{ post.url | relative_url }}">{{ post.title | strip_html }}</a></td>
           </tr>
         {%- endif %}
@@ -20,7 +20,7 @@ layout: default
     </tbody>
   </table>
 
-  <div class="post-meta">
+  <div class="post-meta deemph">
     <a href="/feed.xml">
       {%- include icons/rss.svg -%}<span>subscribe to RSS feed</span>
     </a>

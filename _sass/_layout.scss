@@ -142,10 +142,13 @@ body {
   }
 }
 
-.post-meta {
-  margin-top: $spacing-unit * 3;
+.deemph {
   font-size: $small-font-size;
   color: $muted-text-color;
+}
+
+.post-meta {
+  margin-top: $spacing-unit * 3;
 }
 
 .gotop-link {
