@@ -18,7 +18,6 @@ description: >- # this means to ignore newlines until "baseurl:"
   The writings, experiments and assorted output of Guilherme Simões.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://guilhermesimoes.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-date_format: "%B %-d, %Y"
 include: ["_pages"]
 permalink: /blog/:title
 author:
