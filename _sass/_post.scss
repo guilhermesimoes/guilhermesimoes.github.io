@@ -67,14 +67,9 @@
     padding-top: math.div($spacing-unit, 2);
     margin-top: $spacing-unit * 2;
     border-top: 1px solid black;
-
-    :target {
-      /* @keyframes duration | easing-function | iteration-count | direction | name */
-      animation: 1s ease-in-out 2 alternate highlight;
-    }
   }
 
-  [role="doc-noteref"] {
+  [role="doc-noteref"], [role="doc-endnote"] {
     scroll-margin-top: $spacing-unit * 6;
 
     &:target {
