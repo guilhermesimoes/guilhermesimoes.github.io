@@ -5,16 +5,16 @@ permalink:    /blog/
 header_title: Blog
 ---
 
-<section class="blog-index wrapper">
-  <h1>Blog</h1>
+<section itemscope itemtype="https://schema.org/ItemList" class="blog-index wrapper">
+  <h1 itemprop="name">Blog</h1>
 
   <table>
     <tbody>
       {% for post in site.posts %}
         {%- if post.hidden != true -%}
-          <tr>
-            <td class="deemph">{%- include date.html date=post.date }}</td>
-            <td><a href="{{ post.url | relative_url }}">{{ post.title | strip_html }}</a></td>
+          <tr itemprop="itemListElement">
+            <td class="deemph">{%- include date.html date=post.date -%}</td>
+            <td><a href="{{ post.url | relative_url }}" itemprop="name">{{ post.title | strip_html }}</a></td>
           </tr>
         {%- endif %}
       {% endfor %}
