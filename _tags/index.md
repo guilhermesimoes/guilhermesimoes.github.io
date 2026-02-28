@@ -4,15 +4,15 @@ title:        Tags
 permalink:    /tags/
 ---
 
-<section class="blog-index wrapper">
-  <h1>Tags</h1>
+<section itemscope itemtype="https://schema.org/ItemList" class="wrapper">
+  <h1 itemprop="name">Tags</h1>
 
   <table>
     <tbody>
       {% for tag in site.tags %}
         {%- if tag.name != page.name -%}
-          <tr>
-            <td><a href="{{ tag.url | relative_url }}">{{ tag.name | strip_html }}</a></td>
+          <tr itemprop="itemListElement">
+            <td><a href="{{ tag.url | relative_url }}" itemprop="name">{{ tag.name | strip_html }}</a></td>
           </tr>
         {%- endif %}
       {% endfor %}

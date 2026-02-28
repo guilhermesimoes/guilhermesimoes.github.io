@@ -2,18 +2,18 @@
 layout: default
 ---
 
-<section class="blog-index wrapper">
+<section itemscope itemtype="https://schema.org/ItemList" class="wrapper">
   {% assign tag = page %}
-  <h1>{{ tag.name }} posts</h1>
+  <h1 itemprop="name">{{ tag.name }} posts</h1>
 
   <table>
     <tbody>
       {% assign posts = site.posts | where_exp: "post", "post.tags contains tag.name" %}
       {% for post in posts %}
         {%- if post.hidden != true -%}
-          <tr>
+          <tr itemprop="itemListElement">
             <td class="deemph">{%- include date.html date=post.date -%}</td>
-            <td><a href="{{ post.url | relative_url }}">{{ post.title | strip_html }}</a></td>
+            <td><a href="{{ post.url | relative_url }}" itemprop="name">{{ post.title | strip_html }}</a></td>
           </tr>
         {%- endif %}
       {% endfor %}
