@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<section class="blog-index wrapper">
+  {% assign tag = page %}
+  <h1>{{ tag.name }} posts</h1>
+
+  <table>
+    <tbody>
+      {% assign posts = site.posts | where_exp: "post", "post.tags contains tag.name" %}
+      {% for post in posts %}
+        {%- if post.hidden != true -%}
+          <tr>
+            <td class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</td>
+            <td><a href="{{ post.url | relative_url }}">{{ post.title | strip_html }}</a></td>
+          </tr>
+        {%- endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="post-meta">
+    <a href="/feed.xml">
+      {%- include icons/rss.svg -%}<span>subscribe to RSS feed</span>
+    </a>
+    (<a href="https://www.lifewire.com/what-is-an-rss-feed-4684568">what is this?</a>)
+  </div>
+</section>
