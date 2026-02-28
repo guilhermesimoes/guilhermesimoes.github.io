@@ -19,7 +19,7 @@ permalink:    /tags/
     </tbody>
   </table>
 
-  <div class="post-meta">
+  <div class="post-meta deemph">
     <a href="/feed.xml">
       {%- include icons/rss.svg -%}<span>subscribe to RSS feed</span>
     </a>
