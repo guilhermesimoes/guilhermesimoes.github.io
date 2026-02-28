@@ -8,9 +8,7 @@
   {%- endif -%}
   {%- include edit-on-github.html -%}
   <div class="author">
-    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-      {{ page.date | date: site.date_format }}
-    </time>
+    {%- include date.html date=page.date format="%B %-d, %Y" -%}
     {%- include icons/diamond.svg -%}
     <span itemprop="author" itemscope itemtype="http://schema.org/Person">
       {%- include author.html -%}
