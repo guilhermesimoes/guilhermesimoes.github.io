@@ -48,7 +48,7 @@ Now, when the run:
 ```terminal
 $ bundle config path
 Settings for `path` in order of priority. The top value will be used
-Set for your local app (~/Projects/guilhermesimoes.github.io/.bundle/config): "vendor/bundle"
+Set for your local app (~/my-demo/.bundle/config): "vendor/bundle"
 ```
 
 We can see that a `path` is configured. This makes it so that `bundle install` installs gems in the `vendor/bundle` folder.
