@@ -9,11 +9,7 @@ block:
   path:   animating-bars-going-down.html
 adapted:
   publication: Block
-tags:
-  - Animation
-  - D3
-  - SVG
-  - Interactive
+tags: [Animation, D3, SVG, Interactive]
 ---
 
 One confusing aspect of animating bars (and working with SVG in general) is that the coordinate system origin is at the top-left corner, which means that `y` increases downwards.

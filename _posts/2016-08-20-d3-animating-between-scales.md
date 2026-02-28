@@ -9,11 +9,7 @@ block:
   path:   animating-between-scales.html
 adapted:
   publication: Block
-tags:
-  - Animation
-  - DataViz
-  - D3
-  - Interactive
+tags: [Animation, DataViz, D3, Interactive]
 ---
 
 The purpose of this gist is two-fold:

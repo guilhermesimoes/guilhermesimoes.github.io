@@ -7,8 +7,7 @@ image:
   hero:   true
   path:   /assets/images/ruby-crt-monitor.png
   alt:    "Drawing of a CRT monitor displaying a shinning ruby."
-tags:
-  - Ruby
+tags: [Ruby]
 ---
 
 I got a new computer for my new job in which, sadly, I won't have to use Ruby.

@@ -8,10 +8,7 @@ image:
   path:   /assets/images/watch-underwater.png
   alt:    "Drawing of a watch underwater, surrounded by fish."
 hidden:   true
-tags:
-  - Testing
-  - Code Quality
-  - JavaScript
+tags: [Testing, Code Quality, JavaScript]
 ---
 
 Anyone can write a decent test description. But by paying attention to this little detail you can write _great_ test descriptions:

@@ -6,10 +6,7 @@ date:     2017-04-20 14:51:53 +0100
 adapted:
   publication: "Runtime Revolution blog"
   url:    https://revs.runtime-revolution.com/saving-multiple-models-with-form-objects-and-transactions-2c26f37f7b9a
-tags:
-  - Code Quality
-  - Ruby
-  - Rails
+tags: [Code Quality, Ruby, Rails]
 ---
 
 [We've talked before about form objects][in creating form objects] and how they can simplify our Rails views.

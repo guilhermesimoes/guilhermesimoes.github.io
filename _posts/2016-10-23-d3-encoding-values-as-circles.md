@@ -9,10 +9,7 @@ block:
   path:   encoding-values-as-circles.html
 adapted:
   publication: Block
-tags:
-  - DataViz
-  - D3
-  - Interactive
+tags: [DataViz, D3, Interactive]
 ---
 
 This gist demonstrates why it's a mistake to linearly map a data value to a circle radius.

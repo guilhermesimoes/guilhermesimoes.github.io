@@ -6,9 +6,7 @@ date:     2013-01-25 21:00:45 +0100
 adapted:
   publication: "A11Y Project"
   url:    https://a11yproject.com/posts/never-remove-css-outlines/
-tags:
-  - CSS
-  - A11Y
+tags: [CSS, A11Y]
 ---
 
 Use of the rule `:focus { outline: none; }` to remove an outline results in the link or control being focusable but with no visible indication of focus.

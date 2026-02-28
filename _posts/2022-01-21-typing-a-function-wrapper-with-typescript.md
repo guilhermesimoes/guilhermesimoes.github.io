@@ -7,8 +7,7 @@ image:
   hero:   true
   path:   /assets/images/stopwatch.png
   alt:    "Drawing of a stopwatch."
-tags:
-  - TypeScript
+tags: [TypeScript]
 ---
 
 My task was simple: write a function wrapper to measure the time it takes to execute a function. It’s easy to write a function wrapper in JavaScript but in TypeScript this is hard because we need to preserve the types of the wrapped function. It took me a while to figure out how do this so I'm leaving this here so future me doesn't have to waste as much time as past me did.

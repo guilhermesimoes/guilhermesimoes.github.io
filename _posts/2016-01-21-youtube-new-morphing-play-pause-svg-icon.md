@@ -9,11 +9,7 @@ block:
   path:   youtube-new-morphing-play-pause-svg-icon.html
 adapted:
   publication: Block
-tags:
-  - D3
-  - SVG
-  - Animation
-  - Interactive
+tags: [D3, SVG, Animation, Interactive]
 ---
 
 As soon as I saw the new YouTube Player and its new morphing play/pause button, I wanted to understand how it was made and replicate it myself.

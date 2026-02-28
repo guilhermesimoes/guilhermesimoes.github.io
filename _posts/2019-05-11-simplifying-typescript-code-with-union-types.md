@@ -7,8 +7,7 @@ image:
   hero:   true
   path:   /assets/images/half-fish-half-bird.png
   alt:    "Crude drawing of a half-fish, half-bird animal."
-tags:
-  - TypeScript
+tags: [TypeScript]
 ---
 
 Let's imagine we have the following TypeScript interfaces:

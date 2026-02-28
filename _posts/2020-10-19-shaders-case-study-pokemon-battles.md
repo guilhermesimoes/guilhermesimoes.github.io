@@ -13,10 +13,7 @@ scripts:
   - vendor/regl-2.0.1.min.js
   - vendor/d3-interpolate-path.min.js
   - slider.js
-tags:
-  - WebGL
-  - JavaScript
-  - Interactive
+tags: [WebGL, JavaScript, Interactive]
 ---
 
 Remember the Pokémon games? I sure do! Just by looking at the gif above I can hear the sound a trainer makes when he spots you, and hear the battle chiptune beginning.
