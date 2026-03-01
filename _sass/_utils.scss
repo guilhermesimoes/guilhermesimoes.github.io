@@ -38,6 +38,12 @@
   height: 100%;
 }
 
+.modern-ratio-16-9 {
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
 .bleed {
   max-width: $content-width + 12 * $spacing-unit;
   margin-right: auto;
