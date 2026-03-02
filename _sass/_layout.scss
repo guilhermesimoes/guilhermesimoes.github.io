@@ -107,7 +107,7 @@ body {
     pointer-events: none;
   }
 
-  .page-link {
+  a {
     display: block;
     padding: 5px 1em;
     color: $text-color;
@@ -134,7 +134,7 @@ body {
       pointer-events: initial;
     }
 
-    .page-link {
+    a {
       display: inline;
       padding: 0;
       margin-left: 1.5em;
