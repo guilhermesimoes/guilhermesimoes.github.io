@@ -44,11 +44,9 @@ html, body {
   </button>
 </div>
 
-<script src="https://unpkg.com/d3-interpolate-path@2.3.0/build/d3-interpolate-path.js" integrity="sha512-/KgDI+uHyEILdOip4a2TTY6ErNAg/jJtTZ67hG450/jvgrZFKm9YkF/Q+mAIs6y7VTG+ODbACY4V4Dj4wM6SUg==" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/d3-interpolate-path@2.3.0/build/d3-interpolate-path.js" integrity="sha512-/KgDI+uHyEILdOip4a2TTY6ErNAg/jJtTZ67hG450/jvgrZFKm9YkF/Q+mAIs6y7VTG+ODbACY4V4Dj4wM6SUg==" crossorigin></script>
 <script type="text/javascript">
 "use strict";
-
-/* global document */
 
 // taken from https://github.com/chenglou/tween-functions/blob/master/index.js
 // t: current time, b: beginning value, _c: final value, d: total duration
@@ -66,23 +64,21 @@ function clamp(val) {
 }
 
 class Transition {
-  constructor(duration, cb, easeFn) {
+  constructor(duration, cb, easeFn = easeInOutCubic) {
     this.duration = duration;
     this.cb = cb;
-    this.easeFn = easeFn || easeInOutCubic;
-    this.tick = this.tick.bind(this);
-    this.isRunning = false;
+    this.easeFn = easeFn;
   }
 
   start() {
     this.startTimestamp = performance.now();
-    if (this.isRunning === false) {
+    if (!this.isRunning) {
       this.isRunning = true;
       requestAnimationFrame(this.tick);
     }
   }
 
-  tick(timestamp) {
+  tick = (timestamp) => {
     var timeElapsed = timestamp - this.startTimestamp;
     var from = 0;
     var to = 1;
@@ -101,46 +97,37 @@ class PlayPauseButton {
   constructor(el) {
     this.el = el;
     this.replaceUseWithPath();
-    this.el.addEventListener("click", this.goToNextState.bind(this));
-    this.transition = new Transition(400, this.tick.bind(this));
+    this.transition = new Transition(400, this.tick);
+    this.el.addEventListener("click", this.goToNextState);
   }
 
   replaceUseWithPath() {
     var useEl = this.el.querySelector("use");
     var iconId = useEl.getAttribute("xlink:href");
     var iconEl = this.el.querySelector(iconId);
-    var nextState = iconEl.getAttribute("data-next-state");
     var iconPath = iconEl.getAttribute("d");
 
+    this.nextState = iconEl.getAttribute("data-next-state");
     this.pathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    this.pathEl.setAttribute("data-next-state", nextState);
     this.pathEl.setAttribute("d", iconPath);
 
-    var svgEl = this.el.querySelector("svg");
-    svgEl.replaceChild(this.pathEl, useEl);
+    useEl.parentNode.replaceChild(this.pathEl, useEl);
   }
 
-  goToNextState() {
+  goToNextState = () => {
+    var nextIconEl = this.el.querySelector(`[data-state="${this.nextState}"]`);
+    var nextIconPath = nextIconEl.getAttribute("d");
     var iconPath = this.pathEl.getAttribute("d");
 
-    var nextIconEl = this.getNextIcon();
-    var nextIconPath = nextIconEl.getAttribute("d");
-    var nextState = nextIconEl.getAttribute("data-next-state");
-
-    this.pathEl.setAttribute("data-next-state", nextState);
+    this.nextState = nextIconEl.getAttribute("data-next-state");
     this.pathInterpolator = d3.interpolatePath(iconPath, nextIconPath);
     this.transition.start();
   }
 
-  getNextIcon() {
-    var nextState = this.pathEl.getAttribute("data-next-state");
-    return this.el.querySelector(`[data-state="${nextState}"]`);
-  }
-
-  tick(progress) {
+  tick = (progress) => {
     this.pathEl.setAttribute("d", this.pathInterpolator(progress));
   }
-};
+}
 
 var playPauseButton = new PlayPauseButton(document.querySelector(".js-button"));
 </script>
