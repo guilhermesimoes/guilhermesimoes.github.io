@@ -44,21 +44,65 @@ html, body {
   </button>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/d3-ease@3.0.1/dist/d3-ease.min.js" integrity="sha256-5goe11ChrRON0Y6NP0YyOBE8+/fYloWhPRm9TgSNw84=" crossorigin></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-timer@3.0.1/dist/d3-timer.min.js" integrity="sha256-kRztowXwFLa1PKaNXIlqmjh9oSDP1WpCGixgzKL8mzY=" crossorigin></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3.0.1/dist/d3-interpolate.min.js" integrity="sha256-v8Mh5MPzs6rciM/hXMteRDq/6t74t1xltBwzpNeKmK4=" crossorigin></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-dispatch@3.0.1/dist/d3-dispatch.min.js" integrity="sha256-lLO722uY3BMloVdisFEBPoJTmZsOBDayfR2he5UroK8=" crossorigin></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-selection@3.0.0/dist/d3-selection.min.js" integrity="sha256-RdqrnPZ3kBvK4QLz8jyikw2zwPuP+ePb7Qh9nE3pIco=" crossorigin></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-transition@3.0.1/dist/d3-transition.min.js" integrity="sha256-wkjZf2wTGvf0oSo/8fLtg/HMbA4X/HZKGYtu5FLmYhs=" crossorigin></script>
+<script src="https://unpkg.com/d3-interpolate-path@2.3.0/build/d3-interpolate-path.js" integrity="sha512-/KgDI+uHyEILdOip4a2TTY6ErNAg/jJtTZ67hG450/jvgrZFKm9YkF/Q+mAIs6y7VTG+ODbACY4V4Dj4wM6SUg==" crossorigin="anonymous"></script>
 <script type="text/javascript">
 "use strict";
+
+/* global document */
+
+// taken from https://github.com/chenglou/tween-functions/blob/master/index.js
+// t: current time, b: beginning value, _c: final value, d: total duration
+function easeInOutCubic(t, b, _c, d) {
+  var c = _c - b;
+  if ((t /= d / 2) < 1) {
+    return c / 2 * t * t * t + b;
+  } else {
+    return c / 2 * ((t -= 2) * t * t + 2) + b;
+  }
+}
+
+function clamp(val) {
+  return Math.max(Math.min(val, 1), 0);
+}
+
+class Transition {
+  constructor(duration, cb, easeFn) {
+    this.duration = duration;
+    this.cb = cb;
+    this.easeFn = easeFn || easeInOutCubic;
+    this.tick = this.tick.bind(this);
+    this.isRunning = false;
+  }
+
+  start() {
+    this.startTimestamp = performance.now();
+    if (this.isRunning === false) {
+      this.isRunning = true;
+      requestAnimationFrame(this.tick);
+    }
+  }
+
+  tick(timestamp) {
+    var timeElapsed = timestamp - this.startTimestamp;
+    var from = 0;
+    var to = 1;
+
+    this.progress = clamp(this.easeFn(timeElapsed, from, to, this.duration));
+    this.cb(this.progress);
+    if (timeElapsed < this.duration) {
+      requestAnimationFrame(this.tick);
+    } else {
+      this.isRunning = false;
+    }
+  }
+}
 
 class PlayPauseButton {
   constructor(el) {
     this.el = el;
     this.replaceUseWithPath();
     this.el.addEventListener("click", this.goToNextState.bind(this));
-    this.animationDuration = 400;
+    this.transition = new Transition(400, this.tick.bind(this));
   }
 
   replaceUseWithPath() {
@@ -77,25 +121,27 @@ class PlayPauseButton {
   }
 
   goToNextState() {
+    var iconPath = this.pathEl.getAttribute("d");
+
     var nextIconEl = this.getNextIcon();
     var nextIconPath = nextIconEl.getAttribute("d");
     var nextState = nextIconEl.getAttribute("data-next-state");
 
-    d3.select(this.pathEl)
-      .attr("data-next-state", nextState)
-      .transition()
-        .duration(this.animationDuration)
-        .attr("d", nextIconPath);
+    this.pathEl.setAttribute("data-next-state", nextState);
+    this.pathInterpolator = d3.interpolatePath(iconPath, nextIconPath);
+    this.transition.start();
   }
 
   getNextIcon() {
     var nextState = this.pathEl.getAttribute("data-next-state");
     return this.el.querySelector(`[data-state="${nextState}"]`);
   }
+
+  tick(progress) {
+    this.pathEl.setAttribute("d", this.pathInterpolator(progress));
+  }
 };
 
 var playPauseButton = new PlayPauseButton(document.querySelector(".js-button"));
-
-self.d3.color = () => {}; // This should not be necessary but it is
 </script>
 </body>
