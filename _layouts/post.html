@@ -8,9 +8,10 @@ layout: default
     <h1 itemprop="name headline">{{ page.title }}</h1>
   </header>
 
-  {% if page.image.hero -%}
-    <figure class="aspect-ratio-box {{ page.image.ratio | default: 'ratio-16-9' }}">
-      <img src="{{ page.image.path }}" alt="{{ page.image.alt }}" class="aspect-ratio-box-content" itemprop="image" />
+  {%- assign image = page.gif | default: page.image -%}
+  {% if image.hero -%}
+    <figure class="aspect-ratio-box {{ image.ratio | default: 'ratio-16-9' }}">
+      <img src="{{ image.path }}" alt="{{ image.alt }}" class="aspect-ratio-box-content" itemprop="image" />
     </figure>
   {% endif -%}
 

@@ -4,11 +4,13 @@ title:    <span class='nowrap'>Shaders Case Study:</span> <span class='nowrap'>P
 subtitle: "Gotta shade 'em all!"
 date:     2020-10-19 22:00:37 +1000
 image:
+  path:   /assets/images/pokemon-textures/gold-first-grass.png
+  alt:    "Pokémon Gold character looking at the first grass area of the game."
+gif:
   hero:   true
   path:   /assets/images/i-like-shorts.gif
   alt:    "Gif from Pokémon Red, where a trainer challenges the main player and says 'I like shorts'."
   ratio:  ratio-game-boy
-  meta_path: /assets/images/pokemon-textures/gold-first-grass.png
 scripts:
   - vendor/regl-2.0.1.min.js
   - vendor/d3-interpolate-path.min.js
