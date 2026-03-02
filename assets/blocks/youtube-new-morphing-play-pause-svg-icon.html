@@ -48,51 +48,6 @@ html, body {
 <script type="text/javascript">
 "use strict";
 
-// taken from https://github.com/chenglou/tween-functions/blob/master/index.js
-// t: current time, b: beginning value, _c: final value, d: total duration
-function easeInOutCubic(t, b, _c, d) {
-  var c = _c - b;
-  if ((t /= d / 2) < 1) {
-    return c / 2 * t * t * t + b;
-  } else {
-    return c / 2 * ((t -= 2) * t * t + 2) + b;
-  }
-}
-
-function clamp(val) {
-  return Math.max(Math.min(val, 1), 0);
-}
-
-class Transition {
-  constructor(duration, cb, easeFn = easeInOutCubic) {
-    this.duration = duration;
-    this.cb = cb;
-    this.easeFn = easeFn;
-  }
-
-  start() {
-    this.startTimestamp = performance.now();
-    if (!this.isRunning) {
-      this.isRunning = true;
-      requestAnimationFrame(this.tick);
-    }
-  }
-
-  tick = (timestamp) => {
-    var timeElapsed = timestamp - this.startTimestamp;
-    var from = 0;
-    var to = 1;
-
-    this.progress = clamp(this.easeFn(timeElapsed, from, to, this.duration));
-    this.cb(this.progress);
-    if (timeElapsed < this.duration) {
-      requestAnimationFrame(this.tick);
-    } else {
-      this.isRunning = false;
-    }
-  }
-}
-
 class PlayPauseButton {
   constructor(el) {
     this.el = el;
@@ -127,6 +82,52 @@ class PlayPauseButton {
   tick = (progress) => {
     this.pathEl.setAttribute("d", this.pathInterpolator(progress));
   }
+}
+
+// The following code doesn't really matter, it's just a simplification of what D3 does.
+class Transition {
+  constructor(duration, cb, easeFn = easeInOutCubic) {
+    this.duration = duration;
+    this.cb = cb;
+    this.easeFn = easeFn;
+  }
+
+  start() {
+    this.startTimestamp = performance.now();
+    if (!this.isRunning) {
+      this.isRunning = true;
+      requestAnimationFrame(this.tick);
+    }
+  }
+
+  tick = (timestamp) => {
+    var timeElapsed = timestamp - this.startTimestamp;
+    var from = 0;
+    var to = 1;
+
+    this.progress = clamp(this.easeFn(timeElapsed, from, to, this.duration));
+    this.cb(this.progress);
+    if (timeElapsed < this.duration) {
+      requestAnimationFrame(this.tick);
+    } else {
+      this.isRunning = false;
+    }
+  }
+}
+
+// taken from https://github.com/chenglou/tween-functions/blob/master/index.js
+// t: current time, b: beginning value, _c: final value, d: total duration
+function easeInOutCubic(t, b, _c, d) {
+  var c = _c - b;
+  if ((t /= d / 2) < 1) {
+    return c / 2 * t * t * t + b;
+  } else {
+    return c / 2 * ((t -= 2) * t * t + 2) + b;
+  }
+}
+
+function clamp(val) {
+  return Math.max(Math.min(val, 1), 0);
 }
 
 var playPauseButton = new PlayPauseButton(document.querySelector(".js-button"));
