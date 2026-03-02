@@ -5,6 +5,7 @@ subtitle: "Avoid the mistake of using a linear scale with a circle radius."
 date:     2016-10-23 13:53:17 +0100
 image:
   path:   /assets/images/values-as-circles.png
+  alt:    "A bunch of different colored circles on a chart."
 block:
   path:   encoding-values-as-circles.html
 adapted:

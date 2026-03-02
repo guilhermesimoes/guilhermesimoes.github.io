@@ -5,6 +5,7 @@ subtitle: “X” marks the spot.
 date:     2023-09-10 16:36:40 +0100
 image:
   path:   /assets/images/treasure-map.png
+  alt:    "A dashed, winding path that ends in an X."
 block:
   path:   animating-a-pirate-treasure-map-path.html
 tags: [Animation, SVG, Interactive]

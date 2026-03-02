@@ -5,6 +5,7 @@ subtitle: "This bird likes to show-off!"
 date:     2020-04-12 17:03:49 +0100
 image:
   path:   /assets/images/peacock.png
+  alt:    "The multi-colored NBC peacock logo."
 block:
   path:   animated-nbc-peacock-logo.html
 adapted:

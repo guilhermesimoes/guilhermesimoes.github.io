@@ -5,6 +5,7 @@ subtitle: "Use D3 transitions to morph one SVG path into another."
 date:     2016-01-21 23:43:57 +0100
 image:
   path:   /assets/images/play-button.png
+  alt:    "A triangle-shaped play button."
 block:
   path:   youtube-new-morphing-play-pause-svg-icon.html
 adapted:

@@ -5,6 +5,7 @@ subtitle: "See how the same data looks using different D3 scales."
 date:     2016-08-20 21:53:17 +0100
 image:
   path:   /assets/images/dots.png
+  alt:    "Red and blue data points on a chart."
 block:
   path:   animating-between-scales.html
 adapted:

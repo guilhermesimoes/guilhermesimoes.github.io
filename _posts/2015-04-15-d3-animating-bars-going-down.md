@@ -5,6 +5,7 @@ subtitle: "Confused by SVG's coordinate system origin being at the top-left corn
 date:     2015-04-15 23:54:20 +0100
 image:
   path:   /assets/images/bar.png
+  alt:    "A blue vertical bar from a bar chart."
 block:
   path:   animating-bars-going-down.html
 adapted:

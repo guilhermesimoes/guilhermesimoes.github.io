@@ -5,6 +5,7 @@ subtitle: Progressively enhance your checkboxes so they work even without JS.
 date:     2025-12-07 01:40:25 +0000
 image:
   path:   /assets/images/hand-drawn-checkboxes.png
+  alt:    "Two hand-drawn checkboxes."
 block:
   path:   web-component-hand-drawn-checkbox.html
 tags: [Web, JavaScript, Interactive]
