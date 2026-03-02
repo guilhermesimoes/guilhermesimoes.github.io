@@ -19,10 +19,5 @@ permalink:    /tags/
     </tbody>
   </table>
 
-  <div class="post-meta deemph">
-    <a href="/feed.xml">
-      {%- include icons/rss.svg -%}<span>subscribe to RSS feed</span>
-    </a>
-    (<a href="https://www.lifewire.com/what-is-an-rss-feed-4684568">what is this?</a>)
-  </div>
+  {%- include rss-hint.html -%}
 </section>
