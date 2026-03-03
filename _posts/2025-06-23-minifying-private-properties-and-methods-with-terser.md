@@ -133,7 +133,7 @@ So, how can we minify things responsibly? Well, in addition to Terser's recommen
 
 ---
 
-In the end, we can see that this type of minification has a lot of restrictions and is not easy to do. So while minifying private properties and methods _is_ possible, a lot can definitely go wrong. The best way to avoid all this work is to avoid using classes!
+In the end, we can see that this type of minification has a lot of restrictions and is not easy to do. So while minifying private properties and methods _is_ possible, a lot can definitely go wrong. The best way to avoid all this work is to [avoid using classes]!
 
 [^1]: Just setting `nameCache` to any empty object in Terser's config should be enough. Like so: `{ nameCache: {} }`. To persist renames across multiple builds use a file.
 [^2]: Bundlers (like Webpack) and its plugins try to speed things up by running things in parallel. When using `terser-webpack-plugin`, for example, [parallelisation should be turned off] if we want mangling to be as safe as possible since currently threads / workers don't share Terser's cache.
@@ -170,4 +170,5 @@ In the end, we can see that this type of minification has a lot of restrictions 
 [ts-transformer-minify-privates]: https://github.com/timocov/ts-transformer-minify-privates
 [Terser's documentation]: https://terser.org/docs/cli-usage/#cli-mangling-property-names---mangle-props
 [`nameCache`]: https://terser.org/docs/api-reference/#minify-options
+[avoid using classes]: 2025-11-23-classes-considered-harmful-when-authoring-a-js-lib.md
 [parallelisation should be turned off]: https://github.com/webpack-contrib/terser-webpack-plugin/issues/256#issuecomment-1230282316
