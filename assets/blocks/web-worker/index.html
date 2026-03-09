@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  font-family: system-ui;
+}
+
+@keyframes spinaround {
+  to {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+@keyframes movearound {
+  to {
+    margin-left: 100px;
+    /* transform: translateX(100px); */
+  }
+}
+
+.spinning-square {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: steelblue;
+  animation: 3s infinite linear spinaround;
+  transform-origin: center;
+}
+
+.moving-square {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: indianred;
+  animation: 1s infinite linear alternate movearound;
+}
+
+.main-area {
+  margin-top: 1.2em;
+  max-width: 300px;
+}
+
+.caption {
+  font-size: 0.7em;
+}
+
+.interactive-playground {
+  margin-top: 1.2em;
+  max-width: 300px;
+}
+
+.interactive-el {
+  display: block;
+}
+
+label.interactive-el {
+  cursor: pointer;
+  user-select: none;
+}
+
+fieldset.interactive-el {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.scrollable-area {
+  margin: 0;
+  height: 5em;
+  overflow-y: scroll;
+  background-color: gainsboro;
+}
+</style>
+<body>
+  <div class="spinning-square"></div>
+  <div class="moving-square"></div>
+  <div class="main-area">
+    <div>
+      <label class="interactive-el">Work duration (in seconds) <input type="number" class="js-work-duration-input" min="1" max="10" value="3" /></label>
+      <button class="js-ui-work-button">Work</button>
+      <button class="js-worker-work-button">Work inside worker</button>
+      <div class="caption">Note: Doing work in the main thread will lock your browser for the given duration.</div>
+    </div>
+    <div class="interactive-playground">
+      <header>Interactive Playground</header>
+      <button class="interactive-el" onclick="alert('you clicked me!')">Click</button>
+      <label class="interactive-el">Type <input type="text" /></label>
+      <label class="interactive-el">Toggle <input type="checkbox" /></label>
+      <fieldset class="interactive-el">
+        <label>Choose</label>
+        <input type="radio" name="my-radio" />
+        <input type="radio" name="my-radio" />
+      </fieldset>
+      <ol class="scrollable-area">
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+        <li>Scroll me</li>
+      </ol>
+    </div>
+  </div>
+
+</body>
+<script src="main.js" type="module"></script>
