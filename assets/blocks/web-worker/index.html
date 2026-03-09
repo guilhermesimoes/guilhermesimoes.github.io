@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+@keyframes spinaround {
+  to { transform: rotate3d(0, 0, 1, 360deg); }
+}
+
+@keyframes changeopacity {
+  to { opacity: 0; }
+}
+
+/**
+ * This is extremely inefficient! Never animate left and top!
+ * Use transform: translate(x, y) instead.
+ */
+@keyframes movearound {
+  0% { left: 0%; top: 0%; }
+  25% { left: 50%; top: 0%; }
+  50% { left: 50%; top: 50%; }
+  75% { left: 0%; top: 50%; }
+  100% { left: 0%; top: 0%; }
+}
+
+@property --hue {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@keyframes changecolor {
+  to {
+    --hue: 360;
+    background-color: hsl(var(--hue) 50% 50%);
+  }
+}
+</style>
+<link rel="stylesheet" href="./styles.css">
+<body>
+  <main>
+    <div class="main-area">
+      <label class="interactive-el">Work duration: <input type="number" class="js-work-duration-input" min="1" max="15" value="5" /> seconds</label>
+      <div>
+        <button class="js-ui-work-button">Work</button>
+        <button class="js-worker-work-button">Work inside worker</button>
+      </div>
+      <div class="caption">Warning: Doing work in the main thread will lock your browser for the given duration.</div>
+      <div class="interactive-playground">
+        <header>Interactive Playground</header>
+        <button class="interactive-el" onclick="alert('you clicked me!')">Click me</button>
+        <label class="interactive-el"><input type="text" placeholder="Write something" /></label>
+        <label class="interactive-el">Toggle me <input type="checkbox" /></label>
+        <ol class="scrollable-area"><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li><li>Scroll me</li></ol>
+      </div>
+    </div>
+    <div class="squares">
+      <div class="square-container"><div class="square spinning"></div></div>
+      <div class="square-container"><div class="square fading"></div></div>
+      <div class="square-container"><div class="square moving"></div></div>
+      <div class="square-container"><div class="square coloring"></div></div>
+    </div>
+  </main>
+</body>
+<script type="module">
+import { doWork } from './work.js'
+
+let uiWorkButton = document.querySelector('.js-ui-work-button')
+let workerWorkButton = document.querySelector('.js-worker-work-button')
+let workDurationInput = document.querySelector('.js-work-duration-input')
+
+uiWorkButton.addEventListener('click', () => {
+  const result = doWork(Number(workDurationInput.value), 'UI')
+  console.log(`[UI] Work result is ${result}`)
+})
+workerWorkButton.addEventListener('click', () => {
+  worker.postMessage({ workDuration: Number(workDurationInput.value)})
+})
+
+console.log('[UI] Creating Worker')
+let worker = new Worker('./worker.js', { type: 'module' })
+worker.addEventListener('message', (event) => {
+  console.log(`[UI] Worker says: "${event.data.message}"`)
+})
+console.log('[UI] Now listening to Worker')
+</script>

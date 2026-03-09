@@ -1,0 +1,83 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui;
+  font-size: calc(10px + .8vmin);
+}
+
+[type='number'] {
+  width: 2em;
+}
+
+button {
+  font-size: inherit;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2em;
+}
+
+.main-area {
+  margin-right: 2em;
+}
+
+.caption {
+  font-size: 0.7em;
+}
+
+.interactive-playground {
+  margin-top: 1em;
+  user-select: none;
+}
+
+.interactive-el {
+  cursor: pointer;
+}
+
+.scrollable-area {
+  margin: 0;
+  height: 5em;
+  overflow-y: scroll;
+  background-color: gainsboro;
+  overscroll-behavior: contain;
+}
+
+.square-container {
+  width: 8vw;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.square {
+  width: 8vw;
+  aspect-ratio: 1;
+  position: absolute;
+}
+
+.spinning {
+  width: 6vw;
+  left: 1vw;
+  top: 1vw;
+  background-color: #FF4136 ;
+  animation: 3s infinite linear spinaround;
+  transform-origin: center;
+}
+
+.fading {
+  background-color: #2ECC40;
+  animation: 3s infinite linear changeopacity;
+}
+
+.moving {
+  width: 4vw;
+  background-color: #0074D9;
+  animation: 3s infinite linear movearound;
+}
+
+.coloring {
+  animation: 3s infinite linear changecolor;
+}
