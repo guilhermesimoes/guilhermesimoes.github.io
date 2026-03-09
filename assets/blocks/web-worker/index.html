@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui;
+  font-size: calc(10px + .8vmin);
+}
+
+[type='number'] {
+  width: 2em;
+}
+
+@property --hue {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@keyframes changecolor {
+  to {
+    --hue: 360;
+    background-color: hsl(var(--hue) 50% 50%);
+  }
+}
+
+@keyframes spinaround {
+  to {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+@keyframes changeopacity {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes movearound {
+  0% {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  25% {
+    margin-left: 4vw;
+    margin-top: 0;
+  }
+  50% {
+    margin-left: 4vw;
+    margin-top: 4vw;
+  }
+  75% {
+    margin-left: 0;
+    margin-top: 4vw;
+  }
+}
+
+button {
+  font-size: inherit;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2em;
+}
+
+.main-area {
+  margin-right: 2em;
+}
+
+.square-container {
+  width: 8vw;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.square {
+  width: 8vw;
+  aspect-ratio: 1;
+  position: absolute;
+}
+
+.spinning {
+  width: 6vw;
+  left: 1vw;
+  top: 1vw;
+  background-color: steelblue;
+  animation: 3s infinite linear spinaround;
+  transform-origin: center;
+}
+
+.fading {
+  background-color: indianred;
+  animation: 3s infinite linear changeopacity;
+}
+
+.moving {
+  width: 4vw;
+  background-color: indianred;
+  animation: 3s infinite linear movearound;
+}
+
+.coloring {
+  animation: 3s infinite linear changecolor;
+}
+
+.caption {
+  font-size: 0.7em;
+}
+
+.interactive-playground {
+  margin-top: 1em;
+  user-select: none;
+}
+
+.interactive-el {
+  cursor: pointer;
+}
+
+.scrollable-area {
+  margin: 0;
+  height: 5em;
+  overflow-y: scroll;
+  background-color: gainsboro;
+  overscroll-behavior: contain;
+}
+</style>
+<body>
+  <main>
+    <div class="main-area">
+      <label class="interactive-el">Work duration: <input type="number" class="js-work-duration-input" min="1" max="10" value="3" /> seconds</label>
+      <div>
+        <button class="js-ui-work-button">Work</button>
+        <button class="js-worker-work-button">Work inside worker</button>
+      </div>
+      <div class="caption">Warning: Doing work in the main thread will lock your browser for the given duration.</div>
+      <div class="interactive-playground">
+        <header>Interactive Playground</header>
+        <button class="interactive-el" onclick="alert('you clicked me!')">Click me</button>
+        <label class="interactive-el"><input type="text" placeholder="Write something" /></label>
+        <label class="interactive-el">Toggle me <input type="checkbox" /></label>
+        <ol class="scrollable-area">
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+          <li>Scroll me</li>
+        </ol>
+      </div>
+    </div>
+    <div class="squares">
+      <div class="square-container"><div class="square spinning"></div></div>
+      <div class="square-container"><div class="square fading"></div></div>
+      <div class="square-container"><div class="square moving"></div></div>
+      <div class="square-container"><div class="square coloring"></div></div>
+    </div>
+  </main>
+</body>
+<script src="main.js" type="module"></script>
