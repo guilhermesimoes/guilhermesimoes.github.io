@@ -13,7 +13,9 @@ layout: default
       {%- if post.hidden != true -%}
         <li itemprop="itemListElement">
           <a href="{{ post.url | relative_url }}">
-            <img src="{{ post.image.path }}" alt="{{ post.image.alt }}" class="modern-ratio-16-9" itemprop="image" />
+            <figure>
+              <img src="{{ post.image.path }}" alt="{{ post.image.alt }}" class="modern-ratio-16-9" itemprop="image" />
+            </figure>
             <div class="details">
               <div itemprop="name">{{ post.title | strip_html }}</div>
               <div class="deemph">{%- include date.html date=post.date -%}</div>
