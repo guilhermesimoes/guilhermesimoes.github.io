@@ -10,5 +10,5 @@ export function doWork(workDuration, source) {
 
   console.log(`[${source}] Work finished, took ${workDuration}s`)
 
-  return ++count;
+  return ++count
 }
