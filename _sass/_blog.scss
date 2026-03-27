@@ -32,8 +32,10 @@
     display: block;
     border: 1px solid $header-border-color;
 
-    &:hover img {
-      transform: scale(1.2);
+    @media (pointer: fine) {
+      &:hover img {
+        transform: scale(1.2);
+      }
     }
   }
 
