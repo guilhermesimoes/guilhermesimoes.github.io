@@ -48,12 +48,13 @@ template.innerHTML = `
       position: absolute;
       pointer-events: none;
       stroke-linecap: round;
+      stroke-linejoin: round;
       stroke-width: 0.5px;
     }
 
     :host .border {
       stroke: black;
-      fill: none;
+      fill: white;
     }
 
     ::slotted(input) {
@@ -127,7 +128,7 @@ var borderCorner1Range = [0.2, 0.8];
 var borderCorner2Range = [9.2, 9.8];
 
 function getBorderPath() {
-  return `M${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner1Range)}M${getPoint(borderCorner2Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner2Range)}M${getPoint(borderCorner2Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner2Range)}M${getPoint(borderCorner1Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}M${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}`;
+  return `M${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner1Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner2Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner2Range)}L${getPoint(borderCorner1Range)} ${getPoint(borderCorner1Range)}`;
 }
 
 function getLine1Path() {
