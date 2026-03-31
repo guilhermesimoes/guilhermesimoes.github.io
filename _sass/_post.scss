@@ -11,6 +11,7 @@
   }
 
   hr {
+    position: relative;
     box-sizing: border-box;
     width: 12em;
     margin: (2.5 * $spacing-unit) auto;
@@ -18,15 +19,30 @@
     border-width: 1px 0 0 0;
     overflow: visible;
     text-align: center;
+    color: inherit;
+
+    &::before {
+      position: absolute;
+      top: -0.5em;
+      left: 50%;
+      display: block;
+      content: "";
+      width: 60px;
+      height: 10px;
+      transform: translateX(-50%);
+      background-color: $background-color;
+    }
 
     &::after {
-      position: relative;
-      top: -0.7em;
-      display: inline-block;
-      width: 1em;
-      content: diamond();
-      background-color: $background-color;
-      padding: 0 1em;
+      position: absolute;
+      top: -3px;
+      left: 50%;
+      display: block;
+      content: "";
+      width: 6px;
+      height: 6px;
+      transform: translateX(-50%) rotate(45deg);
+      background-color: currentColor;
     }
   }
 
