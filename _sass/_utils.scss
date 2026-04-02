@@ -16,32 +16,14 @@
   white-space: nowrap;
 }
 
-.aspect-ratio-box {
-  height: 0;
-  overflow: hidden;
-  position: relative;
-}
-
 .ratio-16-9 {
-  padding-top: math.div(9px, 16px) * 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .ratio-game-boy {
-  padding-top: math.div(144px, 160px) * 100%;
-}
-
-.aspect-ratio-box-content {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-}
-
-.modern-ratio-16-9 {
-  object-fit: cover;
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 160 / 144;
 }
 
 .bleed {

@@ -53,9 +53,7 @@ But this is the result:
 <noscript>
   You'll need to enable Javascript to see this section, sorry! canvas and WebGL depend on it.
 </noscript>
-<div class="aspect-ratio-box ratio-game-boy mb-1">
-  <canvas class="aspect-ratio-box-content"></canvas>
-</div>
+<canvas class="ratio-game-boy mb-1"></canvas>
 
 Erhm, very cool looking in a [glitch art] kind of way, but not what I wanted.
 
@@ -105,9 +103,7 @@ And there it is! Finally, in all its glory.
 <noscript>
   Again, sorry, you'll need to enable Javascript if you want to see it!
 </noscript>
-<div class="aspect-ratio-box ratio-game-boy mb-1">
-  <canvas class="aspect-ratio-box-content" />
-</div>
+<canvas class="ratio-game-boy"></canvas>
 
 </div>
 

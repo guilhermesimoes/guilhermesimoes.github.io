@@ -10,8 +10,8 @@ layout: default
 
   {%- assign image = page.gif | default: page.image -%}
   {% if image.hero -%}
-    <figure class="aspect-ratio-box {{ image.ratio | default: 'ratio-16-9' }}">
-      <img src="{{ image.path }}" alt="{{ image.alt }}" class="aspect-ratio-box-content" itemprop="image" />
+    <figure>
+      <img src="{{ image.path }}" alt="{{ image.alt }}" class="{{ image.ratio | default: 'ratio-16-9' }}" itemprop="image" />
     </figure>
   {% endif -%}
 

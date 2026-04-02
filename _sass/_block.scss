@@ -1,3 +1,7 @@
+.block-container {
+  position: relative;
+}
+
 .block-embed, .block-source figure {
   background-color: $embed-background-color;
   border: 1px solid $embed-border-color;

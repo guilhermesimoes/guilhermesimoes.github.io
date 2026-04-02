@@ -14,7 +14,7 @@ layout: default
         <li itemprop="itemListElement">
           <a href="{{ post.url | relative_url }}">
             <figure>
-              <img src="{{ post.image.path }}" alt="{{ post.image.alt }}" class="modern-ratio-16-9" itemprop="image" />
+              <img src="{{ post.image.path }}" alt="{{ post.image.alt }}" class="ratio-16-9" itemprop="image" />
             </figure>
             <div class="details">
               <div itemprop="name">{{ post.title | strip_html }}</div>
