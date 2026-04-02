@@ -34,7 +34,7 @@
       width: 60px;
       height: 10px;
       transform: translateX(-50%);
-      background-color: $background-color;
+      background-color: $foreground-color;
     }
 
     &::after {
@@ -52,7 +52,7 @@
 
   .post-table {
     border-collapse: collapse;
-    border: 2px solid $background-color;
+    border: 2px solid transparent;
 
     th, td {
       border: 1px solid $text-color;

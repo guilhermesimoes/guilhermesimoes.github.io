@@ -4,7 +4,7 @@
 
 .block-embed, .block-source figure {
   background-color: $embed-background-color;
-  border: 1px solid $embed-border-color;
+  border: 1px solid $box-border-color;
 }
 
 .block-embed + .open-new-tab-link .new-tab-icon {

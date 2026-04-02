@@ -39,7 +39,7 @@ body {
   font-weight: $base-font-weight;
   line-height: $base-line-height;
   color: $text-color;
-  background-color: $background-color;
+  background-color: $foreground-color;
   overflow-y: scroll;
 }
 
@@ -118,8 +118,8 @@ $blockquote-border-width: 0.3em;
  * Blockquotes
  */
 blockquote {
-  color: $quote-color;
-  border-left: $blockquote-border-width solid $quote-border-color;
+  color: $muted-text-color;
+  border-left: $blockquote-border-width solid $box-border-color;
   padding-left: $spacing-unit - $blockquote-border-width;
   margin-left: -1 * $spacing-unit;
 
