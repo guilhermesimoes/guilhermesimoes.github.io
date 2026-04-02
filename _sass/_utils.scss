@@ -6,12 +6,6 @@
   padding-left: $spacing-unit;
 }
 
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .nowrap {
   white-space: nowrap;
 }
@@ -59,5 +53,5 @@
 }
 
 .mb-1 {
-  margin-bottom: $spacing-unit;
+  @extend %vertical-rhythm;
 }
