@@ -1,8 +1,8 @@
 $foreground-color: #fdfdfd;
-$light-background-color: #f7f7f7;
-$code-block-background-color: #f2f2f2;
-$embed-background-color: white;
-$box-border-color:  #d4d4d4;
+$light-background-color: darken($foreground-color, 2.5%);
+$code-block-background-color: darken($foreground-color, 4.5%);
+$embed-background-color: lighten($foreground-color, 10%);
+$box-border-color: darken($foreground-color, 16%);
 
 $text-color:       #111;
 $muted-text-color: lighten($text-color, 36%);
