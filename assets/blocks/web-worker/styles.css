@@ -33,7 +33,7 @@ main {
   margin: 0;
   height: 5em;
   overflow-y: scroll;
-  background-color: gainsboro;
+  background-color: field;
   overscroll-behavior: contain;
 }
 
