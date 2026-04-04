@@ -4,7 +4,7 @@ title:    "Apple doesn't care about Album Cover Art"
 subtitle: "Album covers have never been smaller."
 date:     2021-03-26 12:14:00 +0000
 image:
-  path:   /assets/images/iphone-music-app-paused.png
+  path:   /assets/images/apple-vinyl.png
 tags: [Opinion]
 ---
 
