@@ -24,6 +24,7 @@ GEM
     ffi (1.17.3-arm-linux-gnu)
     ffi (1.17.3-arm-linux-musl)
     ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x64-mingw-ucrt)
     forwardable-extended (2.6.0)
     google-protobuf (3.25.8)
     http_parser.rb (0.8.1)
@@ -76,6 +77,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.2-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.19.2-x64-mingw-ucrt)
+      racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     power_assert (3.0.1)
@@ -93,6 +96,8 @@ GEM
       thor (>= 1.3.2, < 1.5.0)
     rodiff (1.2.0-arm64-darwin)
       thor (>= 1.3.2, < 1.5.0)
+    rodiff (1.2.0-x64-mingw-ucrt)
+      thor (>= 1.3.2, < 1.5.0)
     rouge (4.7.0)
     rubyzip (3.2.2)
     safe_yaml (1.0.5)
@@ -101,6 +106,8 @@ GEM
     sass-embedded (1.58.0-arm-linux-musleabihf)
       google-protobuf (~> 3.21)
     sass-embedded (1.58.0-arm64-darwin)
+      google-protobuf (~> 3.21)
+    sass-embedded (1.58.0-x64-mingw-ucrt)
       google-protobuf (~> 3.21)
     selenium-webdriver (4.41.0)
       base64 (~> 0.2)
@@ -131,6 +138,7 @@ PLATFORMS
   arm-linux-musleabihf
   arm64-darwin-23
   arm64-darwin-25
+  x64-mingw-ucrt
 
 DEPENDENCIES
   bigdecimal (~> 4.0)
@@ -158,6 +166,7 @@ CHECKSUMS
   ffi (1.17.3-arm-linux-gnu) sha256=5bd4cea83b68b5ec0037f99c57d5ce2dd5aa438f35decc5ef68a7d085c785668
   ffi (1.17.3-arm-linux-musl) sha256=0d7626bb96265f9af78afa33e267d71cfef9d9a8eb8f5525344f8da6c7d76053
   ffi (1.17.3-arm64-darwin) sha256=0c690555d4cee17a7f07c04d59df39b2fba74ec440b19da1f685c6579bb0717f
+  ffi (1.17.3-x64-mingw-ucrt) sha256=5f1d7d067a9a1058ad183dba25b05557cd51c85fc1768c49338eabc1cf242d7c
   forwardable-extended (2.6.0) sha256=1bec948c469bbddfadeb3bd90eb8c85f6e627a412a3e852acfd7eaedbac3ec97
   google-protobuf (3.25.8) sha256=102c8500502e224a5daa7447bdd2c458a25a6c7b0bf5d8496a559ada131952b7
   http_parser.rb (0.8.1) sha256=9ae8df145b39aa5398b2f90090d651c67bd8e2ebfe4507c966579f641e11097a
@@ -179,6 +188,7 @@ CHECKSUMS
   nokogiri (1.19.2-arm-linux-gnu) sha256=b7fa1139016f3dc850bda1260988f0d749934a939d04ef2da13bec060d7d5081
   nokogiri (1.19.2-arm-linux-musl) sha256=61114d44f6742ff72194a1b3020967201e2eb982814778d130f6471c11f9828c
   nokogiri (1.19.2-arm64-darwin) sha256=58d8ea2e31a967b843b70487a44c14c8ba1866daa1b9da9be9dbdf1b43dee205
+  nokogiri (1.19.2-x64-mingw-ucrt) sha256=8ccf25eea3363a2c7b3f2e173a3400582c633cfead27f805df9a9c56d4852d1a
   pathutil (0.16.2) sha256=e43b74365631cab4f6d5e4228f812927efc9cb2c71e62976edcb252ee948d589
   power_assert (3.0.1) sha256=8ce9876716cc74e863fcd4cdcdc52d792bd983598d1af3447083a3a9a4d34103
   public_suffix (7.0.2) sha256=9114090c8e4e7135c1fd0e7acfea33afaab38101884320c65aaa0ffb8e26a857
@@ -191,12 +201,14 @@ CHECKSUMS
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
   rodiff (1.2.0) sha256=3e31bc37b386e0ec6cab060cead26bcd567aa8e00f64e36f0b8f0be7e320e1c5
   rodiff (1.2.0-arm64-darwin) sha256=5da9fabe736cf4bf5f5fcfbb3c31e7d8fcd0c088218c270880716c9b1b05b849
+  rodiff (1.2.0-x64-mingw-ucrt) sha256=92bbcf15d5e0a07ae67a93fd48255af67796a791f0205bf059d89623d0c0d412
   rouge (4.7.0) sha256=dba5896715c0325c362e895460a6d350803dbf6427454f49a47500f3193ea739
   rubyzip (3.2.2) sha256=c0ed99385f0625415c8f05bcae33fe649ed2952894a95ff8b08f26ca57ea5b3c
   safe_yaml (1.0.5) sha256=a6ac2d64b7eb027bdeeca1851fe7e7af0d668e133e8a88066a0c6f7087d9f848
   sass-embedded (1.58.0-arm-linux-gnueabihf) sha256=3740641779074e91355b7680bbfbcc0b33d2f9813bcdf205156a8e8a0df9a2eb
   sass-embedded (1.58.0-arm-linux-musleabihf) sha256=6b36652044bce02498170d697faef38966c2ec51e876dee3f5e1bfc1904495c8
   sass-embedded (1.58.0-arm64-darwin) sha256=38d2761a72f9538060b22bf527c4ea8e36afd19f7a1595408130583aa9d21db2
+  sass-embedded (1.58.0-x64-mingw-ucrt) sha256=fc902d3f5e571b9c49b472a3bccc803113dcf9a8a4ed1408efd0b321cc7af872
   selenium-webdriver (4.41.0) sha256=cdc1173cd55cf186022cea83156cc2d0bec06d337e039b02ad25d94e41bedd22
   terminal-table (3.0.2) sha256=f951b6af5f3e00203fb290a669e0a85c5dd5b051b3b023392ccfd67ba5abae91
   test-unit (3.7.7) sha256=3c89d5ff0690a16bef9946156c4624390402b9d54dfcf4ce9cbd5b06bead1e45
