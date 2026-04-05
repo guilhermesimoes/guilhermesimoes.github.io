@@ -1,3 +1,5 @@
 _site
 .sass-cache
 .jekyll-metadata
+test/snapshots_current
+test/snapshots_diff
