@@ -1,3 +1,4 @@
+// Light mode colors
 $foreground-color: #fdfdfd;
 $light-background-color: darken($foreground-color, 2.5%);
 $code-block-background-color: darken($foreground-color, 4.5%);
@@ -9,3 +10,16 @@ $muted-text-color: lighten($text-color, 36%);
 $brand-color:      #1d6bd7;
 $footnotes-highlight-background-color: #ffa;
 $strike-through-color: #d73a49;
+
+// Dark mode colors
+$dark-background-color: #222235; // desaturated: #232323
+$dark-light-background-color: lighten($dark-background-color, 2.5%);
+$dark-code-block-background-color: lighten($dark-background-color, 4%);
+$dark-embed-background-color: lighten($dark-background-color, 3%);
+$dark-box-border-color: lighten(#232323, 20%);
+
+$dark-text-color: #e8e8e8;
+$dark-muted-text-color: darken($dark-text-color, 36%);
+$dark-brand-color: #60a5fa;
+$dark-footnotes-highlight-background-color: #554400;
+$dark-strike-through-color: #f47067;

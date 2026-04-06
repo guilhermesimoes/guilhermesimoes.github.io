@@ -11,7 +11,7 @@
 
 .post {
   ul {
-    list-style-image: diamond($viewBox: '-4 -6 8 8', $polygon: '0,-2 2,0 0,2 -2,0', $fill: 'black');
+    list-style-image: diamond($viewBox: '-4 -6 8 8', $polygon: '0,-2 2,0 0,2 -2,0', $fill: $text-color);
   }
 
   hr {
@@ -34,7 +34,7 @@
       width: 60px;
       height: 10px;
       transform: translateX(-50%);
-      background-color: $foreground-color;
+      background-color: light-dark($foreground-color, $dark-background-color);
     }
 
     &::after {
@@ -55,7 +55,7 @@
     border: 2px solid transparent;
 
     th, td {
-      border: 1px solid $text-color;
+      border: 1px solid light-dark($text-color, $dark-text-color);
       padding: $spacing-unit * 0.5;
     }
   }
@@ -86,7 +86,7 @@
   .footnotes {
     padding-top: math.div($spacing-unit, 2);
     margin-top: $spacing-unit * 2;
-    border-top: 1px solid black;
+    border-top: 1px solid light-dark($text-color, $dark-text-color);
   }
 
   [role^="doc"] {
@@ -108,8 +108,14 @@
   }
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .post ul {
+    list-style-image: diamond($viewBox: '-4 -6 8 8', $polygon: '0,-2 2,0 0,2 -2,0', $fill: $dark-text-color);
+  }
+}
+
 @keyframes highlight {
   to {
-    background-color: $footnotes-highlight-background-color;
+    background-color: light-dark($footnotes-highlight-background-color, $dark-footnotes-highlight-background-color);
   }
 }
