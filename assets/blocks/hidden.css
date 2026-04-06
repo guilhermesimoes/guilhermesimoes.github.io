@@ -3,6 +3,7 @@
   text-size-adjust: none;
   font-size: calc(12px + 1vmin);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color-scheme: light dark;
 }
 
 html, body {
