@@ -3,6 +3,23 @@
     navigator.serviceWorker.register('/service-worker.js');
   }
 
+  var root = document.documentElement;
+  var themeToggle = document.querySelector('.theme-toggle');
+  var themes = ['system', 'dark', 'light'];
+  var themeIndex = 0;
+  var isSystemThemeDark = matchMedia('(prefers-color-scheme: dark)').matches;
+  var direction = isSystemThemeDark ? -1 : 1;
+
+  themeToggle.addEventListener('click', () => {
+    themeIndex = (themeIndex + direction) % themes.length;
+    var nextTheme = themes.at(themeIndex);
+    root.classList.remove('light-theme', 'dark-theme');
+    if (nextTheme !== 'system') {
+      root.classList.add(`${nextTheme}-theme`);
+    }
+  });
+  themeToggle.classList.remove('hidden');
+
   self.addEventListener('pageswap', () => {
     var menuTrigger = document.querySelector('#nav-trigger');
     if (menuTrigger.checked) {

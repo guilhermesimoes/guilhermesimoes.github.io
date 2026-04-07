@@ -9,3 +9,54 @@
 .dark-theme {
   color-scheme: only dark;
 }
+
+.theme-toggle-icon {
+  width: 0.64em;
+  fill: currentColor;
+}
+
+.theme-toggle {
+  margin-left: math.div($spacing-unit, 2);
+
+  circle, path {
+    transform-origin: center;
+    transition: transform 400ms cubic-bezier(0, 0, 0, 1.35);
+  }
+
+  circle {
+    transform: scale(0.4);
+  }
+
+  .rays {
+    transform: scale(0.2);
+  }
+}
+
+.light-theme .theme-toggle {
+  .rays {
+    transform: scale(1);
+    transition-delay: 200ms;
+  }
+
+  circle {
+    transform: scale(0.7);
+  }
+
+  .gear {
+    transform: scale(0.2);
+  }
+}
+
+.dark-theme .theme-toggle {
+  circle {
+    transform: scale(1);
+  }
+
+  .moon {
+    transform: translate(-9px, 14px);
+  }
+
+  .gear {
+    transform: scale(0.2);
+  }
+}
