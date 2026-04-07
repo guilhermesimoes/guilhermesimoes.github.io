@@ -39,6 +39,8 @@ body {
   color: light-dark($text-color, $dark-text-color);
   background-color: light-dark($foreground-color, $dark-background-color);
   overflow-y: scroll;
+  transition-property: color, background-color;
+  transition-duration: 0.3s;
 }
 
 
