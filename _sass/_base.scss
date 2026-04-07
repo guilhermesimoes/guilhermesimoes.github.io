@@ -118,7 +118,6 @@ $blockquote-border-width: 0.3em;
  * Blockquotes
  */
 blockquote {
-  color: $muted-text-color;
   border-left: $blockquote-border-width solid $box-border-color;
   padding-left: $spacing-unit - $blockquote-border-width;
   margin-left: -1 * $spacing-unit;
@@ -127,6 +126,7 @@ blockquote {
     font-size: 1.125em;
     letter-spacing: -1px;
     font-style: italic;
+    font-weight: lighter;
   }
 
   > blockquote {
