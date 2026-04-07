@@ -1,16 +1,5 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: system-ui;
-  font-size: calc(10px + .8vmin);
-}
-
 [type='number'] {
   width: 2em;
-}
-
-button {
-  font-size: inherit;
 }
 
 main {
@@ -27,6 +16,8 @@ main {
 
 .caption {
   font-size: 0.7em;
+  -webkit-user-select: all;
+  user-select: all;
 }
 
 .interactive-playground {
