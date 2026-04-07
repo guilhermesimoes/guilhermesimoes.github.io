@@ -36,10 +36,13 @@ body {
   padding-bottom: $spacing-unit * 6;
 }
 
-.site-header .site-title {
+.site-header-left {
   font-size: 1.625em;
-  font-weight: 300;
   line-height: $base-font-size * 3.2;
+}
+
+.site-header .site-title {
+  font-weight: 300;
   letter-spacing: -1px;
   margin-bottom: 0;
   color: light-dark($text-color, $dark-text-color);
