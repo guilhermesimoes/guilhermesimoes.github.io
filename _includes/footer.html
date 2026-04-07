@@ -6,7 +6,8 @@
   var root = document.documentElement;
   var themeToggle = document.querySelector('.theme-toggle');
   var themes = ['system', 'dark', 'light'];
-  var themeIndex = 0;
+  var userTheme = localStorage.getItem('theme') || 'system';
+  var themeIndex = themes.indexOf(userTheme);
   var isSystemThemeDark = matchMedia('(prefers-color-scheme: dark)').matches;
   var direction = isSystemThemeDark ? -1 : 1;
 
@@ -14,8 +15,11 @@
     themeIndex = (themeIndex + direction) % themes.length;
     var nextTheme = themes.at(themeIndex);
     root.classList.remove('light-theme', 'dark-theme');
-    if (nextTheme !== 'system') {
+    if (nextTheme === 'system') {
+      localStorage.removeItem('theme');
+    } else {
       root.classList.add(`${nextTheme}-theme`);
+      localStorage.setItem('theme', nextTheme);
     }
   });
   themeToggle.classList.remove('hidden');
