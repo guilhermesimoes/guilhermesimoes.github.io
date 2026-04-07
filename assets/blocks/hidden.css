@@ -1,0 +1,23 @@
+:root {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  font-size: calc(12px + 1vmin);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+button {
+  font-size: inherit;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+input {
+  font-size: inherit;
+}
