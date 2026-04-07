@@ -18,6 +18,10 @@ button {
   cursor: pointer;
 }
 
+button[disabled] {
+  cursor: not-allowed;
+}
+
 input {
   font-size: inherit;
 }
