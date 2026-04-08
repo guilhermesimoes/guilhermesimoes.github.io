@@ -24,10 +24,13 @@
   });
   themeToggle.classList.remove('hidden');
 
-  self.addEventListener('pageswap', () => {
-    var menuTrigger = document.querySelector('#nav-trigger');
-    if (menuTrigger.checked) {
-      menuTrigger.checked = false;
+  self.addEventListener('pagehide', () => {
+    // Page may be stored in the bfcache
+    if (event.persisted) {
+      var menuTrigger = document.querySelector('#nav-trigger');
+      if (menuTrigger.checked) {
+        menuTrigger.checked = false;
+      }
     }
   });
 
