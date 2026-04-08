@@ -56,7 +56,7 @@ But if we really want to avoid the `in` operator, for whatever reason, there is 
 ```ts
 export interface Bird extends BaseAnimal {
   fly: Function;
-  swim?: undefined // hack
+  swim?: undefined; // hack
 }
 ```
 
