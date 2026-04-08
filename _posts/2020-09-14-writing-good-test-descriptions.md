@@ -171,7 +171,7 @@ It's not a diver's watch after all!
 [rubocop-rspec]: https://github.com/rubocop-hq/rubocop-rspec
 [Mocha's spec reporter]: https://mochajs.org/#spec
 
-<script type="text/javascript">
+<script>
   var qs = location.search.toLowerCase();
   if (qs.includes('js') || qs.includes('javascript')) {
     fetch('writing-good-test-descriptions-js').then(res => {

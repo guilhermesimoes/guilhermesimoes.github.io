@@ -11,13 +11,13 @@
 
     {% for script in page.scripts %}
       {%- assign js_dependency = script | prepend: '/assets/js/' -%}
-      <script type="text/javascript" src="{{ js_dependency }}"></script>
+      <script src="{{ js_dependency }}"></script>
     {% endfor %}
 
     {%- assign page_specific_js = page.url | replace: '/blog','/assets/js' | append: '.js' -%}
     {% for file in site.static_files %}
       {%- if file.path == page_specific_js -%}
-        <script type="text/javascript" src="{{ page_specific_js }}"></script>
+        <script src="{{ page_specific_js }}"></script>
       {%- endif -%}
     {% endfor %}
   </body>
