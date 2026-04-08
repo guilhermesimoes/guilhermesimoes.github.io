@@ -7,7 +7,7 @@
       {{ content }}
     </main>
     <a href="#" class="gotop-link hidden" id="gotop-link">{%- include icons/up-arrow.svg -%}</a>
-    {% include footer.html -%}
+    <script src="/assets/js/main.js"></script>
 
     {% for script in page.scripts %}
       {%- assign js_dependency = script | prepend: '/assets/js/' -%}
