@@ -34,6 +34,18 @@
     }
   });
 
+  self.addEventListener('pageshow', (event) => {
+    // Page was restored from the bfcache
+    if (event.persisted) {
+      var theme = localStorage.getItem('theme');
+      var root = document.documentElement;
+      root.classList.remove('light-theme', 'dark-theme');
+      if (theme) {
+        root.classList.add(`${theme}-theme`);
+      }
+    }
+  });
+
   // Screen real estate is precious on mobile, avoid turning on this feature on mobile
   if (matchMedia('(hover: hover)').matches) {
     var hidingButton = true;
