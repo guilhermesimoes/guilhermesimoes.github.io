@@ -10,6 +10,23 @@
   color-scheme: only dark;
 }
 
+.animatable {
+  body {
+    transition-property: color, background-color;
+    transition-duration: 0.3s;
+  }
+
+  .theme-toggle {
+    circle, path {
+      transition: transform 400ms cubic-bezier(0, 0, 0, 1.35);
+    }
+  }
+
+  &.light-theme .theme-toggle .rays {
+    transition-delay: 200ms;
+  }
+}
+
 .theme-toggle-icon {
   width: 0.64em;
   fill: currentColor;
@@ -20,7 +37,6 @@
 
   circle, path {
     transform-origin: center;
-    transition: transform 400ms cubic-bezier(0, 0, 0, 1.35);
   }
 
   circle {
@@ -35,7 +51,6 @@
 .light-theme .theme-toggle {
   .rays {
     transform: scale(1);
-    transition-delay: 200ms;
   }
 
   circle {

@@ -39,10 +39,13 @@
     if (event.persisted) {
       var theme = localStorage.getItem('theme');
       var root = document.documentElement;
-      root.classList.remove('light-theme', 'dark-theme');
+      root.classList.remove('light-theme', 'dark-theme', 'animatable');
       if (theme) {
         root.classList.add(`${theme}-theme`);
       }
+      setTimeout(() => {
+        root.classList.add('animatable');
+      });
     }
   });
 
