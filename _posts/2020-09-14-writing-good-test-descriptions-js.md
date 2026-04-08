@@ -163,7 +163,7 @@ It's not a diver's watch after all!
 [rubocop-rspec]: https://github.com/rubocop-hq/rubocop-rspec
 [Mocha's spec reporter]: https://mochajs.org/#spec
 
-<script type="text/javascript">
+<script>
   if (location.pathname.includes('writing-good-test-descriptions-js')) {
     self.location = "writing-good-test-descriptions?js"
   }
