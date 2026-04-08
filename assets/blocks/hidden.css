@@ -13,6 +13,7 @@ html, body {
 }
 
 button {
+  color: inherit;
   font-size: inherit;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
