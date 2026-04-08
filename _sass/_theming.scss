@@ -1,0 +1,77 @@
+:root {
+  color-scheme: light dark;
+}
+
+.light-theme {
+  color-scheme: only light;
+}
+
+.dark-theme {
+  color-scheme: only dark;
+}
+
+.animatable {
+  body {
+    transition-property: color, background-color;
+    transition-duration: 0.3s;
+  }
+
+  .theme-toggle {
+    circle, path {
+      transition: transform 400ms cubic-bezier(0, 0, 0, 1.35);
+    }
+  }
+
+  &.light-theme .theme-toggle .rays {
+    transition-delay: 200ms;
+  }
+}
+
+.theme-toggle-icon {
+  width: 0.64em;
+  fill: currentColor;
+}
+
+.theme-toggle {
+  margin-left: math.div($spacing-unit, 2);
+
+  circle, path {
+    transform-origin: center;
+  }
+
+  circle {
+    transform: scale(0.4);
+  }
+
+  .rays {
+    transform: scale(0.2);
+  }
+}
+
+.light-theme .theme-toggle {
+  .rays {
+    transform: scale(1);
+  }
+
+  circle {
+    transform: scale(0.7);
+  }
+
+  .gear {
+    transform: scale(0.2);
+  }
+}
+
+.dark-theme .theme-toggle {
+  circle {
+    transform: scale(1);
+  }
+
+  .moon {
+    transform: translate(-9px, 14px);
+  }
+
+  .gear {
+    transform: scale(0.2);
+  }
+}

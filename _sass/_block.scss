@@ -3,8 +3,8 @@
 }
 
 .block-embed, .block-source figure {
-  background-color: $embed-background-color;
-  border: 1px solid $embed-border-color;
+  background-color: light-dark($embed-background-color, $dark-embed-background-color);
+  border: 1px solid light-dark($box-border-color, $dark-box-border-color);
 }
 
 .block-embed + .open-new-tab-link .new-tab-icon {
