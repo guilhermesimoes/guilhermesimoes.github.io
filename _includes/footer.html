@@ -6,12 +6,20 @@
   var root = document.documentElement;
   var themeToggle = document.querySelector('.theme-toggle');
   var themes = ['system', 'dark', 'light'];
-  var userTheme = localStorage.getItem('theme') || 'system';
-  var themeIndex = themes.indexOf(userTheme);
   var isSystemThemeDark = matchMedia('(prefers-color-scheme: dark)').matches;
   var direction = isSystemThemeDark ? -1 : 1;
 
   themeToggle.addEventListener('click', () => {
+    var themeIndex = 0;
+    for (let className of root.classList) {
+      var match = className.match(/(.*)-theme/);
+      var theme = match && match[1];
+      if (theme) {
+        themeIndex = themes.indexOf(theme);
+        break;
+      }
+    }
+
     themeIndex = (themeIndex + direction) % themes.length;
     var nextTheme = themes.at(themeIndex);
     root.classList.remove('light-theme', 'dark-theme');
