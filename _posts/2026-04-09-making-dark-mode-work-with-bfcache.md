@@ -16,7 +16,7 @@ In addition to the dark mode, I added a toggle button to allow the reader to cho
 
 I thought everything was working great, until I noticed what happened when I navigated to a page, changed the theme and then pressed the back button of the browser:
 
-<video class="ratio-16-9" src="/assets/videos/dark-mode-bf-cache.mp4" loading="lazy" controls></video>
+<video class="ratio-16-9" src="/assets/videos/dark-mode-bf-cache.mp4" poster="/assets/images/dark-mode-bf-cache.png" loading="lazy" controls></video>
 
 The previous page was retrieved from the browser's [back-forward cache (bfcache)][bfcache] with the old theme! Fixing this required three separate changes.
 
