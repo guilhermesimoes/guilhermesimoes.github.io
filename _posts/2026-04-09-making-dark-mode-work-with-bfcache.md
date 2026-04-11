@@ -14,7 +14,11 @@ I try to avoid making this blog be about adding features to the blog, but I rece
 
 In addition to the dark mode, I added a toggle button to allow the reader to choose between dark, light and [system] themes. The button also [persists the user preference] so the reading experience is consistent between pages.
 
-I thought everything was working great, until I noticed what happened when I navigated to a page, changed the theme and then pressed the browser's back button. The previous page appeared with the old theme! The browser was retrieving the page from its [back-forward cache (bfcache)][bfcache], an optimization that enables instant navigation to previously visited pages but that can cause issues like this. Fixing this required three separate changes.
+I thought everything was working great, until I noticed what happened when I navigated to a page, changed the theme and then pressed the browser's back button:
+
+<video class="ratio-16-9 mb-1" src="/assets/videos/dark-mode-bf-cache.mp4" loading="lazy" controls></video>
+
+The previous page appeared with the old theme! The browser was retrieving the page from its [back-forward cache (bfcache)][bfcache], an optimization that enables instant navigation to previously visited pages but that can cause issues like this. Fixing this required three separate changes.
 
 ### 1. Switching the stale theme on bfcache restore
 
