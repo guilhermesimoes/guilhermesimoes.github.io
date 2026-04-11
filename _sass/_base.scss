@@ -56,13 +56,17 @@ ol, ul, dl, figure,
 
 
 /**
- * Images
+ * Media
  */
 img {
   max-width: 100%;
   vertical-align: middle;
 }
 
+video {
+  max-width: 100%;
+  border: 1px solid light-dark($box-border-color, $dark-box-border-color);
+}
 
 
 /**
