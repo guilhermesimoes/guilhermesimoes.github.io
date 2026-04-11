@@ -67,7 +67,6 @@ body {
   input:checked {
     & ~ .nav-links .drawer {
       opacity: 1;
-      transform: translateX(0);
       pointer-events: initial;
     }
 
@@ -106,8 +105,7 @@ body {
     background-color: light-dark($light-background-color, $dark-light-background-color);
     border: 1px solid light-dark($box-border-color, $dark-box-border-color);
     box-shadow: 0 0 10px light-dark($foreground-color, $dark-background-color);
-    transform: translateX(25%);
-    transition-property: opacity, transform;
+    transition-property: opacity;
     transition-duration: 0.3s;
     transition-timing-function: ease-out;
     pointer-events: none;
@@ -134,7 +132,6 @@ body {
       opacity: 1;
       background-color: transparent;
       border: none;
-      transform: none;
       transition: none;
       box-shadow: none;
       pointer-events: initial;
