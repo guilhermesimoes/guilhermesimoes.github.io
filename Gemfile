@@ -15,7 +15,7 @@ gem 'jekyll', '~> 4.3'
 # gem 'github-pages', group: :jekyll_plugins
 
 # These are the gem versions used on GitHub:
-# https://pages.github.com/versions/
+# https://pages.github.com/versions.json
 
 gem "kramdown-parser-gfm", "~> 1.1"
 
