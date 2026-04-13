@@ -10,8 +10,12 @@
   <meta name="author" content="{{ author.given_name }} {{ author.additional_name }} {{ author.family_name }}" />
   <meta name="description" content="{{ page.subtitle | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}" />
 
+  {% for meta in page.meta %}
+    <meta {{ meta }} />
+  {% endfor %}
+
   <link rel="stylesheet" href="/assets/styles.css" />
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
+  <link rel="canonical" href="{{ page.canonical | default: page.url | replace:'index.html','' | absolute_url }}" />
   {% feed_meta %}
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
