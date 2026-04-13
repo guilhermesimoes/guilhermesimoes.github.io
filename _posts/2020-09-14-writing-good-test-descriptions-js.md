@@ -9,6 +9,8 @@ image:
   alt:    "Drawing of a watch underwater, surrounded by fish."
 hidden:   true
 tags: [Testing, Code Quality, JavaScript]
+meta:
+  - 'http-equiv="refresh" content="0; url=/blog/writing-good-test-descriptions?js"'
 ---
 
 Anyone can write a decent test description. But by paying attention to this little detail you can write _great_ test descriptions:
@@ -162,9 +164,3 @@ It's not a diver's watch after all!
 [BDD]: https://en.wikipedia.org/wiki/Behavior-driven_development#Behavioral_specifications
 [rubocop-rspec]: https://github.com/rubocop-hq/rubocop-rspec
 [Mocha's spec reporter]: https://mochajs.org/#spec
-
-<script>
-  if (location.pathname.includes('writing-good-test-descriptions-js')) {
-    self.location = "writing-good-test-descriptions?js"
-  }
-</script>
