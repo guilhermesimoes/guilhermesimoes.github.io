@@ -1,7 +1,7 @@
 ---
 layout:   post
-title:    "Comprehensive TODO list for reducing JavaScript bundle size"
-date:     2025-11-24 15:00:45 +0000
+title:    "A comprehensive TODO list for reducing your JavaScript bundle"
+date:     2026-04-14 15:00:45 +0000
 class:    bundle-size-reduction
 ---
 
