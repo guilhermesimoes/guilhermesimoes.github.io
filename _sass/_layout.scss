@@ -36,13 +36,16 @@ body {
   padding-bottom: $spacing-unit * 6;
 }
 
-.site-header .site-title {
+.site-header-left {
   font-size: 1.625em;
-  font-weight: 300;
   line-height: $base-font-size * 3.2;
+}
+
+.site-header .site-title {
+  font-weight: 300;
   letter-spacing: -1px;
   margin-bottom: 0;
-  color: $text-color;
+  color: light-dark($text-color, $dark-text-color);
   text-decoration: none;
 }
 
@@ -99,9 +102,9 @@ body {
     text-align: right;
     white-space: nowrap;
     opacity: 0;
-    background-color: $header-background-color;
-    border: 1px solid $header-border-color;
-    box-shadow: 0 0 10px $background-color;
+    background-color: light-dark($light-background-color, $dark-light-background-color);
+    border: 1px solid light-dark($box-border-color, $dark-box-border-color);
+    box-shadow: 0 0 10px light-dark($foreground-color, $dark-background-color);
     transform: translateX(25%);
     transition-property: opacity, transform;
     transition-duration: 0.3s;
@@ -112,7 +115,7 @@ body {
   a {
     display: block;
     padding: 5px 1em;
-    color: $text-color;
+    color: light-dark($text-color, $dark-text-color);
     text-decoration: none;
   }
 
@@ -146,7 +149,7 @@ body {
 
 .deemph {
   font-size: $small-font-size;
-  color: $muted-text-color;
+  color: light-dark($muted-text-color, $dark-muted-text-color);
 }
 
 .post-meta {

@@ -28,8 +28,6 @@ dl, dd, ol, ul, figure {
   font-size: calc(11px + 0.8vmin);
 }
 
-
-
 /**
  * Basic styling
  */
@@ -38,8 +36,8 @@ body {
   font-size: $base-font-size;
   font-weight: $base-font-weight;
   line-height: $base-line-height;
-  color: $text-color;
-  background-color: $background-color;
+  color: light-dark($text-color, $dark-text-color);
+  background-color: light-dark($foreground-color, $dark-background-color);
   overflow-y: scroll;
 }
 
@@ -96,15 +94,15 @@ button {
  * Links
  */
 a {
-  color: $brand-color;
+  color: light-dark($brand-color, $dark-brand-color);
   text-decoration: none;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    color: light-dark(darken($brand-color, 15%), lighten($dark-brand-color, 10%));
   }
 
   &:hover {
-    color: $text-color;
+    color: light-dark($text-color, $dark-text-color);
     text-decoration: dotted underline;
     text-decoration-skip-ink: auto;
     text-decoration-thickness: 1px;
@@ -118,8 +116,7 @@ $blockquote-border-width: 0.3em;
  * Blockquotes
  */
 blockquote {
-  color: $quote-color;
-  border-left: $blockquote-border-width solid $quote-border-color;
+  border-left: $blockquote-border-width solid light-dark($box-border-color, $dark-box-border-color);
   padding-left: $spacing-unit - $blockquote-border-width;
   margin-left: -1 * $spacing-unit;
 
@@ -127,6 +124,7 @@ blockquote {
     font-size: 1.125em;
     letter-spacing: -1px;
     font-style: italic;
+    font-weight: lighter;
   }
 
   > blockquote {

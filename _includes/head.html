@@ -25,4 +25,11 @@
   {% endif -%}
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:creator" content="{{ author.twitter_handle }}" />
+
+  <script>
+    var theme = localStorage.getItem('theme');
+    if (theme) {
+      document.documentElement.classList.add(`${theme}-theme`);
+    }
+  </script>
 </head>
