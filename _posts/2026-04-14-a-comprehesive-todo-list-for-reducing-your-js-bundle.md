@@ -2,7 +2,12 @@
 layout:   post
 title:    "A comprehensive TODO list for reducing your JavaScript bundle"
 date:     2026-04-14 15:00:45 +0000
+image:
+  hero:   true
+  path:   /assets/images/elephant.png
+  alt:    "Drawing of an elephant."
 class:    bundle-size-reduction
+tags: [Perf, Web, JavaScript]
 ---
 
 This is a list of all the things I know, and all the things we've used to reduce the bundle size of the Peacock app.
