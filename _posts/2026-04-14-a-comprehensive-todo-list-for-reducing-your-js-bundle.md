@@ -343,15 +343,16 @@ template.innerHTML = `
       pointer-events: none;
       stroke-linecap: round;
       stroke-width: 0.5px;
+      fill: none;
     }
 
     :host .border {
       stroke: black;
-      fill: none;
     }
 
     :host .line {
-      stroke: rgba(237,75,26,.82);
+      stroke: rgba(10,128,0,.82);
+      stroke-linejoin: round;
     }
 
     ::slotted(input) {
@@ -370,7 +371,7 @@ class HandDrawnCheckbox extends HTMLElement {
   connectedCallback() {
     var checkbox = this.querySelector('input[type="checkbox"]');
     var templateClone = template.content.cloneNode(true);
-    var pathEls = templateClone.querySelectorAll('.line');
+    var pathEls = templateClone.querySelector('.line');
     var borderEl = templateClone.querySelector('.border');
     borderEl.setAttribute('d', getBorderPath());
     toggleVisibility(pathEls, checkbox);
@@ -384,23 +385,17 @@ class HandDrawnCheckbox extends HTMLElement {
   }
 }
 
-function toggleVisibility(lines, checkbox) {
-  var [line1, line2] = lines;
-
+function toggleVisibility(line1, checkbox) {
   if (checkbox.checked) {
     line1.setAttribute('d', getLine1Path());
-    line2.setAttribute('d', getLine2Path());
     line1.style.strokeDasharray = line1.style.strokeDashoffset = getPathLength(line1);
-    line2.style.strokeDasharray = line2.style.strokeDashoffset = getPathLength(line2);
 
     setTimeout(() => {
-      line1.style.transition = line2.style.transition = 'stroke-dashoffset 200ms ease';
-      line2.style['transition-delay'] = '200ms';
-      line1.style.strokeDashoffset = line2.style.strokeDashoffset = 0;
+      line1.style.transition = 'stroke-dashoffset 200ms ease';
+      line1.style.strokeDashoffset = 0;
     }, 10);
   } else {
     line1.style.strokeDashoffset = getPathLength(line1);
-    line2.style.strokeDashoffset = getPathLength(line2);
   }
 }
 
@@ -408,8 +403,12 @@ function getPathLength(path) {
   return Math.ceil(path.getTotalLength()) + 1; // Handle rounding issues
 }
 
-var crossCorner1Range = [0.5, 1.5];
-var crossCorner2Range = [8.5, 9.5];
+var checkStartXRange = [0.4, 2];
+var checkStartYRange = [4, 5];
+var checkMidXRange = [4.5, 5.5];
+var checkMidYRange = [8, 9.8];
+var checkEndXRange = [8.5, 9.8];
+var checkEndYRange = [0.2, 2];
 var borderCorner1Range = [0.2, 0.8];
 var borderCorner2Range = [9.2, 9.8];
 
@@ -418,11 +417,9 @@ function getBorderPath() {
 }
 
 function getLine1Path() {
-  return `M${getPoint(crossCorner1Range)} ${getPoint(crossCorner1Range)}L${getPoint(crossCorner2Range)} ${getPoint(crossCorner2Range)}`;
-}
-
-function getLine2Path() {
-  return `M${getPoint(crossCorner2Range)} ${getPoint(crossCorner1Range)}L${getPoint(crossCorner1Range)} ${getPoint(crossCorner2Range)}`;
+  const curveMidPointX = getPoint([3, 3.8])
+  const curveMidPointY = getPoint([6.4, 7])
+  return `M${getPoint(checkStartXRange)} ${getPoint(checkStartYRange)}C${curveMidPointX} ${curveMidPointY} ${curveMidPointX} ${curveMidPointY} ${getPoint(checkMidXRange)} ${getPoint(checkMidYRange)}L${getPoint(checkEndXRange)} ${getPoint(checkEndYRange)}`;
 }
 
 function getPoint(range) {
