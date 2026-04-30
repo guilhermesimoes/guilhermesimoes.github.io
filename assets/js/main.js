@@ -29,7 +29,6 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', nextTheme);
   }
 });
-themeToggle.classList.remove('hidden');
 
 self.addEventListener('pagehide', () => {
   // Page may be stored in the bfcache
