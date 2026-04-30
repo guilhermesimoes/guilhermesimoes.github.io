@@ -30,8 +30,9 @@ function fetchOrGoToOfflinePage(fetchEvent) {
   // going somewhere?
   if (eventRequest.mode === 'navigate') {
     return fetch(eventRequest)
-      .catch(() =>
-        caches.match(eventRequest.url).then(cachedPage =>
+      .then(
+        (response) => updateCacheAndReturnResponse(eventRequest, response),
+        (error) => caches.match(eventRequest.url).then(cachedPage =>
           cachedPage || caches.match('/offline').then(cachedOfflinePage =>
             // workaround for https://issues.chromium.org/issues/41288530
             cachedOfflinePage && new Response(cachedOfflinePage.body)
@@ -42,16 +43,19 @@ function fetchOrGoToOfflinePage(fetchEvent) {
 
   // "hack" until GitHub pages supports a longer Cache-Control https://github.com/orgs/community/discussions/11884
   if (eventRequest.url.endsWith('.css')) {
-    return Promise.all([
-        fetch(eventRequest),
-        caches.open(CACHE_NAME)
-      ]).then(
-        ([response, cache]) => cache.add(eventRequest.url, response).then(() => response),
+    return fetch(eventRequest).then(
+        (response) => updateCacheAndReturnResponse(eventRequest, response),
         (error) => caches.match(eventRequest.url)
       );
   }
 
   return fetch(eventRequest);
+}
+
+function updateCacheAndReturnResponse(eventRequest, response) {
+  var clone = response.clone();
+  caches.open(CACHE_NAME).then(cache => cache.put(eventRequest.url, clone));
+  return response;
 }
 
 function onInstall(installEvent) {
@@ -60,7 +64,7 @@ function onInstall(installEvent) {
 }
 
 function onActivate(activateEvent) {
-  activateEvent.waitUntil(clearOldCaches);
+  activateEvent.waitUntil(clearOldCaches());
 }
 
 function onFetch(fetchEvent) {
