@@ -32,7 +32,7 @@ function fetchOrGoToOfflinePage(fetchEvent) {
     return fetch(eventRequest)
       .then(
         (response) => updateCacheAndReturnResponse(eventRequest, response),
-        (error) => caches.match(eventRequest.url).then(cachedPage =>
+        (error) => caches.match(eventRequest).then(cachedPage =>
           cachedPage || caches.match('/offline').then(cachedOfflinePage =>
             // workaround for https://issues.chromium.org/issues/41288530
             cachedOfflinePage && new Response(cachedOfflinePage.body)
@@ -44,17 +44,19 @@ function fetchOrGoToOfflinePage(fetchEvent) {
   // "hack" until GitHub pages supports a longer Cache-Control https://github.com/orgs/community/discussions/11884
   if (eventRequest.url.endsWith('.css')) {
     return fetch(eventRequest).then(
-        (response) => updateCacheAndReturnResponse(eventRequest, response),
-        (error) => caches.match(eventRequest.url)
+        (response) => updateCacheAndReturnResponse(eventRequest, response, true),
+        (error) => caches.match(eventRequest)
       );
   }
 
   return fetch(eventRequest);
 }
 
-function updateCacheAndReturnResponse(eventRequest, response) {
-  var clone = response.clone();
-  caches.open(CACHE_NAME).then(cache => cache.put(eventRequest.url, clone));
+function updateCacheAndReturnResponse(eventRequest, response, force = false) {
+  if (force || caches.match(eventRequest)) {
+    var clone = response.clone();
+    caches.open(CACHE_NAME).then(cache => cache.put(eventRequest, clone));
+  }
   return response;
 }
 
