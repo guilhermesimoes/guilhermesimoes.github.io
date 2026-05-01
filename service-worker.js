@@ -29,8 +29,8 @@ function fetchOrGoToOfflinePage(fetchEvent) {
 
   // going somewhere?
   if (eventRequest.mode === 'navigate') {
-    return fetch(eventRequest)
-      .then(
+    fetchEvent.respondWith(
+      fetch(eventRequest).then(
         (response) => updateCacheAndReturnResponse(eventRequest, response),
         (error) => caches.match(eventRequest).then(cachedPage =>
           cachedPage || caches.match('/offline').then(cachedOfflinePage =>
@@ -38,18 +38,17 @@ function fetchOrGoToOfflinePage(fetchEvent) {
             cachedOfflinePage && new Response(cachedOfflinePage.body)
           )
         )
-      );
-  }
-
-  // "hack" until GitHub pages supports a longer Cache-Control https://github.com/orgs/community/discussions/11884
-  if (eventRequest.url.endsWith('.css')) {
-    return fetch(eventRequest).then(
+      )
+    );
+  } else if (eventRequest.url.endsWith('.css')) {
+    // "hack" until GitHub pages supports a longer Cache-Control https://github.com/orgs/community/discussions/11884
+    fetchEvent.respondWith(
+      fetch(eventRequest).then(
         (response) => updateCacheAndReturnResponse(eventRequest, response, true),
         (error) => caches.match(eventRequest)
-      );
+      )
+    );
   }
-
-  return fetch(eventRequest);
 }
 
 function updateCacheAndReturnResponse(eventRequest, response, force = false) {
@@ -70,7 +69,7 @@ function onActivate(activateEvent) {
 }
 
 function onFetch(fetchEvent) {
-  fetchEvent.respondWith(fetchOrGoToOfflinePage(fetchEvent));
+  fetchOrGoToOfflinePage(fetchEvent);
 }
 
 addEventListener('install', onInstall);
