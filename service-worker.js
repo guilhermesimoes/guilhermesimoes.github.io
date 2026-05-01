@@ -1,12 +1,8 @@
-var CACHE_NAME = 'v1';
+var CACHE_NAME = 'v0';
 
 function cacheInitialResources() {
   return caches.open(CACHE_NAME).then(cache =>
-    cache.addAll([
-      '/',
-      '/blog/',
-      '/offline',
-    ])
+    cache.addAll(['/', '/blog/', '/offline'])
   );
 }
 
@@ -33,10 +29,7 @@ function fetchOrGoToOfflinePage(fetchEvent) {
       fetch(eventRequest).then(
         (response) => updateCacheAndReturnResponse(eventRequest, response),
         (error) => caches.match(eventRequest).then(cachedPage =>
-          cachedPage || caches.match('/offline').then(cachedOfflinePage =>
-            // workaround for https://issues.chromium.org/issues/41288530
-            cachedOfflinePage && new Response(cachedOfflinePage.body)
-          )
+          cachedPage || caches.match('/offline').then(chromiumWorkaround)
         )
       )
     );
@@ -59,19 +52,16 @@ function updateCacheAndReturnResponse(eventRequest, response, force = false) {
   return response;
 }
 
-function onInstall(installEvent) {
+// Workaround for https://issues.chromium.org/issues/41288530
+function chromiumWorkaround(cachedOfflinePage) {
+  return cachedOfflinePage && new Response(cachedOfflinePage.body)
+}
+
+addEventListener('install', (installEvent) => {
   skipWaiting();
   installEvent.waitUntil(cacheInitialResources());
-}
-
-function onActivate(activateEvent) {
+});
+addEventListener('activate', (activateEvent) => {
   activateEvent.waitUntil(clearOldCaches());
-}
-
-function onFetch(fetchEvent) {
-  fetchOrGoToOfflinePage(fetchEvent);
-}
-
-addEventListener('install', onInstall);
-addEventListener('activate', onActivate);
-addEventListener('fetch', onFetch);
+});
+addEventListener('fetch', fetchOrGoToOfflinePage);
