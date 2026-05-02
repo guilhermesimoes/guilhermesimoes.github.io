@@ -27,14 +27,7 @@
   }
 }
 
-.theme-toggle-icon {
-  width: 0.64em;
-  fill: currentColor;
-}
-
 .theme-toggle {
-  margin-left: math.div($spacing-unit, 2);
-
   circle, path {
     transform-origin: center;
   }

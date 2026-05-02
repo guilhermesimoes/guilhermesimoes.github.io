@@ -40,14 +40,22 @@ body {
 .site-header-left {
   font-size: 1.625em;
   line-height: $base-font-size * 3.2;
-}
 
-.site-header .site-title {
-  font-weight: 300;
-  letter-spacing: -1px;
-  margin-bottom: 0;
-  color: light-dark($text-color, $dark-text-color);
-  text-decoration: none;
+  .site-title {
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin-bottom: 0;
+    color: light-dark($text-color, $dark-text-color);
+    text-decoration: none;
+  }
+
+  .theme-toggle {
+    padding: 0 0.3em;
+  }
+
+  .theme-toggle-icon {
+    width: .65em;
+  }
 }
 
 .site-nav {
@@ -85,7 +93,6 @@ body {
   .hamburguer-icon {
     display: block;
     width: 36px;
-    height: 36px;
     transform: translateZ(0);
     -webkit-tap-highlight-color: transparent;
   }
