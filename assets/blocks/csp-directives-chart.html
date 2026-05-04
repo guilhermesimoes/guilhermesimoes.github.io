@@ -43,6 +43,14 @@ var data = {
       { name: "font-src", children: [
         { name: "`@font-face`", href: "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face" }
       ]},
+      { name: "media-src", children: [
+        { name: "`<audio>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/audio" },
+        { name: "`<video>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video" }
+      ]},
+      { name: "object-src", children: [
+        { name: "`<object>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/object" },
+        { name: "`<embed>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/embed" },
+      ]},
       { name: "img-src", children: [
         { name: "`<img>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img" },
         { name: "<link rel='icon'>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel#icon" }
@@ -54,14 +62,6 @@ var data = {
         { name: "`<link rel='stylesheet'>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/style" },
         { name: "`<style>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/style" },
         { name: "`@import`", href: "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@import" },
-      ]},
-      { name: "media-src", children: [
-        { name: "`<audio>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/audio" },
-        { name: "`<video>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video" }
-      ]},
-      { name: "object-src", children: [
-        { name: "`<object>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/object" },
-        { name: "`<embed>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/embed" },
       ]},
       { name: "child-src", children: [
         { name: "frame-src", children: [
@@ -129,8 +129,8 @@ var baseHref = "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Head
 node.append("a")
   .attr("href", function (d) { return d.data.href || (baseHref + d.data.name); })
   .append("text")
-  .attr("dy", function (d) { return d.children ? "1.3em" : "-0.7em"; })
-  .attr("dx", function (d) { return d.children ? 0 : "-0.2em"; })
+  .attr("dy", function (d) { return d.children ? "1.3em" : "-0.6em"; })
+  .attr("dx", function (d) { return d.children ? 0 : 0; })
   .attr("text-anchor", function (d) { return d.children ? "middle" : "start"; })
   .attr("transform", function (d) { return d.children ? null : "rotate(-40)"; })
   .text(function (d) { return d.data.name; });
