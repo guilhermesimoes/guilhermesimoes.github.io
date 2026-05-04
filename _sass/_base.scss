@@ -61,6 +61,7 @@ ol, ul, dl, figure,
 img {
   max-width: 100%;
   vertical-align: middle;
+  font-style: italic; // alt-text styling in case image fails to load
 }
 
 video {
