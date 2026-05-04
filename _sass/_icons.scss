@@ -17,7 +17,7 @@ $duration: 0.3s;
     stroke-width: 3;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-dashoffset: 0;
+    stroke-dashoffset: .1; // Should be 0 but this fixes a rendering artifact on iOS Safari
     transition: stroke-dashoffset $duration $easeOutBack, stroke-dasharray $duration $easeOutBack;
   }
 
