@@ -18,11 +18,24 @@ I thought everything was working great, until I noticed what happened when I nav
 
 <video class="ratio-16-9 mb-1" src="/assets/videos/dark-mode-bf-cache.mp4" poster="/assets/images/dark-mode-bf-cache.png" loading="lazy" controls></video>
 
-The previous page appeared with the old theme! The browser was retrieving the page from its [back-forward cache (bfcache)][bfcache], an optimization that enables instant navigation to previously visited pages but that can cause issues like this. Fixing this required three separate changes.
+The previous page appeared with the old theme! This was unexpected because the `<head>` element contained this snippet[^1]:
+
+```html
+<script>
+  let theme = localStorage.getItem('theme');
+  if (theme) {
+    document.documentElement.classList.add(`${theme}-theme`);
+  }
+</script>
+```
+
+This should be guaranteeing that the right theme was applied in each page navigation. However, the browser was retrieving the page from its [back-forward cache (bfcache)][bfcache], an optimization that enables instant navigation to previously visited pages but that can cause issues like this. Fixing this required three separate changes.
 
 ### 1. Switching the stale theme on bfcache restore
 
-The bfcache stores a complete snapshot of each page in memory -- including the DOM, CSS and JavaScript state. So when a user changes themes and then goes back in browser history, the previous page is restored with the stale theme, even though `localStorage` rightly contains the last user-chosen theme. This stale theme issue also manifests when a user goes back in browser history, changes themes and then goes _forward_ in browser history. A little far-fetched, but still a possible scenario.
+The bfcache stores a complete snapshot of each page in memory -- including the DOM, CSS and JavaScript state. When navigating back, the previous page is restored from such a snapshot. Since the page is not loaded from scratch, the JavaScript code in the `<head>` does not run (again).
+
+Even though `localStorage` is always up-to-date, when a user changes themes and then goes back in browser history, the previous page is restored with the stale theme. This stale theme issue also manifests when a user goes back in browser history, changes themes and then goes _forward_ in browser history. A little far-fetched, but still a possible scenario.
 
 The solution to both cases is to listen for the [`pageshow`] event and re-apply the theme stored in `localStorage`:
 
@@ -80,7 +93,7 @@ Then, this class is removed when the stale theme is updated on [`pageshow`]:
  });
 ```
 
-Finally, the class is added back after the browser has had a chance to paint the new theme (I opted for a `setTimeout`).[^1]
+Finally, the class is added back after the browser has had a chance to paint the new theme (I opted for a `setTimeout`).[^2]
 
 ### 3. Ensuring the toggle button switched to the right theme
 
@@ -127,12 +140,16 @@ Making the look of this blog configurable by the reader ended up being more comp
 
 Still, the issues I found were not really related to dark mode. They were just the sum of the bfcache plus a user choice that persisted across page navigations. Issues like these can surface on any multi-page site that keeps user state. An e-commerce site may show a stale shopping cart or wishlist when a user navigates back. Or a news site may display articles in a grid layout even after a user changes it to a list layout if he then navigates back.
 
-The point is that while the [bfcache] makes it really fast to access previous pages, it does introduce its own set of challenges. Making dark mode work seamlessly is just one of those challenges.
+The point is that while the [bfcache] makes it really fast to access previous pages, it does introduce its own set of challenges. Making dark mode work seamlessly is just one of those challenges.[^3]
 
 Incidentally, I tested my favourite tech news site, [Ars Technica], and it has the same stale theme issue! It's a minor quibble, but this sort of stuff might be more common than I thought. And it's not that hard to fix!
 
 
-[^1]: Another option was to not initially add the `animatable` class to the `html` element, and only add it when the theme toggle button is clicked and then remove it after the animations end.
+[^1]: If this snippet is included at the bottom of the page (and not in the `<head>` element) we run the risk of witnessing a flash of incorrect color theme.
+
+[^2]: Another option is to initially omit the `animatable` class from the `<html>` element, and only add it when the theme toggle button is clicked. Then remove the class after the animations end.
+
+[^3]: Another challenge is analytics. Pages restored from the bfcache don't count as new pageviews. If we want to count those we also need to use the `pageshow` event.
 
 
 [dark mode]: https://bnijenhuis.nl/notes/user-friendly-dark-mode/
