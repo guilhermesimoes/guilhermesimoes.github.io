@@ -10,13 +10,13 @@
 
 .chart .link {
   fill: none;
-  stroke: currentColor;
+  stroke: gray;
   stroke-width: 1.5px;
 }
 
 .chart .node text {
   font-size: 12px;
-  stroke: currentColor;
+  fill: currentColor;
 }
 </style>
 <body>
@@ -28,62 +28,64 @@
 "use strict";
 
 var data = {
-  name: "CSP",
+  name: "CSP Fetch directives",
+  href: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy#fetch_directives",
   children: [
-    { name: "Fetch directives", children: [
-      { name: "default-src", children: [
-        { name: "img-src", children: [
-          { name: "`<img>`" },
-          { name: "favicon" }
+    { name: "default-src", children: [
+      { name: "connect-src", children: [
+        { name: "`Navigator.sendBeacon()`", href: "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon" },
+        { name: "`EventSource`", href: "https://developer.mozilla.org/en-US/docs/Web/API/EventSource" },
+        { name: "`WebSocket`", href: "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket" },
+        { name: "`<a>` + `ping` attr", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#ping" },
+        { name: "`XMLHttpRequest`", href: "https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" },
+        { name: "`fetch()`", href: "https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch" },
+      ]},
+      { name: "child-src", children: [
+        { name: "frame-src", children: [
+          { name: "`<iframe>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe" },
         ]},
-        { name: "media-src", children: [
-          { name: "`<audio>`" },
-          { name: "`<video>`" }
-        ]},
-        { name: "font-src", children: [{ name: "`@font-face`"}] },
-        { name: "connect-src", children: [
-          { name: "`<a>` + `ping` attr" },
-          { name: "`fetch()`" },
-          { name: "`XMLHttpRequest`" },
-          { name: "`WebSocket`" },
-          { name: "`EventSource`" },
-          { name: "`Navigator.sendBeacon()`" },
-        ]},
-        { name: "object-src", children: [
-          { name: "`<object>`" },
-          { name: "`<embed>`" },
-        ]},
-        { name: "manifest-src", children: [
-          { name: "`<link rel=manifest>`" }
-        ]},
-        { name: "script-src", children: [
-          { name: "`<script>`" },
-          { name: "`onclick` attr" },
-          { name: "child-src", children: [
-            { name: "worker-src", children: [
-              { name: "ServiceWorker" },
-              { name: "Worker" },
-              { name: "SharedWorker" }
-            ]},
-          ]}
-        ]},
+      ]},
+      { name: "font-src", children: [
+        { name: "`@font-face`", href: "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face" }
+      ]},
+      { name: "img-src", children: [
+        { name: "`<img>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img" },
+        { name: "<link rel='icon'>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel#icon" }
+      ]},
+      { name: "manifest-src", children: [
+        { name: "`<link rel='manifest'>`", href: "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest" }
+      ]},
+      { name: "media-src", children: [
+        { name: "`<audio>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/audio" },
+        { name: "`<video>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video" }
+      ]},
+      { name: "object-src", children: [
+        { name: "`<object>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/object" },
+        { name: "`<embed>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/embed" },
+      ]},
+      { name: "script-src", children: [
         { name: "child-src", children: [
-          { name: "frame-src", children: [
-            { name: "`<iframe>`" },
+          { name: "worker-src", children: [
+            { name: "Worker", href: "https://developer.mozilla.org/en-US/docs/Web/API/Worker" },
+            { name: "ServiceWorker", href: "https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker" },
+            { name: "SharedWorker", href: "https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker" }
           ]},
-        ]},
-        { name: "style-src", children: [
-          { name: "`<link rel=stylesheet>`" },
-          { name: " `@import`" },
-        ]},
-      ]}
+          { name: "`<script>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script" },
+          { name: "`onclick` attr", href: "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties" },
+        ]}
+      ]},
+      { name: "style-src", children: [
+        { name: "`<link rel='stylesheet'>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/style" },
+        { name: "`<style>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/style" },
+        { name: "`@import`", href: "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@import" },
+      ]},
     ]}
   ]
 };
 
 var width = 900;
 var height = 500;
-var margin = { top: 40, right: 20, bottom: 120, left: 20 };
+var margin = { top: 30, right: 20, bottom: 80, left: 0 };
 
 var svg = d3.select(".js-chart")
   .attr("viewBox", "0 0 " + width + " " + height);
@@ -122,9 +124,15 @@ node.append("circle")
     return d.children ? "#555" : "#999";
   });
 
-node.append("text")
-  .attr("dy", function (d) { return d.children ? "-0.7em" : "1.2em"; })
-  .attr("text-anchor", "middle")
+var baseHref = "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/";
+
+node.append("a")
+  .attr("href", function (d) { return d.data.href || (baseHref + d.data.name); })
+  .append("text")
+  .attr("dy", function (d) { return d.children ? "-0.7em" : "1.3em"; })
+  .attr("dx", function (d) { return d.children ? 0 : 0; })
+  .attr("text-anchor", function (d) { return d.children ? "middle" : "start"; })
+  .attr("transform", function (d) { return d.children ? null : "rotate(35)"; })
   .text(function (d) { return d.data.name; });
 </script>
 </body>
