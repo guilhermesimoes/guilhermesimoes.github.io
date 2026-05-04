@@ -29,50 +29,60 @@
 var data = {
   name: "CSP",
   children: [
-    {
-      name: "Fetch directives",
-      children: [
-        { name: "default-src" },
-        { name: "script-src" },
-        { name: "style-src" },
-        { name: "img-src" },
-        { name: "font-src" },
-        { name: "connect-src" },
-        { name: "media-src" },
-        { name: "object-src" },
-        { name: "frame-src" },
-        { name: "child-src" },
-        { name: "worker-src" },
-        { name: "manifest-src" }
-      ]
-    },
-    {
-      name: "Document directives",
-      children: [
-        { name: "base-uri" },
-        { name: "sandbox" }
-      ]
-    },
-    {
-      name: "Navigation directives",
-      children: [
-        { name: "form-action" },
-        { name: "frame-ancestors" }
-      ]
-    },
-    {
-      name: "Reporting directives",
-      children: [
-        { name: "report-uri" },
-        { name: "report-to" }
-      ]
-    }
+    { name: "Fetch directives", children: [
+      { name: "default-src", children: [
+        { name: "img-src", children: [
+          { name: "`<img>`" },
+          { name: "favicon" }
+        ]},
+        { name: "media-src", children: [
+          { name: "`<audio>`" },
+          { name: "`<video>`" }
+        ]},
+        { name: "font-src", children: [{ name: "`@font-face`"}] },
+        { name: "connect-src", children: [
+          { name: "`<a>` + `ping` attr" },
+          { name: "`fetch()`" },
+          { name: "`XMLHttpRequest`" },
+          { name: "`WebSocket`" },
+          { name: "`EventSource`" },
+          { name: "`Navigator.sendBeacon()`" },
+        ]},
+        { name: "object-src", children: [
+          { name: "`<object>`" },
+          { name: "`<embed>`" },
+        ]},
+        { name: "manifest-src", children: [
+          { name: "`<link rel=manifest>`" }
+        ]},
+        { name: "script-src", children: [
+          { name: "`<script>`" },
+          { name: "`onclick` attr" },
+          { name: "child-src", children: [
+            { name: "worker-src", children: [
+              { name: "ServiceWorker" },
+              { name: "Worker" },
+              { name: "SharedWorker" }
+            ]},
+          ]}
+        ]},
+        { name: "child-src", children: [
+          { name: "frame-src", children: [
+            { name: "`<iframe>`" },
+          ]},
+        ]},
+        { name: "style-src", children: [
+          { name: "`<link rel=stylesheet>`" },
+          { name: " `@import`" },
+        ]},
+      ]}
+    ]}
   ]
 };
 
 var width = 900;
 var height = 500;
-var margin = { top: 20, right: 120, bottom: 20, left: 80 };
+var margin = { top: 40, right: 20, bottom: 120, left: 20 };
 
 var svg = d3.select(".js-chart")
   .attr("viewBox", "0 0 " + width + " " + height);
@@ -84,7 +94,7 @@ var treeWidth = width - margin.left - margin.right;
 var treeHeight = height - margin.top - margin.bottom;
 
 var treeLayout = d3.tree()
-  .size([treeHeight, treeWidth]);
+  .size([treeWidth, treeHeight]);
 
 var root = d3.hierarchy(data);
 treeLayout(root);
@@ -93,16 +103,16 @@ g.selectAll(".link")
   .data(root.links())
   .enter().append("path")
     .attr("class", "link")
-    .attr("d", d3.linkHorizontal()
-      .x(function (d) { return d.y; })
-      .y(function (d) { return d.x; }));
+    .attr("d", d3.linkVertical()
+      .x(function (d) { return d.x; })
+      .y(function (d) { return d.y; }));
 
 var node = g.selectAll(".node")
   .data(root.descendants())
   .enter().append("g")
     .attr("class", "node")
     .attr("transform", function (d) {
-      return "translate(" + d.y + "," + d.x + ")";
+      return "translate(" + d.x + "," + d.y + ")";
     });
 
 node.append("circle")
@@ -112,11 +122,8 @@ node.append("circle")
   });
 
 node.append("text")
-  .attr("dy", "0.31em")
-  .attr("x", function (d) { return d.children ? -8 : 8; })
-  .attr("text-anchor", function (d) {
-    return d.children ? "end" : "start";
-  })
+  .attr("dy", function (d) { return d.children ? "-0.7em" : "1.2em"; })
+  .attr("text-anchor", "middle")
   .text(function (d) { return d.data.name; });
 </script>
 </body>
