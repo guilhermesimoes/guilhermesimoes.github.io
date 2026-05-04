@@ -123,7 +123,7 @@ g.selectAll(".link")
       .source(function (d) { return d.target; })
       .target(function (d) { return d.source; })
       .x(function (d) { return d.x; })
-      .y(function (d) { return treeHeight - d.y; }));
+      .y(function (d) { return treeHeight - d.y - 4; }));
 
 var node = g.selectAll(".node")
   .data(root.descendants())
