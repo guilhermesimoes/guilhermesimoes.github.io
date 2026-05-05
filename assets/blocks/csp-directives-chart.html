@@ -45,45 +45,45 @@
 var data = {
   name: "default-src", children: [
     { name: "connect-src", children: [
-      { name: "`Navigator.sendBeacon()`", href: "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon" },
-      { name: "`EventSource`", href: "https://developer.mozilla.org/en-US/docs/Web/API/EventSource" },
-      { name: "`WebSocket`", href: "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket" },
-      { name: "`<a>` + `ping` attr", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#ping" },
-      { name: "`XMLHttpRequest`", href: "https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" },
-      { name: "`fetch()`", href: "https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch" },
+      { name: "Navigator.sendBeacon()", href: "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon" },
+      { name: "EventSource", href: "https://developer.mozilla.org/en-US/docs/Web/API/EventSource" },
+      { name: "WebSocket", href: "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket" },
+      { name: "fetch()", href: "https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch" },
+      { name: "XMLHttpRequest", href: "https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" },
+      { name: "<a> + ping attr", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#ping" },
     ]},
     { name: "font-src", children: [
-      { name: "`@font-face`", href: "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face" }
+      { name: "@font-face", href: "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face" }
     ]},
     { name: "media-src", children: [
-      { name: "`<audio>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/audio" },
-      { name: "`<video>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video" }
+      { name: "<audio>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/audio" },
+      { name: "<video>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video" }
     ]},
     { name: "object-src", children: [
-      { name: "`<object>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/object" },
-      { name: "`<embed>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/embed" },
+      { name: "<embed>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/embed" },
+      { name: "<object>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/object" },
     ]},
     { name: "img-src", children: [
-      { name: "`<img>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img" },
+      { name: "<img>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img" },
       { name: "<link rel='icon'>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel#icon" }
     ]},
     { name: "manifest-src", children: [
-      { name: "`<link rel='manifest'>`", href: "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest" }
+      { name: "<link rel='manifest'>", href: "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest" }
     ]},
     { name: "style-src", children: [
-      { name: "`<link rel='stylesheet'>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/style" },
-      { name: "`<style>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/style" },
-      { name: "`@import`", href: "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@import" },
+      { name: "<link rel='stylesheet'>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/style" },
+      { name: "<style>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/style" },
+      { name: "@import", href: "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@import" },
     ]},
     { name: "child-src", children: [
       { name: "frame-src", children: [
-        { name: "`<iframe>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe" },
+        { name: "<iframe>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe" },
       ]},
     ]},
     { name: "script-src", children: [
       { name: "child-src", children: [
-        { name: "`<script>`", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script" },
-        { name: "`onclick` attr", href: "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties" },
+        { name: "<script>", href: "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script" },
+        { name: "onclick attr", href: "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Events#using_onevent_properties" },
         { name: "worker-src", children: [
           { name: "ServiceWorker", href: "https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker" },
           { name: "SharedWorker", href: "https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker" },
@@ -160,7 +160,7 @@ node.append("a")
   .attr("href", function (d) { return d.data.href || (baseHref + d.data.name); })
   .append("text")
   .attr("dy", function (d) { return d.children ? "1.3em" : "-0.6em"; })
-  .attr("dx", function (d) { return d.children ? 0 : 0; })
+  .attr("dx", function (d) { return d.children ? 0 : "2px"; })
   .attr("text-anchor", function (d) { return d.children ? "middle" : "start"; })
   .attr("transform", function (d) { return d.children ? null : "rotate(-40)"; })
   .text(function (d) { return d.data.name; });
