@@ -33,7 +33,7 @@ main {
   margin: 0;
   height: 5em;
   overflow-y: scroll;
-  background-color: field;
+  border: 1px solid currentColor;
   overscroll-behavior: contain;
 }
 
