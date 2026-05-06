@@ -66,6 +66,7 @@ if (matchMedia('(hover: hover)').matches) {
 function scrollToTop(event) {
   event.preventDefault();
   window.scrollTo({ top: 0 });
+  history.replaceState(null, '', ' '); // Clean a possible #header-link from the URL
 }
 
 function handleScroll() {
