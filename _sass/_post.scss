@@ -135,9 +135,13 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-  .post ul {
+  :root:not(.light-theme) .post ul {
     list-style-image: diamond($viewBox: '-4 -6 8 8', $polygon: '0,-2 2,0 0,2 -2,0', $fill: $dark-text-color);
   }
+}
+
+.dark-theme .post ul {
+  list-style-image: diamond($viewBox: '-4 -6 8 8', $polygon: '0,-2 2,0 0,2 -2,0', $fill: $dark-text-color);
 }
 
 @keyframes highlight {
