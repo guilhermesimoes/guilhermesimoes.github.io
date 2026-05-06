@@ -25,8 +25,12 @@ If you want to understand how Web Workers work, I encourage you to look at the c
 
 I added logs so you can open your browser's devtools and see the conversation between the two threads play out as you click each button. If you refresh the page, you'll also see the main thread creating the worker and the worker announcing it's ready.
 
-As for the animations, the key point is that some animations keep running despite the main thread being blocked because their properties use hardware acceleration. The spinning square uses the `transform` property, which is GPU-accelerated. The fading square uses the `opacity` property, which is also GPU-accelerated. The moving square is **incorrectly** animated using the `left` and `top` properties, which are not GPU-accelerated. A correct animation should use the `transform: translate(x, y)` property instead.
-The color-changing square uses a combination of the `background-color` property and a custom property (`--hue`), which I was expecting to be GPU-accelerated, but aparently it is not.
+As for the animations, the key point is that some animations keep running despite the main thread being blocked because their properties use hardware acceleration:
+
+- The spinning square uses the `transform` property, which is GPU-accelerated.
+- The fading square uses the `opacity` property, which is also GPU-accelerated.
+- The moving square is **incorrectly** animated using the `left` and `top` properties, which are not GPU-accelerated. A correct animation should use the `transform: translate(x, y)` property instead.
+- The color-changing square uses a combination of the `background-color` property and a custom property (`--hue`), which I was expecting to be GPU-accelerated, but aparently it is not.
 
 Reading [How to create high-performance CSS animations] should help you understand when an animation uses hardware acceleration. And [CSS Triggers] is a great resource for information on which properties trigger layout, paint and composite steps. But this is another topic.
 
