@@ -1,25 +1,25 @@
 // Light mode colors
 $foreground-color: #fdfdfd;
-$light-background-color: darken($foreground-color, 2.5%);
-$code-block-background-color: darken($foreground-color, 4.5%);
-$embed-background-color: lighten($foreground-color, 10%);
-$box-border-color: darken($foreground-color, 16%);
+$light-background-color: color.adjust($foreground-color, $lightness: -2.5%);
+$code-block-background-color: color.adjust($foreground-color, $lightness: -4.5%);
+$embed-background-color: color.adjust($foreground-color, $lightness: 10%);
+$box-border-color: color.adjust($foreground-color, $lightness: -16%);
 
 $text-color:       #111;
-$muted-text-color: lighten($text-color, 36%);
+$muted-text-color: color.adjust($text-color, $lightness: 36%);
 $brand-color:      #1d6bd7;
 $footnotes-highlight-background-color: #ffa;
 $strike-through-color: #d73a49;
 
 // Dark mode colors
 $dark-background-color: #222235; // desaturated: #232323
-$dark-light-background-color: lighten($dark-background-color, 2.5%);
-$dark-code-block-background-color: lighten($dark-background-color, 4%);
-$dark-embed-background-color: lighten($dark-background-color, 3%);
-$dark-box-border-color: lighten(#232323, 20%);
+$dark-light-background-color: color.adjust($dark-background-color, $lightness: 2.5%);
+$dark-code-block-background-color: color.adjust($dark-background-color, $lightness: 4%);
+$dark-embed-background-color: color.adjust($dark-background-color, $lightness: 3%);
+$dark-box-border-color: color.adjust(#232323, $lightness: 20%);
 
 $dark-text-color: #e8e8e8;
-$dark-muted-text-color: darken($dark-text-color, 36%);
+$dark-muted-text-color: color.adjust($dark-text-color, $lightness: -36%);
 $dark-brand-color: #60a5fa;
 $dark-footnotes-highlight-background-color: #554400;
 $dark-strike-through-color: #f47067;
