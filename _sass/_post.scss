@@ -103,6 +103,11 @@
     }
   }
 
+  *:target {
+    scroll-margin-top: 4rem;
+    animation: 1s ease-in-out 2 alternate highlight;
+  }
+
   .footnote {
     &::before {
       content: "["
@@ -117,23 +122,14 @@
     padding-top: math.div($spacing-unit, 2);
     margin-top: $spacing-unit * 2;
     border-top: 1px solid light-dark($text-color, $dark-text-color);
-  }
 
-  [role^="doc"], h3 {
-    scroll-margin-top: 4rem;
+    li {
+      padding-left: 0.5em;
+      counter-increment: footnote-count;
 
-    &:target {
-      /* @keyframes duration | easing-function | iteration-count | direction | name */
-      animation: 1s ease-in-out 2 alternate highlight;
-    }
-  }
-
-  [role="doc-endnote"] {
-    padding-left: 0.5em;
-    counter-increment: footnote-count;
-
-    &::marker {
-      content: "[" counter(footnote-count) "]";
+      &::marker {
+        content: "[" counter(footnote-count) "]";
+      }
     }
   }
 }
