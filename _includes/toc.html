@@ -96,6 +96,7 @@
 
         {% capture _hAttrToStrip %}{{ _workspace[0] | split: '>' | first }}>{% endcapture %}
         {% assign header = _workspace[0] | replace: _hAttrToStrip, '' %}
+        {% assign header = header | split: '</a>' | last %}
 
         {% assign indentAmount = headerLevel | minus: minHeader %}
         {% assign space = '' %}

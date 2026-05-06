@@ -43,7 +43,7 @@ All code blocks are editable. You can modify each example to see what happens. G
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/red-girl-trainer.png" markdown="1">
 
-# Left To Right Wipe
+### Left To Right Wipe
 
 ```cpp
 void main() {
@@ -64,7 +64,7 @@ This kind of wipe was used prominently in the Star Wars films.
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/yellow-pallet-town.png" markdown="1">
 
-# Curtain Fall
+### Curtain Fall
 
 ```cpp
 void main() {
@@ -86,7 +86,7 @@ You can get a new transition by combining the conditions of the first 2 examples
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-bug-catching-grass.png" markdown="1">
 
-# Vertical Reflected Wipe
+### Vertical Reflected Wipe
 
 ```cpp
 void main() {
@@ -112,7 +112,7 @@ Finally, each manipulated pixel's `y` coordinate is compared with the `cutoff`. 
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-pokemon-gyarados.png" markdown="1">
 
-# Fade To White
+### Fade To White
 
 ```cpp
 vec4 white = vec4(1, 1, 1, 1);
@@ -136,7 +136,7 @@ In this case, `mix` interpolates between the texture color and the white color. 
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-rival-5.png" markdown="1">
 
-# Fade To Black
+### Fade To Black
 
 ```cpp
 void main() {
@@ -162,7 +162,7 @@ Notice, however, that in the `mix` equation the second parameter — `v2` — wo
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-elite-four-5.png" markdown="1">
 
-# Spinning Pizza Slices
+### Spinning Pizza Slices
 
 ```cpp
 #define PI 3.1415926538
@@ -199,7 +199,7 @@ In the end, for **_some_** reason the animation is going in a clockwise directio
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-pokemon-legendary-ho-oh.png" markdown="1">
 
-# That's All Folks
+### That's All Folks
 
 ```cpp
 float maxRadius = sqrt(0.5 * 0.5 + 0.5 * 0.5);

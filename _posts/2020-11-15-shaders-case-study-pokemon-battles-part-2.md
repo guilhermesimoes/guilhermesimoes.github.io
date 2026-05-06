@@ -49,7 +49,7 @@ So without further ado, let's begin.
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/red-cinnabar-mansion.png" markdown="1">
 
-# Left To Right Wipe
+### Left To Right Wipe
 <img class="gradient" src="/assets/images/gradients/wipe-left-to-right.png" alt="">
 {% include canvas-playground.html %}
 
@@ -60,7 +60,7 @@ This transition looks the same as the [Left To Right transition in part 1], but 
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/yellow-surprise.png" markdown="1">
 
-# Vertical Reflected Wipe
+### Vertical Reflected Wipe
 <img class="gradient" src="/assets/images/gradients/wipe-vertical-reflected.png" alt="">
 {% include canvas-playground.html %}
 
@@ -71,7 +71,7 @@ Likewise, this transition looks the same as the [Vertical Reflected transition i
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/red-cinnabar.png" markdown="1">
 
-# Diagonal Wipe
+### Diagonal Wipe
 <img class="gradient" src="/assets/images/gradients/wipe-diagonal.png" alt="">
 {% include canvas-playground.html %}
 
@@ -82,7 +82,7 @@ Once again the shader is the same; only the gradient changes. Look how easy it i
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/yellow-misty.png" markdown="1">
 
-# Crashing Wave
+### Crashing Wave
 <img class="gradient" src="/assets/images/gradients/crashing-wave.png" alt="">
 {% include canvas-playground.html %}
 
@@ -93,7 +93,7 @@ Here's where things get interesting. Creating this type of transition using only
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/crystal-pokemon-sudowoodo.png" markdown="1">
 
-# Chess, then Circles
+### Chess, then Circles
 <img class="gradient" src="/assets/images/gradients/chess-then-circles.png" alt="">
 {% include canvas-playground.html %}
 
@@ -102,7 +102,7 @@ Here's where things get interesting. Creating this type of transition using only
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-pokemon-sudowoodo.png" markdown="1">
 
-# Circles, Chess and more Circles
+### Circles, Chess and more Circles
 <img class="gradient" src="/assets/images/gradients/circles-then-chess-then-circles.png" alt="">
 {% include canvas-playground.html %}
 
@@ -111,7 +111,7 @@ Here's where things get interesting. Creating this type of transition using only
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-elite-four-1.png" markdown="1">
 
-# Enclosing Triangles
+### Enclosing Triangles
 <img class="gradient" src="/assets/images/gradients/enclosing-triangles.png" alt="">
 {% include canvas-playground.html %}
 
@@ -120,7 +120,7 @@ Here's where things get interesting. Creating this type of transition using only
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-elite-four-2.png" markdown="1">
 
-# Spinning Spiral
+### Spinning Spiral
 <img class="gradient" src="/assets/images/gradients/spinning-spiral.png" alt="">
 {% include canvas-playground.html %}
 
@@ -129,7 +129,7 @@ Here's where things get interesting. Creating this type of transition using only
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-elite-four-3.png" markdown="1">
 
-# Gooey
+### Gooey
 <img class="gradient" src="/assets/images/gradients/gooey.png" alt="">
 {% include canvas-playground.html %}
 
@@ -138,7 +138,7 @@ Here's where things get interesting. Creating this type of transition using only
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-elite-four-4.png" markdown="1">
 
-# Trapped
+### Trapped
 <img class="gradient" src="/assets/images/gradients/trapped.png" alt="">
 {% include canvas-playground.html %}
 
@@ -147,7 +147,7 @@ Here's where things get interesting. Creating this type of transition using only
 
 <div class="scene" data-texture-src="/assets/images/pokemon-textures/gold-elite-four-5.png" markdown="1">
 
-# Poké Arena
+### Poké Arena
 <img class="gradient" src="/assets/images/gradients/poke-arena.png" alt="">
 {% include canvas-playground.html %}
 

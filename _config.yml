@@ -39,6 +39,7 @@ plugins:
 # Plugin settings
 kramdown:
   auto_ids: true
+  header_links: true
   footnote_backlink: '&#8617;&#65038;'
 
 relative_links:
