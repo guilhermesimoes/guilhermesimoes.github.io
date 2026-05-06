@@ -73,6 +73,37 @@
     display: none;
   }
 
+  h3 {
+    position: relative;
+
+
+    @media (pointer: fine) {
+      &:hover a {
+        opacity: 1;
+      }
+    }
+
+    a {
+      position: absolute;
+      left: -1.2em;
+      top: -0.5em;
+      padding: 0.5em;
+      color: currentColor;
+      opacity: 0;
+      transition: opacity 0.2s;
+
+      &::after {
+        content: "#"; // ¶
+      }
+    }
+
+    @include media-query($lap) {
+      a {
+        left: -1.5em;
+      }
+    }
+  }
+
   .footnote {
     &::before {
       content: "["
@@ -89,8 +120,8 @@
     border-top: 1px solid light-dark($text-color, $dark-text-color);
   }
 
-  [role^="doc"] {
-    scroll-margin-top: $spacing-unit * 6;
+  [role^="doc"], h3 {
+    scroll-margin-top: 4rem;
 
     &:target {
       /* @keyframes duration | easing-function | iteration-count | direction | name */
