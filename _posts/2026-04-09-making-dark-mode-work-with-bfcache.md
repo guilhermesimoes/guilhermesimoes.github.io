@@ -12,7 +12,7 @@ tags:     [Web, JavaScript, CSS]
 
 I try to avoid making this blog be about adding features to the blog, but I recently implemented a [dark mode] and hit a few snags that I felt might be worth talking about.
 
-In addition to the dark mode, I added a toggle button to allow the reader to choose between dark, light and [system] themes. The button also [persists the user preference] so the reading experience is consistent between pages.
+In addition to the dark mode, I added a toggle button to allow the reader to choose between dark, light and [system] themes. The button also [persists the user preference] so the reading experience is consistent across pages.
 
 I thought everything was working great, until I noticed what happened when I navigated to a page, changed the theme and then pressed the browser's back button:
 
