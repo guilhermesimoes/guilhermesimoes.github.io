@@ -55,21 +55,29 @@
 
 .bundle-size-reduction {
   ul {
-    list-style: none;
+    list-style: none !important;
     margin-left: 0;
 
     ul {
-      margin-left: 4em;
+      margin-left: 1em;
     }
   }
 
   .list-item {
     display: flex;
-    align-items: center;
     gap: 0 1em;
+    margin-bottom: 1em;
 
     > div {
       overflow-x: auto;
+    }
+
+    p {
+      align-self: center;
+    }
+
+    :last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -78,7 +86,5 @@
     width: 4em;
     height: 4em;
     cursor: pointer;
-    color: rgba(237, 75, 26, 0.82);
-    -webkit-tap-highlight-color: transparent;
   }
 }
