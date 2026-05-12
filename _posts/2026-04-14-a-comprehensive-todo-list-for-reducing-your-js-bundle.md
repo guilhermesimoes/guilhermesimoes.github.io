@@ -39,12 +39,12 @@ This is a list of all the things I know, and all the things we've used to reduce
 
 - <div class="list-item" markdown="1">
     <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
-    Eliminate dependencies.
+    Rewrite dependencies.
   </div>
 
 - <div class="list-item" markdown="1">
     <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
-    Rewrite dependencies.
+    Eliminate dependencies.
   </div>
 
 - <div class="list-item" markdown="1">
@@ -81,22 +81,16 @@ This is a list of all the things I know, and all the things we've used to reduce
     Use [language features] that lead to smaller code. For example:
 
   ```ts
-  usersEvents.reduce(userEvent => {
-    if (!acc[userEvent.userId]) {
-      acc[userEvent.userId] = [];
-    }
-    acc[userEvent.userId].push(userEvent);
-    return acc;
-  }, {});
+  if (!eventListeners[eventName]) {
+    eventListeners[eventName] = [];
+  }
+  eventListeners[eventName].push(listener);
   ```
 
   can be rewritten using the [logical OR assignment operator]:
 
   ```ts
-  usersEvents.reduce(userEvent => {
-    (acc[userEvent.userId] ||= []).push(userEvent);
-    return acc;
-  }, {});
+  (eventListeners[eventName] ||= []).push(listener);
   ```
     </div>
   </div>
@@ -347,7 +341,7 @@ template.innerHTML = `
     }
 
     :host .border {
-      stroke: black;
+      stroke: currentColor;
     }
 
     :host .line {
