@@ -37,6 +37,10 @@
         transform: scale(1.2);
       }
     }
+
+    &:focus img {
+      transform: scale(1.2);
+    }
   }
 
   figure {

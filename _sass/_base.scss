@@ -106,7 +106,7 @@ a {
     color: light-dark(color.adjust($brand-color, $lightness: -8%), color.adjust($dark-brand-color, $lightness: 10%));
   }
 
-  &:hover {
+  &:hover, &:focus {
     color: light-dark($text-color, $dark-text-color);
     text-decoration: dotted underline;
     text-decoration-skip-ink: auto;
