@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="hidden.css">
+<style>
+.chart {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.chart .link {
+  fill: none;
+  stroke: gray;
+  stroke-width: 2;
+  opacity: 0.5;
+}
+
+.chart .parent, .chart .leaf {
+  fill: currentColor;
+}
+
+.chart a {
+  color: inherit;
+}
+
+.chart text {
+  font-size: 12px;
+  fill: currentColor;
+}
+
+.chart .title {
+  font-size: 18px;
+  font-weight: bold;
+  text-anchor: middle;
+}
+</style>
+<body>
+
+<svg class="chart js-chart"></svg>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script>
+"use strict";
+
+var data = {
+  name: "using ES2020 or above", children: [
+    { name: "script-src", children: [
+      { name: "child-src", children: [
+        { name: "<script>" },
+        { name: "onclick attr" },
+        { name: "worker-src", children: [
+          { name: "ServiceWorker" },
+          { name: "SharedWorker" },
+          { name: "Worker" },
+        ]},
+      ]}
+    ]},
+  ]
+};
+
+var width = 900;
+var height = 500;
+var margin = { top: 60, right: 20, bottom: 120, left: 0 };
+
+var svg = d3.select(".js-chart")
+  .attr("viewBox", "0 0 " + width + " " + height);
+
+svg.append("text")
+  .attr("x", width / 2)
+  .attr("y", 24)
+  .attr("class", "title")
+  .text("When should you use ?? (if you care about bundle-size)");
+
+svg.append("defs").append("marker")
+  .attr("id", "arrow")
+  .attr("viewBox", "0 0 10 10")
+  .attr("refX", 10)
+  .attr("refY", 5)
+  .attr("markerWidth", 6)
+  .attr("markerHeight", 6)
+  .attr("orient", "auto")
+  .append("path")
+    .attr("d", "M0,0 L10,5 L0,10 Z")
+    .attr("fill", "#999");
+
+var g = svg.append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var treeWidth = width - margin.left - margin.right;
+var treeHeight = height - margin.top - margin.bottom;
+
+var treeLayout = d3.cluster()
+  .size([treeWidth, treeHeight]);
+
+var root = d3.hierarchy(data);
+treeLayout(root);
+
+g.selectAll(".link")
+  .data(root.links())
+  .enter().append("path")
+    .attr("class", "link")
+    .attr("marker-start", "url(#arrow)")
+    .attr("d", d3.linkVertical()
+      .source(function (d) { return d.target; })
+      .target(function (d) { return d.source; })
+      .x(function (d) { return d.x; })
+      .y(function (d) { return d.y; }));
+
+var node = g.selectAll(".node")
+  .data(root.descendants())
+  .enter().append("g")
+    .attr("class", "node")
+    .attr("transform", function (d) {
+      return "translate(" + d.x + "," + d.y + ")";
+    });
+
+node.append("circle")
+  .attr("r", 4)
+  .attr("class", function (d) { return d.children ? "parent" : "leaf"; });
+
+var baseHref = "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/";
+
+node.append("a")
+  .attr("href", function (d) { return d.data.href || (baseHref + d.data.name); })
+  .append("text")
+  .attr("dy", function (d) { return d.children ? "-1em" : "-0.6em"; })
+  .attr("dx", function (d) { return d.children ? 0 : "2px"; })
+  .attr("text-anchor", function (d) { return d.children ? "middle" : "start"; })
+  .attr("transform", function (d) { return d.children ? null : "rotate(-40)"; })
+  .text(function (d) { return d.data.name; });
+</script>
+</body>
