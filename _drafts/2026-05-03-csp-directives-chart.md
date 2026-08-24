@@ -10,5 +10,8 @@ block:
 tags: [D3, Web]
 ---
 
-https://content-security-policy.com/
-https://frontendian.co/csp
+- https://content-security-policy.com/
+
+- https://frontendian.co/csp
+
+- https://w3c.github.io/webappsec-csp/#directive-fallback-list
