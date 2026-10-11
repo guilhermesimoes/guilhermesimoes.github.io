@@ -111,9 +111,9 @@ themeToggle.addEventListener('click', () => {
 });
 ```
 
-This seemed ok, but it would swap to the wrong theme after a page was restored from the bfcache with a stale theme. On `pageshow`, the theme was updated, but the in-memory `themeIndex` was not! So the `themeIndex` would stop matching the currently chosen theme.
+This seemed ok, but it would swap to the wrong theme after a page was restored from the bfcache with a stale theme. On `pageshow`, the theme was updated, but the in-memory `themeIndex` was not![^3] So the `themeIndex` would stop matching the currently chosen theme.
 
-Rather than syncing the index variable on `pageshow`, I opted for deriving the current theme index from the DOM on each button click:
+Rather than syncing the index variable on `pageshow`, I opted for forgoing the `themeIndex` variable and deriving the current theme index from the DOM on each button click:
 
 ```js
 themeToggle.addEventListener('click', () => {
@@ -140,7 +140,7 @@ Making the look of this blog configurable by the reader ended up being more comp
 
 Still, the issues I found were not really related to dark mode. They were just the sum of the bfcache plus a user choice that persisted across page navigations. Issues like these can surface on any multi-page site that keeps user state. An e-commerce site may show a stale shopping cart or wishlist when a user navigates back. Or a news site may display articles in a grid layout even after a user changes it to a list layout if he then navigates back.
 
-The point is that while the [bfcache] makes it really fast to access previous pages, it does introduce its own set of challenges. Making dark mode work seamlessly is just one of those challenges.[^3]
+The point is that while the [bfcache] makes it really fast to access previous pages, it does introduce its own set of challenges. Making dark mode work seamlessly is just one of those challenges.[^4]
 
 Incidentally, I tested my favourite tech news site, [Ars Technica], and it has the same stale theme issue! It's a minor quibble, but this sort of stuff might be more common than I thought. And it's not that hard to fix!
 
@@ -149,7 +149,9 @@ Incidentally, I tested my favourite tech news site, [Ars Technica], and it has t
 
 [^2]: Another option is to initially omit the `animatable` class from the `<html>` element, and only add it when the theme toggle button is clicked. Then remove the class after the animations end.
 
-[^3]: Another challenge is analytics. Pages restored from the bfcache don't count as new pageviews. If we want to count those we also need to use the `pageshow` event.
+[^3]: Remember that the bfcache stores the _entire_ page and its current state, including the JavaScript stack which contains all the local variables like `themeIndex`.
+
+[^4]: Another challenge is analytics. Pages restored from the bfcache don't count as new pageviews. If we want to count those we also need to use the `pageshow` event.
 
 
 [dark mode]: https://bnijenhuis.nl/notes/user-friendly-dark-mode/
