@@ -70,31 +70,35 @@ template.innerHTML = `
 `;
 
 class HandDrawnCheckbox extends HTMLElement {
-  constructor() {
-    super();
-    var checkbox = this.querySelector('input[type="checkbox"]');
-    if (!checkbox) {
-      var defaultCheckbox = document.createElement('input');
-      defaultCheckbox.setAttribute('type', 'checkbox');
-      defaultCheckbox.setAttribute('name', this.getAttribute('name'));
-      this.appendChild(defaultCheckbox);
+  connectedCallback() {
+    this.checkbox = this.querySelector('input[type="checkbox"]');
+    if (!this.checkbox) {
+      this.checkbox = document.createElement('input');
+      this.checkbox.setAttribute('type', 'checkbox');
+      this.checkbox.setAttribute('name', this.getAttribute('name'));
+      this.appendChild(this.checkbox);
     }
+    this.checkbox.addEventListener('change', this._onChange);
+
+    if (!this.shadowRoot) {
+      var templateClone = template.content.cloneNode(true);
+      var borderEl = templateClone.querySelector('.border');
+      borderEl.setAttribute('d', getBorderPath());
+      this.checkLines = templateClone.querySelectorAll('.line');
+
+      var shadowRoot = this.attachShadow({ mode: 'open' });
+      shadowRoot.appendChild(templateClone);
+    }
+
+    this._onChange(); // Sync checkbox with current input state.
   }
 
-  connectedCallback() {
-    var checkbox = this.querySelector('input[type="checkbox"]');
-    var templateClone = template.content.cloneNode(true);
-    var pathEls = templateClone.querySelectorAll('.line');
-    var borderEl = templateClone.querySelector('.border');
-    borderEl.setAttribute('d', getBorderPath());
-    toggleVisibility(pathEls, checkbox);
+  disconnectedCallback() {
+    this.checkbox.removeEventListener('change', this._onChange);
+  }
 
-    var shadowRoot = this.attachShadow({ mode: 'open' });
-    shadowRoot.appendChild(templateClone);
-
-    checkbox.addEventListener('change', function() {
-      toggleVisibility(pathEls, this)
-    });
+  _onChange = () => {
+    toggleVisibility(this.checkLines, this.checkbox);
   }
 }
 
@@ -104,15 +108,20 @@ function toggleVisibility(lines, checkbox) {
   if (checkbox.checked) {
     line1.setAttribute('d', getLine1Path());
     line2.setAttribute('d', getLine2Path());
+
+    line1.style.transition = line2.style.transition = 'none';
     line1.style.strokeDasharray = line1.style.strokeDashoffset = getPathLength(line1);
     line2.style.strokeDasharray = line2.style.strokeDashoffset = getPathLength(line2);
 
-    setTimeout(() => {
+    requestAnimationFrame(() => {
+      if (!checkbox.checked) { return; }
       line1.style.transition = line2.style.transition = 'stroke-dashoffset 200ms ease';
-      line2.style['transition-delay'] = '200ms';
+      line2.style.transitionDelay = '200ms';
       line1.style.strokeDashoffset = line2.style.strokeDashoffset = 0;
-    }, 10);
+    });
   } else {
+    line1.style.transitionDelay = '200ms';
+    line2.style.transitionDelay = '0ms';
     line1.style.strokeDashoffset = getPathLength(line1);
     line2.style.strokeDashoffset = getPathLength(line2);
   }
