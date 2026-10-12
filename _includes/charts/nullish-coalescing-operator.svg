@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" class="mermaid-flowchart" viewBox="0 0 972 1590">
+  <marker id="a" class="marker flowchart-v2" markerHeight="8" markerUnits="userSpaceOnUse" markerWidth="8" orient="auto" refX="5" refY="5" viewBox="0 0 10 10">
+    <path d="m0 0 10 5-10 5z" class="arrow"/>
+  </marker>
+  <g class="root">
+    		<g marker-end="url(#a)" class="edgePaths">
+			<path d="M311.4 110v46" class="flowchart-link"/>
+			<path d="M272.73 318.43c-11.65 24.96-23.29 49.91-29.11 67.82s-5.82 28.77-5.82 34.2v5.43" class="flowchart-link"/>
+			<path d="M284 294l315 124c268 105 254 79 256 266v666.29c.42 43.7.42 87.41-1.04 114.72-1.45 27.3-4.36 38.2-5.81 43.66l-1.45 5.45" class="flowchart-link"/>
+			<path d="M190.79 578.15c-25.88 27.87-51.76 55.74-64.69 86.28-12.94 30.56-12.94 63.8-12.94 79v16.62" class="flowchart-link"/>
+			<path d="M284.81 578.15c25.88 27.87 51.76 55.74 64.69 75.1s12.94 30.22 13.5 34.5v5.43" class="flowchart-link"/>
+			<path d="M315.23 839.37c-28.11 27.93-56.21 55.87-70.27 89.33-14.05 33.47-14.05 72.47-14.05 91v19.5" class="flowchart-link"/>
+			<path d="M409.65 839.37c28.11 27.93 56.22 55.87 70.27 75.27s14.06 30.25 14.5 52v5.43" class="flowchart-link"/>
+			<path d="M454.5 1115.5c-39.31 43.34-65.73 73.03-78.94 104.56s-13.21 64.9-13.21 81.58v16.68" class="flowchart-link"/>
+			<path d="M539.5 1120c33.98 38.2 60.4 67.89 73.61 88.16s13.21 31.14 13.21 36.57v5.43" class="flowchart-link"/>
+			<path d="M594 1413.23c-11.4 22.73-22.82 45.46-31 66.77-5.71 16.8-5.71 27.66-5.71 33.09v5.43" class="flowchart-link"/>
+			<path d="M674.37 1396.18a8989 8989 0 0081.84 76.7 1766 1766 0 0041.13 36.84l6.52 5.66" class="flowchart-link"/>
+		</g>
+    <g class="edgeLabels">
+      <g class="edgeLabel">
+        <g class="label">
+          <path d="M223.91 381.72h27.78v23.17h-27.78z" class="background"/>
+          <text y="-10.1" text-anchor="middle" transform="translate(237.8 382.72)"><tspan x="0" y="-.1em" class="text-outer-tspan row" dy="1.1em"><tspan class="text-inner-tspan">No</tspan></tspan></text>
+        </g>
+      </g>
+      <g class="edgeLabel">
+        <g class="label">
+          <path d="M838.2 911.58h33.43v23.17H838.2Z" class="background"/>
+          <text y="-10.1" text-anchor="middle" transform="translate(854.92 912.58)"><tspan x="0" y="-.1em" class="text-outer-tspan row" dy="1.1em"><tspan class="text-inner-tspan">Yes</tspan></tspan></text>
+        </g>
+      </g>
+      <g class="edgeLabel">
+        <g class="label">
+          <path d="M108 654h33.43v23.17H108Z" class="background"/>
+          <text y="-10.1" text-anchor="middle" transform="translate(124 654)"><tspan x="0" y="-.1em" class="text-outer-tspan row" dy="1.1em"><tspan class="text-inner-tspan">Yes</tspan></tspan></text>
+        </g>
+      </g>
+      <g class="edgeLabel">
+        <g class="label">
+          <path d="M343 650.17h27.78v23.17H343Z" class="background"/>
+          <text y="-10.1" text-anchor="middle" transform="translate(357 651)"><tspan x="0" y="-.1em" class="text-outer-tspan row" dy="1.1em"><tspan class="text-inner-tspan">No</tspan></tspan></text>
+        </g>
+      </g>
+      <g class="edgeLabel">
+        <g class="label">
+          <path d="M230 911h33.43v23.17H230Z" class="background"/>
+          <text y="-10.1" text-anchor="middle" transform="translate(246 912)"><tspan x="0" y="-.1em" class="text-outer-tspan row" dy="1.1em"><tspan class="text-inner-tspan">Yes</tspan></tspan></text>
+        </g>
+      </g>
+      <g class="edgeLabel">
+        <g class="label">
+          <path d="M474 911.58h27.78v23.17H474Z" class="background"/>
+          <text y="-10.1" text-anchor="middle" transform="translate(488 913)"><tspan x="0" y="-.1em" class="text-outer-tspan row" dy="1.1em"><tspan class="text-inner-tspan">No</tspan></tspan></text>
+        </g>
+      </g>
+      <g class="edgeLabel">
+        <g class="label">
+          <path d="M360 1207.6h33.43v23.17H360Z" class="background"/>
+          <text y="-10.1" text-anchor="middle" transform="translate(377 1209)"><tspan x="0" y="-.1em" class="text-outer-tspan row" dy="1.1em"><tspan class="text-inner-tspan">Yes</tspan></tspan></text>
+        </g>
+      </g>
+      <g class="edgeLabel">
+        <g class="label">
+          <path d="M607 1207.6h27.78v23.17H607Z" class="background"/>
+          <text y="-10.1" text-anchor="middle" transform="translate(621 1208.6)"><tspan x="0" y="-.1em" class="text-outer-tspan row" dy="1.1em"><tspan class="text-inner-tspan">No</tspan></tspan></text>
+        </g>
+      </g>
+      <g class="edgeLabel">
+        <g class="label">
+          <path d="M546 1469.83h33.43V1493H546Z" class="background"/>
+          <text y="-10.1" text-anchor="middle" transform="translate(562 1471)"><tspan x="0" y="-.1em" class="text-outer-tspan row" dy="1.1em"><tspan class="text-inner-tspan">Yes</tspan></tspan></text>
+        </g>
+      </g>
+      <g class="edgeLabel">
+        <g class="label">
+          <path d="M725.97 1446.35h27.78v23.17h-27.78z" class="background"/>
+          <text y="-10.1" text-anchor="middle" transform="translate(740 1447.35)"><tspan x="0" y="-.1em" class="text-outer-tspan row" dy="1.1em"><tspan class="text-inner-tspan">No</tspan></tspan></text>
+        </g>
+      </g>
+    </g>
+    <g class="nodes">
+      <g class="node">
+        <path d="M181 6h260v102h-260Z" class="label-container"/>
+        <g class="label" transform="translate(200 30)">
+          <foreignObject width="220" height="48">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table;max-width:220px;text-align:center;">
+              <span class="nodeLabel">
+                <p>
+                  When can you use ?? if you care about bundle-size
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+      <g class="node">
+        <path d="m311.51 356.72 97.64-97.64-97.64-97.64-97.64 97.64z" class="label-container"/>
+        <g class="label" transform="translate(252 236)">
+          <foreignObject width="120" height="48">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;max-width:120px;text-align:center">
+              <span class="nodeLabel">
+                <p>
+                  Using ES2020 or above?
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+      <g class="node">
+        <path d="m238.3 625.17 97.64-97.64-97.64-97.64-97.64 97.64z" class="label-container"/>
+        <g class="label" transform="translate(174 515.5)">
+          <foreignObject width="142" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:142px;text-align:center">
+              <span class="nodeLabel">
+                <p>
+                  Doing <code class="highlighter-rouge">num ?? 0</code>
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+      <g class="node">
+        <path d="M712 1518h252v64H712Z" class="label-container"/>
+        <g class="label" transform="translate(742 1526)">
+          <foreignObject width="192" height="48">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;max-width:192px;text-align:center">
+              <span class="nodeLabel">
+                <p>
+                  Sure, use <code class="highlighter-rouge">??</code> to your heart's content
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+      <g class="node">
+        <path d="M8 765h210v54H8Z" class="label-container"/>
+        <g class="label" transform="translate(37 780.5)">
+          <foreignObject width="154" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:154px;text-align:center">
+              <span class="nodeLabel">
+                <p>
+                  Stop! Use <code class="highlighter-rouge">num || 0</code>
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+      <g class="node">
+        <path d="m362.95 886.58 94.12-94.12-94.12-94.13-94.13 94.13z" class="label-container"/>
+        <g class="label" transform="translate(300 781)">
+          <foreignObject width="134" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:134px;text-align:center">
+              <span class="nodeLabel">
+                <p>
+                  Doing <code class="highlighter-rouge">str ?? ""</code>
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+      <g class="node">
+        <path d="M132 1044h200v54h-200Z" class="label-container"/>
+        <g class="label" transform="translate(151 1059)">
+          <foreignObject width="160" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:160px;text-align:center">
+              <span class="nodeLabel">
+                <p>
+                  Stop! Use <code class="highlighter-rouge">str || ""</code>
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+      <g class="node">
+        <path d="m494.48 1165 94.12-94.12-94.12-94.13-94.13 94.13z" class="label-container"/>
+        <g class="label" transform="translate(413 1059)">
+          <foreignObject width="164" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:164px;text-align:center">
+              <span class="nodeLabel">
+                <p>
+                  Doing <code class="highlighter-rouge">bool ?? false</code>
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+      <g class="node">
+        <path d="M242 1323h238v54H242Z" class="label-container"/>
+        <g class="label" transform="translate(265 1338)">
+          <foreignObject width="194" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:194px;text-align:center">
+              <span class="nodeLabel">
+                <p>
+                  Stop! Use <code class="highlighter-rouge">bool || false</code>
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+      <g class="node">
+        <path d="m626.2 1444.83 94.55-94.53-94.54-94.54-94.53 94.54z" class="label-container"/>
+        <g class="label" transform="translate(560 1338)">
+          <foreignObject width="140" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:140px;text-align:center">
+              <span class="nodeLabel">
+                <p>
+                  Doing <code class="highlighter-rouge">obj ?? {}</code>?
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+      <g class="node">
+        <path d="M458 1524h204.1v54h-204.1z" class="label-container"/>
+        <g class="label" transform="translate(479 1539)">
+          <foreignObject width="162" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:162px;text-align:center">
+              <span class="nodeLabel">
+                <p>
+                  Stop! Use <code class="highlighter-rouge">obj || {}</code>
+                </p>
+              </span>
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
