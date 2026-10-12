@@ -1,35 +1,34 @@
 .mermaid-flowchart {
   font-size: 16px;
 
-  .marker {
+  .marker, .arrow {
     fill: currentColor;
     stroke: currentColor;
   }
-  p {
-    margin: 0;
-  }
-  .label {
-    color: $text-color;
-  }
-  .nodeLabel {
-    font-weight: 600;
-  }
   .node path {
-    fill: #ffffff;
+    fill: light-dark(color.adjust($foreground-color, $lightness: -2%), color.adjust($dark-background-color, $lightness: 10%));
     stroke: #0ea5e9;
     stroke-width: 2px;
+  }
+  .background {
+    fill: light-dark(color.adjust($foreground-color, $lightness: -2%), color.adjust($dark-background-color, $lightness: 10%));
+    stroke: none;
   }
   .flowchart-link {
     stroke: currentColor;
     fill: none;
     stroke-width: 2px;
   }
-  .arrow {
-    fill: currentColor;
-    stroke: currentColor;
+  .label {
+    color: currentColor;
   }
-  .background {
-    fill: rgb(255, 255, 255);
-    stroke: none;
+  .edgeLabel {
+    fill: currentColor;
+  }
+  .nodeLabel {
+    font-weight: 600;
+  }
+  p {
+    margin: 0;
   }
 }
