@@ -9,9 +9,9 @@ tags: [D3, Web]
 ---
 
 <div class="bleed">
-<svg xmlns="http://www.w3.org/2000/svg" width="972" height="1624" class="mermaid-flowchart" viewBox="0 0 972 1624">
+<svg xmlns="http://www.w3.org/2000/svg" width="972" height="1628" class="mermaid-flowchart" viewBox="0 0 972 1628">
   <marker id="a" class="marker flowchart-v2" markerHeight="8" markerUnits="userSpaceOnUse" markerWidth="8" orient="auto" refX="5" refY="5" viewBox="0 0 10 10">
-    <path d="m0 0 10 5-10 5z" class="arrowMarkerPath" style="stroke-width:1px;stroke-dasharray:1px,0"/>
+    <path d="m0 0 10 5-10 5z" class="arrow"/>
   </marker>
   <g class="root">
     <g marker-end="url(#a)" class="edgePaths">
@@ -28,7 +28,6 @@ tags: [D3, Web]
       <path d="m674.37 1440.18 15.06 14.2a8989 8989 0 0 0 66.78 62.5 1766 1766 0 0 0 41.13 36.84l6.52 5.66" class="flowchart-link"/>
     </g>
     <g class="edgeLabels">
-      <rect class="background" style="stroke:none"/>
       <g class="edgeLabel">
         <g class="label">
           <path d="M223.91 425.72h27.78v23.17h-27.78z" class="background"/>
@@ -92,11 +91,10 @@ tags: [D3, Web]
     </g>
     <g class="nodes">
       <g class="node">
-        <path d="M181.01 8h260v102h-260z" class="basic label-container"/>
+        <path d="M181.01 8h260v102h-260z" class="label-container"/>
         <g class="label" transform="translate(200 34)">
-          <rect/>
           <foreignObject width="220" height="48">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table;line-height:1.5;max-width:220px;text-align:center;">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table;max-width:220px;text-align:center;">
               <span class="nodeLabel">
                 <p>
                   When can you use ?? if you care about bundle-size
@@ -109,9 +107,8 @@ tags: [D3, Web]
       <g class="node">
         <path d="m311.51 400.72 97.64-97.64-97.64-97.64-97.64 97.64z" class="label-container"/>
         <g class="label" transform="translate(248 259)">
-          <rect/>
           <foreignObject width="120" height="48">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;line-height:1.5;max-width:120px;text-align:center">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;max-width:120px;text-align:center">
               <span class="nodeLabel">
                 <p>
                   Using ES2020 or above?
@@ -123,13 +120,12 @@ tags: [D3, Web]
       </g>
       <g class="node">
         <path d="m238.3 669.17 97.64-97.64-97.64-97.64-97.64 97.64z" class="label-container"/>
-        <g class="label" transform="translate(167.16 559.52)">
-          <rect/>
-          <foreignObject width="141" height="24">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;line-height:1.5;max-width:200px;text-align:center">
+        <g class="label" transform="translate(174 559.5)">
+          <foreignObject width="142" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:142px;text-align:center">
               <span class="nodeLabel">
                 <p>
-                  Doing `num ?? 0`?
+                  Doing <code class="highlighter-rouge">num ?? 0</code>
                 </p>
               </span>
             </div>
@@ -137,14 +133,13 @@ tags: [D3, Web]
         </g>
       </g>
       <g class="node">
-        <path d="M711.93 1562h252.08v54H711.93z" class="basic label-container"/>
-        <g class="label" transform="translate(741.93 1577)">
-          <rect/>
-          <foreignObject width="192" height="24">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;line-height:1.5;max-width:200px;text-align:center">
+        <path d="M712 1562h252v64H712z" class="label-container"/>
+        <g class="label" transform="translate(742 1570)">
+          <foreignObject width="192" height="48">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;max-width:192px;text-align:center">
               <span class="nodeLabel">
                 <p>
-                  Sure, feel free to use `??`
+                  Sure, use <code class="highlighter-rouge">??</code> to your heart's content
                 </p>
               </span>
             </div>
@@ -152,14 +147,13 @@ tags: [D3, Web]
         </g>
       </g>
       <g class="node">
-        <path d="M8 809.46h210.32v54H8z" class="basic label-container"/>
-        <g class="label" transform="translate(38 824.46)">
-          <rect/>
-          <foreignObject width="150" height="24">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;line-height:1.5;max-width:200px;text-align:center">
+        <path d="M8 809.46h210.32v54H8z" class="label-container"/>
+        <g class="label" transform="translate(37 824.5)">
+          <foreignObject width="154" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:154px;text-align:center">
               <span class="nodeLabel">
                 <p>
-                  Stop! Use `num || 0`
+                  Stop! Use <code class="highlighter-rouge">num || 0</code>
                 </p>
               </span>
             </div>
@@ -169,12 +163,11 @@ tags: [D3, Web]
       <g class="node">
         <path d="m362.95 930.58 94.12-94.12-94.12-94.13-94.13 94.13z" class="label-container"/>
         <g class="label" transform="translate(295.32 824.46)">
-          <rect/>
           <foreignObject width="134" height="24">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;line-height:1.5;max-width:200px;text-align:center">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:134px;text-align:center">
               <span class="nodeLabel">
                 <p>
-                  Doing `str ?? &quot;&quot;`?
+                  Doing <code class="highlighter-rouge">str ?? ""</code>
                 </p>
               </span>
             </div>
@@ -182,14 +175,13 @@ tags: [D3, Web]
         </g>
       </g>
       <g class="node">
-        <path d="M129.27 1088.18h203.28v54H129.27z" class="basic label-container"/>
-        <g class="label" transform="translate(159.27 1103.18)">
-          <rect/>
-          <foreignObject width="143" height="24">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;line-height:1.5;max-width:200px;text-align:center">
+        <path d="M129.27 1088.18h203.28v54H129.27z" class="label-container"/>
+        <g class="label" transform="translate(151 1103)">
+          <foreignObject width="160" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:160px;text-align:center">
               <span class="nodeLabel">
                 <p>
-                  Stop! Use `str || &quot;&quot;`
+                  Stop! Use <code class="highlighter-rouge">str || ""</code>
                 </p>
               </span>
             </div>
@@ -199,12 +191,11 @@ tags: [D3, Web]
       <g class="node">
         <path d="M494.48 1209l94.12-94.12-94.12-94.13-94.13 94.13z" class="label-container"/>
         <g class="label" transform="translate(409.55 1103.18)">
-          <rect/>
-          <foreignObject width="169" height="24">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;line-height:1.5;max-width:200px;text-align:center">
+          <foreignObject width="165" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:165px;text-align:center">
               <span class="nodeLabel">
                 <p>
-                  Doing `bool ?? false`?
+                  Doing <code class="highlighter-rouge">bool ?? false</code>
                 </p>
               </span>
             </div>
@@ -212,14 +203,13 @@ tags: [D3, Web]
         </g>
       </g>
       <g class="node">
-        <path d="M243.3 1367.3h237.88v54H243.3z" class="basic label-container"/>
-        <g class="label" transform="translate(273.3 1382.3)">
-          <rect/>
-          <foreignObject width="178" height="24">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;line-height:1.5;max-width:200px;text-align:center">
+        <path d="M243.3 1367.3h237.88v54H243.3z" class="label-container"/>
+        <g class="label" transform="translate(265 1382)">
+          <foreignObject width="194" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:194px;text-align:center">
               <span class="nodeLabel">
                 <p>
-                  Stop! Use `bool || false`
+                  Stop! Use <code class="highlighter-rouge">bool || false</code>
                 </p>
               </span>
             </div>
@@ -228,13 +218,12 @@ tags: [D3, Web]
       </g>
       <g class="node">
         <path d="m626.2 1488.83 94.55-94.53-94.54-94.54-94.53 94.54z" class="label-container"/>
-        <g class="label" transform="translate(558.18 1382.3)">
-          <rect/>
-          <foreignObject width="135" height="24">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;line-height:1.5;max-width:200px;text-align:center">
+        <g class="label" transform="translate(556 1382.3)">
+          <foreignObject width="140" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:140px;text-align:center">
               <span class="nodeLabel">
                 <p>
-                  Doing `obj ?? {}`?
+                  Doing <code class="highlighter-rouge">obj ?? {}</code>?
                 </p>
               </span>
             </div>
@@ -242,14 +231,13 @@ tags: [D3, Web]
         </g>
       </g>
       <g class="node">
-        <path d="M457.83 1562h204.1v54h-204.1z" class="basic label-container"/>
-        <g class="label" transform="translate(488 1577)">
-          <rect/>
-          <foreignObject width="144" height="24">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;line-height:1.5;max-width:200px;text-align:center">
+        <path d="M457.83 1562h204.1v54h-204.1z" class="label-container"/>
+        <g class="label" transform="translate(479 1577)">
+          <foreignObject width="162" height="24">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:table-cell;white-space:nowrap;max-width:162px;text-align:center">
               <span class="nodeLabel">
                 <p>
-                  Stop! Use `obj || {}`
+                  Stop! Use <code class="highlighter-rouge">obj || {}</code>
                 </p>
               </span>
             </div>
@@ -265,7 +253,7 @@ tags: [D3, Web]
 graph TB
     A["When can you use ?? if you care about bundle-size"] --> B{"Using ES2020 or above?"};
     B -->|No| C{"Doing `num ?? 0`?"};
-    B -->|Yes| K["Sure, feel free to use `??`"];
+    B -->|Yes| K["Sure, use `??` to your heart's content"];
     C -->|Yes| D["Stop! Use `num || 0`"];
     C -->|No| E{"Doing `str ?? ''`?"};
     E -->|Yes| F["Stop! Use `str || ''`"];
@@ -273,7 +261,7 @@ graph TB
     G -->|Yes| H["Stop! Use `bool || false`"];
     G -->|No| I{"Doing `obj ?? {}`?"};
     I -->|Yes| J["Stop! Use `obj || {}`"];
-    I -->|No| K["Sure, feel free to use `??`"];
+    I -->|No| K["Sure, use `??` to your heart's content"];
 ```
 
 [Proof][Playground]

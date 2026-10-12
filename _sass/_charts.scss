@@ -11,66 +11,25 @@
   .label {
     color: $text-color;
   }
-  .node rect,
-  .node circle,
-  .node ellipse,
-  .node polygon,
+  .nodeLabel {
+    font-weight: 600;
+  }
   .node path {
     fill: #ffffff;
     stroke: #0ea5e9;
-    stroke-width: 1px;
-  }
-  .node .label text {
-    text-anchor: middle;
-  }
-  .node .label {
-    text-align: center;
-  }
-  .edgePath .path {
-    stroke: currentColor;
-    stroke-width: 1px;
-  }
-  .edgeLabel {
-    background-color: #f4f7fb;
-    text-align: center;
-  }
-  .edgeLabel rect {
-    opacity: 0.5;
-    fill: #f4f7fb;
-  }
-  rect.text {
-    fill: none;
-    stroke-width: 0;
-  }
-  .node rect,
-  .node circle,
-  .node ellipse,
-  .node polygon,
-  .node path {
     stroke-width: 2px;
   }
-  .edgePath path,
   .flowchart-link {
     stroke: currentColor;
     fill: none;
     stroke-width: 2px;
   }
-  marker path {
+  .arrow {
     fill: currentColor;
     stroke: currentColor;
   }
-  .nodeLabel {
-    font-weight: 600;
-  }
-  .edgeLabel {
-    background: rgb(255, 255, 255);
-    color: rgb(17, 24, 39);
-  }
-  .edgeLabel rect,
-  .edgeLabels rect,
   .background {
-    fill: rgb(255, 255, 255) !important;
-    opacity: 1 !important;
-    stroke: none !important;
+    fill: rgb(255, 255, 255);
+    stroke: none;
   }
 }
