@@ -1,0 +1,30 @@
+.mermaid-flowchart {
+  font-size: 16px;
+
+  .marker, .arrow {
+    fill: currentColor;
+    stroke: currentColor;
+  }
+  .background {
+    fill: light-dark(color.adjust($foreground-color, $lightness: -2%), color.adjust($dark-background-color, $lightness: 10%));
+  }
+  .node .background {
+    stroke: steelblue;
+    stroke-width: 2px;
+  }
+  .flowchart-link {
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2px;
+  }
+  .edgeLabel text {
+    fill: currentColor;
+  }
+  .nodeLabel {
+    color: currentColor;
+    font-weight: 600;
+  }
+  p {
+    margin: 0;
+  }
+}
