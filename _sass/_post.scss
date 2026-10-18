@@ -151,3 +151,7 @@
     background-color: light-dark($footnotes-highlight-background-color, $dark-footnotes-highlight-background-color);
   }
 }
+
+.post.bleed .post-title {
+  text-align: center;
+}
