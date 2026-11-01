@@ -301,7 +301,21 @@ This is a list of all the things I know, and all the things we've used to reduce
 
 - <div class="list-item" markdown="1">
   <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
-  Finally, keep monitoring the size of your JavaScript bundle!
+  <div markdown="1">
+  Finally, keep monitoring the size of your JavaScript bundle! Something as simple as:
+
+  ```ts
+  export const UNUSED_EXPORT = 'THIS_SHOULD_NOT_BE_BUNDLED';
+  ```
+
+  plus a CI test like:
+
+  ```sh
+  grep -rq "THIS_SHOULD_NOT_BE_BUNDLED" dist
+  ```
+
+  Could go a long way in catching certain regressions.
+  </div>
   </div>
 
 
@@ -402,40 +416,50 @@ template.innerHTML = `
   <svg viewbox='0 0 10 10'>
     <path class='border'></path>
     <path class='line'></path>
-    <path class='line'></path>
   </svg>
   <slot></slot>
 `;
 
 class HandDrawnCheckbox extends HTMLElement {
   connectedCallback() {
-    var checkbox = this.querySelector('input[type="checkbox"]');
-    var templateClone = template.content.cloneNode(true);
-    var pathEls = templateClone.querySelector('.line');
-    var borderEl = templateClone.querySelector('.border');
-    borderEl.setAttribute('d', getBorderPath());
-    toggleVisibility(pathEls, checkbox);
+    this.checkbox = this.querySelector('input[type="checkbox"]');
+    this.checkbox.addEventListener('change', this._onChange);
 
-    var shadowRoot = this.attachShadow({ mode: 'open' });
-    shadowRoot.appendChild(templateClone);
+    if (!this.shadowRoot) {
+      var templateClone = template.content.cloneNode(true);
+      var borderEl = templateClone.querySelector('.border');
+      borderEl.setAttribute('d', getBorderPath());
+      this.checkmarkEl = templateClone.querySelector('.line');
 
-    checkbox.addEventListener('change', function() {
-      toggleVisibility(pathEls, this)
-    });
+      var shadowRoot = this.attachShadow({ mode: 'open' });
+      shadowRoot.appendChild(templateClone);
+    }
+
+    this._onChange();
+  }
+
+  disconnectedCallback() {
+    this.checkbox.removeEventListener('change', this._onChange);
+  }
+
+  _onChange = () => {
+    toggleVisibility(this.checkmarkEl, this.checkbox);
   }
 }
 
-function toggleVisibility(line1, checkbox) {
+function toggleVisibility(checkmarkEl, checkbox) {
   if (checkbox.checked) {
-    line1.setAttribute('d', getLine1Path());
-    line1.style.strokeDasharray = line1.style.strokeDashoffset = getPathLength(line1);
+    checkmarkEl.setAttribute('d', getLine1Path());
+    checkmarkEl.style.transition = 'none';
+    checkmarkEl.style.strokeDasharray = checkmarkEl.style.strokeDashoffset = getPathLength(checkmarkEl);
 
     setTimeout(() => {
-      line1.style.transition = 'stroke-dashoffset 200ms ease';
-      line1.style.strokeDashoffset = 0;
+      if (!checkbox.checked) { return; }
+      checkmarkEl.style.transition = 'stroke-dashoffset 200ms ease';
+      checkmarkEl.style.strokeDashoffset = 0;
     }, 10);
   } else {
-    line1.style.strokeDashoffset = getPathLength(line1);
+    checkmarkEl.style.strokeDashoffset = getPathLength(checkmarkEl);
   }
 }
 
