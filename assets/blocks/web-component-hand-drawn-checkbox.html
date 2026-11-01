@@ -113,12 +113,12 @@ function toggleVisibility(lines, checkbox) {
     line1.style.strokeDasharray = line1.style.strokeDashoffset = getPathLength(line1);
     line2.style.strokeDasharray = line2.style.strokeDashoffset = getPathLength(line2);
 
-    requestAnimationFrame(() => {
+    setTimeout(() => {
       if (!checkbox.checked) { return; }
       line1.style.transition = line2.style.transition = 'stroke-dashoffset 200ms ease';
       line2.style.transitionDelay = '200ms';
       line1.style.strokeDashoffset = line2.style.strokeDashoffset = 0;
-    });
+    }, 10);
   } else {
     line1.style.transitionDelay = '200ms';
     line2.style.transitionDelay = '0ms';
