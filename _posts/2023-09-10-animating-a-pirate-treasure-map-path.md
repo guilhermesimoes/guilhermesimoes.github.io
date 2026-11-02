@@ -29,7 +29,7 @@ Finally, we can change the transition timing function to achieve different resul
 
 [many]: https://jakearchibald.com/2013/animated-line-drawing-svg/
 [multiple]: https://css-tricks.com/svg-line-animation-works/
-[different]: https://product.voxmedia.com/2013/11/25/5426880/polygon-feature-design-svg-animations-for-fun-and-profit
+[different]: https://web.archive.org/web/20140226020330/http://product.voxmedia.com/2013/11/25/5426880/polygon-feature-design-svg-animations-for-fun-and-profit
 [times]: https://tympanus.net/codrops/2013/12/30/svg-drawing-animation/
 [`use`]: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use
 [like in Photoshop]: https://lab.iamvdo.me/css-svg-masks/#masking
