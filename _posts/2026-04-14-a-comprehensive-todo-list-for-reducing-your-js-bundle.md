@@ -54,7 +54,7 @@ This is a list of all the things I know, and all the things we've used to reduce
 
   - <div class="list-item" markdown="1">
     <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
-    Go over _all_ the options of the minifier you're using. Go beyond the tool's defaults. Read its documentation. Example: Terser only does one pass. If you use `passes: 2` minification takes longer but results are better.
+    Go over _all_ the options of the minifier you're using. Go beyond the tool's defaults. Read its documentation. Example: Terser only does one pass by default. If you use `passes: 2` minification takes longer but results are better.
     </div>
 
   - <div class="list-item" markdown="1">
@@ -124,7 +124,7 @@ This is a list of all the things I know, and all the things we've used to reduce
 
 - <div class="list-item" markdown="1">
   <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
-  Eliminate dead-code.
+  Eliminate unnecessary code.
   </div>
 
   - <div class="list-item" markdown="1">
@@ -141,10 +141,12 @@ This is a list of all the things I know, and all the things we've used to reduce
     ```ts
     if (process.env.NODE_ENV !== 'production') {
       if (someAppStateThatShouldNeverOccur) {
-        console.error('Detected mistake during development. Fix it!');
+        console.error('Detected development issue. Fix it!');
       }
     }
     ```
+
+    Your bundler / minifier should omit entirely this code when creating the final bundle for production since these conditions evaluate to `false`.
     </div>
     </div>
 
@@ -211,6 +213,8 @@ This is a list of all the things I know, and all the things we've used to reduce
     - <div class="list-item" markdown="1">
       <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
       rename private properties https://github.com/timocov/ts-transformer-properties-rename
+
+      [minifying-private-properties-and-methods-with-terser](minifying-private-properties-and-methods-with-terser.md)
       </div>
 
     - <div class="list-item" markdown="1">
@@ -305,6 +309,7 @@ This is a list of all the things I know, and all the things we've used to reduce
   Finally, keep monitoring the size of your JavaScript bundle! Something as simple as:
 
   ```ts
+  // src/index.ts
   export const UNUSED_EXPORT = 'THIS_SHOULD_NOT_BE_BUNDLED';
   ```
 
