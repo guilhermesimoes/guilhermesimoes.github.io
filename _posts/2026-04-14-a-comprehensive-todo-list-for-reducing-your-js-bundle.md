@@ -21,12 +21,10 @@ This is a list of all the things I know, and all the things we've used to reduce
   <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
   Implement code-splitting (usually done through [dynamic import]s).
   </div>
-
   - <div class="list-item" markdown="1">
     <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
     Load page-specific code only when the user visits that page.
     </div>
-
   - <div class="list-item" markdown="1">
     <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
     Load feature-specific code only when the user uses that feature. Example: in a chat app with an emoji-picker, only load the emoji-picker when the user clicks a button.
@@ -126,65 +124,56 @@ This is a list of all the things I know, and all the things we've used to reduce
   <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
   Eliminate unnecessary code.
   </div>
-
   - <div class="list-item" markdown="1">
     <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
     <div markdown="1">
     Wrap optional code in [environment variables]. Examples:
 
-    ```ts
-    if (process.env.TEST_RUN) {
-      component.testId = 'testId';
-    }
-    ```
+  ```ts
+  if (process.env.TEST_RUN) {
+    component.testId = "testId";
+  }
+  ```
 
-    ```ts
-    if (process.env.NODE_ENV !== 'production') {
-      if (someAppStateThatShouldNeverOccur) {
-        console.error('Detected development issue. Fix it!');
-      }
+  ```ts
+  if (process.env.NODE_ENV !== "production") {
+    if (someAppStateThatShouldNeverOccur) {
+      console.error("Detected development issue. Fix it!");
     }
-    ```
+  }
+  ```
 
-    Your bundler / minifier should omit entirely this code when creating the final bundle for production since these conditions evaluate to `false`.
+  Your bundler / minifier should omit entirely this code when creating the final bundle for production since these conditions evaluate to `false`.
     </div>
     </div>
-
   - <div class="list-item" markdown="1">
     <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
     Search the documentation of all your dependencies for these special environment variables. Example: [if you're using Sentry you can set the env var `__SENTRY_DEBUG__`] to `false` in production builds so that optional code is removed during minification.
     </div>
-
   - <div class="list-item" markdown="1">
     <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
     Enable [tree-shaking].
     </div>
-
     - <div class="list-item" markdown="1">
       <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
       Ensure that your dependencies have `"sideEffects": false`. Bundlers like [Webpack][webpack side effects], [esbuild][esbuild side effects] and [bun][bun side effects] agree.
       </div>
-
       - <div class="list-item" markdown="1">
         <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
         Ensure that the dependencies of your dependencies have `"sideEffects": false`.
         </div>
-
     - <div class="list-item" markdown="1">
       <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
       Use ECMAScript Modules (ESM) and not CommonJS.
       </div>
-
       - <div class="list-item" markdown="1">
         <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
         Ensure that dependencies use ECMAScript Modules (ESM) and not CommonJS.
         </div>
-
       - <div class="list-item" markdown="1">
         <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
         Ensure that imports are consistent since [inconsistent imports can lead to duplicate code].
         </div>
-
     - <div class="list-item" markdown="1">
       <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
       Write services as plain ES modules that export functions since [services implemented as classes with public methods are not tree-shakable].
@@ -199,17 +188,14 @@ This is a list of all the things I know, and all the things we've used to reduce
     <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
     Enable name mangling (renaming variables, functions, methods, classes)
     </div>
-
     - <div class="list-item" markdown="1">
       <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
       https://lihautan.com/reduce-minified-code-size-by-property-mangling/
       </div>
-
     - <div class="list-item" markdown="1">
       <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
       rename private methods https://github.com/timocov/ts-transformer-minify-privates
       </div>
-
     - <div class="list-item" markdown="1">
       <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
       rename private properties https://github.com/timocov/ts-transformer-properties-rename
@@ -296,10 +282,7 @@ This is a list of all the things I know, and all the things we've used to reduce
 - <div class="list-item" markdown="1">
     <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
     <div markdown="1">
-      gzip brotli HTTP/2
-      https://rovity.io/brotli-vs-gzip/
-      https://www.siteground.com/blog/brotli-vs-gzip-compression
-      https://wp-rocket.me/blog/brotli-vs-gzip-compression/
+    Serve JavaScript and other text assets compressed with [Brotli / GZIP].
     </div>
   </div>
 
@@ -383,6 +366,7 @@ https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyf
 [preval.macro]: https://github.com/kentcdodds/preval.macro
 [babel-plugin-preval]: https://github.com/kentcdodds/babel-plugin-preval
 [`const enum`s are inlined directly in the code]: https://www.typescriptlang.org/play/?#code/KYOwrgtgBAIglgJ2AYwC5wPYigbwFBSFQCqADgDQFEwYDuIlRUAMsAGaqNEBKcA5gAtOeAL548yLAGcMAG2AA6WRj4AKeEjSYQCsgEoA3OID0xqADcp4ySCmoooSCxWtzwWbioBRBAgwIuAHUAQwQGKgBJEDYMLhhgACMwPkoxCWk5RWU1ZhdgN1kFKJjDIA
+[Brotli / GZIP]: https://www.siteground.com/academy/brotli-vs-gzip-compression
 
 <script type="text/javascript">
 "use strict";
