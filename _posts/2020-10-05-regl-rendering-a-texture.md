@@ -14,7 +14,7 @@ I'm pretty new to vector graphics. I tried playing with WebGL for a bit but... W
 
 This post is not an attempt to explain how OpenGL or shaders work. There are [far][far] [better][better] [options][options] out there. I'm merely documenting my own progress. In this post I'll detail the two shaders required to render a texture.
 
-# Fragment Shader
+### Fragment Shader
 
 ```cpp
 precision mediump float;
@@ -30,7 +30,7 @@ void main() {
 This shader is straightforward. It reads from a texture and sets each pixel color to the same value as the texture color.
 `precision` determines how much precision the GPU uses when calculating floats. Other possible values are `lowp` and `highp`.
 
-# Vertex Shader
+### Vertex Shader
 
 Rendering a texture was easy. Figuring out how to render it _where_ I wanted was the hard part. I expected this to work:
 
