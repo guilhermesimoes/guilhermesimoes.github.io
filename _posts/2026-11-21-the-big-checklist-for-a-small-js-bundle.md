@@ -15,52 +15,52 @@ This is a list of all the things I know, and all the things we've used to reduce
 <form autocomplete="off" class="bundle-size-reduction" markdown="1">
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="a" /></handdrawn-checkbox>
   Create target-specific builds (specially relevant when the same codebase is used for PlayStation, Xbox, Nvidia Shield, Fire TV, etc). In a browser context this would mean [creating at least two different builds]: one for older browsers that you support (IE, Opera Mini, etc) and another for more modern browsers.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="b" /></handdrawn-checkbox>
   Implement code-splitting (by using [dynamic import]s).
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="c" /></handdrawn-checkbox>
   Load page-specific code only when the user visits that page.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="d" /></handdrawn-checkbox>
   Load feature-specific code only when the user uses that feature. Example: in a chat app with an emoji-picker, only load the emoji-picker when the user clicks a button.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="e" /></handdrawn-checkbox>
   Remove duplicate dependencies.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="f" /></handdrawn-checkbox>
   Rewrite dependencies.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="g" /></handdrawn-checkbox>
   Eliminate dependencies. Example: delete unused polyfills for browsers that you no longer support.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="h" /></handdrawn-checkbox>
   Use a minifier / bundler (like [Terser], [SWC], [Oxc], [esbuild], etc). It's incredible how much these tools can squeeze our code. They delete comments, inline single-use functions, collapse multiple variable declarations into a single one, etc.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="i" /></handdrawn-checkbox>
   Go over _all_ the options of the minifier you're using. Go beyond the tool's defaults. Read its documentation. Example: Terser only does one pass by default. If you use `passes: 2` minification takes longer but results are better.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="j" /></handdrawn-checkbox>
   <div markdown="1">
   In the minifier settings specify the ECMAScript version appropriate for your target. You should know what browsers implement what [ECMAScript versions]. You should also know what [language features] are implemented in what ECMAScript versions. There's a big difference between transpiling to `ES5` and `ES2021`. Example:
 
@@ -78,7 +78,7 @@ This is a list of all the things I know, and all the things we've used to reduce
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="k" /></handdrawn-checkbox>
   <div markdown="1">
   Use [language features] that lead to smaller code. Example:
 
@@ -98,7 +98,7 @@ This is a list of all the things I know, and all the things we've used to reduce
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="l" /></handdrawn-checkbox>
   <div markdown="1">
   **However**, be aware of what your most important target (browser) is. Example:
 
@@ -125,7 +125,7 @@ This is a list of all the things I know, and all the things we've used to reduce
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="m" /></handdrawn-checkbox>
   <div markdown="1">
   Reorder code. Example:
 
@@ -153,12 +153,12 @@ This is a list of all the things I know, and all the things we've used to reduce
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="n" /></handdrawn-checkbox>
   Delete unnecessary code.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="o" /></handdrawn-checkbox>
   <div markdown="1">
   Wrap optional code in [environment variables]. Examples:
 
@@ -197,67 +197,67 @@ This is a list of all the things I know, and all the things we've used to reduce
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="p" /></handdrawn-checkbox>
   Search the documentation of all your dependencies for these special environment variables. Example: [if you're using Sentry you can set the env var `__SENTRY_DEBUG__`] to `false` in production builds so that optional code is removed during minification.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="q" /></handdrawn-checkbox>
   Enable [tree-shaking].
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="r" /></handdrawn-checkbox>
   Ensure that your app's `package.json` sets `"sideEffects": false`. Bundlers like [Webpack][webpack side effects], [esbuild][esbuild side effects] and [bun][bun side effects] agree.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="s" /></handdrawn-checkbox>
   Ensure that your dependencies have `"sideEffects": false`.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="t" /></handdrawn-checkbox>
   Ensure that the dependencies of your dependencies have `"sideEffects": false`.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="u" /></handdrawn-checkbox>
   Use ECMAScript Modules (ESM) and not [CommonJS][CommonJS causes large bundles] (CJS).
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="v" /></handdrawn-checkbox>
   Ensure that _all_ your dependencies use ECMAScript Modules (ESM) and not CommonJS (CJS).
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="w" /></handdrawn-checkbox>
   Ensure that imports are consistent since [inconsistent imports can lead to duplicate code].
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="x" /></handdrawn-checkbox>
   Write services as plain ES modules that export functions since [classes with public methods are **not** tree-shakable].
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="y" /></handdrawn-checkbox>
   Avoid `import * as Something` since it's not tree-shakable.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="z" /></handdrawn-checkbox>
   Enable [name mangling] (renaming basic identifiers like local variables, params, some functions).
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="aa" /></handdrawn-checkbox>
   Take name mangling to the next level. [Rename private properties and methods]. [Rename exports]. Rename as much internal code that you control as you can. Everything in this step is risky but should have a high return on investment.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="ab" /></handdrawn-checkbox>
   <div markdown="1">
   If using TypeScript, prefer `const enum`s to `enum`s. [`const enum`s are inlined directly in the code], avoiding objects and imports. Example:
 
@@ -301,7 +301,7 @@ This is a list of all the things I know, and all the things we've used to reduce
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+  <handdrawn-checkbox><input type="checkbox" id="ac" /></handdrawn-checkbox>
   <div markdown="1">
   Optimize code at build-time. Example:
 
@@ -319,7 +319,7 @@ This is a list of all the things I know, and all the things we've used to reduce
   </div>
 
 - <div class="list-item" markdown="1">
-    <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
+    <handdrawn-checkbox><input type="checkbox" id="ad" /></handdrawn-checkbox>
     <div markdown="1">
     Serve JavaScript and (other text assets) compressed with [Brotli / GZIP].
     </div>
@@ -386,6 +386,43 @@ P. S. -- If you enjoyed the hand-drawn checkboxes I explain how to implement the
 
 <script type="text/javascript">
 "use strict";
+
+var form = document.querySelector('form');
+var userDoneTasks;
+try {
+  userDoneTasks = JSON.parse(localStorage.getItem('jsBundleTasks')) || {};
+} catch (_error) {
+  userDoneTasks = {};
+}
+
+checkUserDoneTasks();
+form.addEventListener('click', toggleTask);
+
+function toggleTask(event) {
+  var task = findCheckbox(event.target);
+  if (task) {
+    if (task.checked) {
+      userDoneTasks[task.id] = true;
+    } else {
+      delete userDoneTasks[task.id];
+    }
+    localStorage.setItem('jsBundleTasks', JSON.stringify(userDoneTasks));
+  }
+}
+
+async function checkUserDoneTasks() {
+  var tasks = form.querySelectorAll('[type="checkbox"]');
+  for (var task of tasks) {
+    if (userDoneTasks[task.id]) {
+      task.checked = true;
+    }
+  }
+}
+
+function findCheckbox(el) {
+  if (el.getAttribute('type') === 'checkbox') return el;
+  return el.querySelector('[type="checkbox"]');
+}
 
 var template = document.createElement('template');
 
