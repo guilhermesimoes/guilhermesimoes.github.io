@@ -7,11 +7,12 @@ image:
   hero:   true
   path:   /assets/images/elephant.png
   alt:    "Drawing of a large elephant, an allusion to most websites' JavaScript bundles."
-class:    bundle-size-reduction
 tags: [Perf, Web, JavaScript]
 ---
 
 This is a list of all the things I know, and all the things we've used to reduce the bundle size of the [Peacock] / [SkyShowtime] / [NOW] TV app. You're more than welcome to use this checklist to improve your own projects.
+
+<form autocomplete="off" class="bundle-size-reduction" markdown="1">
 
 - <div class="list-item" markdown="1">
   <handdrawn-checkbox><input type="checkbox" /></handdrawn-checkbox>
@@ -323,6 +324,8 @@ This is a list of all the things I know, and all the things we've used to reduce
     Serve JavaScript and (other text assets) compressed with [Brotli / GZIP].
     </div>
   </div>
+
+</form>
 
 ---
 
