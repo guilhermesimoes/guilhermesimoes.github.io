@@ -80,7 +80,7 @@ This is a list of all the things I know, and all the things we've used to reduce
 - <div class="list-item" markdown="1">
   <handdrawn-checkbox><input type="checkbox" id="k" /></handdrawn-checkbox>
   <div markdown="1">
-  Use [language features] that lead to smaller code. Example:
+  Use new [language features] that lead to smaller code. Example:
 
   ```ts
   if (!eventListeners[eventName]) {
@@ -100,7 +100,7 @@ This is a list of all the things I know, and all the things we've used to reduce
 - <div class="list-item" markdown="1">
   <handdrawn-checkbox><input type="checkbox" id="l" /></handdrawn-checkbox>
   <div markdown="1">
-  **However**, be aware of what your most important target (browser) is. Example:
+  However, **avoid** new language features that increase the bundle size of your main target (browser). For example:
 
   ```ts
   possiblyUndefinedObject && possiblyUndefinedObject.prop
@@ -112,15 +112,15 @@ This is a list of all the things I know, and all the things we've used to reduce
   possiblyUndefinedObject?.prop
   ```
 
-    but [using optional chaining on a browser that does not support it leads to a larger bundle due to code transpilation]:
+    but [optional chaining needs to be transpiled for browsers that don't support it], thus increasing bundle size:
 
   ```ts
   possiblyUndefinedObject === null || possiblyUndefinedObject === void 0 ? void 0 : possiblyUndefinedObject.prop;
   ```
 
-  So maybe **not** using the optional chaining operator is better.
+  Another example is [template literals] -- `` `${a}${b}` `` -- needing to be transpiled on ES5, resulting in `"".concat(a).concat(b)`. Simply [writing `a + b` would lead to smaller code].
 
-  Refer back to step 1: target-specific builds.
+  Depending on your target, **not** using these new language features could be better. Refer back to step 1: target-specific builds.
   </div>
   </div>
 
@@ -363,7 +363,9 @@ P. S. -- If you enjoyed the hand-drawn checkboxes I explain how to implement the
 [language features]: https://yagmurcetintas.com/journal/whats-new-in-es2022/
 [logical OR assignment operator]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment
 [optional chaining operator]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
-[using optional chaining on a browser that does not support it leads to a larger bundle due to code transpilation]: https://www.typescriptlang.org/play/?target=6#code/CYUwxgNghgTiAEEQBd4AcD2BnLBLARhAJ4CqAdqAGa5kjADy+AVuMgFzwDe6MGaHAVzIBrMhgDuZeAF94AH3hCqNOgG4AsACgtmHAWLlltBs1bwAZOfTY8hUhRDVjjFmGQA6NLzQbtmgPT+8ABuWFrhmrq2Bg5OdC6sAPye3qpAA
+[optional chaining needs to be transpiled for browsers that don't support it]: https://www.typescriptlang.org/play/?target=6#code/CYUwxgNghgTiAEEQBd4AcD2BnLBLARhAJ4CqAdqAGa5kjADy+AVuMgFzwDe6MGaHAVzIBrMhgDuZeAF94AH3hCqNOgG4AsACgtmHAWLlltBs1bwAZOfTY8hUhRDVjjFmGQA6NLzQbtmgPT+8ABuWFrhmrq2Bg5OdC6sAPye3qpAA
+[template literals]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+[writing `a + b` would lead to smaller code]: https://www.typescriptlang.org/play/?target=1#code/CYUwxgNghgTiAEEQBd5QFzwM7JgSwDsBzAGngCNMd9iBuAWACgmADAEgG8oBfT87lkyYB6YfABuWIYyjwA1BSA
 [environment variables]: https://www.debugbear.com/blog/reducing-javascript-bundle-size#dead-code-elimination-with-environment-variables
 [if you're using Sentry you can set the env var `__SENTRY_DEBUG__`]: https://docs.sentry.io/platforms/javascript/guides/react/configuration/tree-shaking/#manual-tree-shaking
 [tree-shaking]: https://webpack.js.org/guides/tree-shaking/
