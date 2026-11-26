@@ -34,7 +34,7 @@
       width: 60px;
       height: 10px;
       transform: translateX(-50%);
-      background-color: light-dark($foreground-color, $dark-background-color);
+      background-color: light-dark($background-color, $dark-background-color);
     }
 
     &::after {

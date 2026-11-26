@@ -6,7 +6,7 @@
     stroke: currentColor;
   }
   .background {
-    fill: light-dark(color.adjust($foreground-color, $lightness: -2%), color.adjust($dark-background-color, $lightness: 10%));
+    fill: light-dark(color.adjust($background-color, $lightness: -2%), color.adjust($dark-background-color, $lightness: 10%));
   }
   .node .background {
     stroke: steelblue;
