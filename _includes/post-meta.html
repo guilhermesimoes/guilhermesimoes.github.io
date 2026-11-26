@@ -1,13 +1,19 @@
 <div class="post-meta deemph">
-  {%- if page.tags %}
+  {%- assign has_tag_page = false -%}
+  {%- for tag_name in page.tags -%}
+    {%- assign tag_page = site.tags | where: "name", tag_name | first -%}
+    {%- if tag_page -%}
+      {%- assign has_tag_page = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if has_tag_page %}
     <div class="post-tags">
       Tags: {% for tag_name in page.tags %}
         {%- if forloop.first -%} {% else %}, {% endif -%}
         {%- assign tag_page = site.tags | where: "name", tag_name | first -%}
         {%- if tag_page -%}
           <a href="{{ tag_page.url | relative_url }}">{{ tag_name }}</a>
-        {%- else -%}
-          {{ tag_name }}
         {%- endif -%}
       {%- endfor %}
     </div>
