@@ -6,7 +6,7 @@ layout: default
   {% assign tag = page %}
   <h1 itemprop="name">{{ tag.name }} posts</h1>
 
-  <ol class="mosaic">
+  <ol class="mosaic mosaic--blocks">
     {% assign posts = site.posts | where_exp: "post", "post.tags contains page.name" %}
     {% for post in posts %}
       {%- if post.hidden != true -%}
