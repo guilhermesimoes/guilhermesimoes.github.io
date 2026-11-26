@@ -3,6 +3,10 @@ layout:   post
 title:    "Rails Quiz: XSS Edition"
 subtitle: "Think you know all about protecting Rails apps from XSS attacks? Test yourself!"
 date:     2017-06-22 07:42:04 +0100
+image:
+  hero:   true
+  path:   /assets/images/train-tracks.png
+  alt:    "Drawing of some train tracks winding into the horizon."
 adapted:
   publication: "Runtime Revolution blog"
   url:    https://revs.runtime-revolution.com/rails-quiz-xss-edition-6ace80dc9515
