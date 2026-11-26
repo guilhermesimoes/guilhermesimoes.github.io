@@ -37,7 +37,7 @@ body {
   font-weight: $base-font-weight;
   line-height: $base-line-height;
   color: light-dark($text-color, $dark-text-color);
-  background-color: light-dark($foreground-color, $dark-background-color);
+  background-color: light-dark($background-color, $dark-background-color);
   overflow-y: scroll;
 }
 

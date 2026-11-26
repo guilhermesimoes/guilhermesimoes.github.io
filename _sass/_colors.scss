@@ -1,9 +1,9 @@
 // Light mode colors
-$foreground-color: #fdfdfd;
-$light-background-color: color.adjust($foreground-color, $lightness: -2.5%);
-$code-block-background-color: color.adjust($foreground-color, $lightness: -4.5%);
-$embed-background-color: color.adjust($foreground-color, $lightness: 10%);
-$box-border-color: color.adjust($foreground-color, $lightness: -16%);
+$background-color: #fdfdfd;
+$light-background-color: color.adjust($background-color, $lightness: -2.5%);
+$code-block-background-color: color.adjust($background-color, $lightness: -4.5%);
+$embed-background-color: color.adjust($background-color, $lightness: 10%);
+$box-border-color: color.adjust($background-color, $lightness: -16%);
 
 $text-color:       #111;
 $muted-text-color: color.adjust($text-color, $lightness: 36%);
