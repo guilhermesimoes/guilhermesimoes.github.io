@@ -3,6 +3,10 @@ layout:   post
 title:    "Saving multiple models with Form Objects and Transactions"
 subtitle: "Forget accepts_nested_attributes_for and fields_for."
 date:     2017-04-20 14:51:53 +0100
+image:
+  hero:   true
+  path:   /assets/images/transaction.png
+  alt:    "Drawing of money exchanging hands: a transaction."
 adapted:
   publication: "Runtime Revolution blog"
   url:    https://revs.runtime-revolution.com/saving-multiple-models-with-form-objects-and-transactions-2c26f37f7b9a
