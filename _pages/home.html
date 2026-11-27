@@ -24,5 +24,74 @@ permalink: /
     <p>Here's my <a href="/assets/guilhermesimoes.pub">PGP key</a>.</p>
 
     <p>And here's my <a href="/cv">CV</a>.</p>
+
+    {%- include signature.svg -%}
   </div>
 </article>
+
+<script>
+"use strict";
+
+var START_FINISH_OVERHEAD = 0.02;
+var PEN_LIFT_TIME = 0.02;
+var BASE_TIME = 0.1;
+var DIRECTION_CHANGE_TIME = 0.1;
+var LENGTH_FACTOR = 0.007;
+var LENGTH_EXPONENT = 0.85;
+
+                    // "G, u, i, ., l, h, e, r, m, e, S, i, ., m, o, ~, e, s"
+var directionChanges = [0, 0, 0, 0, 0, 1, 0, 1, 2, 0, 0, 1, 0, 2, 0, 0, 0, 0]
+
+var letters = document.querySelectorAll(".signature path");
+letters.forEach((letter) => {
+  letter.style.strokeDashoffset = letter.style.strokeDasharray = letter.getTotalLength();
+});
+
+/**
+ * More direction changes = more pronounced
+ * acceleration/deceleration.
+ *
+ * 0 changes:
+ *   relatively fluid
+ *
+ * 1 change:
+ *   slightly more deliberate
+ *
+ * 2+ changes:
+ *   stronger slowing into/out of the stroke
+ */
+function getEasing(directionChangeCount) {
+  const complexity = Math.min(directionChangeCount, 3) / 3;
+
+  const x1 = 0.4;
+  const y1 = 0.08 + complexity * 0.12;
+
+  const x2 = 0.6;
+  const y2 = 0.92 - complexity * 0.08;
+
+  return `cubic-bezier(
+    ${x1},
+    ${y1.toFixed(3)},
+    ${x2},
+    ${y2.toFixed(3)}
+  )`;
+}
+
+setTimeout(() => {
+  var delaySum = 0;
+  letters.forEach((letter, index) => {
+   // Writing time based on the geometric length of the path.
+    // t = base time + k * length^alpha
+    const directionChangeCount = directionChanges[index];
+    const directionTime = directionChangeCount * DIRECTION_CHANGE_TIME;
+    var writingDuration = BASE_TIME + LENGTH_FACTOR * Math.pow(letter.getTotalLength(), LENGTH_EXPONENT) + directionTime;
+
+    letter.style.transition = `stroke-dashoffset ${writingDuration}s ${getEasing(directionChangeCount)} ${delaySum}s`;
+
+    delaySum += writingDuration + START_FINISH_OVERHEAD + PEN_LIFT_TIME;
+
+    letter.style.strokeDashoffset = 0;
+  });
+}, 100);
+
+</script>
