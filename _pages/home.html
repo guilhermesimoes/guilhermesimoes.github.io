@@ -28,3 +28,29 @@ permalink: /
     {%- include signature.svg -%}
   </div>
 </article>
+
+<script>
+"use strict";
+
+var letters = document.querySelectorAll(".signature path");
+letters.forEach((letter) => {
+  letter.style.strokeDashoffset = letter.style.strokeDasharray = letter.getTotalLength();
+});
+
+setTimeout(() => {
+  var delaySum = 0;
+  var fixedOverheadForStartingAndFinishingLetter = 0.05;
+  letters.forEach((letter) => {
+    var letterLength = letter.getTotalLength();
+    // Assuming a letter of length 80 takes 0.5 seconds to write
+    var writingDuration = Math.round((letterLength / 160) * 100) / 100;
+
+    letter.style.transition = `stroke-dashoffset ${writingDuration}s cubic-bezier(.49,.12,.6,1) ${delaySum}s`;
+
+    delaySum += writingDuration + fixedOverheadForStartingAndFinishingLetter;
+
+    letter.style.strokeDashoffset = 0;
+  });
+}, 100);
+
+</script>
