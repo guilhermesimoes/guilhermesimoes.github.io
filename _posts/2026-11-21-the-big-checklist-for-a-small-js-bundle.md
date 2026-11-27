@@ -21,12 +21,12 @@ This is a list of all the things I know, and all the things we've used to reduce
 
 - <div class="list-item" markdown="1">
   <handdrawn-checkbox><input type="checkbox" id="b" /></handdrawn-checkbox>
-  Implement code-splitting (by using [dynamic import]s).
+  Implement [code-splitting] / lazy-loading (by using [dynamic import]s).
   </div>
 
 - <div class="list-item" markdown="1">
   <handdrawn-checkbox><input type="checkbox" id="c" /></handdrawn-checkbox>
-  Load page-specific code only when the user visits that page.
+  Load page-specific code only when the user visits that page. Generally this logic is implemented at the Router level. Example: only load admin-specific code when an admin visits an admin-restricted page.
   </div>
 
 - <div class="list-item" markdown="1">
@@ -36,12 +36,12 @@ This is a list of all the things I know, and all the things we've used to reduce
 
 - <div class="list-item" markdown="1">
   <handdrawn-checkbox><input type="checkbox" id="e" /></handdrawn-checkbox>
-  Remove duplicate dependencies.
+  Ensure you have no duplicate dependencies (you'd be surprised).
   </div>
 
 - <div class="list-item" markdown="1">
   <handdrawn-checkbox><input type="checkbox" id="f" /></handdrawn-checkbox>
-  Rewrite dependencies.
+  Rewrite dependencies (keep reading -- you might just find some inspiration).
   </div>
 
 - <div class="list-item" markdown="1">
@@ -135,7 +135,7 @@ This is a list of all the things I know, and all the things we've used to reduce
   const shadowRoot = this.attachShadow();
   ```
 
-  can be reordered like this:
+  can be reordered like so:
 
   ```ts
   const templateClone = template.content.cloneNode(true);
@@ -237,13 +237,13 @@ This is a list of all the things I know, and all the things we've used to reduce
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" id="x" /></handdrawn-checkbox>
-  Write services as plain ES modules that export functions since [classes with public methods are **not** tree-shakable].
+  <handdrawn-checkbox><input type="checkbox" id="y" /></handdrawn-checkbox>
+  Avoid `import * as Something` since it's not tree-shakable.
   </div>
 
 - <div class="list-item" markdown="1">
-  <handdrawn-checkbox><input type="checkbox" id="y" /></handdrawn-checkbox>
-  Avoid `import * as Something` since it's not tree-shakable.
+  <handdrawn-checkbox><input type="checkbox" id="x" /></handdrawn-checkbox>
+  Avoid writing services as classes with public methods since they are not tree-shakable. Instead, [write services as plain ES modules that export functions].
   </div>
 
 - <div class="list-item" markdown="1">
@@ -346,7 +346,7 @@ grep -rq "THIS_SHOULD_NOT_BE_BUNDLED" dist
 
 can go a long way in catching certain regressions.
 
-In fact, now that I write this, I realise that awareness of your bundle size is actually the first step in this long journey. Optimization is an ongoing process, not a one-time task. Good luck!
+In fact, awareness of your bundle size is actually the first step in this long journey. Optimization is an ongoing process, not a one-time task. It takes a team effort to make your application lightweight and _keep_ it lightweight. Good luck!
 
 P. S. -- If you enjoyed the hand-drawn checkboxes I explain how to implement them in my post [Web Component: Hand-drawn Checkbox].
 
@@ -354,6 +354,7 @@ P. S. -- If you enjoyed the hand-drawn checkboxes I explain how to implement the
 [SkyShowtime]: https://www.skyshowtime.com
 [NOW]: https://nowtv.com
 [creating at least two different builds]: https://calibreapp.com/blog/bundle-size-optimization#deliver-es6-modules-to-up-to-date-browsers
+[code-splitting]: https://medium.com/@abbas-roholamin/what-is-code-splitting-f004edd52975
 [dynamic import]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
 [Terser]: https://try.terser.org/
 [SWC]: https://play.swc.rs/
@@ -374,7 +375,7 @@ P. S. -- If you enjoyed the hand-drawn checkboxes I explain how to implement the
 [bun side effects]: https://bun.sh/blog/bun-bundler#tree-shaking
 [CommonJS causes large bundles]: https://web.dev/articles/commonjs-larger-bundles
 [inconsistent imports can lead to duplicate code]: 2023-04-24-inconsistent-javascript-imports-can-lead-to-duplicate-code.md
-[classes with public methods are **not** tree-shakable]: 2025-11-23-classes-considered-harmful-when-authoring-a-js-lib.md
+[write services as plain ES modules that export functions]: 2025-11-23-classes-considered-harmful-when-authoring-a-js-lib.md
 [name mangling]: https://lihautan.com/reduce-minified-code-size-by-property-mangling
 [Rename private properties and methods]: 2025-06-23-minifying-private-properties-and-methods-with-terser.md
 [Rename exports]: https://code.visualstudio.com/blogs/2023/07/20/mangling-vscode
